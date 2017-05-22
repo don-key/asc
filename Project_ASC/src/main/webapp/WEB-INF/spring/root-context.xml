@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+		<!-- Database 연동을 위한 DataSource 설정 -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+			<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+			<property name="url" value="jdbc:log4jdbc:mysql://ec2-13-124-31-189.ap-northeast-2.compute.amazonaws.com:3306/test?useSSL=false&amp;serverTimezone=UTC"></property>
+			<property name="username" value="root"></property>
+			<property name="password" value="root"></property>
+		</bean>
+		
+		<!-- Connection을 생성하고, 처리하는 SqlSessionFactory 등록 -->	
+		<!-- 데이터베이스와의 연결과 SQL의 실행에 대한 모든 것을 가진 객체 -->
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="configLocation" value="classpath:/mybatis-config.xml"/>
+			<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"/>
+		</bean>
+		
+		<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+			<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
+		</bean>
+		
+		<!-- Database Transaction Manager 설정 -->
+	   <bean id="transactionManager"
+	     class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	     <property name="dataSource" ref="dataSource" />
+	   </bean>
+		
+	  <!-- AOP 자동 Proxy 객체 생성을 위한 AspectJ 설정 -->
+  	  <aop:aspectj-autoproxy />
+  	  <!-- Transactional 애노테이션 사용을 위한 설정 -->
+	  <tx:annotation-driven />
+	  
+	  <!-- tiles3 추가 -->
+	  <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	  	<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+	  	<property name="order" value="2"/>
+	  </bean>
+	  <context:component-scan base-package="com.object.asc" />
+  	  
+  	  
+</beans>

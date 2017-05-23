@@ -33,6 +33,12 @@
                          <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Member</a>
                         </li>
+                         <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>메일보내는버튼</a>
+                        </li>
+                         <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>로그아웃</a>
+                        </li>
                     </ul>
                     <img src="${pageContext.servletContext.contextPath}/resources/images/realtime.PNG" style="width:250px">
                     <img src="${pageContext.servletContext.contextPath}/resources/images/contact.PNG" style="width:250px">

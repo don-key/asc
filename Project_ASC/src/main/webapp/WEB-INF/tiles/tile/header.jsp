@@ -31,7 +31,7 @@
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Library</a>
                         </li>
                          <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>Member</a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Member111</a>
                         </li>
                          <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>메일보내는버튼</a>

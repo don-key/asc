@@ -19,7 +19,7 @@
                                     <a href="#">Task Board</a>
                                 </li>
                                 <li>
-                                    <a href="#">Relese Planning</a>
+                                    <a href="#">Release Planning</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -31,7 +31,7 @@
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Library</a>
                         </li>
                          <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>Member1</a>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Member</a>
                         </li>
                     </ul>
                     <img src="${pageContext.servletContext.contextPath}/resources/images/realtime.PNG" style="width:250px">

@@ -30,6 +30,9 @@
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Library</a>
                         </li>
+                         <li>
+                            <a href="#"><i class="fa fa-edit fa-fw"></i>Member</a>
+                        </li>
                     </ul>
                     <img src="${pageContext.servletContext.contextPath}/resources/images/realtime.PNG" style="width:250px">
                     <img src="${pageContext.servletContext.contextPath}/resources/images/contact.PNG" style="width:250px">

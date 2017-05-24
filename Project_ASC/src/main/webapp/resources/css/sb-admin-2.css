@@ -3,8 +3,22 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+ 
+ @font-face {
+  font-family: 'THE130';
+  font-style: normal;
+  font-weight: 400;
+  src: local('THE130'), url('/resources/fonts/THE130.ttf') format('ttf');
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+ 
 body {
   background-color: #f8f8f8;
+  font-family: 'THE130';
 }
 #wrapper {
   width: 100%;

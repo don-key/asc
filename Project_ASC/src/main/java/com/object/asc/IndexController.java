@@ -35,6 +35,13 @@ public class IndexController {
 		
 		return "main/index";
 	}
-	
+
+	@RequestMapping(value = "/scrum/taskBoard", method = RequestMethod.GET)
+	public String taskBoard(Locale locale, Model model) {
+		logger.info("태스크보드 테스트");
+		
+		return "scrum/taskBoard";
+	}
+
 	
 }

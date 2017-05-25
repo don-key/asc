@@ -4,7 +4,14 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
  
- @font-face {
+@font-face {
+  font-family: 'THE130';
+  font-style: normal;
+  font-weight: 400;
+  src: local('THE130'), url('/resources/fonts/THE130.ttf') format('ttf');
+}
+
+@font-face {
   font-family: 'THE130';
   font-style: normal;
   font-weight: 400;
@@ -248,7 +255,8 @@ table.dataTable thead .sorting:after {
   margin: 15px 0;
 }
 .huge {
-  font-size: 40px;
+  font-size: 30px;
+  font-weight: bold;
 }
 .panel-green {
   border-color: #5cb85c;
@@ -292,6 +300,25 @@ table.dataTable thead .sorting:after {
 .panel-yellow > a:hover {
   color: #df8a13;
 }
+
+.panel-purple {
+  border-color: #571BBE;
+}
+.panel-purple > .panel-heading {
+  border-color: #571BBE;
+  color: white;
+  background-color: #571BBE;
+}
+
+.panel-gray {
+  border-color: #E0E0E0;
+}
+.panel-gray > .panel-heading {
+  border-color: #E0E0E0;
+  color: black;
+  background-color: #E0E0E0;
+}
+
 .timeline {
   position: relative;
   padding: 20px 0 20px;

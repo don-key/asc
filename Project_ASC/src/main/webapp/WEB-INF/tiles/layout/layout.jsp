@@ -12,15 +12,31 @@
     <meta name="author" content="">
     <title>ASC</title>
     <!-- Bootstrap Core CSS -->
-    <link href="${pageContext.servletContext.contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
-    <link href="${pageContext.servletContext.contextPath}/resources/css/metisMenu.css" rel="stylesheet">
+    <link href="/resources/css/metisMenu.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="${pageContext.servletContext.contextPath}/resources/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
-    <link href="${pageContext.servletContext.contextPath}/resources/css/morris.css" rel="stylesheet">
+    <link href="/resources/css/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="${pageContext.servletContext.contextPath}/resources/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="/resources/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <!-- Gantt Chart CSS -->
+    <link href="/resources/css/gantt/gantt.css" rel="stylesheet" type="text/css">
+      <!-- jQuery -->
+    <script src="/resources/js/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/resources/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/resources/js/metisMenu.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="/resources/js/raphael.js"></script>
+    <%-- <script src="/resources/js/morris.js"></script>
+    <script src="/resources/js/morris-data.js"></script> --%>
+    <!-- Custom Theme JavaScript -->
+    <script src="/resources/js/sb-admin-2.js"></script>
+    <!-- Gantt Chart JavaScript -->
+    <script src="/resources/js/gantt/jquery.fn.gantt.js"></script>
   
 </head>
 <body>
@@ -36,16 +52,5 @@
    </div>
 </div>
 </body>
-  <!-- jQuery -->
-    <script src="${pageContext.servletContext.contextPath}/resources/js/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.servletContext.contextPath}/resources/js/bootstrap.min.js"></script>
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="${pageContext.servletContext.contextPath}/resources/js/metisMenu.js"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="${pageContext.servletContext.contextPath}/resources/js/raphael.js"></script>
-    <%-- <script src="${pageContext.servletContext.contextPath}/resources/js/morris.js"></script>
-    <script src="${pageContext.servletContext.contextPath}/resources/js/morris-data.js"></script> --%>
-    <!-- Custom Theme JavaScript -->
-    <script src="${pageContext.servletContext.contextPath}/resources/js/sb-admin-2.js"></script>
+
 </html>

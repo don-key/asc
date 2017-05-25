@@ -42,6 +42,12 @@ public class IndexController {
 		
 		return "scrum/taskBoard";
 	}
+	@RequestMapping(value = "/main/gant", method = RequestMethod.GET)
+	public String gant(Locale locale, Model model) {
+		logger.info("간트 테스트 페이지");
+		
+		return "main/gant";
+	}
 
 	
 }

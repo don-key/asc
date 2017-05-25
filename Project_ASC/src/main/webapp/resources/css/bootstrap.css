@@ -3036,13 +3036,13 @@ select[multiple].input-lg {
   color: #333;
   text-decoration: none;
 }
-.btn:active,
+/* .btn:active,
 .btn.active {
   background-image: none;
   outline: 0;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
           box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-}
+} */
 .btn.disabled,
 .btn[disabled],
 fieldset[disabled] .btn {

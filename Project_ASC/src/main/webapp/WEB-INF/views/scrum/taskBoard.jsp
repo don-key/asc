@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="page-header" id="taskBoardBtn">
-        <a class="btn btn-default"> Category </a> <a
+        <a class="btn btn-default" data-toggle="modal" data-target="#categoryModal"> Category </a> <a
           class="btn btn-default active"> Task Board </a> <a
           class="btn btn-default"> Release Planning </a>
       </div>
@@ -297,3 +297,4 @@
   <jsp:include page="include/registTodoModal.jsp" />
   <jsp:include page="include/detailTodoModal.jsp" />
   <jsp:include page="include/modifyTodoModal.jsp" />
+  <jsp:include page="include/categoryModal.jsp" />

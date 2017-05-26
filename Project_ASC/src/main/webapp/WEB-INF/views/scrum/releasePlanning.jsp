@@ -30,7 +30,7 @@
         <td class="pokerDone">유저스토리2</td>
       </tr>
       <tr>
-        <td class="pokerToDo">유저스토리3</td>
+        <td class="pokerToDo"><a data-toggle="modal" data-target="#planningPokerModal">유저스토리3</a></td>
       </tr>
     </table>
 
@@ -140,4 +140,5 @@
 
 <!-- Modal -->
   <jsp:include page="include/categoryModal.jsp" />
+  <jsp:include page="include/planningPokerModal.jsp" />
 

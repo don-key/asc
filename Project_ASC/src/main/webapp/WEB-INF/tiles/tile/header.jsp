@@ -19,7 +19,7 @@
                                     <a href="/scrum/taskBoard">Task Board</a>
                                 </li>
                                 <li>
-                                    <a href="#">Release Planning</a>
+                                    <a href="/scrum/releasePlanning">Release Planning</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

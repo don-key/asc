@@ -16,7 +16,7 @@
                                     <a href="#">Category</a>
                                 </li>
                                 <li>
-                                    <a href="#">Task Board</a>
+                                    <a href="/scrum/taskBoard">Task Board</a>
                                 </li>
                                 <li>
                                     <a href="#">Release Planning</a>

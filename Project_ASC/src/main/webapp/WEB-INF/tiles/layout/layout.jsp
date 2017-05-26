@@ -13,6 +13,7 @@
     <title>ASC</title>
     <!-- Bootstrap Core CSS -->
     <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap.vertical-tabs.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="/resources/css/metisMenu.css" rel="stylesheet">
     <!-- Custom CSS -->

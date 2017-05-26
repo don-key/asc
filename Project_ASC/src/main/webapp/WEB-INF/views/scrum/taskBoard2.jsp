@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" %>
 <link
   href="${pageContext.servletContext.contextPath}/resources/css/scrum/scrum.css"
   rel="stylesheet">
@@ -18,27 +18,8 @@
     <!-- /.col-lg-12 -->
   </div>
   <!-- /.row -->
-
-  <div class="container">
-
-    <div class="col-sm-1" id="tabArea">
-      <ul id="myTab4" class="nav nav-tabs tabs-left sideways"
-        role="tablist">
-        <li role="presentation" class="active"><a href="#home4"
-          id="home-tab4" role="tab" data-toggle="tab"
-          aria-controls="home4" aria-expanded="true">2nd Sprint</a></li>
-        <li role="presentation" class=""><a href="#profile4"
-          role="tab" id="profile-tab4" data-toggle="tab"
-          aria-controls="profile4" aria-expanded="false">1st Sprint</a></li>
-        
-      </ul>
-    </div>
-    <div class="col-sm-11">
-      <div id="myTabContent4" class="tab-content">
-        <div role="tabpanel" class="tab-pane fade active in" id="home4"
-          aria-labelledby="home-tab4">
-          
-          <div class="row">
+  
+  <div class="row">
 
     <div class="col-lg-3 col-md-6">
       <div class="panel panel-primary">
@@ -91,205 +72,157 @@
   </div>
   <!-- /.row -->
   <div class=row>
-    <div class="col-lg-3 col-md-6">
-      <!-- User Story -->
-      <div class="panel panel-gray">
+  <div class="col-lg-3 col-md-6"> <!-- User Story -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">회원가입 #001</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <!-- ToDo -->
-      <div class="panel panel-gray">
+      
+      <div class="col-lg-3 col-md-6"> <!-- ToDo -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"><a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">회원가입 뷰 디자인 #001</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <!-- Doing -->
-      <div class="panel panel-gray">
+      
+      <div class="col-lg-3 col-md-6"> <!-- Doing -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">회원가입 뷰 디자인 #001</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <!-- Done -->
-      <div class="panel panel-gray">
+      
+      <div class="col-lg-3 col-md-6"> <!-- Done -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">회원가입 뷰 디자인 #001</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-3 col-md-6">
-      <!-- User Story -->
-      <div class="panel panel-gray">
+      </div>
+      
+      <div class="row">
+      <div class="col-lg-3 col-md-6"> <!-- User Story -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">로그인 #002</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <!-- ToDo -->
-      <div class="panel panel-gray">
+      
+      <div class="col-lg-3 col-md-6"> <!-- ToDo -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">로그인 뷰 디자인 #002</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <!-- Doing -->
-      <div class="panel panel-gray">
+      
+      <div class="col-lg-3 col-md-6"> <!-- Doing -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">로그인 뷰 디자인 #002</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6">
-      <!-- Done -->
-      <div class="panel panel-gray">
+      
+      <div class="col-lg-3 col-md-6"> <!-- Done -->
+    <div class="panel panel-gray">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-6 text-left">
-              <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
-              </div>
+          <div class="col-xs-6 text-left">
+              <div class="content">&nbsp;<a class="fa fa-pencil"></a></div>
             </div>
             <div class="col-xs-6 text-right">
-              <div class="content">
-                <a class="fa fa-trash-o"></a>&nbsp;
-              </div>
+              <div class="content"><a class="fa fa-trash-o"></a>&nbsp;</div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
               <div class="content">로그인 뷰 디자인 #002</div>
             </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-  </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade"
-          id="profile4" aria-labelledby="profile-tab4">
-          <p>1번째</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
+      
+      
+     
   
+  
+</div>
 </div>
 <!-- /#page-wrapper -->
 

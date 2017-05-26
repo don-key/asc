@@ -62,9 +62,24 @@ table th {
 
 table td {
 	border: 10px solid white;
-	background-color: rgba(43, 139, 204, 0.7);
 	line-height: 2.5em;
 	text-align: center;
-	font-size: 23px;
-	color: rgb(255, 255, 255);
+	font-size: 20px;
+	color: #353232;
 }
+
+.pokerToDo {
+	background-color: rgba(204, 71, 43, 0.7);
+	
+}
+
+.pokerDone {
+	background-color: rgba(241, 196, 15, 0.54);
+	
+}
+
+.pokerAllDone {
+	background-color: rgb(224, 224, 224);
+	
+}
+

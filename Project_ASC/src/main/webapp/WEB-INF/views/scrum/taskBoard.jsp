@@ -11,8 +11,8 @@
     <div class="col-lg-12">
       <div class="page-header" id="taskBoardBtn">
         <a class="btn btn-default" data-toggle="modal" data-target="#categoryModal"> Category </a> <a
-          class="btn btn-default active"> Task Board </a> <a
-          class="btn btn-default"> Release Planning </a>
+          href="/scrum/taskBoard" class="btn btn-default active"> Task Board </a> <a
+          href="/scrum/releasePlanning" class="btn btn-default"> Release Planning </a>
       </div>
     </div>
     <!-- /.col-lg-12 -->
@@ -45,7 +45,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1 text-center">
-              <div class="huge">User Story <a class="fa fa-plus-circle"></a></div>
+              <div class="huge">User Story <a class="fa fa-plus-circle" data-toggle="modal" data-target="#registUserStoryModal"></a></div>
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@
           <div class="row">
             <div class="col-xs-6 text-left">
               <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
+                &nbsp;<a class="fa fa-pencil" data-toggle="modal" data-target="#modifyUserStoryModal"></a>
               </div>
             </div>
             <div class="col-xs-6 text-right">
@@ -107,7 +107,7 @@
               </div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
-              <div class="content">회원가입 #001</div>
+              <div class="content"><a data-toggle="modal" data-target="#detailUserStoryModal">회원가입 #001</a></div>
             </div>
           </div>
         </div>
@@ -297,4 +297,7 @@
   <jsp:include page="include/registTodoModal.jsp" />
   <jsp:include page="include/detailTodoModal.jsp" />
   <jsp:include page="include/modifyTodoModal.jsp" />
+  <jsp:include page="include/registUserStoryModal.jsp" />
+  <jsp:include page="include/detailUserStoryModal.jsp" />
+  <jsp:include page="include/modifyUserStoryModal.jsp" />
   <jsp:include page="include/categoryModal.jsp" />

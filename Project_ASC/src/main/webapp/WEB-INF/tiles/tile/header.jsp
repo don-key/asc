@@ -42,7 +42,7 @@
                     </ul>
                     <img src="/resources/images/realtime.PNG" style="width:250px" onclick="popupOpen()">
                     <script type="text/javascript">
-                      
+                      /*채팅창 팝업*/
                       function popupOpen(){
                       
                         var popUrl = "../chat"; //팝업창에 출력될 페이지 URL

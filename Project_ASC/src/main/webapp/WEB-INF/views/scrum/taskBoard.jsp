@@ -12,7 +12,7 @@
       <div class="page-header" id="taskBoardBtn">
         <a class="btn btn-default"> Category </a> <a
           class="btn btn-default active"> Task Board </a> <a
-          class="btn btn-default"> Release </a>
+          class="btn btn-default"> Release Planning </a>
       </div>
     </div>
     <!-- /.col-lg-12 -->
@@ -45,7 +45,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1 text-center">
-              <div class="huge">User Story</div>
+              <div class="huge">User Story <a class="fa fa-plus-circle"></a></div>
             </div>
           </div>
         </div>
@@ -57,7 +57,7 @@
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-10 col-xs-offset-1 text-center">
-              <div class="huge">To Do</div>
+              <div class="huge">To Do <a class="fa fa-plus-circle" data-toggle="modal" data-target="#registTodoModal"></a></div>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@
           <div class="row">
             <div class="col-xs-6 text-left">
               <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
+                &nbsp;<a class="fa fa-pencil" data-toggle="modal" data-target="#modifyTodoModal"></a>
               </div>
             </div>
             <div class="col-xs-6 text-right">
@@ -130,7 +130,7 @@
               </div>
             </div>
             <div class="col-xs-10 col-xs-offset-1 text-center">
-              <div class="content">회원가입 뷰 디자인 #001</div>
+              <div class="content"><a data-toggle="modal" data-target="#detailTodoModal">회원가입 뷰 디자인 #001</a></div>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@
           <div class="row">
             <div class="col-xs-6 text-left">
               <div class="content">
-                &nbsp;<a class="fa fa-pencil"></a>
+                &nbsp;<a class="fa fa-pencil" ></a>
               </div>
             </div>
             <div class="col-xs-6 text-right">
@@ -293,4 +293,7 @@
 </div>
 <!-- /#page-wrapper -->
 
-
+<!-- Modal -->
+  <jsp:include page="include/registTodoModal.jsp" />
+  <jsp:include page="include/detailTodoModal.jsp" />
+  <jsp:include page="include/modifyTodoModal.jsp" />

@@ -48,6 +48,20 @@ public class IndexController {
 		
 		return "main/gant";
 	}
+	
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	public String chat(Locale locale, Model model) {
+		logger.info("채팅 테스트");
+		
+		return "chat";
+	}
+	
+	@RequestMapping(value = "/library/library", method = RequestMethod.GET)
+	public String library(Locale locale, Model model) {
+		logger.info("자료실 테스트");
+		
+		return "/library/library";
+	}
 
 	
 }

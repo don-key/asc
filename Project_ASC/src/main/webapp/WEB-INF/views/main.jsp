@@ -42,6 +42,8 @@
 					</div>
 					
 					<button type="button" class="login__submit" >Sign in</button>
+					
+<!-- 					<button type="button" >ID/PW 찾기</button> -->
 
 					<p class="login__signup"> Don't have an account? &nbsp;<a>Sign up</a></p>
 				</div>

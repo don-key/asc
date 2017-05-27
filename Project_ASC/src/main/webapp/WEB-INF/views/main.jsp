@@ -19,7 +19,6 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="/resources/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="/resources/js/jquery.min.js"></script>
 <script type="text/javascript" src="/resources/js/TimeCircles.js"></script>
 <script type="text/javascript" src="/resources/js/backstretch.js"></script>
 <script type="text/javascript" src="/resources/js/ajaxchimp.js"></script>

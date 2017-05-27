@@ -37,7 +37,7 @@
             <a class="btn" style="width : 100%; font-size: 20px; border-radius: 25px; background-color : #F39C12; font-weight : bold;">10</a>
           </div>
           <div class="col-xs-1">
-            <input type="text" style="width : 100%; font-size: 20px; margin-left: 25px;">
+            <input type="number" style="width : 100%; font-size: 20px; margin-left: 25px;">
           </div>
         </div>
         

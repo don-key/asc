@@ -27,6 +27,11 @@
     <link href="/resources/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- Gantt Chart CSS -->
     <link href="/resources/css/gantt/gantt.css" rel="stylesheet" type="text/css">
+    <!-- Donut CSS -->
+    <link href="/resources/css/dashBoard/simple-donut.css" rel="stylesheet">
+    <!-- Calendar CSS -->
+    <link href="/resources/css/dashBoard/fullcalendar.css" rel="stylesheet">
+    
       <!-- jQuery -->
     <script src="/resources/js/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -41,6 +46,10 @@
     <script src="/resources/js/sb-admin-2.js"></script>
     <!-- Gantt Chart JavaScript -->
     <script src="/resources/js/gantt/jquery.fn.gantt.js"></script>
+    <!-- Donut JavaScript -->
+    <script src="/resources/js/dashBoard/simple-donut-jquery.js"></script>
+    <!-- Calendar JavaScript -->
+    <script src="/resources/js/dashBoard/fullcalendar.js"></script>
   
 </head>
 <body>

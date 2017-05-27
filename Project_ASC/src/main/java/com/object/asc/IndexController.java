@@ -77,6 +77,13 @@ public class IndexController {
 		
 		return "/library/library";
 	}
+	
+	@RequestMapping(value = "/dashboard/dashboard", method = RequestMethod.GET)
+	public String dashboard(Locale locale, Model model) {
+		logger.info("DashBoard 테스트");
+		
+		return "dashboard/dashboard";
+	}
 
 	
 }

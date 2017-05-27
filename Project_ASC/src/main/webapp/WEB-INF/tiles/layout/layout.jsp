@@ -20,6 +20,9 @@
     <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="/resources/css/morris.css" rel="stylesheet">
+    <!-- Main CSS -->
+<!--     <link href="/resources/css/main.css" rel="stylesheet"> -->
+<!--     <link href="/resources/css/reset.css" rel="stylesheet"> -->
     <!-- Custom Fonts -->
     <link href="/resources/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- Gantt Chart CSS -->

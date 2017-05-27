@@ -3,12 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Notify - Under Constraction and Coming Soon Template</title>
+<title>ASC</title>
 <meta charset="utf-8">
 <meta name="author" content="pixelhint.com">
 <meta name="description" content="Notify Under Constraction and Coming Soon Template" />
 
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="/resources/css/bootstrap.css" >
 
 <link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
@@ -42,16 +45,19 @@
 					</div>
 					
 					<button type="button" class="login__submit" >Sign in</button>
-					
-<!-- 					<button type="button" >ID/PW 찾기</button> -->
 
-					<p class="login__signup"> Don't have an account? &nbsp;<a>Sign up</a></p>
+					<p class="login__signup"> Don't have an account? &nbsp;<a data-toggle="modal" data-target="#registerModal">Sign up</a></p>
+
 				</div>
 			</div>
 
 		</div>
 	</div>
-
+	
+	<!-- Modal -->
+  	<jsp:include page="registerModal.jsp" />
 
 </body>
+
 </html>
+

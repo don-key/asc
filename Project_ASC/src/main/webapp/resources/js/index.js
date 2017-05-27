@@ -24,39 +24,21 @@ $(document).ready(function() {
     var that = this;
     ripple($(that), e);
     $(that).addClass("processing");
+    
     setTimeout(function() {
       $(that).addClass("success");
       setTimeout(function() {
-        $app.show();
-        $app.css("top");
         $app.addClass("active");
       }, submitPhase2 - 70);
+      
       setTimeout(function() {
         $login.hide();
         $login.addClass("inactive");
         animating = false;
         $(that).removeClass("success processing");
+        location.href='/';
       }, submitPhase2);
     }, submitPhase1);
-  });
-  
-  $(document).on("click", ".app__logout", function(e) {
-    if (animating) return;
-    $(".ripple").remove();
-    animating = true;
-    var that = this;
-    $(that).addClass("clicked");
-    setTimeout(function() {
-      $app.removeClass("active");
-      $login.show();
-      $login.css("top");
-      $login.removeClass("inactive");
-    }, logoutPhase1 - 120);
-    setTimeout(function() {
-      $app.hide();
-      animating = false;
-      $(that).removeClass("clicked");
-    }, logoutPhase1);
   });
   
 });

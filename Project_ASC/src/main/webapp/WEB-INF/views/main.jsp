@@ -41,8 +41,8 @@
 						<input type="password" class="login__input pass" placeholder="Password" />
 					</div>
 					
-					<button type="button" class="login__submit">Sign in</button>
-					
+					<button type="button" class="login__submit" >Sign in</button>
+
 					<p class="login__signup"> Don't have an account? &nbsp;<a>Sign up</a></p>
 				</div>
 			</div>

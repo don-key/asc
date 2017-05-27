@@ -5,13 +5,10 @@
 <head>
 <title>ASC</title>
 <meta charset="utf-8">
-<meta name="author" content="pixelhint.com">
-<meta name="description" content="Notify Under Constraction and Coming Soon Template" />
-
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="/resources/css/bootstrap.css" >
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css" >
 
 <link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
@@ -50,14 +47,12 @@
 
 				</div>
 			</div>
-
 		</div>
 	</div>
 	
-	<!-- Modal -->
-  	<jsp:include page="registerModal.jsp" />
+<!-- Modal -->
+<jsp:include page="registerModal.jsp" />
 
 </body>
-
 </html>
 

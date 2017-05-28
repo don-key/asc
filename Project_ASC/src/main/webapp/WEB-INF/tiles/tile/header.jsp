@@ -7,13 +7,13 @@
                     <img src="/resources/images/loginInfo.PNG" style="width:250px">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                            <a href="/project/dashBoard"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-table fa-fw"></i>Scrum<span class="fa arrow"></span></a>
+                            <a href="/scrum/taskBoard"><i class="fa fa-table fa-fw"></i>Scrum<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Category</a>
+                                    <a href="/scrum/taskBoard">Category</a>
                                 </li>
                                 <li>
                                     <a href="/scrum/taskBoard">Task Board</a>
@@ -25,10 +25,10 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-bar-chart-o fa-fw"></i>Gantt Chart</a>
+                            <a href="/gantt/ganttChart"><i class="fa fa-bar-chart-o fa-fw"></i>Gantt Chart</a>
                         </li>
                         <li>
-                            <a href="/library/library"><i class="fa fa-edit fa-fw"></i>Library</a>
+                            <a href="/project/library"><i class="fa fa-edit fa-fw"></i>Library</a>
                         </li>
                          <li>
                             <a href="#"><i class="fa fa-edit fa-fw"></i>Member</a>
@@ -45,7 +45,7 @@
                       /*채팅창 팝업*/
                       function popupOpen(){
                       
-                        var popUrl = "../chat"; //팝업창에 출력될 페이지 URL
+                        var popUrl = "/chatting"; //팝업창에 출력될 페이지 URL
                       
                         var popOption = "width=750, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
                       

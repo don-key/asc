@@ -5,7 +5,6 @@
 <head>
 <title>ASC</title>
 <meta charset="utf-8">
-<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
@@ -59,7 +58,7 @@
   </div>
 
   <!-- Modal -->
-  <jsp:include page="registerModal.jsp" />
+  <jsp:include page="user/include/registerModal.jsp" />
 
 </body>
 </html>

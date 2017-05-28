@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=utf-8" %>
 <style>
 div#clock {
 color: white;
@@ -53,9 +54,6 @@ padding: 5px 0 0;
   background : #ffdda6;
 }
 </style>
-
-
-
         <div id="page-wrapper">
              <div class="row">
                 <div class="col-lg-12">
@@ -158,10 +156,11 @@ padding: 5px 0 0;
     
     <!-- Action Percent -->    
     <script>
-  		var title = prompt('Event Title:');
+        // 퍼센트 바꾸는 소스
+  		/* var title = prompt('Event Title:');
       	if (title) {
         	updateDonutChart('#specificChart', title, true);
-        }
+        } */
       	
       
     $(function() {
@@ -176,4 +175,3 @@ padding: 5px 0 0;
 		});
 		</script>
     
-

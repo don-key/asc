@@ -36,7 +36,7 @@ $(document).ready(function() {
         $login.addClass("inactive");
         animating = false;
         $(that).removeClass("success processing");
-        location.href='/';
+        location.href='/project/dashBoard';
       }, submitPhase2);
     }, submitPhase1);
   });

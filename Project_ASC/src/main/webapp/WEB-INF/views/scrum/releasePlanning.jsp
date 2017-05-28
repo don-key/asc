@@ -1,11 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=utf-8"%>
-<link href="${pageContext.servletContext.contextPath}/resources/css/scrum/scrum2.css" rel="stylesheet">
+<link href="${pageContext.servletContext.contextPath}/resources/css/scrum/scrum.css" rel="stylesheet">
 
 
 
 <div id="page-wrapper">
-  <div class="row">
+  <div class="row"> 
     <div class="col-lg-12">
       <div class="page-header" id="taskBoardBtn">
         <a class="btn btn-default" data-toggle="modal" data-target="#categoryModal"> Category </a> <a

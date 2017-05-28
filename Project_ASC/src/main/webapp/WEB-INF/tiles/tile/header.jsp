@@ -3,7 +3,7 @@
  <!-- Navigation -->
             <nav class="navbar-default sidebar" role="navigation" style="background-color: #354555">
                 <div class="sidebar-nav navbar-collapse">
-                    <a href="/main"><img src="/resources/images/logo.png" style="width:250px"></a>
+                    <a href="/"><img src="/resources/images/logo.png" style="width:250px"></a>
                     <img src="/resources/images/loginInfo.PNG" style="width:250px">
                     <ul class="nav" id="side-menu">
                         <li>

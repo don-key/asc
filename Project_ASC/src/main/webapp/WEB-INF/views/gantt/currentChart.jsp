@@ -127,7 +127,7 @@
    </div>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="50"
-        aria-valuemin="0" aria-valuemax="100" style="width:70%">현실 >> 50%</div>
+        aria-valuemin="0" aria-valuemax="100" style="width:50%">현실 >> 50%</div>
    </div>
    <div class="row">
       <input type="button" id="ganttChartBtn"class="btn btn-primary" value="간트 차트">

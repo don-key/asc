@@ -37,7 +37,7 @@
                             <a href="#"><i class="fa fa-edit fa-fw"></i>메일보내는버튼</a>
                         </li>
                          <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>로그아웃</a>
+                            <a href="/"><i class="fa fa-edit fa-fw"></i>로그아웃</a>
                         </li>
                     </ul>
                     <img src="/resources/images/realtime.PNG" style="width:250px" onclick="popupOpen()">

@@ -53,7 +53,6 @@
                       
                         }
                     </script>
-                    <img src="/resources/images/contact.PNG" style="width:250px">
                 </div>
                 <!-- /.sidebar-collapse -->
             </nav>

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
  
 <!-- Modal -->
-<div class="modal fade" id="registGanttChartModal" role="dialog">
+<div class="modal fade" id="modifyGanttChartModal" role="dialog">
 	<div class="modal-dialog">
 
 		<!-- Modal content-->
@@ -9,7 +9,7 @@
 		
 			<div class="modal-header" style="background: #354555; color: #ffffff;">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 추가</h4>
+				<h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 수정</h4>
 			</div>
 			
 			<div class="modal-body">

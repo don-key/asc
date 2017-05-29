@@ -45,13 +45,10 @@
     
     <!-- Tab -->
     <div class="col-sm-11">
-      <!-- Tab2 -->
-      <div id="myTabContent4" class="tab-content">
-        <div role="tabpanel" class="tab-pane fade active in" id="sp1"
-          aria-labelledby="sp-tab1">
-          
-          <div class="row">
-
+    
+  <!-- 고정형식 -->
+  <div class="row">
+    
     <div class="col-lg-3 col-md-6">
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -101,7 +98,13 @@
     </div>
 
   </div>
-  <!-- /.row -->
+    
+      <!-- Tab2 -->
+      <div id="myTabContent4" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="sp1"
+          aria-labelledby="sp-tab1">
+    
+  <!-- Tab 시작 -->
   <div class=row>
     <div class="col-lg-3 col-md-6">
       <!-- User Story -->

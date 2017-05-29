@@ -4,7 +4,7 @@
             <nav class="navbar-default sidebar" role="navigation" style="background-color: #354555">
                 <div class="sidebar-nav navbar-collapse">
                     <a href="/"><img src="/resources/images/logo.png" style="width:250px"></a>
-                    <img src="/resources/images/loginInfo.PNG" style="width:250px">
+                    <a data-toggle="modal" data-target="#fmodifyModal"><img src="/resources/images/loginInfo.PNG" style="width:250px"></a>
                     <ul class="nav" id="side-menu">
                         <li>
                             <a href="/project/dashBoard"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
@@ -58,3 +58,4 @@
                 <!-- /.sidebar-collapse -->
             </nav>
             <!-- /.navbar-static-side -->
+

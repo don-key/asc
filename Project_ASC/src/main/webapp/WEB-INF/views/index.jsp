@@ -7,9 +7,8 @@
 <meta charset="utf-8">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" type="text/css" href="/resources/css/bootstrap.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<link rel="stylesheet" type="text/css" href="/resources/css/reset.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
 
@@ -28,6 +27,7 @@
 <body>
   <div class="cont">
     <div class="demo">
+    
       <div class="login">
         <div class="login__check">
           <img src="/resources/images/logo5.png">
@@ -49,9 +49,13 @@
           <button type="button" class="login__submit">Sign in</button>
 
           <p class="login__signup">
-            Don't have an account? &nbsp;<a data-toggle="modal" data-target="#registerModal">Sign up</a>
+            계정이 없으신가요? &nbsp;<a data-toggle="modal" data-target="#registerModal">가입하기</a>
           </p>
-
+          
+          <p class="login__signup">
+            아이디와 비밀번호를 잊으셨나요? &nbsp;<a data-toggle="modal" data-target="#findIdPwModal">찾기</a>
+          </p>
+          
         </div>
       </div>
     </div>
@@ -59,6 +63,7 @@
 
   <!-- Modal -->
   <jsp:include page="user/include/registerModal.jsp" />
+  <jsp:include page="user/include/findIdPwModal.jsp" />
 
 </body>
 </html>

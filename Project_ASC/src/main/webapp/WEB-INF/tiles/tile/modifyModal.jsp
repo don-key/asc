@@ -45,7 +45,7 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-3 col-sm-3">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="id" class="regist_label">아이디</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
@@ -55,7 +55,7 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-3 col-sm-3">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="pw" class="regist_label">비밀번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
@@ -65,7 +65,7 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-3 col-sm-3">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="repw" class="regist_label">비밀번호 확인</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
@@ -75,7 +75,7 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-3 col-sm-3">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">이름</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
@@ -85,7 +85,7 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-3 col-sm-3">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7 ">
@@ -95,7 +95,7 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-3 col-sm-3">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">사진</label>
 						</div>
 						<div class="col-xs-7 col-sm-7 ">

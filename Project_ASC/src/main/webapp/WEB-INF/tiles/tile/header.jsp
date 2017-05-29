@@ -16,7 +16,7 @@
                                     <a href="/scrum/taskBoard"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
                                 </li>
                                 <li>
-                                   	<a href="/scrum/taskBoard"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
+                                   	<a href="/scrum/releasePlanning"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

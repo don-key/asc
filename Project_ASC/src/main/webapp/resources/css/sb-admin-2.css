@@ -96,8 +96,19 @@ body {
 .sidebar ul li {
 }
 .sidebar ul li a.active {
-  background-color: #eeeeee;
+  background-color: rgba(0, 0, 0, 0.37);
 }
+
+.nav>li>a:focus, .nav>li>a:hover {
+	background-color: rgba(0, 0, 0, 0.37);
+}
+
+a:hover,
+a:focus {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
 .sidebar .arrow {
   float: right;
 }

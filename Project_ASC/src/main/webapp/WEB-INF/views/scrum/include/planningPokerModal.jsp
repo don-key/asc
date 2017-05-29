@@ -14,7 +14,7 @@
       
       <div class="row">
           <div class="col-xs-8 col-xs-offset-2">
-          <textarea name="userStoryContent" style="width: 100%; height: 115px;">
+          <textarea name="userStoryContent" disabled style="resize:none; width: 100%; height: 115px;">
           UserStory Title, Content
           </textarea>
           </div>
@@ -37,10 +37,10 @@
             <a class="btn" style="width : 100%; font-size: 20px; border-radius: 25px; background-color : #F39C12; font-weight : bold;">10</a>
           </div>
           <div class="col-xs-1">
-            <input type="number" style="width : 100%; font-size: 20px; margin-left: 25px;">
+            <input type="text" pattern="[0.5-9]" maxlength=1 style="text-align:center; width : 100%; font-size: 20px; margin-left: 25px;">
           </div>
         </div>
-        
+              
         <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
         <h5 style="font-weight: bold; text-align : center; font-size : 15px;"> 보기에 원하는 시간이 없을 시에는, 오른쪽 입력창에 입력바랍니다 :) </h5>
@@ -52,7 +52,7 @@
               <button type="button" class="btn btn-primary" style="width: 100%; font-size: 15px; font-weight: bold;">저장</button>
             </div>
             <div class="col-xs-2">
-              <button type="button" class="btn btn-default" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">초기화</button>
+              <button type="button" data-dismiss="modal" class="btn btn-default" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">초기화</button>
             </div>
       </div>
     </div>

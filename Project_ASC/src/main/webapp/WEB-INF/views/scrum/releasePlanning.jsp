@@ -27,10 +27,10 @@
         <td class="pokerDone">유저스토리1</td>
       </tr>
       <tr>
-        <td class="pokerDone"><a data-toggle="modal" data-target="#planningPokerMasterModal">유저스토리모달</a></td>
+        <td class="pokerDone"><a data-toggle="modal" data-target="#planningPokerMasterModal">마스터</a></td>
       </tr>
       <tr>
-        <td class="pokerToDo"><a data-toggle="modal" data-target="#planningPokerModal">유저스토리모달</a></td>
+        <td class="pokerToDo"><a data-toggle="modal" data-target="#planningPokerModal">팀원</a></td>
       </tr>
     </table>
 

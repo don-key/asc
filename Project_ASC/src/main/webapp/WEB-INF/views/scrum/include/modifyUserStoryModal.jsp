@@ -13,13 +13,13 @@
 
         <div class="row">
           <div class="col-xs-5 col-xs-offset-1">
-            <label for="releaseCategory" style="font-size: 27px;"> Release Category </label>
+            <label for="categoryList" style="font-size: 27px;"> Release Category </label>
           </div>
           <div class="col-xs-6">
-            <select id="categoryList" style="width: 83%; height: 37px; margin-top: 4px;">
-              <option>#001. 디드</option>
-              <option>#002. 디드2</option>
-              <option>#003. 디드3</option>
+            <select id="categoryList" name='categoryList' autofocus style="width: 83%; height: 37px; margin-top: 4px;">
+              <option value=''>#001. 디드</option>
+              <option value=''>#002. 디드2</option>
+              <option value=''>#003. 디드3</option>
             </select>
           </div>
         </div>
@@ -27,52 +27,52 @@
 
         <div class="row">
           <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">Title</label>
+            <label for='Title' style="font-size: 20px;">Title</label>
           </div>
           <div class="col-xs-8">
-            <input type="text" name="userStoryTitle" style="width: 100%;" value="받아온 내용">
+            <input type="text" id='Title' name="Title" style="width: 100%;" value="받아온 내용">
           </div>
         </div>
         <br>
         <div class="row">
           <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">As a</label> <label style="font-size: 15px;">(사용자)</label>
+            <label for='AsA' style="font-size: 20px;">As a</label> <label style="font-size: 15px;">(사용자)</label>
           </div>
           <div class="col-xs-8">
-            <input type="text" name="userStoryAsA" style="width: 100%;" value="받아온 내용">
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">I want</label> <label style="font-size: 15px;">(기능)</label>
-          </div>
-          <div class="col-xs-8">
-            <textarea name="userStoryIWant" style="width: 100%; height: 115px;">받아온 내용</textarea>
+            <input type="text" id='AsA' name="AsA" value="받아온 내용" style="width: 100%;">
           </div>
         </div>
         <br>
 
         <div class="row">
           <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">So that</label> <label style="font-size: 15px;">(목적)</label>
+            <label for='IWant' style="font-size: 20px;">I want</label> <label style="font-size: 15px;">(기능)</label>
           </div>
           <div class="col-xs-8">
-            <textarea name="userStorySoThat" style="width: 100%; height: 115px;">받아온 내용</textarea>
+            <textarea id='IWant' name="IWant" style="resize:none; width: 100%; height: 115px;">받아온 내용</textarea>
           </div>
         </div>
         <br>
 
         <div class="row">
           <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">우선순위</label>
+            <label for='SoThat' style="font-size: 20px;">So that</label> <label style="font-size: 15px;">(목적)</label>
+          </div>
+          <div class="col-xs-8">
+            <textarea id="SoThat" name="SoThat" style="resize:none; width: 100%; height: 115px;">받아온 내용</textarea>
+          </div>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-xs-2 col-xs-offset-1">
+            <label for='Priority' style="font-size: 20px;">우선순위</label>
           </div>
           <div class="col-xs-3">
-            <select id="priority" style="width: 100%;">
-              <option>상</option>
-              <option>중</option>
-              <option>하</option>
+            <select id="Priority" name='Priority' style="width: 100%;">
+              <option value='상'>상</option>
+              <option value='중'>중</option>
+              <option value='하'>하</option>
             </select>
           </div>
         </div>

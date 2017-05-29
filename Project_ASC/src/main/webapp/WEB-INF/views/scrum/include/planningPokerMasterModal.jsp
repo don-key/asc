@@ -14,7 +14,7 @@
       <br>
         <div class="row">
           <div class="text-center">
-            <textarea name="userStoryContent" style="width: 76%; height: 115px;" disabled>
+            <textarea name="userStoryContent" disabled style="resize:none; width: 76%; height: 115px;">
           UserStory Title, Content
           </textarea>
           </div>
@@ -49,7 +49,7 @@
             <label style="font-size: 20px;">평균</label>
           </div>
           <div class="col-xs-2">
-            <input type="number" value="3" style="width: 100%; font-size: 20px; margin-left: 25px;">
+            <input type="text" disabled readonly value='3' style="text-align:center; width: 100%; font-size: 20px; margin-left: 25px;">
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@
           <button type="button" class="btn btn-primary" style="width: 100%; font-size: 15px; font-weight: bold;">Submit</button>
         </div>
         <div class="col-xs-2">
-          <button type="button" class="btn btn-default" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">Cancel</button>
+          <button type="button" data-dismiss="modal" class="btn btn-default" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">Cancel</button>
         </div>
       </div>
     </div>

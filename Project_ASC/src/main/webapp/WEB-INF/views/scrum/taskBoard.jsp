@@ -316,7 +316,7 @@ swal({
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
 		  cancelButtonColor: '#d33',
-		  confirmButtonText: '확인',
+		  confirmButtonText: '확인', 
 		  cancelButtonText: '취소',
 		  showLoaderOnConfirm: true,
 		  preConfirm: function (confirm) {

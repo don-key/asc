@@ -18,8 +18,15 @@ img#chatBtn {
 	function popupOpen() {
 
 		var popUrl = "/chatting"; //팝업창에 출력될 페이지 URL
+		
+		var cw = screen.availWidth; // 화면너비
+		var ch = screen.availHeight; // 화면높이
+		var sw = 1000; // 띄울 창 너비
+		var sh = 500; // 띄울 창 높이
+		var ml = (cw-sw)/2;
+		var mt = (ch-sh)/2;
 
-		var popOption = "width=1000, height=500, resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
+		var popOption = "width="+sw+", height="+sh+", top="+mt+",left="+ml+" resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
 
 		window.open(popUrl, "", popOption);
 

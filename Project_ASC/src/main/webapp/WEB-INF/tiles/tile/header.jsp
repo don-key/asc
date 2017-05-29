@@ -34,7 +34,7 @@
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a href="/"><img src="/resources/images/menu/logout.png" style="width: 50%"></a>
+                            <a><img src="/resources/images/menu/logout.png"  class="logoutBtn"  style="width: 50%"></a>
                         </li>
                     </ul>
                 </div>
@@ -44,3 +44,21 @@
             
   <!-- Modal -->
   <jsp:include page="modifyModal.jsp" />
+  
+    <script>
+  $('.logoutBtn').on('click', function() {
+	  swal({
+		  title: '로그아웃 하시겠습니까?',
+		  text: "",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: 'YES',
+		  cancelButtonText: 'NO'
+		}).then(function () {
+			location.href = '/';
+		})
+	  
+  });
+  </script>

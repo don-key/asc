@@ -22,6 +22,12 @@ public class GanttController {
 		logger.info("간트 페이지 테스트");
 		return "/gantt/ganttChart";
 	}
+	
+	@RequestMapping(value = "/currentChart", method = RequestMethod.GET)
+	public String currentChart(Model model) {
+		logger.info("간트 페이지 테스트");
+		return "/gantt/currentChart";
+	}
 	 
 	 
 

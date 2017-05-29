@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'LotteMartDream';
+  font-style: normal;
+  font-weight: 400;
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
@@ -41,7 +48,7 @@ input, button {
   height: 100%;
   background-size: cover;
   overflow: auto;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-family: 'LotteMartDream', Helvetica, Arial, sans-serif;
 }
 
 .demo {

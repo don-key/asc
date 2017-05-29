@@ -5,10 +5,14 @@
  */
  
 @font-face {
-  font-family: 'THE130';
+  font-family: 'LotteMartDream';
   font-style: normal;
   font-weight: 400;
-  src: local('THE130'), url('/resources/fonts/LOTTE.TTF') format('ttf');
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+}
+
+* {
+	font-family : 'LotteMartDream';
 }
 
 a {
@@ -18,7 +22,7 @@ a {
  
 body {
   background-color: #f8f8f8;
-  font-family: 'THE130';
+  font-family: 'LOTTE';
 }
 #wrapper {
   width: 100%;

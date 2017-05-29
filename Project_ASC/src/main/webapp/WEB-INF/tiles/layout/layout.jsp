@@ -16,10 +16,10 @@
     <link href="/resources/css/bootstrap.vertical-tabs.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="/resources/css/metisMenu.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="/resources/css/morris.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <!-- Main CSS -->
 <!--     <link href="/resources/css/main.css" rel="stylesheet"> -->
 <!--     <link href="/resources/css/reset.css" rel="stylesheet"> -->

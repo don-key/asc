@@ -5,9 +5,15 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+@font-face {
+  font-family: 'LOTTE';
+  font-style: normal;
+  font-weight: 400;
+  src: local('LOTTE'), url('/resources/fonts/LOTTE.TTF') format('ttf');
+}
 
 html {
-  font-family: sans-serif; 
+  font-family: 'LOTTE',sans-serif; 
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }

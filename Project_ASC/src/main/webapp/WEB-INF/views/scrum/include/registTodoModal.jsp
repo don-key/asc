@@ -16,7 +16,7 @@
             <label for="userStoryList" style="font-size : 20px;"> User Story </label>
           </div>
           <div class="col-xs-8">
-            <select id = "userStoryList" name='userStoryList' autofocus style="width : 100%;">
+            <select id = "userStoryList" name='userStoryList' autofocus style="width : 100%; height: 37px; margin-top: 4px;">
               <option value=''>#001. User Story</option>
               <option value=''>#002. User Story</option>
               <option value=''>#003. User Story</option>

@@ -16,7 +16,7 @@
                                     <a href="/scrum/taskBoard">Category</a>
                                 </li>
                                 <li>
-                                    <a href="/scrum/taskBoard">Task Board</a>
+                                    <a href="/scrum/taskBoard"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
                                 </li>
                                 <li>
                                     <a href="/scrum/releasePlanning">Release Planning</a>
@@ -25,7 +25,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="/gantt/ganttChart"><i class="fa fa-bar-chart-o fa-fw"></i>Gantt Chart</a>
+                            <a href="/gantt/ganttChart"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
                         <li>
                             <a href="/project/library"><i class="fa fa-edit fa-fw"></i>Library</a>

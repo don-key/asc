@@ -122,7 +122,7 @@
         </div>
         <div class="panel-footer foot">
           <div class='row'>
-            <div class='col-xs-12'>
+            <div class='col-xs-12 text-center'>
               <div id="specificChart" class="donut-size foot">
                 <div class="pie-wrapper">
                   <span class="label"> <span class="num">0</span><span class="smaller">%</span>

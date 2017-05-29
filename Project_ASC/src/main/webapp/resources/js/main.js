@@ -23,9 +23,9 @@ $(document).ready(function(){
 
 	//code for the background slider
 	$.backstretch([
-      "/resources/images/main/bg_img.png",
-      "/resources/images/main/bg_img2.png",
-      "/resources/images/main/bg_img3.png"
+      "/resources/images/main/1.jpg",
+      "/resources/images/main/2.jpg",
+      "/resources/images/main/3.jpg"
     ], {
         fade: 750,
         duration: 2500

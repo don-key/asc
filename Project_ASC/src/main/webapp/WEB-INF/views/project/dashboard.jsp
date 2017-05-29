@@ -9,17 +9,14 @@
 }
 
 #textArea {
-	overflow-x: hidden;
-	height: 50%;
+	overflow: auto;
+	height: 250px;
 	width: 100%;
 	border: 0;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
 }
 
-.textarea {
-	padding: 0;
-}
 
 .panel-today {
 	background: #a8c8f9;
@@ -38,49 +35,44 @@
 }
 </style>
 <div id="page-wrapper">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Dashboard</h1>
-    </div>
-    <!-- /.col-lg-12 -->
-  </div>
-  <!-- /.row -->
-  <!--              <div class="row"> -->
-  <div class="col-md-12">
+  <div class="col-md-12" style="margin-top:50px">
   <div class="col-lg-6 col-md-6">
     <div class="col-lg-12 col-md-12">
       <div class="panel panel-today">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-12 text-left">
-              <div class="huge">Today Job List</div>
+              <div class="huge">오늘 할일</div>
             </div>
           </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer" style="background-color: white; height:15em">
           <div class="row">
             <div class="col-xs-12 text-left">
-              <div>Comment Here!</div>
-              <div>Comment Here!</div>
-              <div>Comment Here!</div>
+              <div>1. 일해야지</div>
+              <div>2. 일해야지</div>
+              <div>3. 일해야지</div>
+              <div>4. 일해야지</div>
+              <div>5. 일해야지</div>
+              <div>6. 일해야지</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-12 col-md-12">
+    <div class="col-lg-12 col-md-12" style="height:50%">
       <div class="panel panel-memo">
         <div class="panel-heading">
           <div class="row">
             <div class="col-xs-9 text-left">
-              <div class="huge">Memo</div>
+              <div class="huge">메모</div>
             </div>
             <div class="col-xs-3 text-right">
-              <input type='button' class='btn btn-outline btn-danger' value='SAVE'>
+              <button type='button' class='btn btn-success btn-circle btn-lg'><i class="fa fa-check"></i></button>
             </div>
           </div>
         </div>
-        <div class="panel-footer textarea">
+        <div class="panel-footer textarea" style="background-color: white;"> 
           <div class='row'>
             <div class='col-xs-12'>
               <textarea id="textArea">Memo</textarea>
@@ -103,18 +95,35 @@
         <div class="panel-footer foot">
           <div class='row'>
             <div class='col-xs-12 text-center'>
-              <div class='huge daysLeft'>D-Day</div>
+              <div class='huge daysLeft'>D-20</div>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-lg-6 col-md-6">
+      <div class="panel panel-action">
+        <div class="panel-heading">
+          <div class='row'>
+            <div class='col-xs-12 text-left'>
+              <div class="huge">달성률</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer foot">
+          <div class='row'>
+            <div class='col-xs-12 text-center'>
+              <div class='huge daysLeft'>10%</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-lg-12 col-md-12">
-      <div class="panel panel-calendar">
+      <div class="panel">
         <div class="panel-heading">
           <div class="row">
+            <div class = "calendar"></div>
           </div>
         </div>
       </div>
@@ -127,21 +136,13 @@
 
 <!-- Action Percent -->
 <script>
-	// 퍼센트 바꾸는 소스
-	/* var title = prompt('Event Title:');
-	if (title) {
-	updateDonutChart('#specificChart', title, true);
-	} */
-
-	$(function() {
-		// Easy pie charts
-		var calendar = $('#calendar').fullCalendar({
-			header : {
-				left : 'prev,next',
-				center : 'title',
-				right : 'month,basicWeek,basicDay'
-			}
-		});
+$(function() {
+    $('.calendar').pignoseCalendar({
+		date: moment(),
+		lang: 'ko',
+		theme: 'blue'
 	});
+});
+
 </script>
 

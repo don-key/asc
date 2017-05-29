@@ -27,10 +27,8 @@
     <link href="/resources/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- Gantt Chart CSS -->
     <link href="/resources/css/gantt/gantt.css" rel="stylesheet" type="text/css">
-    <!-- Donut CSS -->
-    <link href="/resources/css/dashBoard/simple-donut.css" rel="stylesheet">
     <!-- Calendar CSS -->
-    <link href="/resources/css/dashBoard/fullcalendar.css" rel="stylesheet">
+    <link href="/resources/css/dashBoard/pignose.calendar.css" rel="stylesheet">
     <!-- SweetAlert CSS -->
     <link href="/resources/css/sweetalert2.min.css" rel="stylesheet">
     
@@ -48,10 +46,9 @@
     <script src="/resources/js/sb-admin-2.js"></script>
     <!-- Gantt Chart JavaScript -->
     <script src="/resources/js/gantt/jquery.fn.gantt.js"></script>
-    <!-- Donut JavaScript -->
-    <script src="/resources/js/dashBoard/simple-donut-jquery.js"></script>
     <!-- Calendar JavaScript -->
-    <script src="/resources/js/dashBoard/fullcalendar.js"></script>
+    <script src="/resources/js/dashBoard/moment.min.js"></script>
+    <script src="/resources/js/dashBoard/pignose.calendar.js"></script>
     <!-- SweetAlert JavaScript -->
     <script src="/resources/js/sweetalert2.min.js"></script>
   

@@ -1,37 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <style>
-div#clock {
-	color: white;
-	width: 600px;
-	overflow: hidden;
-	text-align: center;
-	padding-top: 20%;
-	padding-bottom: 5%;
-	padding-left: 20%;
-	padding-right: 20%;
-}
-
-div#clock p {
-	float: left;
-}
-
-div#clock p span {
-	display: block;
-	font-size: 50px;
-	font-weight: bold;
-	padding: 5px 0 0;
-}
-
-#daysLeft {
+.daysLeft {
 	color: black;
-	margin: auto;
+	margin-top: 25%;
+  margin-bottom: 25%;
 }
-
 .foot {
-	padding: 0;
-	background: white;
-	height: 190px;
+  background: white;
 }
 
 #textArea {
@@ -78,15 +54,19 @@ div#clock p span {
       <div class="panel panel-today">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-9 text-left">
+            <div class="col-xs-12 text-left">
               <div class="huge">Today Job List</div>
             </div>
           </div>
         </div>
         <div class="panel-footer">
-          <div>Comment Here!</div>
-          <div>Comment Here!</div>
-          <div>Comment Here!</div>
+          <div class="row">
+            <div class="col-xs-12 text-left">
+              <div>Comment Here!</div>
+              <div>Comment Here!</div>
+              <div>Comment Here!</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -116,15 +96,16 @@ div#clock p span {
     <div class="col-lg-6 col-md-6">
       <div class="panel panel-d-day">
         <div class="panel-heading">
-          <span class="pull-left">D-Day</span>
-          <div class="clearfix"></div>
+          <div class='row'>
+            <div class='col-xs-12 text-left'>
+              <div class="huge">D-Day</div>
+            </div>
+          </div>
         </div>
         <div class="panel-footer foot">
-          <div>
-            <div id="clock">
-              <p>
-                <span id="daysLeft">D-Day</span>
-              </p>
+          <div class='row'>
+            <div class='col-xs-12 text-center'>
+              <div class='huge daysLeft'>D-Day</div>
             </div>
           </div>
         </div>
@@ -133,25 +114,31 @@ div#clock p span {
     <div class="col-lg-6 col-md-6">
       <div class="panel panel-action">
         <div class="panel-heading">
-          <span class="pull-left">Action</span>
-          <div class="clearfix"></div>
-        </div>
-        <div class="panel-footer">
-          <div id="specificChart" class="donut-size">
-            <div class="pie-wrapper">
-              <span class="label"> <span class="num">0</span><span class="smaller">%</span>
-              </span>
-              <div class="pie">
-                <div class="left-side half-circle"></div>
-                <div class="right-side half-circle"></div>
-              </div>
-              <div class="shadow"></div>
+          <div class='row'>
+            <div class='col-xs-12 text-left'>
+              <div class="huge">Action</div>
             </div>
           </div>
         </div>
+        <div class="panel-footer foot">
+          <div class='row'>
+            <div class='col-xs-12 text-center'>
+              <div id="specificChart" class="donut-size foot">
+                <div class="pie-wrapper">
+                  <span class="label"> <span class="num">0</span><span class="smaller">%</span>
+                  </span>
+                  <div class="pie">
+                    <div class="left-side half-circle"></div>
+                    <div class="right-side half-circle"></div>
+                  </div>
+                  <div class="shadow"></div>
+                </div>
+              </div>
+            </div>
+          </div>  
+        </div>
       </div>
     </div>
-    <!--               </div> -->
     <div class="col-lg-12 col-md-12">
       <div class="panel panel-calendar">
         <div class="panel-heading">

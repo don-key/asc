@@ -20,6 +20,11 @@
   <!-- /.row -->
 
   <div class="container">
+  <div class="row">
+  <div class="col-sm-2 col-sm-offset-10">
+  <a class="btn btn-default" id="nextSprintBtn">Next Sprint <span class="fa fa-plus-circle"></span></a>
+  </div>
+  </div>
 
     <div class="col-sm-1" id="tabArea">
       <ul id="myTab4" class="nav nav-tabs tabs-left sideways"

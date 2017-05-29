@@ -4,7 +4,6 @@
 
 .pie-wrapper {
   position: relative;
-  width: 1em;
   height: 1em;
   margin: 0px auto;
 }
@@ -48,6 +47,8 @@
   text-align: center;
   cursor: default;
   z-index: 2;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .pie-wrapper .smaller {

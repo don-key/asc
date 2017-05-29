@@ -34,7 +34,7 @@
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a><img src="/resources/images/menu/logout.png"  class="logoutBtn"  style="width: 50%"></a>
+                            <a><img src="/resources/images/menu/logout.png"  class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
                         </li>
                     </ul>
                 </div>

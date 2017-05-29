@@ -1,17 +1,103 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=utf-8"%>
+
+<style>
+.panel{
+
+  margin-top:10% !important
+}
+</style>
+
+      <!-- Modal -->
+    <jsp:include page="include/fileUploadModal.jsp" />
+
           <div id="page-wrapper"> 
             <div class="row">
+            
+              <div class="">
+               <a id="" class="btn btn-default btn-md" style="margin-left: 85%; margin-top: 10%" data-toggle="modal" data-target="#fileUploadModal">
+               <i class="fa fa-camera fa-md"></i>　파일 업로드</a>
+              </div>
+               <!-- /.col-lg-4 -->
                 <div class="col-lg-4">
                     <div class="panel panel-info">
                         <div class="panel-heading">
+                        <!-- 업로드시 입력한 제목 보여주기 -->
                             글 제목
+                            <a class="btn btn-default btn-sm" style="margin-left: 75% !important">
+                              <i class="fa fa-trash-o fa-md"></i>
+                            </a> 
+                        </div>
+                        
+                        <div class="panel-body">
+                            <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
+                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>
+                       </div>
+                        <div class="panel-footer">
+                            작성자 : 이현명
+                        </div>
+                    </div>
+                </div>
+                
+               <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        <!-- 업로드시 입력한 제목 보여주기 -->
+                            글 제목
+                            <a class="btn btn-default btn-sm" style="margin-left: 75% !important">
+                              <i class="fa fa-trash-o fa-md" ></i>
+                            </a> 
+                        </div>
+                        
+                        <div class="panel-body">
+                            <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
+                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>
+                       </div>
+                        <div class="panel-footer">
+                            작성자 : 이현명
+                        </div>
+                    </div>
+                </div>
+                
+               <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                        <!-- 업로드시 입력한 제목 보여주기 -->
+                            글 제목
+                            <a class="btn btn-default btn-sm" style="margin-left: 75% !important">
+                              <i class="fa fa-trash-o fa-md" ></i>
+                            </a> 
+                        </div>
+                        
+                        <div class="panel-body">
+                            <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
+                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>
+                       </div>
+                        <div class="panel-footer">
+                            작성자 : 이현명
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                        <!-- 업로드시 입력한 제목 보여주기 -->
+                            글 제목
+                              <a class="btn btn-default btn-sm" style="margin-left: 75% !important">
+                              <i class="fa fa-trash-o fa-md"></i>
+                            </a> 
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                            <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
+                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>                        
                         </div>
                         <div class="panel-footer">
-                            Panel Footer
+                            작성자 : 이현명
                         </div>
                     </div>
                 </div>
@@ -19,31 +105,43 @@
                 <div class="col-lg-4">
                     <div class="panel panel-warning">
                         <div class="panel-heading">
-                            Warning Panel
+                        <!-- 업로드시 입력한 제목 보여주기 -->
+                            글 제목
+                            <a class="btn btn-default btn-sm" style="margin-left: 75% !important">
+                             <i class="fa fa-trash-o fa-md"></i>
+                            </a>                             
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                            <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
+                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>  
                         </div>
                         <div class="panel-footer">
-                            Panel Footer
+                            작성자 : 이현명
                         </div>
                     </div>
                 </div>
-                <!-- /.col-lg-4 -->
+                 <!-- /.col-lg-4 -->
                 <div class="col-lg-4">
-                    <div class="panel panel-danger">
+                    <div class="panel panel-warning">
                         <div class="panel-heading">
-                            Danger Panel
+                        <!-- 업로드시 입력한 제목 보여주기 -->
+                            글 제목
+                            <a class="btn btn-default btn-sm" style="margin-left: 75% !important">
+                              <i class="fa fa-trash-o fa-md"></i>
+                            </a> 
                         </div>
                         <div class="panel-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                            <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
+                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>  
                         </div>
                         <div class="panel-footer">
-                            Panel Footer
+                            작성자 : 이현명
                         </div>
                     </div>
                 </div>
-                <!-- /.col-lg-4 -->
+             
+                
             </div>
             <!-- /.row -->
           </div>
+         

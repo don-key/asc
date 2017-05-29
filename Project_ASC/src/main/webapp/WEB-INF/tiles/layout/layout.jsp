@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <title>ASC</title>
     <!-- Bootstrap Core CSS -->
-    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="/resources/css/bootstrap.vertical-tabs.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="/resources/css/metisMenu.css" rel="stylesheet">

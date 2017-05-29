@@ -5,14 +5,14 @@
 }
 
 @font-face {
-  font-family: 'THE130';
+  font-family: 'LotteMartDream';
   font-style: normal;
   font-weight: 400;
-  src: local('THE130'), url('/resources/fonts/LOTTE.TTF') format('ttf');
-} 
+  src: url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2') format('woff2'), url('//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff') format('woff');
+}
 
 #registerModal label {
-  font-family: 'THE130';
+  font-family: 'LotteMartDream';
 }
 </style>
 

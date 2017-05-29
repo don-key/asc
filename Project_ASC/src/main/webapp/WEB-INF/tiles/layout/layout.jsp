@@ -31,6 +31,8 @@
     <link href="/resources/css/dashBoard/simple-donut.css" rel="stylesheet">
     <!-- Calendar CSS -->
     <link href="/resources/css/dashBoard/fullcalendar.css" rel="stylesheet">
+    <!-- SweetAlert CSS -->
+    <link href="/resources/css/sweetalert2.min.css" rel="stylesheet">
     
       <!-- jQuery -->
     <script src="/resources/js/jquery.min.js"></script>
@@ -50,6 +52,8 @@
     <script src="/resources/js/dashBoard/simple-donut-jquery.js"></script>
     <!-- Calendar JavaScript -->
     <script src="/resources/js/dashBoard/fullcalendar.js"></script>
+    <!-- SweetAlert JavaScript -->
+    <script src="/resources/js/sweetalert2.min.js"></script>
   
 </head>
 <body>

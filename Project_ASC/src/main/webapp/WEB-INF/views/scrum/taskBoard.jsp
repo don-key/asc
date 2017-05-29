@@ -18,13 +18,14 @@
     <!-- /.col-lg-12 -->
   </div>
   <!-- /.row -->
-
+  
+  
   <div class="container">
-  <div class="row">
-  <div class="col-sm-2 col-sm-offset-10">
-  <a class="btn btn-default" id="nextSprintBtn">Next Sprint <span class="fa fa-plus-circle"></span></a>
-  </div>
-  </div>
+    <div class="row">
+      <div class="col-sm-2 col-sm-offset-10">
+        <a class="btn btn-default" id="nextSprintBtn">Next Sprint <span class="fa fa-plus-circle"></span></a>
+      </div>
+    </div>
 
     <div class="col-sm-1" id="tabArea">
       <ul id="myTab4" class="nav nav-tabs tabs-left sideways"
@@ -297,6 +298,52 @@
   
 </div>
 <!-- /#page-wrapper -->
+
+<script>
+// <a class="btn btn-default" id="nextSprintBtn">
+
+$('#nextSprintBtn').on("click", function(event) {
+	event.preventDefault();
+// 	var chg = (decodeURIComponent('${cookie.name.value}'));
+// 	var articleNo = $(this).next().next().val();
+// 	var productN = $(this).next().next().next().val();
+// 	var from = $(this).next().next().next().next().val();
+
+swal({
+		  title: '　　정말로 다음 스프린트로　　넘어가시겠습니까??',
+			text: '확인 을 입력해주세요',
+		  input: 'text',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '확인',
+		  cancelButtonText: '취소',
+		  showLoaderOnConfirm: true,
+		  preConfirm: function (confirm) {
+			    return new Promise(function (resolve, reject) {
+			      setTimeout(function() {
+			        if (confirm == '확인') {
+			          console.log('Confirm');
+			          location.href='/scrum/taskBoard';
+			        } else {
+			          resolve()
+			        }
+			      }, 500)
+			    })
+			  },
+			  allowOutsideClick: false
+			}).then(function (confirm) {
+			  swal({
+			    type: 'warning',
+			    title: '잘 못 입력하셨어요!',
+			    html: '확인 을 입력하세요!'
+			   
+			  })
+		});
+		return false;
+	
+	});
+</script>
 
 <!-- Modal -->
   <jsp:include page="include/registTodoModal.jsp" />

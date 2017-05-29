@@ -37,19 +37,6 @@
                             <a href="/"><img src="/resources/images/menu/logout.png" style="width: 50%"></a>
                         </li>
                     </ul>
-                    <img src="/resources/images/menu/chat.png" style="width:25%" onclick="popupOpen()">
-                    <script type="text/javascript">
-                      /*채팅창 팝업*/
-                      function popupOpen(){
-                      
-                        var popUrl = "/chatting"; //팝업창에 출력될 페이지 URL
-                      
-                        var popOption = "width=750, height=400, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-                      
-                          window.open(popUrl,"",popOption);
-                      
-                        }
-                    </script>
                 </div>
                 <!-- /.sidebar-collapse -->
             </nav>

@@ -11,7 +11,7 @@ img#chatBtn {
 
 <div class="page-wrapper">
 <img id="chatBtn" src="/resources/images/menu/chat.png"
-   onclick="popupOpen()">
+   onclick="popupOpen()" style="cursor : pointer;">
   </div>
 <script type="text/javascript">
 	/*채팅창 팝업*/

@@ -38,7 +38,7 @@ div#clock p span {
 	resize: none;
 	overflow-x: hidden;
 	height: 350px;
-	width: 540px;
+	width: 100%;
 	border: 0;
 	border-bottom-right-radius: 3px;
 	border-bottom-left-radius: 3px;
@@ -103,7 +103,11 @@ div#clock p span {
           </div>
         </div>
         <div class="panel-footer textarea">
-          <textarea id="textArea" style="height: 350px; width: 100%;">Memo</textarea>
+          <div class='row'>
+            <div class='col-xs-12'>
+              <textarea id="textArea" cols='49' rows='20'>Memo</textarea>
+            </div>
+          </div>
         </div>
       </div>
     </div>

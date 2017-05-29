@@ -3,17 +3,14 @@
 <style>
 .daysLeft {
 	color: black;
-	margin-top: 25%;
-  margin-bottom: 25%;
 }
 .foot {
   background: white;
 }
 
 #textArea {
-	resize: none;
 	overflow-x: hidden;
-	height: 350px;
+	height: 50%;
 	width: 100%;
 	border: 0;
 	border-bottom-right-radius: 3px;
@@ -49,6 +46,7 @@
   </div>
   <!-- /.row -->
   <!--              <div class="row"> -->
+  <div class="col-md-12">
   <div class="col-lg-6 col-md-6">
     <div class="col-lg-12 col-md-12">
       <div class="panel panel-today">
@@ -85,7 +83,7 @@
         <div class="panel-footer textarea">
           <div class='row'>
             <div class='col-xs-12'>
-              <textarea id="textArea" cols='49' rows='20'>Memo</textarea>
+              <textarea id="textArea">Memo</textarea>
             </div>
           </div>
         </div>
@@ -112,43 +110,16 @@
       </div>
     </div>
     <div class="col-lg-6 col-md-6">
-      <div class="panel panel-action">
-        <div class="panel-heading">
-          <div class='row'>
-            <div class='col-xs-12 text-left'>
-              <div class="huge">Action</div>
-            </div>
-          </div>
-        </div>
-        <div class="panel-footer foot">
-          <div class='row'>
-            <div class='col-xs-12 text-center'>
-              <div id="specificChart" class="donut-size foot">
-                <div class="pie-wrapper">
-                  <span class="label"> <span class="num">0</span><span class="smaller">%</span>
-                  </span>
-                  <div class="pie">
-                    <div class="left-side half-circle"></div>
-                    <div class="right-side half-circle"></div>
-                  </div>
-                  <div class="shadow"></div>
-                </div>
-              </div>
-            </div>
-          </div>  
-        </div>
-      </div>
     </div>
     <div class="col-lg-12 col-md-12">
       <div class="panel panel-calendar">
         <div class="panel-heading">
           <div class="row">
-            <div id='calendar'></div>
-            <div id='box'></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <!-- /.row -->
 </div>

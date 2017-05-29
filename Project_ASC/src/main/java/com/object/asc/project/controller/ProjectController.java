@@ -32,5 +32,10 @@ public class ProjectController {
 		return "/project/library";
 	}
 	
-	
+	@RequestMapping(value = "/member", method = RequestMethod.GET)
+	public String member(Locale locale, Model model) {
+		logger.info("참여 인원 테스트");
+		
+		return "/project/member";
+	}	
 }

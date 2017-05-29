@@ -86,8 +86,7 @@
 							<label class="regist_label">프로필 사진</label>
 						</div>
 							<div class="col-xs-3 col-sm-3 ">
-								<a href="#" class="thumbnail"> <img src="resources/images/main/image-placeholder.png" alt="">
-								</a>
+								<a href="#" class="thumbnail"> <img src="resources/images/main/image-placeholder.png" alt=""></a>
 							</div>
 
 							<div class="col-xs-5 col-sm-5">

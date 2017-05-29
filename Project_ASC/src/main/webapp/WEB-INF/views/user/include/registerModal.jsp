@@ -1,69 +1,110 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<style>
+.regist_label {
+ font-size: 15px;
+}
+
+@font-face {
+  font-family: 'THE130';
+  font-style: normal;
+  font-weight: 400;
+  src: local('THE130'), url('/resources/fonts/THE130.ttf') format('ttf');
+} 
+
+#registerModal label {
+  font-family: 'THE130';
+}
+</style>
+
+
 <!-- Modal -->
 <div class="modal fade" id="registerModal" role="dialog">
-	<div class="modal-dialog">
+	<div class="modal-dialog" style="width: 35%">
 
 		<!-- Modal content-->
 		<div class="modal-content">
-		
+
 			<div class="modal-header" style="background: #354555; color: #ffffff;">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title" style="font-weight: bolder;">회원가입</h4>
+				<h2 class="regist_label" style="font-weight: bolder;">회원가입</h2>
 			</div>
-			
+
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-xs-2 col-xs-offset-1">
-						<label for="userStoryList" style="font-size: 20px;"> User Story </label>
+					<div class="form-group">
+						<div class="col-xs-3 col-sm-3">
+							<label for="id" class="regist_label">아이디</label>
+						</div>
+						<div class="col-xs-7 col-sm-7">
+							<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="20">
+						</div>
+						<div class="clearfix"></div>
 					</div>
-					<div class="col-xs-8">
-						<select id="userStoryList" style="width: 100%;">
-							<option>#001. User Story</option>
-							<option>#002. User Story</option>
-							<option>#003. User Story</option>
-						</select>
+
+					<div class="form-group">
+						<div class="col-xs-3 col-sm-3">
+							<label for="pw" class="regist_label">비밀번호</label>
+						</div>
+						<div class="col-xs-7 col-sm-7">
+							<input type="password" class="form-control" name="passwd" placeholder="비밀번호를 입력하세요">
+						</div>
+						<div class="clearfix"></div>
 					</div>
+
+					<div class="form-group">
+						<div class="col-xs-3 col-sm-3">
+							<label for="repw" class="regist_label">비밀번호 확인</label>
+						</div>
+						<div class="col-xs-7 col-sm-7">
+							<input type="password" class="form-control" name="repasswd" placeholder="비밀번호를 한 번 더 입력하세요">
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-3 col-sm-3">
+							<label class="regist_label">이름</label>
+						</div>
+						<div class="col-xs-7 col-sm-7">
+							<input type="text" class="form-control" name="name" placeholder="이름을 입력하세요" />
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-3 col-sm-3">
+							<label class="regist_label">휴대폰 번호</label>
+						</div>
+						<div class="col-xs-7 col-sm-7 ">
+							<input type="tel" class="form-control placeholder" name="telephone" placeholder="휴대폰 번호를 입력하세요" />
+						</div>
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-3 col-sm-3">
+							<label class="regist_label">프로필 사진</label>
+						</div>
+							<div class="col-xs-3 col-sm-3 ">
+								<a href="#" class="thumbnail"> <img src="resources/images/main/image-placeholder.png" alt="">
+								</a>
+							</div>
+
+							<div class="col-xs-5 col-sm-5">
+								<input type="file" class="form-control placeholder" name="profile" />
+							</div>
+							<div class="clearfix"></div>
+					</div>
+
 				</div>
 				<br>
 
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-1">
-						<label style="font-size: 20px;">Title</label>
-					</div>
-					<div class="col-xs-8">
-						<input type="text" name="toDoTitle" style="width: 100%;">
-					</div>
-				</div>
-				<br>
-
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-1">
-						<label style="font-size: 20px;">Content</label>
-					</div>
-					<div class="col-xs-8">
-						<textarea name="toDoContent" style="width: 100%; height: 150px;"></textarea>
-					</div>
-				</div>
-				<br>
-
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-6">
-						<label style="font-size: 20px;">작업자</label>
-					</div>
-					<div class="col-xs-3">
-						<select id="workerList" style="width: 100%;">
-							<option>김동현</option>
-							<option>이종윤</option>
-							<option>마민</option>
-						</select>
-					</div>
-				</div>
 			</div>
 
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-4">
-						<button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">생성</button>
+						<button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">가입</button>
 					</div>
 					<div class="col-xs-2">
 						<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>

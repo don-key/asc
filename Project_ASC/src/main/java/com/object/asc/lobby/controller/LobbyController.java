@@ -24,9 +24,5 @@ public class LobbyController {
 		logger.info("간트 페이지 테스트");
 		return "/lobby/selectProject";
 	}
-	 
-
-	
-
 	
 }

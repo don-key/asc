@@ -7,19 +7,16 @@
                     <a data-toggle="modal" data-target="#modifyModal"><img src="/resources/images/loginInfo.PNG" style="width:250px"></a>
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="/project/dashBoard"><i class="fa fa-dashboard fa-fw"></i>Dashboard</a>
+                            <a href="/project/dashBoard"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
                         </li>
                         <li>
-                            <a href="/scrum/taskBoard"><i class="fa fa-table fa-fw"></i>Scrum<span class="fa arrow"></span></a>
+                            <a href="/scrum/taskBoard"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="/scrum/taskBoard">Category</a>
-                                </li>
                                 <li>
                                     <a href="/scrum/taskBoard"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
                                 </li>
                                 <li>
-                                    <a href="/scrum/releasePlanning">Release Planning</a>
+                                   	<a href="/scrum/taskBoard"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -28,19 +25,19 @@
                             <a href="/gantt/ganttChart"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
                         <li>
-                            <a href="/project/library"><i class="fa fa-edit fa-fw"></i>Library</a>
+                            <a href="/project/library"><img src="/resources/images/menu/library.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a href="/project/member"><i class="fa fa-edit fa-fw"></i>Member</a>
+                            <a href="/project/member"><img src="/resources/images/menu/member.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a href="#"><i class="fa fa-edit fa-fw"></i>메일보내는버튼</a>
+                            <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a href="/"><i class="fa fa-edit fa-fw"></i>로그아웃</a>
+                            <a href="/"><img src="/resources/images/menu/logout.png" style="width: 50%"></a>
                         </li>
                     </ul>
-                    <img src="/resources/images/realtime.PNG" style="width:250px" onclick="popupOpen()">
+                    <img src="/resources/images/menu/chat.png" style="width:25%" onclick="popupOpen()">
                     <script type="text/javascript">
                       /*채팅창 팝업*/
                       function popupOpen(){

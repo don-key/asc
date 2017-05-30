@@ -9,6 +9,7 @@
 
 
 <!-- Modal -->
+<form action="/user/modify">
 <div class="modal fade" id="modifyModal" role="dialog">
 	<div class="modal-dialog" style="width: 35%">
 
@@ -101,7 +102,7 @@
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-3">
-						<button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
+						<button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
 					</div>
 					<div class="col-xs-2">
 						<button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100%; font-size: 15px;">탈퇴</button>
@@ -114,3 +115,4 @@
 		</div>
 	</div>
 </div>
+</form>

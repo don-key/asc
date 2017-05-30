@@ -21,7 +21,7 @@
 
 
 <!-- Modal -->
-<form action="/register" method="" onsubmit="">
+<form action="/user/register" onsubmit="">
 <div class="modal fade" id="registerModal" role="dialog">
 	<div class="modal-dialog" style="width: 35%">
 

@@ -27,6 +27,7 @@
 <body>
 	<div class="cont">
 		<div class="demo">
+
 			<div class="login">
 				<div class="login__check">
 					<img src="/resources/images/logo5.png">
@@ -54,6 +55,7 @@
 					<p class="login__signup">
 						아이디와 비밀번호를 잊으셨나요? &nbsp;<a data-toggle="modal" data-target="#findIdPwModal">찾기</a>
 					</p>
+
 				</div>
 			</div>
 		</div>

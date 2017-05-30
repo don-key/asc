@@ -20,7 +20,7 @@
             
               <div class="">
                <a id="" class="btn btn-default btn-lg" style="margin-left: 85%;" data-toggle="modal" data-target="#fileUploadModal">
-               <i class="fa fa-camera fa-lg"></i>　파일 업로드</a>
+               <i class="fa fa-upload fa-lg"></i>　파일 업로드</a>
               </div>
                <!-- /.col-lg-4 -->
                 <div class="col-lg-4">
@@ -35,7 +35,7 @@
                         
                         <div class="panel-body">
                             <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
-                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>
+                            <p><a href="#" class=""> <img src="/resources/images/main/image-placeholder.png" width=70px; height=50px; alt=""></a>우리나라 좋은나라.jpg</p>
                        </div>
                         <div class="panel-footer">
                             작성자 : 이현명
@@ -56,7 +56,7 @@
                         
                         <div class="panel-body">
                             <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
-                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>
+                            <p><a href="#" class=""> <img src="/resources/images/main/image-placeholder.png" width=70px; height=50px; alt=""></a>우리나라 좋은나라.jpg</p>
                        </div>
                         <div class="panel-footer">
                             작성자 : 이현명
@@ -77,7 +77,7 @@
                         
                         <div class="panel-body">
                             <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
-                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>
+                            <p><a href="#" class=""> <img src="/resources/images/main/image-placeholder.png" width=70px; height=50px; alt=""></a>우리나라 좋은나라.jpg</p>
                        </div>
                         <div class="panel-footer">
                             작성자 : 이현명
@@ -98,7 +98,7 @@
                         </div>
                         <div class="panel-body">
                             <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
-                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>                        
+                            <p><a href="#" class=""> <img src="/resources/images/main/image-placeholder.png" width=70px; height=50px; alt=""></a>우리나라 좋은나라.jpg</p>                        
                         </div>
                         <div class="panel-footer">
                             작성자 : 이현명
@@ -117,7 +117,7 @@
                         </div>
                         <div class="panel-body">
                             <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
-                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>  
+                            <p><a href="#" class=""> <img src="/resources/images/main/image-placeholder.png" width=70px; height=50px; alt=""></a>우리나라 좋은나라.jpg</p>  
                         </div>
                         <div class="panel-footer">
                             작성자 : 이현명
@@ -136,7 +136,7 @@
                         </div>
                         <div class="panel-body">
                             <!-- 썸네일 사진 보여지는 자리, 클릭하면 사진 미리보기-->
-                            <p><i class="fa fa-camera-retro fa-4x"></i>우리나라 좋은나라.jpg</p>  
+                            <p><a href="#" class=""> <img src="/resources/images/main/image-placeholder.png" width=70px; height=50px; alt=""></a>우리나라 좋은나라.jpg</p>  
                         </div>
                         <div class="panel-footer">
                             작성자 : 이현명

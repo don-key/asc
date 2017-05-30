@@ -11,8 +11,10 @@
 	<br> <br>
 	<div class="container">
 		<div class="row">
-			<h1 style="text-align: center; margin: 0 auto;">Team Object</h1>
-			<br>
+		      <div class="col-lg-12">
+			      <img alt="" src="/resources/images/header/member.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
+			      <hr>
+	     	 </div>
 			<hr>
 			
 			<div class="form-group">

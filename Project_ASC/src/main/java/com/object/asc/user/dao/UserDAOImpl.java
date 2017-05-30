@@ -15,11 +15,16 @@ public class UserDAOImpl implements UserDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.object.obeject.mapper.UserMapper";
+	private static String namespace = "com.object.asc.mapper.UserMapper";
 
 	@Override
 	public void register(User user) {
 		sqlSession.insert(namespace+".register", user);
+	}
+
+	@Override
+	public void modify(User user) {
+		sqlSession.update(namespace+".modify", user);
 	}
 	
 	

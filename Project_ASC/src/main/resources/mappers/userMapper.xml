@@ -8,33 +8,15 @@
 <!-- 회원가입 -->
 <insert id="register">
 
-INSERT INTO users(userNo, id, password, name, phone, photo, status) 
-VALUES (null, #{id}, #{password}, #{name}, #{phone}, #{photo}, #{status})
+INSERT INTO users(id, password, name, phone, status) 
+VALUES (#{id}, #{password}, #{name}, #{phone}, #{status})
 
 </insert>
 
-
-<!-- 사용자 정보 조회하기 -->
-<select id="login" resultType="User">
-
-select userId, userPw, userName
-from spring_user
-where userId = #{userId} and userPw = #{userPw}
-
-</select>
-
-<!-- 로그인한 사용자의 정보 업데이트 -->
-<update id="keepLogin">
-update spring_user set sessionKey = #{sessionId}, sessionLimit = #{next}
-where userId = #{userId}
+<!-- 회원정보 수정 -->
+<update id="modify">
+UPDATE users SET password = #{password}, name = #{name}, phone = #{phone}, photo = #{photo}, status = #{status} 
+WHERE userNo = #{userNo};
 </update>
 
-<!-- 로그인쿠키로 사용자 정보 조회 -->
-<select id="checkUserWithSessionKey" resultType="User">
-<![CDATA[
-SELECT *
-FROM spring_user
-WHERE sessionkey = #{value} and sessionlimit > sysdate
-]]>
-</select>
 </mapper>

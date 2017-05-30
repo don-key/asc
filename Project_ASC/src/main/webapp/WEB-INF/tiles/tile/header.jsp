@@ -12,7 +12,7 @@
                     
                     <div class="row">
                     	<div class="col-xs-2 col-sm-2">
-		                    <div data-toggle="modal" data-target="#modifyModal" class="profile"><img src="../resources/images/noimage2.png"></div>
+		                    <div><a data-toggle="modal" data-target="#modifyModal" class="profile"><img src="../resources/images/noimage2.png"></a></div>
                     	</div>
                     	<div class="col-xs-10 col-sm-10">
 		                    <p style="color: white; font-size: 30px; text-align: center; margin-top: 10px">이종윤</p>
@@ -56,8 +56,7 @@
             </nav>
             <!-- /.navbar-static-side -->
             
-  <!-- Modal -->
-  <jsp:include page="modifyModal.jsp" />
+
   
     <script>
   $('.logoutBtn').on('click', function() {
@@ -76,3 +75,7 @@
 	  
   });
   </script>
+  
+  
+    <!-- Modal -->
+  <jsp:include page="modifyModal.jsp" />

@@ -34,7 +34,7 @@
 
 					<div class="form-group">
 						<div class="col-xs-3 col-sm-3 ">
-							<a href="#" class="thumbnail"> <img src="../../resources/images/main/image-placeholder.png" alt="">
+							<a class="thumbnail" style="border: none;"> <img src="../../resources/images/main/image-placeholder.png" alt="" class="img-circle" >
 							</a>
 						</div>
 

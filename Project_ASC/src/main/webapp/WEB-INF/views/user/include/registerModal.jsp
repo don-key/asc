@@ -14,6 +14,9 @@
 #registerModal label {
   font-family: 'LotteMartDream';
 }
+
+.wen {width:50px; height:50px; border-radius:50px; margin:0 auto; overflow:hidden;}
+.wen img {height:50px; width:50px;}
 </style>
 
 
@@ -86,8 +89,8 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">프로필 사진</label>
 						</div>
-							<div class="col-xs-3 col-sm-3 ">
-								<a href="#" class="thumbnail" style="border: none;"> <img src="resources/images/main/image-placeholder.png" alt="" class="img-circle"></a>
+							<div class="col-xs-2 col-sm-2 ">
+								<div class="wen"><img src="../resources/images/noimage.png"></div>
 							</div>
 
 							<div class="col-xs-5 col-sm-5">

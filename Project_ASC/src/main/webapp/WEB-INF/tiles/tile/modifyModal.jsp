@@ -3,17 +3,8 @@
 .regist_label {
 	font-size: 14px;
 }
-
-@font-face {
-	font-family: 'THE130';
-	font-style: normal;
-	font-weight: 400;
-	src: local('THE130'), url('/resources/fonts/THE130.ttf') format('ttf');
-}
-
-#registerModal label {
-	font-family: 'THE130';
-}
+.wen {width:80px; height:80px; border-radius:80px; margin:0 auto; overflow:hidden;}
+.wen img {height:80px; width:80px;}
 </style>
 
 
@@ -34,12 +25,12 @@
 
 					<div class="form-group">
 						<div class="col-xs-3 col-sm-3 ">
-							<a class="thumbnail" style="border: none;"> <img src="../../resources/images/main/image-placeholder.png" alt="" class="img-circle" >
-							</a>
+							<div class="wen"><img src="../resources/images/noimage.png"></div>
 						</div>
 
 						<div class="col-xs-6 col-sm-6">
-							<h3>Object@gmail.com</h3>
+						<br><br>
+							<p style="font-size: 25px; font-weight: bold;">Object@gmail.com</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>

@@ -28,7 +28,7 @@
       <div class="page-header"
         style="font-size: 30px; font-weight: bold;">Project</div>
     </div>
-  </div>
+  </div> 
 
   <div class="row">
     <div class=" col-xs-2 col-xs-offset-10">
@@ -50,7 +50,7 @@
   
     <div class="col-lg-3 col-md-3 col-xs-4">
       <a href="#" class="thumbnail"> <img
-        src="/resources/images/main/image-placeholder.png" alt="">
+        src="/resources/images/noimage.png" alt="">
       </a>
       <div class="panel">
         <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트
@@ -73,7 +73,7 @@
 
     <div class="col-lg-3 col-md-3 col-xs-4">
       <a href="#" class="thumbnail"> <img
-        src="/resources/images/main/image-placeholder.png" alt="">
+        src="/resources/images/noimage.png" alt="">
       </a>
       <div class="panel">
         <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트
@@ -93,7 +93,7 @@
 
     <div class="col-lg-3 col-md-3 col-xs-4">
       <a href="#" class="thumbnail"> <img
-        src="/resources/images/main/image-placeholder.png" alt="">
+        src="/resources/images/noimage.png" alt="">
       </a>
       <div class="panel">
         <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트
@@ -113,7 +113,7 @@
     
     <div class="col-lg-3 col-md-3 col-xs-4">
       <a href="#" class="thumbnail"> <img
-        src="/resources/images/main/image-placeholder.png" alt="">
+        src="/resources/images/noimage.png" alt="">
       </a>
       <div class="panel">
         <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트

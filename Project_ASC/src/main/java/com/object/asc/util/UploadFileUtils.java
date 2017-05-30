@@ -2,6 +2,8 @@ package com.object.asc.util;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.UUID;
 
 import javax.imageio.ImageIO;
@@ -24,19 +26,17 @@ public class UploadFileUtils {
 	 * @param uploadPath 	파일의 저장 경로
 	 * @param originalName 	원본 파일의 이름
 	 * @param fileData			파일 데이터
+	 * @param type          유저/프로젝트 구분
 	 * @return
 	 * @throws Exception 
 	 */
-	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception {
+	public static String uploadFile(String uploadPath, String originalName, byte[] fileData, String type) throws Exception {
 		
 		UUID uuid = UUID.randomUUID();	// 랜덤 UUID 생성
 		
 		String savedName = uuid.toString() + "_" + originalName;
-		
-		String savedPath = calcPath(uploadPath);		// 저장될 경로 계산
-		
+		String savedPath = calcPath(uploadPath, type);		// 저장될 경로 계산
 		File target = new File(uploadPath+savedPath, savedName);
-		
 		FileCopyUtils.copy(fileData, target);	// 원본 파일 저장
 		
 		String formatName = originalName.substring(originalName.lastIndexOf(".")+1);	// 원본 파일의 확장자
@@ -53,21 +53,26 @@ public class UploadFileUtils {
 	}
 	
 	/**
-	 *프로젝트 내역 번호/유저 번호에 맞는 폴더 생성
+	 * 유저 자료(유저 프로필, 유저 자료실), 프로젝트 자료(프로젝트 이미지) 구분하여 관리
+	 * "1" 자리에 동적으로 들어가야함!
+	 * 프로젝트는 asc폴더에 고정으로 저장!
 	 * @param uploadPath		파일 저장 경로
-	 * @return
+	 * @param type              유저/프로젝트 구분
+	 * @return userNo           파일 path 리턴
 	 */
-	private static String calcPath(String uploadPath) {
-		String projectListNo = "1";	// 프로젝트 내역 번호
-		String userNo = "1";				// 사용자 번호
+	private static String calcPath(String uploadPath, String type) {
+		/** 유저 일경우 uploadPath + /userNo/~~~.png에 저장 */
+		if(type.equals("user")){
+			String userNo = "1";
+			String userPath = File.separator + userNo;
+			makeDir(uploadPath, userPath); 
+			return userPath; 
+		}
+		/** 프로젝트 일경우 uploadPath + /asc/~~~.png에 저장 */
+		String projectPath = File.separator + "asc";
+		makeDir(uploadPath, projectPath); 
+		return projectPath; 
 		
-		String path =  File.separator + projectListNo + File.separator + userNo;
-		
-		makeDir(uploadPath, projectListNo, userNo);
-		
-		logger.info(path);
-		
-		return path;
 	}
 	
 	/**
@@ -82,7 +87,6 @@ public class UploadFileUtils {
 		
 		for (String path : paths) {
 			File dirPath = new File(uploadPath + path);
-			
 			if (!dirPath.exists()) {
 				dirPath.mkdirs();
 			}
@@ -99,17 +103,11 @@ public class UploadFileUtils {
 	 */
 	private static String makeThumbnail(String uploadPath, String path, String fileName) throws Exception {
 		BufferedImage sourceImg = ImageIO.read(new File(uploadPath + path, fileName));
-		
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_TO_HEIGHT, 100);		// 썸네일 이미지 파일의 높이를 100px로 동일하게 설정
-		
 		String thumbnailName = uploadPath + path + File.separator + "s_" + fileName;
-		
 		File newFile = new File(thumbnailName);
-		
 		String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-		
 		ImageIO.write(destImg, formatName.toUpperCase(), newFile);
-		
 		return thumbnailName.substring(uploadPath.length()).replace(File.separatorChar, '/');
 	}
 	

@@ -96,8 +96,7 @@ public class ProjectController {
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
 		logger.info("원본 파일 : "+file.getOriginalFilename());
-		String type = "user";
-		return new ResponseEntity<>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes(), type), HttpStatus.CREATED);
+		return new ResponseEntity<>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value = "/member", method = RequestMethod.GET)

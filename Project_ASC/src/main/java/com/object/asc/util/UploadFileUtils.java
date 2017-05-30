@@ -26,16 +26,15 @@ public class UploadFileUtils {
 	 * @param uploadPath 	파일의 저장 경로
 	 * @param originalName 	원본 파일의 이름
 	 * @param fileData			파일 데이터
-	 * @param type          유저/프로젝트 구분
 	 * @return
 	 * @throws Exception 
 	 */
-	public static String uploadFile(String uploadPath, String originalName, byte[] fileData, String type) throws Exception {
+	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception {
 		
 		UUID uuid = UUID.randomUUID();	// 랜덤 UUID 생성
 		
 		String savedName = uuid.toString() + "_" + originalName;
-		String savedPath = calcPath(uploadPath, type);		// 저장될 경로 계산
+		String savedPath = calcPath(uploadPath);		// 저장될 경로 계산
 		File target = new File(uploadPath+savedPath, savedName);
 		FileCopyUtils.copy(fileData, target);	// 원본 파일 저장
 		
@@ -53,25 +52,13 @@ public class UploadFileUtils {
 	}
 	
 	/**
-	 * 유저 자료(유저 프로필, 유저 자료실), 프로젝트 자료(프로젝트 이미지) 구분하여 관리
-	 * "1" 자리에 동적으로 들어가야함!
-	 * 프로젝트는 asc폴더에 고정으로 저장!
 	 * @param uploadPath		파일 저장 경로
-	 * @param type              유저/프로젝트 구분
-	 * @return userNo           파일 path 리턴
+	 * @return path           파일 path 리턴
 	 */
-	private static String calcPath(String uploadPath, String type) {
-		/** 유저 일경우 uploadPath + /userNo/~~~.png에 저장 */
-		if(type.equals("user")){
-			String userNo = "1";
-			String userPath = File.separator + userNo;
-			makeDir(uploadPath, userPath); 
-			return userPath; 
-		}
-		/** 프로젝트 일경우 uploadPath + /asc/~~~.png에 저장 */
-		String projectPath = File.separator + "asc";
-		makeDir(uploadPath, projectPath); 
-		return projectPath; 
+	private static String calcPath(String uploadPath) {
+		String path = File.separator + "asc";
+		makeDir(uploadPath, path); 
+		return path; 
 		
 	}
 	

@@ -24,7 +24,7 @@
           <div class="row">
             <div class="col-xs-2 col-xs-offset-1"></div>
              <div class="col-xs-8">
-               <a href="#" class="thumbnail"><img src="/resources/images/main/image-placeholder.png" alt=""></a>
+               <a href="#" class="thumbnail"><img src="/resources/images/noimage.png " alt=""></a>
              </div>
            </div>
           <br>

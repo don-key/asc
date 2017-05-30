@@ -1,11 +1,24 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
+<style>
+.profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
+.profile img {height:70px; width:70px;}
+</style>
+
  <!-- Navigation -->
             <nav class="navbar-default sidebar" role="navigation" style="background-color: #354555">
                 <div class="sidebar-nav navbar-collapse">
                     <a href="/"><img src="/resources/images/logo.png" style="width:250px"></a>
-                    <a data-toggle="modal" data-target="#modifyModal"><img src="/resources/images/loginInfo.PNG" style="width:250px"></a>
-                    <ul class="nav" id="side-menu">
+                    
+                    <div class="row">
+                    	<div class="col-xs-2 col-sm-2">
+		                    <div data-toggle="modal" data-target="#modifyModal" class="profile"><img src="../resources/images/noimage2.png"></div>
+                    	</div>
+                    	<div class="col-xs-10 col-sm-10">
+		                    <p style="color: white; font-size: 30px; text-align: center; margin-top: 10px">이종윤</p>
+		                </div>
+                    </div>
+                    <ul class="nav" id="side-menu" style="margin-top: 15px">
                         <li>
                             <a href="/project/dashBoard"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
                         </li>
@@ -37,6 +50,7 @@
                             <a><img src="/resources/images/menu/logout.png"  class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
                         </li>
                     </ul>
+                    
                 </div>
                 <!-- /.sidebar-collapse -->
             </nav>

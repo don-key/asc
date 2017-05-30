@@ -28,6 +28,13 @@ public class GanttController {
 		logger.info("간트 페이지 테스트");
 		return "/gantt/currentChart";
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Model model) {
+		logger.info("간트 테스트 페이지");
+		return "/gantt/ganttTest";
+	}
+	
 	 
 	 
 

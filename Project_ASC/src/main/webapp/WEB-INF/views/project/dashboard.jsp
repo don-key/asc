@@ -41,8 +41,8 @@
       <div class="panel panel-today">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-12 text-left">
-              <div class="huge">오늘 할일</div>
+            <div class="col-xs-12 text-center">
+              <div class="huge">오늘 할 일</div>
             </div>
           </div>
         </div>
@@ -64,8 +64,8 @@
       <div class="panel panel-memo">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-xs-9 text-left">
-              <div class="huge">메모</div>
+            <div class="col-xs-9 text-center">
+              <div class="huge">　　　　　메모</div>
             </div>
             <div class="col-xs-3 text-right">
               <button type='button' class='btn btn-success btn-circle btn-lg'><i class="fa fa-check"></i></button>
@@ -75,7 +75,7 @@
         <div class="panel-footer textarea" style="background-color: white;"> 
           <div class='row'>
             <div class='col-xs-12'>
-              <textarea id="textArea">Memo</textarea>
+              <textarea id="textArea" placeholder="자유롭게 작성하세용 :)"></textarea>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
       <div class="panel panel-d-day">
         <div class="panel-heading">
           <div class='row'>
-            <div class='col-xs-12 text-left'>
+            <div class='col-xs-12 text-center'>
               <div class="huge">D-Day</div>
             </div>
           </div>
@@ -105,7 +105,7 @@
       <div class="panel panel-action">
         <div class="panel-heading">
           <div class='row'>
-            <div class='col-xs-12 text-left'>
+            <div class='col-xs-12 text-center'>
               <div class="huge">달성률</div>
             </div>
           </div>
@@ -140,7 +140,7 @@ $(function() {
     $('.calendar').pignoseCalendar({
 		date: moment(),
 		lang: 'ko',
-		theme: 'blue'
+		theme: 'light'
 	});
 });
 

@@ -21,12 +21,11 @@ td, th {
 
 
 <div id="page-wrapper">
-   <div class="row">
-      <div class="col-lg-12">
-      <br>
-         <img alt="" src="/resources/images/header/gantt.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
-      </div>
-   </div>
+  <div class="row">
+    <div class="text-center">
+      <h1 class="page-header">Gantt Chart</h1>
+    </div>
+  </div>
   <div class="row text-right">
     <input type="button" id="actionChartBtn" class="btn btn-primary" value="현재 진행률">
   </div>

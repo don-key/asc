@@ -20,6 +20,7 @@
     <link href="/resources/css/morris.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
+    <link href="/resources/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Main CSS -->
 <!--     <link href="/resources/css/main.css" rel="stylesheet"> -->
 <!--     <link href="/resources/css/reset.css" rel="stylesheet"> -->
@@ -51,6 +52,8 @@
     <script src="/resources/js/dashBoard/pignose.calendar.js"></script>
     <!-- SweetAlert JavaScript -->
     <script src="/resources/js/sweetalert2.min.js"></script>
+    <script src="/resources/js/bootstrap-datetimepicker.js"></script>
+    <script src="/resources/js/bootstrap-datetimepicker.ko.js"></script>
   
 </head>
 <body>

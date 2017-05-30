@@ -22,12 +22,24 @@
         <br>
 
         <div class="row">
-          <div class="col-xs-3 col-xs-offset-1">
+          <div class="col-xs-2 col-xs-offset-1">
             <label style="font-size: 20px;">총 기간</label>
           </div>
-            <div class="col-xs-2"><input type="date"></div>
-             <label class="col-xs-1"></label>
-             <div class="col-xs-2"><input type="date"></div>
+            <div class="col-xs-4" style="maring:0">
+                <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="8" type="text" name="day" value="" readonly>
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
+            <div class="col-xs-1" style="margin:0; padding-top: 8px">~</div>
+            <div class="col-xs-4" style="maring:0">
+                <div class="input-group date form_date" data-date="" data-date-format="yyyymmdd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input class="form-control" size="8" type="text" name="day" value="" readonly>
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                       <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </div>
         </div>
         <br>
         <div class="row">
@@ -95,6 +107,8 @@
             <textarea id="" style="width:100%; height: 100px;" placeholder="내용을 입력해주세요"></textarea>
           </div>
         </div>
+        
+        
 
         <div class="modal-footer">
           <div class="row">
@@ -107,9 +121,40 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
-
-
 </div>
+
+<script>
+$('.form_datetime').datetimepicker({
+    //language:  'fr',
+    weekStart: 1,
+    todayBtn:  1,
+autoclose: 1,
+todayHighlight: 1,
+startView: 2,
+forceParse: 0,
+    showMeridian: 1
+});
+$('.form_date').datetimepicker({
+    language:  'ko',
+    weekStart: 1,
+    todayBtn:  1,
+autoclose: 1,
+todayHighlight: 1,
+startView: 2,
+minView: 2,
+forceParse: 0
+});
+$('.form_time').datetimepicker({
+    language:  'ko',
+    weekStart: 1,
+    todayBtn:  1,
+autoclose: 1,
+todayHighlight: 1,
+startView: 1,
+minView: 0,
+maxView: 1,
+forceParse: 0
+});
+</script>

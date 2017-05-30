@@ -9,6 +9,7 @@
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
 	
+	<!-- 한글 처리용 필터 -->
 	<filter>
 		<filter-name>encoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>

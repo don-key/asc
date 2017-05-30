@@ -18,6 +18,7 @@
 
 
 <!-- Modal -->
+<form action="/register" method="" onsubmit="">
 <div class="modal fade" id="registerModal" role="dialog">
 	<div class="modal-dialog" style="width: 35%">
 
@@ -46,7 +47,7 @@
 							<label for="pw" class="regist_label">비밀번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="passwd" placeholder="비밀번호를 입력하세요">
+							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요">
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -56,7 +57,7 @@
 							<label for="repw" class="regist_label">비밀번호 확인</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="repasswd" placeholder="비밀번호를 한 번 더 입력하세요">
+							<input type="password" class="form-control" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요">
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -76,7 +77,7 @@
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7 ">
-							<input type="tel" class="form-control placeholder" name="telephone" placeholder="휴대폰 번호를 입력하세요" />
+							<input type="tel" class="form-control placeholder" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -90,7 +91,7 @@
 							</div>
 
 							<div class="col-xs-5 col-sm-5">
-								<input type="file" class="form-control placeholder" name="profile" />
+								<input type="file" class="form-control placeholder" name="photo" />
 							</div>
 							<div class="clearfix"></div>
 					</div>
@@ -103,7 +104,7 @@
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-4">
-						<button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">가입</button>
+						<button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">가입</button>
 					</div>
 					<div class="col-xs-2">
 						<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
@@ -113,3 +114,4 @@
 		</div>
 	</div>
 </div>
+</form>

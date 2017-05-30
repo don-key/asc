@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.object.asc.mapper.UserMapper">
+
+<!-- 회원가입 -->
+<insert id="register">
+
+INSERT INTO users(userNo, id, password, name, phone, photo, status) 
+VALUES (null, #{id}, #{password}, #{name}, #{phone}, #{photo}, #{status})
+
+</insert>
+
+
+<!-- 사용자 정보 조회하기 -->
+<select id="login" resultType="User">
+
+select userId, userPw, userName
+from spring_user
+where userId = #{userId} and userPw = #{userPw}
+
+</select>
+
+<!-- 로그인한 사용자의 정보 업데이트 -->
+<update id="keepLogin">
+update spring_user set sessionKey = #{sessionId}, sessionLimit = #{next}
+where userId = #{userId}
+</update>
+
+<!-- 로그인쿠키로 사용자 정보 조회 -->
+<select id="checkUserWithSessionKey" resultType="User">
+<![CDATA[
+SELECT *
+FROM spring_user
+WHERE sessionkey = #{value} and sessionlimit > sysdate
+]]>
+</select>
+</mapper>

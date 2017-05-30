@@ -9,10 +9,17 @@
       </style>
 
           <div id="page-wrapper"> 
+			   <div class="row">
+			      <div class="col-lg-12">
+			      <br>
+			         <img alt="" src="/resources/images/header/library.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
+			      </div>
+			   </div>
+          
             <div class="row">
             
               <div class="">
-               <a id="" class="btn btn-default btn-lg" style="margin-left: 85%; margin-top: 10%" data-toggle="modal" data-target="#fileUploadModal">
+               <a id="" class="btn btn-default btn-lg" style="margin-left: 85%;" data-toggle="modal" data-target="#fileUploadModal">
                <i class="fa fa-camera fa-lg"></i>　파일 업로드</a>
               </div>
                <!-- /.col-lg-4 -->

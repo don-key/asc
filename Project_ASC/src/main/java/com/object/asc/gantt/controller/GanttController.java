@@ -30,6 +30,8 @@ public class GanttController {
 	
 	@Inject
 	private GanttService ganttService;
+	
+	@Inject
 	private LobbyService lobbyService;
 	
 	

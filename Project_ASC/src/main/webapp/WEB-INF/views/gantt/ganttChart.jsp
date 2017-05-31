@@ -330,6 +330,18 @@ td, th {
     </table>
 
   </div>
+  
+    <div class="row">
+    <table>
+        <tr>
+          <td>${projectDate.projectListNo }</td>
+          <td>${projectDate.projectName }</td>
+          <td>${projectDate.startDate }</td>
+          <td>${projectDate.endDate }</td>
+        </tr>
+    </table>
+
+  </div>
 
 
 

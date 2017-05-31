@@ -1,6 +1,5 @@
 package com.object.asc.lobby.service;
 
-import java.util.List;
 
 import javax.inject.Inject;
 

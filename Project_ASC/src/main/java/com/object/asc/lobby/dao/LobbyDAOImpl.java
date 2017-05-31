@@ -1,6 +1,5 @@
 package com.object.asc.lobby.dao;
 
-import java.util.List;
 
 import javax.inject.Inject;
 

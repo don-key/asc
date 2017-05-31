@@ -1,7 +1,5 @@
 package com.object.asc.lobby.service;
 
-import java.util.List;
-
 import com.object.asc.lobby.domain.ProjectList;
 
 public interface LobbyService {

@@ -31,7 +31,7 @@
     </beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\kosta146\\upload"/>
+		<beans:constructor-arg value="C:\\Users\\YI JONG YOON\\upload"/>
 	</beans:bean>
 	
 	<!-- tiles -->

@@ -8,23 +8,29 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.object.asc.lobby.dao.LobbyDAO;
-import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.project.dao.ProjectDAO;
+import com.object.asc.project.domain.LibraryList;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
 public class ProjectDaoTest {
 	
 	@Inject
-	private LobbyDAO dao;
-	
-	Logger logger = Logger.getLogger(ProjectDaoTest.class);
-	
-	@Test
-	public void testRegister(){
-		ProjectList projectList = new ProjectList();
-		projectList.setProjectJoinNo(1);
-		projectList.setProjectName("프로젝트만들어여");
-	}
+	   private ProjectDAO dao;
+	   
+	   Logger logger = Logger.getLogger(ProjectDaoTest.class);
+	   
+	   @Test
+	   public void testRegister(){
+	      
+	      LibraryList libraryList = new LibraryList();
+	      libraryList.setLibraryNo(1);
+	      libraryList.setUserNo(1);
+	      libraryList.setTitle("테스트 제목");
+	      libraryList.setFileName("1234.png");
+	      
+	      dao.libraryListRegister(libraryList);
+	      logger.info("자료실 내역 신규 등록 완료");
+	   }
 	
 }

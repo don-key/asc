@@ -7,8 +7,7 @@ public class DashBoard {
 	private int userNo;
 	private String memo;
 
-	public DashBoard() {
-	}
+	public DashBoard() {}
 
 	public DashBoard(int dashBoardNo, int projectListNo, int userNo, String memo) {
 		this.dashBoardNo = dashBoardNo;

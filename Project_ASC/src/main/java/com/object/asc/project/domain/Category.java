@@ -6,8 +6,7 @@ public class Category {
 	private int scrumNo;
 	private String title;
 
-	public Category() {
-	}
+	public Category() {}
 
 	public Category(int categoryNo, int projectReleaseNo, int scrumNo, String title) {
 		this.categoryNo = categoryNo;

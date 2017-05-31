@@ -21,7 +21,7 @@
 
 
 <!-- Modal -->
-<form action="/user/register" onsubmit="">
+<form action="/user/register" method="post" enctype="multipart/form-data" onsubmit="">
 <div class="modal fade" id="registerModal" role="dialog">
 	<div class="modal-dialog" style="width: 35%">
 
@@ -107,7 +107,7 @@
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-4">
-						<button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">가입</button>
+						<button id="registerBtn" type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">가입</button>
 					</div>
 					<div class="col-xs-2">
 						<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
@@ -116,5 +116,37 @@
 			</div>
 		</div>
 	</div>
-</div>
+  </div>
 </form>
+
+<script>
+  /** 회원가입 완료 모달*/
+//      $(function() {
+
+//       $('#registerBtn').on('click', function() {
+//           var password = $('#password').val();
+//           var rePassword = $('#rePassword').val();
+//          $.ajax({
+//             type : 'GET',
+//             url : "/user/register",
+//             data : {
+//               password : password,
+//                rePassword:rePassword
+//             },
+//             success : function(request) {
+//                if (request == "success") {
+        
+//         swal({     
+//         		 '환영합니다!',
+//         	     '회원가입이 완료되었습니다.',
+//         	     'success'
+//         		})
+//                }     
+//              }
+//          });
+
+//       });
+//    });
+
+</script> 
+  

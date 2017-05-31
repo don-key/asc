@@ -51,7 +51,7 @@
 							<label for="pw" class="regist_label">비밀번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="passwd" placeholder="비밀번호를 입력하세요">
+							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요">
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -61,7 +61,7 @@
 							<label for="repw" class="regist_label">비밀번호 확인</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="repasswd" placeholder="비밀번호를 한 번 더 입력하세요">
+							<input type="password" class="form-control" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요">
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -81,7 +81,7 @@
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7 ">
-							<input type="tel" class="form-control placeholder" name="telephone" placeholder="휴대폰 번호를 입력하세요" />
+							<input type="tel" class="form-control placeholder" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -91,7 +91,7 @@
 							<label class="regist_label">사진</label>
 						</div>
 						<div class="col-xs-7 col-sm-7 ">
-							<input type="file" class="form-control placeholder" name="profile" />
+							<input type="file" class="form-control placeholder" name="photo" />
 						</div>
 						<div class="clearfix"></div>
 					</div>

@@ -16,7 +16,7 @@ VALUES (#{id}, #{password}, #{name}, #{phone}, #{status})
 <!-- 회원정보 수정 -->
 <update id="modify">
 UPDATE users SET password = #{password}, name = #{name}, phone = #{phone}, photo = #{photo}, status = #{status} 
-WHERE userNo = #{userNo};
+WHERE user_no = #{userNo};
 </update>
 
 </mapper>

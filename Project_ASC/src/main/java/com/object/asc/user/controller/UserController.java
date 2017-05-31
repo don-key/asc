@@ -54,7 +54,7 @@ public class UserController {
 		rttr.addFlashAttribute("message", "success");
 		
 		
-		return "/project/dashBoard";
+		return "redirect:/";
 	}
 	
 

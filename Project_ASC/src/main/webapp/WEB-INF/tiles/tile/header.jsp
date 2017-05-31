@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
@@ -10,12 +11,12 @@
                 <div class="sidebar-nav navbar-collapse">
                     <a href="/"><img src="/resources/images/logo.png" style="width:250px"></a>
                     
-                    <div class="row">
+                    <div class="row" id="modalWrapper">
                     	<div class="col-xs-2 col-sm-2">
-		                    <div><a data-toggle="modal" data-target="#modifyModal" class="profile"><img src="../resources/images/noimage2.png"></a></div>
+		                    <div class="profile"><img src="/resources/images/noimage2.png"></div>
                     	</div>
                     	<div class="col-xs-10 col-sm-10">
-		                    <p style="color: white; font-size: 30px; text-align: center; margin-top: 10px">이종윤</p>
+		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">이종윤</div>
 		                </div>
                     </div>
                     <ul class="nav" id="side-menu" style="margin-top: 15px">
@@ -58,7 +59,7 @@
             
 
   
-    <script>
+  <script>
   $('.logoutBtn').on('click', function() {
 	  swal({
 		  title: '로그아웃 하시겠습니까?',
@@ -74,6 +75,14 @@
 		})
 	  
   });
+  
+  /** 회원수정 모달 띄우기*/
+  $(function() {
+	$('#modalWrapper').on('click', function() {
+		console.log('1234');
+		$('#modifyModal').modal();
+	});
+});
   </script>
   
   

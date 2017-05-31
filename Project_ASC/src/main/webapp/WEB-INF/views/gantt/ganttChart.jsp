@@ -76,6 +76,8 @@ td, th {
           <th style="padding-right: 5%">기능1</th>
         </tr>
       </table>
+      <div id="right_div days">
+      </div>
 
       <div id="right_div">
         <table id="inner_table">
@@ -363,6 +365,17 @@ td, th {
 		$('.dataPanel').on('click', function() {
 			$('#modifyGanttChartModal').modal();
 		});
+		
 	});
+</script>
+
+<script>
+  $(function() {
+	var day = "";
+	for(var i=0; i< ${days}; i++){
+		console.log(i);
+	}
+    
+  });
 </script>
 

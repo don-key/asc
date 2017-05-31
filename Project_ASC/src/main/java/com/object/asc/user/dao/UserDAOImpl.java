@@ -8,8 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.object.asc.user.domain.User;
 
 @Repository
-
-
 public class UserDAOImpl implements UserDAO{
 	
 	@Inject

@@ -5,6 +5,7 @@
 <!-- MyBatis XML 설정 파일(MyBatis설정의 중앙 허브 역할) -->
 <configuration>
 	 <typeAliases>
-      <typeAlias type="com.object.asc.user.domain.User" alias="User"/>
+	      <typeAlias type="com.object.asc.user.domain.User" alias="User"/>
+	      <typeAlias type="com.object.asc.project.domain.LibraryList" alias="LibraryList"/>
      </typeAliases>
 </configuration> 

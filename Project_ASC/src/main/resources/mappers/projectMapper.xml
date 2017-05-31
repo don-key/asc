@@ -5,6 +5,23 @@
 <!-- 네임스페이스(사용영역) 설정 -->
 <mapper namespace="com.object.asc.mapper.ProjectMapper">
 
+<!-- 자료실 내역 신규 등록 -->
+<insert id="libraryListRegister">
+	INSERT INTO library_list(library_no, user_no, title, file_name, regdate) 
+	VALUES (1, 1, #{title}, #{fileName}, now())
+</insert>
 
+<!-- 자료실 내역 삭제 -->
+<delete id="libraryListDelete">
+	DELETE FROM library_list 
+	WHERE library_list_no = #{libraryListNo} AND library_no = 1
+</delete>
+
+<!-- 자료실 내역 목록 조회 -->
+<select id="libraryListListAll" resultType="LibraryList">
+	SELECT library_list_no, library_no, user_no, title, file_name, regdate 
+	FROM library_list
+	ORDER BY library_list_no desc, regdate desc
+</select>
 
 </mapper>

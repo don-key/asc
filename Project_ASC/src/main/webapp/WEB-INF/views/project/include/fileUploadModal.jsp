@@ -31,7 +31,7 @@
 							<label style="font-size: 15px;"> 제목 </label>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" id="" style="width: 100%;">
+							<input type="text" name="title" style="width: 100%;">
 						</div>
 					</div>
 					<br>

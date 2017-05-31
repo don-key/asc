@@ -23,6 +23,7 @@ import com.object.asc.lobby.service.LobbyService;
 public class LobbyController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LobbyController.class);
+	
 	@Inject
 	private LobbyService service;
 	 

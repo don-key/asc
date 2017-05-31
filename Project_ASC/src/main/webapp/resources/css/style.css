@@ -124,6 +124,9 @@ input, button {
   background: transparent;
   color: #fdfdfd;
 }
+.login__input::placeholder{
+  color: white;
+}
 .login__submit {
   position: relative;
   width: 90%;

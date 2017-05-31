@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.object.asc.mapper.GanttMapper">
+
+<!-- 간트차트조회 -->
+<select id="ganttList" resultType="com.object.asc.gantt.domain.GanttChartList">
+select gantt_list_no as 'ganttListNo', gantt_no as 'ganttNo', user_no as 'userNo', title, worker, start_date as 'startDate', end_date as 'endDate', color
+from gantt_chart_list
+where gantt_no=#{ganttNo}
+</select>
+
+</mapper>

@@ -1,6 +1,5 @@
 package com.object.asc.gantt.domain;
 
-import java.awt.Color;
 
 public class GanttChartList {
 	
@@ -11,13 +10,13 @@ public class GanttChartList {
 	private String worker;
 	private String startDate;
 	private String endDate;
-	private Color color;
+	private String color;
 	
 	public GanttChartList() {
 	}
 
 	public GanttChartList(int ganttListNo, int ganttNo, int userNo, String title, String worker, String startDate,
-			String endDate, Color color) {
+			String endDate, String color) {
 		super();
 		this.ganttListNo = ganttListNo;
 		this.ganttNo = ganttNo;
@@ -85,11 +84,11 @@ public class GanttChartList {
 		this.endDate = endDate;
 	}
 
-	public Color getColor() {
+	public String getColor() {
 		return color;
 	}
 
-	public void setColor(Color color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 

@@ -5,12 +5,21 @@
 <!-- 네임스페이스(사용영역) 설정 -->
 <mapper namespace="com.object.asc.mapper.LobbyMapper">
 
-<!-- 회원가입 -->
-<insert id="register">
+<!-- 참여 생성 -->
+<insert id="projectJoinRegister">
+INSERT INTO project_join(project_join_no) VALUES (null);
+</insert>
 
+<!-- 프로젝트 내역 생성 -->
+<insert id="projectListRegister">
 INSERT INTO project_list(project_join_no, project_name, project_photo, chat_name, chat_content, start_date, end_date, content) 
 VALUES (#{projectJoinNo}, #{projectName}, #{projectPhoto}, #{chatName}, #{chatContent}, #{startDate}, #{endDate}, #{content});
+</insert>
 
+<!-- 참여 내역 생성 -->
+<insert id="projectJoinListRegister">
+INSERT INTO project_join_list(project_join_list_no, project_join_no, user_no, status) 
+VALUES (null, #{projectJoinNo}, #{userNo}, #{status});
 </insert>
 
 <!-- 프로젝트 날짜 받아오기 -->

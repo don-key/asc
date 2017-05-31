@@ -36,7 +36,7 @@ public class LobbyController {
 	@RequestMapping(value = "/selectProject", method = RequestMethod.POST)
 	public String registerProject(ProjectList projectList, Model model) {
 		
-		service.register(projectList);
+		service.projectListRegister(projectList);
 		return "/lobby/selectProject";
 	}
 	

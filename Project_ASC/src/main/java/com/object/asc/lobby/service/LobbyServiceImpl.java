@@ -1,5 +1,7 @@
 package com.object.asc.lobby.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -16,6 +18,11 @@ public class LobbyServiceImpl implements LobbyService {
 	@Override
 	public void register(ProjectList projectList) {
 		dao.register(projectList);
+	}
+	
+	@Override
+	public List<ProjectList> projectDate(int projectListNo) {
+		return dao.projectDate(projectListNo);
 	}
 
 

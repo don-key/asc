@@ -13,4 +13,11 @@ VALUES (#{projectJoinNo}, #{projectName}, #{projectPhoto}, #{chatName}, #{chatCo
 
 </insert>
 
+<!-- 프로젝트 날짜 받아오기 -->
+<select id="ganttList" resultType="com.object.asc.lobby.domain.ProjectList">
+select project_list_no as 'projectListNo', project_name as 'projectName', start_date as 'startDate', end_date as 'endDate'
+from project_list
+where project_list_no=#{projectListNo}
+</select>
+
 </mapper>

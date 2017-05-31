@@ -15,10 +15,7 @@ public class ProjectServiceImpl implements ProjectService {
 	@Inject
 	private ProjectDAO dao;
 
-	@Override
-	public List<ProjectList> projectDate(int projectListNo) {
-		return dao.projectDate(projectListNo);
-	}
+
 	
 	
 

@@ -1,5 +1,7 @@
 package com.object.asc.lobby.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -13,11 +15,18 @@ public class LobbyDAOImpl implements LobbyDAO {
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.object.asc.mapper.LobbyMapper";
-	
-	
+
 	@Override
 	public void register(ProjectList projectList) {
-		sqlSession.insert(namespace+".register", projectList);
+		// TODO Auto-generated method stub
+		
 	}
+	
+	@Override
+	public List<ProjectList> projectDate(int projectListNo) {
+		return sqlSession.selectList(namespace+".projectDate", projectListNo);
+	}
+
+
 
 }

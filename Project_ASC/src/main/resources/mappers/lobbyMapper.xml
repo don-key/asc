@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+                        
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.object.asc.mapper.LobbyMapper">
+
+<!-- 회원가입 -->
+<insert id="register">
+
+INSERT INTO project_list(project_join_no, project_name, project_photo, chat_name, chat_content, start_date, end_date, content) 
+VALUES (#{projectJoinNo}, #{projectName}, #{projectPhoto}, #{chatName}, #{chatContent}, #{startDate}, #{endDate}, #{content});
+
+</insert>
+
+</mapper>

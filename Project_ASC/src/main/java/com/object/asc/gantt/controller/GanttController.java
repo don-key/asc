@@ -1,6 +1,5 @@
 package com.object.asc.gantt.controller;
 
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,10 +43,20 @@ public class GanttController {
 		}
 
 		ProjectList pList = lobbyService.projectDate(1);
-		logger.info(pList.toString());
-		Period.between(pList.getStartDate().toLocalDate(), pList.getEndDate().toLocalDate());
+		String[] startDate = pList.getStartDate().toString().split("-");
+		String[] endDate = pList.getEndDate().toString().split("-");
+		int year = Integer.parseInt(endDate[0]) - Integer.parseInt(startDate[0]);
+		int days = 0;
 		
-		logger.info("날짜계산 : " + (Period.between(pList.getStartDate().toLocalDate(), pList.getEndDate().toLocalDate()).toString()));
+		if (year >0) {
+			days = calDays(endDate) - calDays(startDate) + year*365 +1;
+		} else{
+			days = calDays(endDate) - calDays(startDate) +1;
+		}
+		
+		System.out.println("days : " + days);
+		
+		model.addAttribute("days", days);
 		model.addAttribute("ganttList", ganttService.ganttList(1));
 		model.addAttribute("projectDate", lobbyService.projectDate(1));
 
@@ -64,6 +73,26 @@ public class GanttController {
 	public String test(Model model) {
 		logger.info("간트 테스트 페이지");
 		return "/gantt/ganttTest";
+	}
+	
+	
+	public int calDays (String[] date){
+		int days = Integer.parseInt(date[2]);
+		switch (Integer.parseInt(date[1])) {
+		case 12: days += 30;	
+		case 11: days += 31;
+		case 10: days += 30;
+		case 9: days += 31;
+		case 8: days += 31;
+		case 7: days += 30;
+		case 6: days += 31;
+		case 5: days += 30;
+		case 4: days += 31;
+		case 3: days += 28;
+		case 2: days += 31;
+		case 1: break;
+		}
+		return days;
 	}
 
 }

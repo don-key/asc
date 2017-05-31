@@ -1,6 +1,6 @@
 package com.object.asc.lobby.domain;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ProjectList {
 	private int projectListNo;

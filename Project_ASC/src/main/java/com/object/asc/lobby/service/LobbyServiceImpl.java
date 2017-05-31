@@ -21,7 +21,7 @@ public class LobbyServiceImpl implements LobbyService {
 	}
 	
 	@Override
-	public List<ProjectList> projectDate(int projectListNo) {
+	public ProjectList projectDate(int projectListNo) {
 		return dao.projectDate(projectListNo);
 	}
 

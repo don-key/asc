@@ -23,8 +23,8 @@ public class LobbyDAOImpl implements LobbyDAO {
 	}
 	
 	@Override
-	public List<ProjectList> projectDate(int projectListNo) {
-		return sqlSession.selectList(namespace+".projectDate", projectListNo);
+	public ProjectList projectDate(int projectListNo) {
+		return sqlSession.selectOne(namespace+".projectDate", projectListNo);
 	}
 
 

@@ -30,6 +30,8 @@ public class GanttController {
 	
 	@Inject
 	private GanttService ganttService;
+	
+	@Inject
 	private LobbyService lobbyService;
 	
 	
@@ -43,11 +45,8 @@ public class GanttController {
 			logger.info(ganttChartList.toString());
 		}
 		
-		List<ProjectList> pList = new ArrayList<>();
-		pList = lobbyService.projectDate(1);
-		for (ProjectList projectList : pList) {
-			logger.info(projectList.toString());
-		}
+		ProjectList pList = lobbyService.projectDate(1);
+			logger.info(pList.toString());
 		model.addAttribute("ganttList", ganttService.ganttList(1));
 		model.addAttribute("projectDate", lobbyService.projectDate(1));
 		

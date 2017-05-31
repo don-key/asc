@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.object.asc.mapper.ProjectMapper">
+
+<!-- 프로젝트 날짜 받아오기 -->
+<select id="ganttList" resultType="com.object.asc.lobby.domain.ProjectList">
+select project_list_no as 'projectListNo', project_name as 'projectName', start_date as 'startDate', end_date as 'endDate'
+from project_list
+where project_list_no=#{projectListNo}
+</select>
+
+</mapper>

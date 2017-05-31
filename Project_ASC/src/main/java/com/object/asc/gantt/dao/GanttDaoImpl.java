@@ -13,13 +13,13 @@ import com.object.asc.gantt.domain.GanttChartList;
 public class GanttDaoImpl implements GanttDao {
 	
 	@Inject
-	private SqlSession session;
+	private SqlSession sqlSession;
 	
 	private static String namespace = "com.object.asc.mapper.GanttMapper";
 
 	@Override
 	public List<GanttChartList> ganttList(int ganttNo) {
-		return session.selectList(namespace+".ganttList", ganttNo);
+		return sqlSession.selectList(namespace+".ganttList", ganttNo);
 	}
 
 }

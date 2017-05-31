@@ -1,5 +1,6 @@
 package com.object.asc.gantt.domain;
 
+import java.sql.Date;
 
 public class GanttChartList {
 	
@@ -8,15 +9,15 @@ public class GanttChartList {
 	private int userNo;
 	private String title;
 	private String worker;
-	private String startDate;
-	private String endDate;
+	private Date startDate;
+	private Date endDate;
 	private String color;
 	
 	public GanttChartList() {
 	}
 
-	public GanttChartList(int ganttListNo, int ganttNo, int userNo, String title, String worker, String startDate,
-			String endDate, String color) {
+	public GanttChartList(int ganttListNo, int ganttNo, int userNo, String title, String worker, Date startDate,
+			Date endDate, String color) {
 		super();
 		this.ganttListNo = ganttListNo;
 		this.ganttNo = ganttNo;
@@ -68,19 +69,19 @@ public class GanttChartList {
 		this.worker = worker;
 	}
 
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

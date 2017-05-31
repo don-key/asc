@@ -1,17 +1,19 @@
 package com.object.asc.gantt.domain;
 
+import java.sql.Date;
+
 public class ActionChartList {
 	private int actionListNo;
 	private int actionNo;
 	private int ganttListNo;
 	private int userNo;
-	private String ganttDate;
+	private Date ganttDate;
 	private int status;
 	
 	public ActionChartList() {
 	}
 
-	public ActionChartList(int actionListNo, int actionNo, int ganttListNo, int userNo, String ganttDate, int status) {
+	public ActionChartList(int actionListNo, int actionNo, int ganttListNo, int userNo, Date ganttDate, int status) {
 		super();
 		this.actionListNo = actionListNo;
 		this.actionNo = actionNo;
@@ -53,11 +55,11 @@ public class ActionChartList {
 		this.userNo = userNo;
 	}
 
-	public String getGanttDate() {
+	public Date getGanttDate() {
 		return ganttDate;
 	}
 
-	public void setGanttDate(String ganttDate) {
+	public void setGanttDate(Date ganttDate) {
 		this.ganttDate = ganttDate;
 	}
 

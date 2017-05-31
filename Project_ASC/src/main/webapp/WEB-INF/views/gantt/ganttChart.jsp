@@ -338,6 +338,7 @@ td, th {
           <td>${projectDate.projectName }</td>
           <td>${projectDate.startDate }</td>
           <td>${projectDate.endDate }</td>
+          <td>날짜는요? ${days}</td>
         </tr>
     </table>
 

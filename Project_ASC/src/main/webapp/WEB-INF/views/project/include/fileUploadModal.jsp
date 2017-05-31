@@ -145,28 +145,51 @@ $(function() {
 		});
 	});
 	
-	var holder =  document.getElementById('holder');
-	
 	$(".fileSelect").on("change", function(e) {
 		e.preventDefault();
 		
-		console.log("파일 선택");
+		var upload = $('.fileSelect');
+		console.log(upload);
+		// 전달된 파일 데이터를 가져오는 부분
+		var file = upload[0].files[0];
+		console.log(file);
 		
+		var formData = new FormData();
 		
-		var file = $(".fileSelect").files[0];
-		var reader = new FileReader();
+		formData.append("file", file);
 		
-		reader.onload = function(event) {
-			var img = new Image();
-			img.src = event.target.result;
-	
-			holder.innerHTML = '';
-			holder.appendChild(img);
-		};
-		
-		reader.readAsDataURL(file);
-		
-		return false;
+		$.ajax({
+			url: '/project/uploadAjax',
+			data : formData,
+			dataType: 'text',
+			processData: false,
+			contentType: false,
+			type: 'POST',
+			success: function(data) {
+				var str ="";
+				
+				console.log(data);
+				console.log(checkImageType(data));
+				console.log(getOriginalName(data));
+				
+				if (checkImageType(data)) {
+					str ="<div>"
+						+ "<a href='displayFile?fileName=" + getImageLink(data) + "' style='color: black'>"
+						+ "<img src='displayFile?fileName="+data+"'/>"
+						+ "</a>"
+						+ "<small data-src=" + data +"> X </small>" 
+						+"</div>";
+				} else {
+					str ="<div>"
+						+ "<a href='displayFile?fileName=" + data + "' style='color: black'>"
+						+ getOriginalName(data) + "</a>"
+						+ "<small data-src=" + data +"> X </small>"
+						+"</div>";
+				}
+				
+				$(".uploadedList").append(str);
+			}
+		});
 	});
 	
 	/** 첨부 파일 삭제 처리 */

@@ -3,15 +3,15 @@ package com.object.asc.lobby.domain;
 import java.util.Date;
 
 public class ProjectList {
-	int projectListNo;
-	int projectJoinNo;
-	String projectName;
-	String projectPhoto;
-	String chatName;
-	String chatContent;
-	Date startDate;
-	Date endDate;
-	String content;
+	private int projectListNo;
+	private int projectJoinNo;
+	private String projectName;
+	private String projectPhoto;
+	private String chatName;
+	private String chatContent;
+	private Date startDate;
+	private Date endDate;
+	private String content;
 	
 	public ProjectList() {}
 	

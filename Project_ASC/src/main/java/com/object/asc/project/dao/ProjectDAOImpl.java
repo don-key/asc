@@ -15,12 +15,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.object.asc.mapper.ProjectMapper";
 
-	@Override
-	public List<ProjectList> projectDate(int projectListNo) {
-		return sqlSession.selectList(namespace+".projectDate", projectListNo);
-	}
 
 	
 	

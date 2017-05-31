@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.object.asc.gantt.domain.GanttChartList;
 import com.object.asc.gantt.service.GanttService;
+import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.lobby.service.LobbyService;
 
 /**
  * GanttChart Controller
@@ -27,7 +29,8 @@ public class GanttController {
 	private static final Logger logger = LoggerFactory.getLogger(GanttController.class);
 	
 	@Inject
-	private GanttService service;
+	private GanttService ganttService;
+	private LobbyService lobbyService;
 	
 	
 	@RequestMapping(value = "/ganttChart", method = RequestMethod.GET)
@@ -35,11 +38,18 @@ public class GanttController {
 		logger.info("간트 페이지 테스트");
 		/** test */
 		List<GanttChartList> list = new ArrayList<GanttChartList>();
-		list = service.ganttList(1);
+		list = ganttService.ganttList(1);
 		for (GanttChartList ganttChartList : list) {
 			logger.info(ganttChartList.toString());
 		}
-		model.addAttribute("ganttList", service.ganttList(1));
+		
+		List<ProjectList> pList = new ArrayList<>();
+		pList = lobbyService.projectDate(1);
+		for (ProjectList projectList : pList) {
+			logger.info(projectList.toString());
+		}
+		model.addAttribute("ganttList", ganttService.ganttList(1));
+		model.addAttribute("projectDate", lobbyService.projectDate(1));
 		
 		return "/gantt/ganttChart";
 	}

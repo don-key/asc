@@ -1,7 +1,14 @@
 package com.object.asc.lobby.service;
 
+import com.object.asc.gantt.domain.ActionChart;
+import com.object.asc.gantt.domain.GanttChart;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.project.domain.DashBoard;
+import com.object.asc.project.domain.Library;
+import com.object.asc.project.domain.ProjectRelease;
+import com.object.asc.project.domain.Scrum;
+import com.object.asc.project.domain.Sprint;
 
 public interface LobbyService {
 	

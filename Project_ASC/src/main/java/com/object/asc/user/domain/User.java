@@ -8,10 +8,12 @@ public class User {
 	private String phone;
 	private String photo;
 	private int status;
+	private boolean useCookie;
 	
 	public User() {}
-	
-	public User(int userNo, String id, String password, String name, String phone, String photo, int status) {
+
+	public User(int userNo, String id, String password, String name, String phone, String photo, int status,
+			boolean useCookie) {
 		this.userNo = userNo;
 		this.id = id;
 		this.password = password;
@@ -19,6 +21,7 @@ public class User {
 		this.phone = phone;
 		this.photo = photo;
 		this.status = status;
+		this.useCookie = useCookie;
 	}
 
 	public int getUserNo() {
@@ -77,10 +80,18 @@ public class User {
 		this.status = status;
 	}
 
+	public boolean isUseCookie() {
+		return useCookie;
+	}
+
+	public void setUseCookie(boolean useCookie) {
+		this.useCookie = useCookie;
+	}
+
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", id=" + id + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", photo=" + photo + ", status=" + status + "]";
+				+ phone + ", photo=" + photo + ", status=" + status + ", useCookie=" + useCookie + "]";
 	}
 	
 }

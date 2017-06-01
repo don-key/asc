@@ -34,6 +34,24 @@
 		<beans:constructor-arg value="C:\\kosta146\\upload"/>
 	</beans:bean>
 	
+	<!-- 로그인을 위한 인터셉터 설정 -->
+	<beans:bean id="authInterceptor" class="com.object.asc.interceptor.AuthInterceptor">
+	</beans:bean>
+	
+	<beans:bean id="loginInterceptor" class="com.object.asc.interceptor.LoginInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/lobby/selectProject"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
+	
 	<!-- tiles -->
 	<beans:bean id="tilesviewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

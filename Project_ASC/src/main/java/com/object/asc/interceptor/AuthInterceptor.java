@@ -1,0 +1,54 @@
+package com.object.asc.interceptor;
+
+import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.WebUtils;
+
+import com.object.asc.user.domain.User;
+import com.object.asc.user.service.UserService;
+
+/** 로그인 유지를 위한 필터역할을 해주는 인터셉터 */
+public class AuthInterceptor extends HandlerInterceptorAdapter{
+	
+	private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);
+	
+	@Inject
+	private UserService service;
+	
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
+		
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("login") == null) {
+			logger.info("현재 이용자는 로그인상태가 아니에용");
+			
+//			response.sendRedirect("/");
+//			return false;
+			
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			
+			if (loginCookie != null) {
+				User user = service.checkUserWithSessionKey(loginCookie.getValue());
+				
+				logger.info("USER : " + user);
+				
+				if (user != null) {
+					session.setAttribute("login", user);
+					return true;
+				}
+			}
+			
+			response.sendRedirect("/lobby/selectProject");
+			return false;
+		}
+		return true;
+	}
+
+ }

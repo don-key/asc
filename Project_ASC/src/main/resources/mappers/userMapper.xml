@@ -8,15 +8,39 @@
 <!-- 회원가입 -->
 <insert id="register">
 
-INSERT INTO users(id, password, name, phone, status) 
-VALUES (#{id}, #{password}, #{name}, #{phone}, #{status})
+INSERT INTO users(id, password, name, phone, photo, status) 
+VALUES (#{id}, #{password}, #{name}, #{phone}, #{photo}, #{status})
 
 </insert>
 
 <!-- 회원정보 수정 -->
 <update id="modify">
-UPDATE users SET password = #{password}, name = #{name}, phone = #{phone}, photo = #{photo}, status = #{status} 
-WHERE user_no = #{userNo};
+
+UPDATE users SET password = #{password}, name = #{name}, phone = #{phone}, photo = #{photo}
+WHERE user_no = #{userNo}
+
 </update>
+
+<!-- 로그인 -->
+<select id="login" resultType="User">
+
+select id, password, name from users where id=#{id} and password=#{password}
+
+</select>
+
+<!-- 로그인한 사람의 세션키 세션리밋 업데이트 -->
+<update id="keepLogin">
+
+update users set session_key =#{sessionId}, session_limit=#{sessionLimit}
+where id=#{id}
+
+</update>
+
+<!-- 로그인 쿠키에 기록된 값으로 사용자 조회 -->
+<select id="checkUserWithSessionKey" resultType="User">
+
+select * from users where session_key =#{cookieValue} and session_limit> sysdate
+
+</select>
 
 </mapper>

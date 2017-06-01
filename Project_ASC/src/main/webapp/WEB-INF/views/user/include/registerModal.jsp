@@ -94,7 +94,7 @@
 							</div>
 
 							<div class="col-xs-5 col-sm-5">
-								<input type="file" class="form-control placeholder" name="photo" />
+								<input type="file" class="form-control placeholder" name="fileupload" />
 							</div>
 							<div class="clearfix"></div>
 					</div>

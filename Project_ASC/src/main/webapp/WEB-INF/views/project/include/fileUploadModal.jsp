@@ -169,10 +169,10 @@ $(function() {
 			type: 'POST',
 			success: function(data) {
 				var str ="";
-				fna = data;
 				
 				console.log(checkImageType(data));
 				console.log(getOriginalName(data));
+				console.log("data = " + data);
 				
 				if (checkImageType(data)) {
 					str ="<div>"
@@ -233,7 +233,6 @@ $(function() {
 	
 	$("#uploadForm").submit(function(event) {
 		event.preventDefault();
-		console.log("전송 버튼 클릭");
 		
 		var that = $(this);
 		

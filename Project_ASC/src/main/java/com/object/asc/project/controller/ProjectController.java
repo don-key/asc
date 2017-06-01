@@ -66,6 +66,14 @@ public class ProjectController {
 		return "/project/library";
 	}
 	
+	/**
+	 * 데이터베이스에 게시글 등록
+	 * @param file
+	 * @param uuidName
+	 * @param libraryList
+	 * @param rttr
+	 * @return
+	 */
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
 	public String libraryListRegist (@RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr) {
 		logger.info("자료실 등록등록");
@@ -74,7 +82,7 @@ public class ProjectController {
 		libraryList.setFileName(file.getOriginalFilename());
 		libraryList.setUuidName(uuidName);
 		
-		service.libraryListRegister(libraryList);
+		service.libraryListRegister(libraryList);		// 매퍼를 통해 등록 메소드 호출
 		
 		rttr.addFlashAttribute("msg", "success");
 		
@@ -204,6 +212,11 @@ public class ProjectController {
 		return entity;
 	}
 	
+	/**
+	 * 파일 등록 모달에서 삭제 처리 (폴더의 사진)
+	 * @param fileName		삭제할 파일 이름
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName) {
@@ -223,6 +236,50 @@ public class ProjectController {
 		new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
 		
 		return new ResponseEntity<String> ("deleted", HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/deleteAllFiles", method = RequestMethod.POST)
+	public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files) {
+		logger.info("삭제할 모든 파일 : " + files);
+		
+		if (files == null || files.length == 0) {
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		}
+		
+		for (String fileName : files) {
+			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+			
+			MediaType mType = MediaUtils.getMediaType(formatName);
+			
+			if (mType != null) {
+				String front = fileName.substring(0, 5);	// /asc 경로 추출
+				String end = fileName.substring(7); 	// s_ 제거
+				
+				new File(uploadPath + (front+end).replace('/', File.separatorChar)).delete();
+			}
+			
+			new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
+		}
+		
+		return new ResponseEntity<String> ("deleted", HttpStatus.OK);
+	}
+	
+	/**
+	 * 자료 내역 삭제
+	 * @param libraryListNo 삭제할 자료 내역 번호
+	 * @param rttr
+	 * @return
+	 */
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
+	public String remove(@RequestParam("libraryListNo") int libraryListNo, RedirectAttributes rttr) {
+		logger.info("자료 내역 삭제 처리 요청");
+		
+		service.libraryListDelete(libraryListNo);
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/project/library";
 	}
 	
 }

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.object.asc.lobby.domain.ProjectJoin;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.project.domain.DashBoard;
+import com.object.asc.project.domain.ProjectRelease;
 @Repository
 public class LobbyDAOImpl implements LobbyDAO {
 	
@@ -38,11 +40,12 @@ public class LobbyDAOImpl implements LobbyDAO {
 	}
 
 	@Override
-	public void dashBoardRegister() {
+	public void dashBoardRegister(DashBoard dashBoard) {
+		
 	}
 
 	@Override
-	public void projectRelease() {
+	public void projectRelease(ProjectRelease projectRelease) {
 	}
 
 	@Override

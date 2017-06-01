@@ -1,6 +1,5 @@
 package com.object.asc.lobby;
 
-import java.sql.Date;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -14,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.object.asc.lobby.dao.LobbyDAO;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.project.domain.DashBoard;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
@@ -57,6 +57,16 @@ public class LobbyDaoTest {
 		projectJoinList.setStatus(1);
 		dao.projectJoinListRegister(projectJoinList);
 		logger.info("참여 내역 생성");
+	}
+	
+	/** 대쉬보드 테스트 */
+	@Test
+	public void dashBoardRegister(){
+		DashBoard dashBoard = new DashBoard();
+		dashBoard.setProjectListNo(1);
+		dashBoard.setUserNo(1);
+		dashBoard.setMemo("memo");
+		logger.info("대쉬보드 생성");
 	}
 	
 

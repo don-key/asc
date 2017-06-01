@@ -22,6 +22,12 @@ INSERT INTO project_join_list(project_join_list_no, project_join_no, user_no, st
 VALUES (null, #{projectJoinNo}, #{userNo}, #{status});
 </insert>
 
+<!-- 대쉬보드 생성(회원 전부) -->
+<insert id="dashBoardRegister">
+INSERT INTO dash_board(dash_board_no, project_list_no, user_no, memo) 
+VALUES (null, #{projectListNo}, #{userNo}, #{memo});
+</insert>
+
 <!-- 프로젝트 날짜 받아오기 -->
 <select id="projectDate" resultType="com.object.asc.lobby.domain.ProjectList">
 select project_list_no as 'projectListNo', project_name as 'projectName', start_date as 'startDate', end_date as 'endDate'

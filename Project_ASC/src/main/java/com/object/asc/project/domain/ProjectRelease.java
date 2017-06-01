@@ -1,12 +1,12 @@
 package com.object.asc.project.domain;
 
-public class projectRelease {
+public class ProjectRelease {
 	private int projectReleaseNo;
 	private int projectListNo;
 
-	public projectRelease() { }
+	public ProjectRelease() { }
 
-	public projectRelease(int projectReleaseNo, int projectListNo) {
+	public ProjectRelease(int projectReleaseNo, int projectListNo) {
 		this.projectReleaseNo = projectReleaseNo;
 		this.projectListNo = projectListNo;
 	}

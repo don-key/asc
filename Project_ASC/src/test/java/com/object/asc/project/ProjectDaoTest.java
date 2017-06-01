@@ -18,7 +18,7 @@ import com.object.asc.project.domain.LibraryList;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
 public class ProjectDaoTest {
 	
-	@Inject
+	   @Inject
 	   private ProjectDAO dao;
 	   
 	   Logger logger = Logger.getLogger(ProjectDaoTest.class);

@@ -20,7 +20,7 @@ import com.object.asc.project.domain.DashBoard;
 public class LobbyDaoTest {
 	
 	@Inject
-	private LobbyDAO dao;
+	private LobbyDAO lobbyDao;
 	
 	Logger logger = Logger.getLogger(LobbyDaoTest.class);
 	
@@ -28,7 +28,7 @@ public class LobbyDaoTest {
 	/** 참여 테스트 */
 	@Test
 	public void projectJoin(){
-		dao.projectJoinRegister();
+		lobbyDao.projectJoinRegister();
 		logger.info("참여 생성");
 	}
 	
@@ -45,7 +45,7 @@ public class LobbyDaoTest {
 		projectList.setStartDate(java.sql.Date.valueOf("2017-05-31"));
 		projectList.setEndDate(java.sql.Date.valueOf("2017-06-12"));
 		projectList.setContent("하이요");
-		dao.projectListRegister(projectList);
+		lobbyDao.projectListRegister(projectList);
 		logger.info("프로젝트 내역 생성");
 	}
 	/** 참여 내역 테스트 */
@@ -55,11 +55,14 @@ public class LobbyDaoTest {
 		projectJoinList.setProjectJoinNo(1);
 		projectJoinList.setUserNo(1);
 		projectJoinList.setStatus(1);
-		dao.projectJoinListRegister(projectJoinList);
+		lobbyDao.projectJoinListRegister(projectJoinList);
 		logger.info("참여 내역 생성");
 	}
 	
-	/** 대쉬보드 테스트 */
+	/** 대쉬보드 테스트 (참여 회원 전부) 
+	 *  projectListNo 동일하게 넣으면 됨
+	 *  참여 회원 받아 와야함. (projectJoinList 조회)
+	 * */
 	@Test
 	public void dashBoardRegister(){
 		DashBoard dashBoard = new DashBoard();
@@ -69,6 +72,22 @@ public class LobbyDaoTest {
 		logger.info("대쉬보드 생성");
 	}
 	
+	/** 릴리즈, 자료실, 간트차트, 계획 실행 차트, 스크럼 생성
+	 * 	projectListNo 동일하게 넣으면 됨
+	 * */
+	@Test
+	public void lobbyTest(){
+		
+	}
+	
+	/** 스프린트 생성 
+	 *  스크럼 번호 받아서 넣어야 함
+	 *  projectListNo 동일하게 넣으면 됨
+	 *  */
+	@Test
+	public void sprintRegister(){
+		
+	}
 
 	
 }

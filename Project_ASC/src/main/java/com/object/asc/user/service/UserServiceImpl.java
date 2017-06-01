@@ -23,5 +23,10 @@ public class UserServiceImpl implements UserService {
 		dao.modify(user);
 	}
 
+	@Override
+	public User login(User user) {
+		return dao.login(user);
+	}
+
 	
 }

@@ -17,12 +17,18 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public void register(User user) {
-		sqlSession.insert(namespace+".register", user);
+		sqlSession.insert(namespace + ".register", user);
 	}
 
 	@Override
 	public void modify(User user) {
-		sqlSession.update(namespace+".modify", user);
+		sqlSession.update(namespace + ".modify", user);
+	}
+
+	@Override
+	public User login(User user) {
+		
+		return sqlSession.selectOne(namespace + ".login", user);
 	}
 	
 

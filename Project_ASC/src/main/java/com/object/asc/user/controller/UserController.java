@@ -3,6 +3,7 @@ package com.object.asc.user.controller;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.object.asc.user.domain.User;
@@ -30,13 +34,14 @@ public class UserController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String release(Locale locale, Model model) {
-		logger.info("릴리즈카테고리 테스트");
+		logger.info("모야모야 테스트");
 		
 		return "/index";
 	}
 	
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(User user, RedirectAttributes rttr) {
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(@RequestParam("fileupload")MultipartFile photo, User user, MultipartHttpServletRequest request,RedirectAttributes rttr) {
+		System.out.println(user.toString());
 		logger.info("회원가입 테스트");
 		
 		service.register(user);
@@ -57,6 +62,23 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void loginGET(User user) {
+		logger.info("로그인 들어갔다");
+	}
+	
+	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
+	public void loginPOST(User user, HttpSession session, Model model) {
+		
+		logger.info("로그인 테스트");
+		
+		User user1 = service.login(user);
+		
+		if(user1 == null){
+			return;
+		}
+		
+		model.addAttribute("user", user1);
+	}
 	
 }

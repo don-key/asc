@@ -27,6 +27,7 @@
 
 
 <body>
+
 	<div class="cont">
 		<div class="demo">
 			<div class="login">
@@ -34,6 +35,7 @@
 					<img src="/resources/images/logo5.png">
 				</div>
 				<div class="login__form">
+   <form action="/user/loginPost" method="post">
 					<div class="login__row">
 						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
             				<path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
@@ -44,7 +46,7 @@
 						<svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
 			            	<path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
 			          	</svg>
-						<input type="password" class="login__input pass" id="password" placeholder="Password" />
+						<input type="password" class="login__input pass" name="password" id="password" placeholder="Password" />
                     </div>
                       <div class="checkbox_row" style="display:inline-flex; margin-top:4%;">
                           <input class="checkBox" type="checkbox" name="useCookie" style="margin-left:-10%; margin-top:4%">
@@ -60,6 +62,7 @@
 					<p class="login__signup">
 						아이디와 비밀번호를 잊으셨나요? &nbsp;<a data-toggle="modal" data-target="#findIdPwModal">찾기</a>
 					</p>
+  </form>
 				</div>
 			</div>
 		</div>

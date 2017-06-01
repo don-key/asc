@@ -108,6 +108,8 @@ public class GanttController {
 		model.addAttribute("startCount", startCount);
 		// 기능 유지일 (계산한값)
 		model.addAttribute("duration", duration);
+		// 기능 개수
+		model.addAttribute("funcSize", funcList.size());
 
 		return "/gantt/ganttChart";
 	}

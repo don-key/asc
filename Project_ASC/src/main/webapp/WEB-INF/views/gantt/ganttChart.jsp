@@ -45,7 +45,7 @@ $(document).ready(function(){
 	pEndDay = parseInt(pEndDay);
 	
 
-	
+	/** 날짜 출력 */
 	var date = "";
 	   for(var i=0; i<days; i++){
 		   console.log(days);
@@ -61,6 +61,21 @@ $(document).ready(function(){
 		  console.log(i);
 	   } 
 	   $('.headDate').html(date);
+	   
+	/** 기능 색 출력 */
+	var color = "";
+	var funcSize = ${funcSize};
+	for (var i = 0; i < funcSize ; i++) {
+		console.log(funcSize);
+		
+    	for (var j = 0; j < days; j++) {
+    		console.log(days);
+    		if (true) {
+    			
+    		}
+    	}
+		
+	}
 	
 
 
@@ -109,12 +124,6 @@ function addDay(month, day){
 		console.log("스위치 후 : " + month + " 달 : 일 " + day);
 		return [month, day];
 	}
-
-
-
-
-
-
 </script>
 
 
@@ -151,9 +160,9 @@ function addDay(month, day){
 
       <div id="right_div">
         <table id="inner_table">
-          <tr class=headDate>
+          <tr class="headDate">
           </tr>
-          <tr>
+          <tr class="bodyColor">
             <td style="background-color: rgb(42, 128, 185)">&nbsp;</td>
             <td style="background-color: rgb(42, 128, 185)"></td>
             <td style="background-color: rgb(42, 128, 185)"></td>

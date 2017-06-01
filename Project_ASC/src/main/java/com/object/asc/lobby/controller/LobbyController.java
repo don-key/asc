@@ -55,9 +55,6 @@ public class LobbyController {
 		try {
 			Map<String, Object> map = new HashMap<String, Object>();
 			
-			map.put("list", "list");
-			map.put("pageMaker", "");
-			
 			entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

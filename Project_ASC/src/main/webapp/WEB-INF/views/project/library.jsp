@@ -27,7 +27,6 @@
 		</div>
 		
 		<c:forEach items="${list }" var="libraryList">
-	
 			<!-- /.col-lg-4 -->
 			<div class="col-lg-4">
 				<div class="panel panel-info">
@@ -42,7 +41,7 @@
 						<p>
 							
 							
-							<a href="#" class=""> <img src="C:/Users/YI JONG YOON/git/asc/Project_ASC/src/main/webapp/resources/images/upload${libraryList.uuidName}" width="20%" ></a>${libraryList.fileName }
+							<a href="#" class=""> <img src="C:/kosta146/upload${libraryList.uuidName}" width="20%" ></a>${libraryList.fileName }
 						</p>
 					</div>
 					<div class="panel-footer">작성자 : ${libraryList.userNo }</div>

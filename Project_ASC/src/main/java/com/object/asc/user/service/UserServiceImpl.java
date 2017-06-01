@@ -1,5 +1,7 @@
 package com.object.asc.user.service;
 
+import java.sql.Date;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +28,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User login(User user) {
 		return dao.login(user);
+	}
+
+	@Override
+	public void keepLogin(String id, String sessionId, Date sessionLimit) {
+		dao.keepLogin(id, sessionId, sessionLimit);
+	}
+
+	@Override
+	public User checkUserWithSessionKey(String cookieValue) {
+		return dao.checkUserWithSessionKey(cookieValue);
 	}
 
 	

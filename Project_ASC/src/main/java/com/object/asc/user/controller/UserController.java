@@ -1,5 +1,6 @@
 package com.object.asc.user.controller;
 
+import java.sql.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.domain.User;
 import com.object.asc.user.service.UserService;
 
@@ -31,6 +34,7 @@ public class UserController {
 	 
 	@Inject
 	private UserService service;
+	User user;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String release(Locale locale, Model model) {
@@ -40,9 +44,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(@RequestParam("fileupload")MultipartFile photo, User user, MultipartHttpServletRequest request,RedirectAttributes rttr) {
-		System.out.println(user.toString());
+	public String register(@RequestParam("fileupload")MultipartFile photo, User user, RedirectAttributes rttr) {
+		
+		
 		logger.info("회원가입 테스트");
+		
+		user.setPhoto(photo.getOriginalFilename());
+		System.out.println(user.toString());
+		logger.info(photo.getOriginalFilename());
+		
 		
 		service.register(user);
 		rttr.addFlashAttribute("message", "success");
@@ -74,11 +84,15 @@ public class UserController {
 		
 		User user1 = service.login(user);
 		
-		if(user1 == null){
-			return;
-		}
+		if(user1 == null){return;}
+			model.addAttribute("user", user1);
 		
-		model.addAttribute("user", user1);
+		if (user1.isUseCookie()) {
+			int amount = 60 * 60 * 24 * 7;
+			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
+			
+			service.keepLogin(user1.getId(), session.getId(), sessionLimit);
+		}
 	}
 	
 }

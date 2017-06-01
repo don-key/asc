@@ -1,5 +1,9 @@
 package com.object.asc.user.dao;
 
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -29,6 +33,21 @@ public class UserDAOImpl implements UserDAO{
 	public User login(User user) {
 		
 		return sqlSession.selectOne(namespace + ".login", user);
+	}
+
+	@Override
+	public void keepLogin(String id, String sessionId, Date sessionLimit) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("id", id);
+		paramMap.put("sessionId", sessionId);
+		paramMap.put("sessionLimit", sessionLimit);
+		
+		sqlSession.update(namespace + ".keepLogin", paramMap);
+	}
+
+	@Override
+	public User checkUserWithSessionKey(String cookieValue) {
+		return sqlSession.selectOne(namespace + ".checkUserWithSessionKey", cookieValue);
 	}
 	
 

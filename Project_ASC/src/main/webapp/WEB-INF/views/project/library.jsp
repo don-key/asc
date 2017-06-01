@@ -83,3 +83,11 @@
 
 <!-- Modal -->
 <jsp:include page="include/fileUploadModal.jsp" />
+
+<script>
+var result = '${msg}';
+
+if (result == 'SUCCESS') {
+	alert("등록 완료");
+}
+</script>

@@ -23,8 +23,8 @@
 					파일 업로드 <i class="fa fa-upload fa-lg"></i>
 				</h4>
 			</div>
-
-			<form id="uploadForm" action="/project/uploadAjax" method="post" enctype="multipart/form-data">
+			
+			<form id="uploadForm"  action="/project/registLibraryList"  method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-1">
@@ -51,7 +51,7 @@
 							<label style="font-size: 15px;">파일 선택</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="file" class="fileSelect" name="file" style="width: 100%">
+							<input type="file" class="fileSelect" id="fileSelect" name="file" style="width: 100%">
 						</div>
 					</div>
 					<br>
@@ -71,10 +71,10 @@
 					<div class="modal-footer">
 						<div class="row">
 							<div class="col-xs-2 col-xs-offset-4">
-								<button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">등록</button>
+								<button type="submit" class="btn btn-warning"  style="width: 100%; font-size: 15px; font-weight: bold;">등록</button>
 							</div>
 							<div class="col-xs-2">
-								<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
+								<button type="button" class="btn btn-default" id="cancelBtn" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
 							</div>
 						</div>
 					</div>
@@ -130,17 +130,22 @@ $(function() {
 						+ "<a href='displayFile?fileName=" + getImageLink(data) + "' style='color: black'>"
 						+ "<img src='displayFile?fileName="+data+"'/>"
 						+ "</a>"
-						+ "<small data-src=" + data +"> X </small>" 
+						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>" 
 						+"</div>";
 				} else {
 					str ="<div>"
 						+ "<a href='displayFile?fileName=" + data + "' style='color: black'>"
 						+ getOriginalName(data) + "</a>"
-						+ "<small data-src=" + data +"> X </small>"
+						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>"
 						+"</div>";
 				}
 				
+				var fileInfo = getFileInfo(data);
+				
+				var html = template(fileInfo);
+				
 				$(".uploadedList").append(str);
+// 				$(".uploadedList").append(html);
 			}
 		});
 	});
@@ -177,13 +182,13 @@ $(function() {
 						+ "<a href='displayFile?fileName=" + getImageLink(data) + "' style='color: black'>"
 						+ "<img src='displayFile?fileName="+data+"'/>"
 						+ "</a>"
-						+ "<small data-src=" + data +"> X </small>" 
+						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>" 
 						+"</div>";
 				} else {
 					str ="<div>"
 						+ "<a href='displayFile?fileName=" + data + "' style='color: black'>"
 						+ getOriginalName(data) + "</a>"
-						+ "<small data-src=" + data +"> X </small>"
+						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>"
 						+"</div>";
 				}
 				
@@ -204,9 +209,45 @@ $(function() {
 			success : function(result) {
 				if (result == 'deleted') {
 					that.parent("div").remove();
+					$('.fileSelect').val("");
 				}
 			}
 		});
+	});
+	
+	/** 취소 버튼 클릭 시 삭제 처리 */
+	$("#cancelBtn").on("click", function(event) {	
+		var that = $(".delbtn");
+		
+		$.ajax({
+			url:"/project/deleteFile",
+			type: 'POST',
+			data : {fileName: that.attr("data-src")},
+			dataType: 'text',
+			success : function(result) {
+				if (result == 'deleted') {
+					that.parent("div").remove();
+					$('.fileSelect').val("");
+				}
+			}
+		});
+	});
+	
+	$("#uploadForm").submit(function(event) {
+		event.preventDefault();
+		console.log("전송 버튼 클릭");
+		
+		var that = $(this);
+		
+		var str = "";
+		
+		$(".uploadedList0 .delbtn").each(function(index) {
+			str += "<input type='hidden' name='files["+ index +"]' value='" + $(this).attr("href") +"'> ";
+		});
+		
+		that.append(str);
+		
+		that.get(0).submit();
 	});
 	
 	/** 파일의 확장자가 존재하는지 검사 */
@@ -234,9 +275,33 @@ $(function() {
 		}
 		
 		var front = fileName.substr(0, 5);	// /asc 경로 추출
-		var end = fileName.substring(7); 	// s_ 제거
+		var end = fileName.substr(7); 	// s_ 제거
 		
 		return front + end;
 	}
 });
+
+function getFileInfo(fullName) {
+	var fileName, imgsrc, getLink;
+	
+	var fileLink;
+	
+	if (checkImageType(fullName)) {
+		imgsrc = "/displayFile?fileName=" + fullName;
+		fileLink = fullName.substr(7);
+		
+		var front = fileName.substr(0, 5);	// /asc 경로 추출
+		var end = fileName.substr(7); 	// s_ 제거
+		
+		getLink = "/displayFile?fileName=" + front + end;
+	} else {
+		imgsrc = "resources/images/noimage.png";
+		fileLink = fullName.substr(7);
+		getLink = "/displayFile?fileName=" + fullName;
+	}
+	
+	fileName = fileLink.substr(fileLink.indexOf("_")+1);
+	
+	return {fileName:fileName, imgsrc:imgsrc, getLink:getLink, fullName:fullName};
+}
 </script>

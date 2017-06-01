@@ -10,6 +10,7 @@ import java.util.Locale;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.inject.Inject;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -23,9 +24,13 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.object.asc.project.domain.LibraryList;
+import com.object.asc.project.service.ProjectService;
 import com.object.asc.util.MediaUtils;
 import com.object.asc.util.UploadFileUtils;
 
@@ -37,6 +42,9 @@ import com.object.asc.util.UploadFileUtils;
 public class ProjectController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
+	
+	@Inject
+	private ProjectService service;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -53,6 +61,25 @@ public class ProjectController {
 		logger.info("자료실 입장~");
 
 		return "/project/library";
+	}
+	
+	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
+	public String libraryListRegist (@RequestParam("file") MultipartFile file, LibraryList libraryList, RedirectAttributes rttr) {
+		logger.info("자료실 등록등록");
+		logger.info("자료실 내역 : "+ libraryList.toString());
+		
+		libraryList.setFileName(file.getOriginalFilename());
+		
+		service.libraryListRegister(libraryList);
+		
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/project/library";
+	}
+	
+	@RequestMapping(value = "/listAllLibraryLIst", method = RequestMethod.POST)
+	public void libraryListListAll (Model model) {
+		logger.info("자료 내역 리스트 올~~~~~~~~~");
 	}
 
 	/**

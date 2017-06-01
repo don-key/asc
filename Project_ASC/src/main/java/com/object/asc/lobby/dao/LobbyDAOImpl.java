@@ -44,4 +44,9 @@ public class LobbyDAOImpl implements LobbyDAO {
 		sqlSession.insert(namespace+".projectJoinListRegister",projectJoinList);
 	}
 
+	@Override
+	public ProjectJoin getProjectJoinNo() {
+		return sqlSession.selectOne(namespace+".projectJoinNo");
+	}
+
 }

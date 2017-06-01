@@ -7,8 +7,8 @@
 
 <!-- 자료실 내역 신규 등록 -->
 <insert id="libraryListRegister">
-	INSERT INTO library_list(library_no, user_no, title, file_name, uuid_name, regdate) 
-	VALUES (1, 1, #{title}, #{fileName}, #{uuidName}, now())
+	INSERT INTO library_list(library_no, user_no, title, file_name, regdate) 
+	VALUES (1, 1, #{title}, #{fileName}, now())
 </insert>
 
 <!-- 자료실 내역 삭제 -->
@@ -19,9 +19,50 @@
 
 <!-- 자료실 내역 목록 조회 -->
 <select id="libraryListListAll" resultType="LibraryList">
-	SELECT library_list_no as libraryListNo, library_no as libraryNo, user_no as userNo, title, file_name as fileName, regdate 
+	SELECT library_list_no, library_no, user_no, title, file_name, regdate 
 	FROM library_list
 	ORDER BY library_list_no desc, regdate desc
 </select>
 
+<!-- 대쉬보드 생성(회원 전부) -->
+<insert id="dashBoardRegister">
+INSERT INTO dash_board(dash_board_no, project_list_no, user_no, memo) 
+VALUES (null, #{projectListNo}, #{userNo}, #{memo});
+</insert>
+
+<!-- 릴리즈 생성 -->
+<insert id="projectReleaseRegister">
+INSERT INTO project_release(project_release_no, project_list_no) 
+VALUES (null, #{projectListNo});
+</insert>
+
+<!-- 자료실 생성 -->
+<insert id="libraryRegister">
+INSERT INTO library(library_no, project_list_no) 
+VALUES (null, #{projectListNo});
+</insert>
+
+<!-- 간트차트 생성 -->
+<insert id="ganttChartRegister">
+INSERT INTO gantt_chart(gantt_no, project_list_no) 
+VALUES (null, #{projectListNo});
+</insert>
+
+<!-- 계획 실행 차트 생성 -->
+<insert id="actionChartRegister">
+INSERT INTO action_chart(action_no, project_list_no)
+VALUES (null, #{projectListNo});
+</insert>
+
+<!-- 스크럼 생성 -->
+<insert id="scrumRegister">
+INSERT INTO scrum(scrum_no, project_list_no)
+VALUES (null, #{projectListNo});
+</insert>
+
+<!-- 스프린트 생성 -->
+<insert id="sprintRegister">
+INSERT INTO sprint(sprint_no, scrum_no, start_date, end_date)
+VALUES (null, #{scrumNo}, curdate(), #{endDate});
+</insert>
 </mapper>

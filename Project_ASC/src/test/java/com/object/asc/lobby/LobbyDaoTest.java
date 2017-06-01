@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.object.asc.lobby.dao.LobbyDAO;
+import com.object.asc.lobby.domain.ProjectJoin;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.project.domain.DashBoard;
@@ -59,35 +60,10 @@ public class LobbyDaoTest {
 		logger.info("참여 내역 생성");
 	}
 	
-	/** 대쉬보드 테스트 (참여 회원 전부) 
-	 *  projectListNo 동일하게 넣으면 됨
-	 *  참여 회원 받아 와야함. (projectJoinList 조회)
-	 * */
 	@Test
-	public void dashBoardRegister(){
-		DashBoard dashBoard = new DashBoard();
-		dashBoard.setProjectListNo(1);
-		dashBoard.setUserNo(1);
-		dashBoard.setMemo("memo");
-		logger.info("대쉬보드 생성");
+	public void projectJoinTest(){
+		ProjectJoin projectJoin = lobbyDao.getProjectJoinNo();
+		int projectJoinNo = projectJoin.getProjectJoinNo();
 	}
-	
-	/** 릴리즈, 자료실, 간트차트, 계획 실행 차트, 스크럼 생성
-	 * 	projectListNo 동일하게 넣으면 됨
-	 * */
-	@Test
-	public void lobbyTest(){
-		
-	}
-	
-	/** 스프린트 생성 
-	 *  스크럼 번호 받아서 넣어야 함
-	 *  projectListNo 동일하게 넣으면 됨
-	 *  */
-	@Test
-	public void sprintRegister(){
-		
-	}
-
 	
 }

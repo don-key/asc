@@ -1,14 +1,7 @@
 package com.object.asc.lobby.dao;
 
-import com.object.asc.gantt.domain.ActionChart;
-import com.object.asc.gantt.domain.GanttChart;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
-import com.object.asc.project.domain.DashBoard;
-import com.object.asc.project.domain.Library;
-import com.object.asc.project.domain.ProjectRelease;
-import com.object.asc.project.domain.Scrum;
-import com.object.asc.project.domain.Sprint;
 
 public interface LobbyDAO {
 	
@@ -24,8 +17,6 @@ public interface LobbyDAO {
 	 * status : 0 -> 팀원
 	 * */
 	public void projectJoinListRegister(ProjectJoinList projectJoinList);
-	
-	
 	
 	/** 프로젝트 날짜 받아오기 */
 	public ProjectList projectDate (int projectListNo);

@@ -24,10 +24,4 @@ public class ProjectRelease {
 	public String toString() {
 		return "ProjectRelease [projectReleaseNo=" + projectReleaseNo + ", projectListNo=" + projectListNo + "]";
 	}
-	
-	
-	
-	
-
-
 }

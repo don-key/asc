@@ -7,8 +7,8 @@
 
 <!-- 자료실 내역 신규 등록 -->
 <insert id="libraryListRegister">
-	INSERT INTO library_list(library_no, user_no, title, file_name, regdate) 
-	VALUES (1, 1, #{title}, #{fileName}, now())
+	INSERT INTO library_list(library_no, user_no, title, file_name, uuid_name, regdate) 
+	VALUES (1, 1, #{title}, #{fileName}, #{uuidName}, now())
 </insert>
 
 <!-- 자료실 내역 삭제 -->
@@ -19,7 +19,7 @@
 
 <!-- 자료실 내역 목록 조회 -->
 <select id="libraryListListAll" resultType="LibraryList">
-	SELECT library_list_no, library_no, user_no, title, file_name, regdate 
+	SELECT library_list_no as libraryListNo, library_no as libraryNo, user_no as userNo, title, file_name as fileName, regdate 
 	FROM library_list
 	ORDER BY library_list_no desc, regdate desc
 </select>

@@ -59,27 +59,26 @@ public class ProjectController {
 	@RequestMapping(value = "/library", method = RequestMethod.GET)
 	public String library(Locale locale, Model model) {
 		logger.info("자료실 입장~");
+		
+		logger.info("자료 내역 리스트 올~~~~~~~~~");
+		model.addAttribute("list", service.libraryListListAll());		// 자료 내역 리스트 목록 뿌려주기
 
 		return "/project/library";
 	}
 	
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
-	public String libraryListRegist (@RequestParam("file") MultipartFile file, LibraryList libraryList, RedirectAttributes rttr) {
+	public String libraryListRegist (@RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr) {
 		logger.info("자료실 등록등록");
 		logger.info("자료실 내역 : "+ libraryList.toString());
-		
+		 
 		libraryList.setFileName(file.getOriginalFilename());
+		libraryList.setUuidName(uuidName);
 		
 		service.libraryListRegister(libraryList);
 		
 		rttr.addFlashAttribute("msg", "success");
 		
 		return "redirect:/project/library";
-	}
-	
-	@RequestMapping(value = "/listAllLibraryLIst", method = RequestMethod.POST)
-	public void libraryListListAll (Model model) {
-		logger.info("자료 내역 리스트 올~~~~~~~~~");
 	}
 
 	/**

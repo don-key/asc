@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <title>ASC</title>
     <!-- 파비콘 설정 -->
-    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/team.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/sharing.ico" />
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="/resources/css/bootstrap.vertical-tabs.min.css" rel="stylesheet">

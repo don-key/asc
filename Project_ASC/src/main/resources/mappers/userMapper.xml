@@ -13,6 +13,14 @@ VALUES (#{id}, #{password}, #{name}, #{phone}, #{photo}, #{status})
 
 </insert>
 
+<!-- 회원번호로 회원정보 조회-->
+<select id="get" resultType="User">
+
+select user_no as userNo, id, password, name, phone, photo, status, recent_login as recentLogin, session_key as sessionKey, session_limit as sessionLimit
+ from users where user_no=#{userNo}
+
+</select>
+
 <!-- 회원정보 수정 -->
 <update id="modify">
 
@@ -39,8 +47,17 @@ where id=#{id}
 <!-- 로그인 쿠키에 기록된 값으로 사용자 조회 -->
 <select id="checkUserWithSessionKey" resultType="User">
 
-select * from users where session_key =#{cookieValue} and session_limit> sysdate
+select user_no as userNo, id, password, name, phone, photo, status, recent_login as recentLogin, session_key as sessionKey, session_limit as sessionLimit 
+from users where session_key =#{cookieValue} and session_limit> now()
 
 </select>
+
+<!-- 회원 탈퇴 -->
+<update id="delete">
+
+update users set status=2 where user_no=#{userNo}
+
+</update>
+
 
 </mapper>

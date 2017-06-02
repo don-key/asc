@@ -77,6 +77,7 @@ $(document).ready(function(){
     			for (var j = 0; j < duration; j++) {
     			innerCode += "<td style='background-color: " + color + "'>&nbsp;</td>";
 				}
+    			break;
 			} else {
 				innerCode += "<td>&nbsp;</td>"
 			}

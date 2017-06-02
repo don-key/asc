@@ -2,6 +2,7 @@ package com.object.asc.user.dao;
 
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -48,6 +49,16 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public User checkUserWithSessionKey(String cookieValue) {
 		return sqlSession.selectOne(namespace + ".checkUserWithSessionKey", cookieValue);
+	}
+
+	@Override
+	public List<String> userFind(String id) {
+		return sqlSession.selectList(namespace + ".userFind", id);
+	}
+
+	@Override
+	public int userIdFind(String id) {
+		return sqlSession.selectOne(namespace + ".userIdFind", id);
 	}
 	
 

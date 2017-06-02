@@ -43,4 +43,14 @@ select * from users where session_key =#{cookieValue} and session_limit> sysdate
 
 </select>
 
+
+<!-- 회원 '?%'로 시작하는 아이디 검색 -->
+<select id="userFind" resultType="String">
+select id from users where id like #{id}
+</select>
+
+<!-- 회원 아이디로 번호 검색 -->
+<select id="userIdFind" resultType="int">
+select user_no from users where id like #{id}
+</select>
 </mapper>

@@ -9,7 +9,7 @@ import com.object.asc.lobby.domain.ProjectList;
 public interface LobbyService {
 	
 	/** 프로젝트 생성 */
-	public void projectRegister(ProjectList projectList, MultipartFile file);
+	public void projectRegister(ProjectList projectList, MultipartFile file, String[] invitationList);
 	
 	/** 기능 */
 	

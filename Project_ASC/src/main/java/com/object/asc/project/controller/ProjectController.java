@@ -273,7 +273,7 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(@RequestParam("libraryListNo") int libraryListNo, RedirectAttributes rttr) {
-		logger.info("자료 내역 삭제 처리 요청");
+		logger.info("자료 내역 "+libraryListNo+"번 글 삭제 처리 요청");
 		
 		service.libraryListDelete(libraryListNo);
 		

@@ -1,5 +1,6 @@
 package com.object.asc.lobby.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.lobby.service.LobbyService;
+import com.object.asc.user.service.UserService;
 
 
 /**
@@ -33,7 +35,10 @@ public class LobbyController {
 	private static final Logger logger = LoggerFactory.getLogger(LobbyController.class);
 	
 	@Inject
-	private LobbyService service;
+	private LobbyService lobbyService;
+	
+	@Inject
+	private UserService userService;
 	 
 	@RequestMapping(value = "/selectProject", method = RequestMethod.GET)
 	public String selectProject(Model model) {
@@ -42,23 +47,25 @@ public class LobbyController {
 	}
 	
 	@RequestMapping(value = "/selectProject", method = RequestMethod.POST)
-	public String registerProject(@RequestParam("fileUpload")MultipartFile file, ProjectList projectList, Model model) {
-		service.projectRegister(projectList, file);
+	public String registerProject(@RequestParam("fileUpload")MultipartFile file, String[] invitationList, ProjectList projectList, Model model) {
+		for (String member : invitationList) {
+			logger.info(member);
+		}
+		lobbyService.projectRegister(projectList, file, invitationList);
 		return "/lobby/selectProject";
 	}
 	
 	@RequestMapping("/memberList")
 	@ResponseBody
-	public ResponseEntity<Map<String, Object>> memberList(){
-		ResponseEntity<Map<String, Object>> entity = null;
+	public ResponseEntity<List<String>> memberList(String id){
+		ResponseEntity<List<String>> entity = null;
 		
 		try {
-			Map<String, Object> map = new HashMap<String, Object>();
-			
-			entity = new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
+			List<String> List = userService.userFind(id);
+			entity = new ResponseEntity<List<String>>(List, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<String>>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}

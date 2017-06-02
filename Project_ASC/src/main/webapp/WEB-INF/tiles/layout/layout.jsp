@@ -14,6 +14,7 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="/resources/css/bootstrap.vertical-tabs.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="/resources/css/metisMenu.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
@@ -35,6 +36,7 @@
     
       <!-- jQuery -->
     <script src="/resources/js/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/resources/js/bootstrap.min.js"></script>
     <!-- Metis Menu Plugin JavaScript -->

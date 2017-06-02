@@ -36,7 +36,7 @@ public class UploadFileUtils {
 	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception {
 		
 		UUID uuid = UUID.randomUUID();	// 랜덤 UUID 생성
-		
+		logger.info(uploadPath+"여기는 어디인가?????????????????");
 		String savedName = uuid.toString() + "_" + originalName;
 		String savedPath = calcPath(uploadPath);		// 저장될 경로 계산
 		File target = new File(uploadPath+savedPath, savedName);

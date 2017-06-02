@@ -46,38 +46,46 @@ $(document).ready(function(){
 	
 
 	/** 날짜 출력 */
-	var date = "";
+	var innerCode = "";
+		innerCode += "<tr>";
 	   for(var i=0; i<days; i++){
-		   console.log(days);
 		   if (pStartYear == pEndYear) {
-			   date += "<th>"+pStartMonth+'/'+pStartDay+"</th>";
+			   innerCode += "<th>"+pStartMonth+'/'+pStartDay+"</th>";
 			var result = addDay(pStartMonth, pStartDay);
 			pStartMonth = result[0];
 			pStartDay = result[1];
 			
 		} else{
+			/** 여기 나중에 꼭 채워넣자!!!!!!!!! */
 			
 		}
-		  console.log(i);
-	   } 
-	   $('.headDate').html(date);
+	   }
 	   
-	/** 기능 색 출력 */
-	var color = "";
-	var funcSize = ${funcSize};
-	for (var i = 0; i < funcSize ; i++) {
-		console.log(funcSize);
-		
-    	for (var j = 0; j < days; j++) {
-    		console.log(days);
-    		if (true) {
-    			
-    		}
-    	}
-		
-	}
+	   innerCode += "</tr>";
+	   
+	   
+	/** 기능(색) 출력 */
+    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
+    	innerCode += "<tr>";
+    	<c:set var="count">${status.index}</c:set>
+    	for (var i = 0; i < days; i++) {
+    		var startCount =  ${startCount[count] };
+    		var color = "${gantt.color }";
+    		if (i == startCount) {
+    			var duration = ${duration[count]};
+    			console.log("duration : " + duration);
+    			for (var j = 0; j < duration; j++) {
+    			innerCode += "<td style='background-color: " + color + "'>&nbsp;</td>";
+				}
+			} else {
+				innerCode += "<td>&nbsp;</td>"
+			}
+		}
+    	innerCode += "</tr>";
+    </c:forEach>
 	
-
+    $('#rightTable').html(innerCode);
+	
 
 	  
 });
@@ -88,7 +96,6 @@ $(document).ready(function(){
 <script>
 /** 날짜 올려주는 함수 */
 function addDay(month, day){
-		console.log("스위치 전 : " + month + " 달 : 일 " + day);
 		switch (month) {
 		case 1:
 		case 3:
@@ -121,7 +128,6 @@ function addDay(month, day){
 		}	
 			break;
 		}
-		console.log("스위치 후 : " + month + " 달 : 일 " + day);
 		return [month, day];
 	}
 </script>
@@ -155,210 +161,21 @@ function addDay(month, day){
         </c:forEach>
       </table>
 
-      <div id="right_div days">
-      </div>
-
-      <div id="right_div">
-        <table id="inner_table">
-          <tr class="headDate">
-          </tr>
-          <tr class="bodyColor">
-            <td style="background-color: rgb(42, 128, 185)">&nbsp;</td>
-            <td style="background-color: rgb(42, 128, 185)"></td>
-            <td style="background-color: rgb(42, 128, 185)"></td>
-            <td style="background-color: rgb(42, 128, 185)"></td>
-            <td style="background-color: rgb(42, 128, 185)"></td>
-            <td style="background-color: rgb(42, 128, 185)"></td>
-            <td style="background-color: rgb(42, 128, 185)"></td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="background-color: rgb(231, 126, 35)">&nbsp;</td>
-            <td style="background-color: rgb(231, 126, 35)"></td>
-            <td style="background-color: rgb(231, 126, 35)"></td>
-            <td style="background-color: rgb(231, 126, 35)"></td>
-            <td style="background-color: rgb(231, 126, 35)"></td>
-            <td style="background-color: rgb(231, 126, 35)"></td>
-            <td style="background-color: rgb(231, 126, 35)"></td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-            <td style="background-color: rgb(22, 160, 134)">&nbsp;</td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-            <td style="background-color: rgb(130, 160, 200)">&nbsp;</td>
-          </tr>
-
-          <tr>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-            <td style="background-color: rgb(237, 160, 139)">&nbsp;</td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-            <td style="background-color: rgb(240, 247, 103)">&nbsp;</td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-            <td style="background-color: rgb(153, 62, 163)">&nbsp;</td>
-          </tr>
-
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="background-color: rgb(72, 61, 162)">&nbsp;</td>
-            <td style="background-color: rgb(72, 61, 162)">&nbsp;</td>
-            <td style="background-color: rgb(72, 61, 162)">&nbsp;</td>
-            <td style="background-color: rgb(72, 61, 162)">&nbsp;</td>
-            <td style="background-color: rgb(72, 61, 162)">&nbsp;</td>
-          </tr>
-
-
-
-
+      <div id="right_div" style="padding-bottom : 5%;">
+        <table id="rightTable">
         </table>
       </div>
     </div>
   </div>
+  
   <br>
+  
   <div class="bottomPanel text-center">
     <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal">추가</a>
   </div>
 
   <div class="row">
+  <div>테스트 / 변수확인</div>
     <table>
       <c:forEach items="${ganttList}" var="gantt">
         <tr>
@@ -402,10 +219,18 @@ function addDay(month, day){
     <div>${startCount[1] }</div>
     <div>${startCount[2] }</div>
     <div>${startCount[3] }</div>
+    <div>${startCount[4] }</div>
+    <div>${startCount[5] }</div>
+    <div>${startCount[6] }</div>
+    <div>${startCount[7] }</div>
     <div>기능 유지일 (계산한 값) : ${duration[0] }</div>
     <div>${duration[1] }</div>
     <div>${duration[2] }</div>
     <div>${duration[3] }</div>
+    <div>${duration[4] }</div>
+    <div>${duration[5] }</div>
+    <div>${duration[6] }</div>
+    <div>${duration[7] }</div>
     
   </div>
 
@@ -417,13 +242,6 @@ function addDay(month, day){
 <jsp:include page="include/registGanttChartModal.jsp" />
 <jsp:include page="include/modifyGanttChartModal.jsp" />
 
-<script>
-	$(function() {
-
-
-		
-	});
-</script>
 
 
 

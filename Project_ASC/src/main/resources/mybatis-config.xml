@@ -7,5 +7,7 @@
 	 <typeAliases>
 	      <typeAlias type="com.object.asc.user.domain.User" alias="User"/>
 	      <typeAlias type="com.object.asc.project.domain.LibraryList" alias="LibraryList"/>
+	      <typeAlias type="com.object.asc.lobby.domain.ProjectList" alias="ProjectList"/>
+	      <typeAlias type="com.object.asc.lobby.domain.ProjectJoin" alias="ProjectJoin"/>
      </typeAliases>
 </configuration> 

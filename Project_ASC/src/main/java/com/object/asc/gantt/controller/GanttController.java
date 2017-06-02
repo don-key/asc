@@ -52,7 +52,7 @@ public class GanttController {
 		int[] startCount = new int[funcList.size()];
 		for (GanttChartList func : funcList) {
 			String[] fStartDate = func.getStartDate().toString().split("-");
-			startCount[count] = calDays(fStartDate) - calDays(pStartDate) + 365*year +1;
+			startCount[count] = calDays(fStartDate) - calDays(pStartDate) + 365*year;
 			System.out.println(count+1 + "번째 기능 시작일 : " + calDays(fStartDate));
 			System.out.println(count+1 + "번째 프로젝트 시작일 : " + calDays(pStartDate));
 				count++;
@@ -109,7 +109,7 @@ public class GanttController {
 		// 기능 유지일 (계산한값)
 		model.addAttribute("duration", duration);
 		// 기능 개수
-		model.addAttribute("funcSize", funcList.size());
+//		model.addAttribute("funcSize", funcList.size());
 
 		return "/gantt/ganttChart";
 	}

@@ -10,8 +10,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.object.asc.lobby.dao.LobbyDAO;
-import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.domain.User;
 
@@ -41,6 +39,7 @@ public class UserDaoTest {
 		
 	}
 	
+<<<<<<< HEAD
 	/** 회원정보 조회 테스트*/
 	@Test
 	public void TestGet(){
@@ -49,6 +48,8 @@ public class UserDaoTest {
 		logger.info(user.toString());
 		
 	}
+=======
+>>>>>>> branch 'master' of https://github.com/don-key/asc
 	
 	
 	

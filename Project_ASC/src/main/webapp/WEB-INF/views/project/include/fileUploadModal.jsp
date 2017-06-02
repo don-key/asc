@@ -52,6 +52,7 @@
 						</div>
 						<div class="col-xs-8">
 							<input type="file" class="fileSelect" id="fileSelect" name="file" style="width: 100%">
+							<input type="hidden"  id="uuidName"  name="uuidName">
 						</div>
 					</div>
 					<br>
@@ -129,7 +130,7 @@ $(function() {
 					str ="<div>"
 						+ "<a href='displayFile?fileName=" + getImageLink(data) + "' style='color: black'>"
 						+ "<img src='displayFile?fileName="+data+"'/>"
-						+ "</a>"
+						+ "</a> data"
 						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>" 
 						+"</div>";
 				} else {
@@ -140,12 +141,8 @@ $(function() {
 						+"</div>";
 				}
 				
-				var fileInfo = getFileInfo(data);
-				
-				var html = template(fileInfo);
-				
 				$(".uploadedList").append(str);
-// 				$(".uploadedList").append(html);
+				
 			}
 		});
 	});
@@ -173,9 +170,9 @@ $(function() {
 			success: function(data) {
 				var str ="";
 				
-				console.log(data);
 				console.log(checkImageType(data));
 				console.log(getOriginalName(data));
+				console.log("data = " + data);
 				
 				if (checkImageType(data)) {
 					str ="<div>"
@@ -192,6 +189,7 @@ $(function() {
 						+"</div>";
 				}
 				
+				$('#uuidName').val(data);
 				$(".uploadedList").append(str);
 			}
 		});
@@ -235,7 +233,6 @@ $(function() {
 	
 	$("#uploadForm").submit(function(event) {
 		event.preventDefault();
-		console.log("전송 버튼 클릭");
 		
 		var that = $(this);
 		
@@ -244,7 +241,6 @@ $(function() {
 		$(".uploadedList0 .delbtn").each(function(index) {
 			str += "<input type='hidden' name='files["+ index +"]' value='" + $(this).attr("href") +"'> ";
 		});
-		
 		that.append(str);
 		
 		that.get(0).submit();

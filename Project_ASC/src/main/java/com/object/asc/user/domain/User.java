@@ -1,5 +1,7 @@
 package com.object.asc.user.domain;
 
+import java.sql.Date;
+
 public class User {
 	private int userNo;
 	private String id;
@@ -8,12 +10,15 @@ public class User {
 	private String phone;
 	private String photo;
 	private int status;
+	private Date recentLogin;
+	private String sessionKey;
+	private Date sessionLimit;
 	private boolean useCookie;
 	
 	public User() {}
 
 	public User(int userNo, String id, String password, String name, String phone, String photo, int status,
-			boolean useCookie) {
+			Date recentLogin, String sessionKey, Date sessionLimit, boolean useCookie) {
 		this.userNo = userNo;
 		this.id = id;
 		this.password = password;
@@ -21,6 +26,9 @@ public class User {
 		this.phone = phone;
 		this.photo = photo;
 		this.status = status;
+		this.recentLogin = recentLogin;
+		this.sessionKey = sessionKey;
+		this.sessionLimit = sessionLimit;
 		this.useCookie = useCookie;
 	}
 
@@ -80,6 +88,30 @@ public class User {
 		this.status = status;
 	}
 
+	public Date getRecentLogin() {
+		return recentLogin;
+	}
+
+	public void setRecentLogin(Date recentLogin) {
+		this.recentLogin = recentLogin;
+	}
+
+	public String getSessionKey() {
+		return sessionKey;
+	}
+
+	public void setSessionKey(String sessionKey) {
+		this.sessionKey = sessionKey;
+	}
+
+	public Date getSessionLimit() {
+		return sessionLimit;
+	}
+
+	public void setSessionLimit(Date sessionLimit) {
+		this.sessionLimit = sessionLimit;
+	}
+
 	public boolean isUseCookie() {
 		return useCookie;
 	}
@@ -91,7 +123,11 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userNo=" + userNo + ", id=" + id + ", password=" + password + ", name=" + name + ", phone="
-				+ phone + ", photo=" + photo + ", status=" + status + ", useCookie=" + useCookie + "]";
+				+ phone + ", photo=" + photo + ", status=" + status + ", recentLogin=" + recentLogin + ", sessionKey="
+				+ sessionKey + ", sessionLimit=" + sessionLimit + ", useCookie=" + useCookie + "]";
 	}
 	
+	
+	
+
 }

@@ -4,21 +4,22 @@ import java.sql.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.dao.support.DaoSupport;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.WebUtils;
 
-import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.domain.User;
 import com.object.asc.user.service.UserService;
 
@@ -50,7 +51,6 @@ public class UserController {
 		logger.info("회원가입 테스트");
 		
 		user.setPhoto(photo.getOriginalFilename());
-		System.out.println(user.toString());
 		logger.info(photo.getOriginalFilename());
 		
 		
@@ -60,6 +60,7 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modify(User user, RedirectAttributes rttr) {
@@ -80,19 +81,57 @@ public class UserController {
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(User user, HttpSession session, Model model) {
 		
-		logger.info("로그인 테스트");
+		User loginCheck = service.login(user);
 		
-		User user1 = service.login(user);
+		if(loginCheck == null){return;}
+			
+		model.addAttribute("user", user);
+		model.addAttribute("loginCheck", loginCheck);
+		logger.info("로그인 유저 정보 받아랏"+loginCheck);
 		
-		if(user1 == null){return;}
-			model.addAttribute("user", user1);
 		
-		if (user1.isUseCookie()) {
+		if (user.isUseCookie()) {
 			int amount = 60 * 60 * 24 * 7;
 			Date sessionLimit = new Date(System.currentTimeMillis() + (1000 * amount));
 			
-			service.keepLogin(user1.getId(), session.getId(), sessionLimit);
+			service.keepLogin(user.getId(), session.getId(), sessionLimit);
+
 		}
+		
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session ) {
+		logger.info("로그아웃하자~~");
+		
+		Object obj = session.getAttribute("login");
+		
+		if (obj != null) {
+			User user = (User) obj;
+			
+			session.removeAttribute("login");
+			session.invalidate();
+			
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			
+			if (loginCookie != null) {
+				loginCookie.setPath("/");
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				service.keepLogin(user.getId(), session.getId(), new Date(0));
+			}
+		}
+		return "redirect:/";
+	}
+	
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(User user, RedirectAttributes rttr) {
+		logger.info("탈퇴합니다~~");
+		
+		service.delete(user);/** 회원 상태 2로 변경*/
+		rttr.addFlashAttribute("message", "success");
+	
+		return "redirect:/";
+	}
 }

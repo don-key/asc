@@ -9,16 +9,17 @@
  <!-- Navigation -->
             <nav class="navbar-default sidebar" role="navigation" style="background-color: #354555">
                 <div class="sidebar-nav navbar-collapse">
-                    <a href="/"><img src="/resources/images/logo.png" style="width:250px"></a>
+                    <a href="/lobby/selectProject"><img src="/resources/images/logo.png" style="width:250px"></a>
                     
                     <div class="row" id="modalWrapper">
                     	<div class="col-xs-2 col-sm-2">
 		                    <div class="profile"><img src="/resources/images/noimage2.png"></div>
                     	</div>
                     	<div class="col-xs-10 col-sm-10">
-		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">이종윤</div>
+		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px"></div>
 		                </div>
                     </div>
+                        <form action="user/logout" id="logout">
                     <ul class="nav" id="side-menu" style="margin-top: 15px">
                         <li>
                             <a href="/project/dashBoard"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
@@ -48,9 +49,11 @@
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a><img src="/resources/images/menu/logout.png"  class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
+                            <a href="/user/logout"><img src="/resources/images/menu/logout.png"  name="logoutBtn" class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
                         </li>
+                        
                     </ul>
+                    </form>
                     
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -60,26 +63,29 @@
 
   
   <script>
-  $('.logoutBtn').on('click', function() {
-	  swal({
-		  title: '로그아웃 하시겠습니까?',
-		  text: "",
-		  type: 'warning',
-		  showCancelButton: true,
-		  confirmButtonColor: '#3085d6',
-		  cancelButtonColor: '#d33',
-		  confirmButtonText: 'YES',
-		  cancelButtonText: 'NO'
-		}).then(function () {
-			location.href = '/';
-		})
+//   $('.logoutBtn').on('click', function() {
+// 	  swal({
+// 		  title: '로그아웃 하시겠습니까?',
+// 		  text: "",
+// 		  type: 'warning',
+// 		  showCancelButton: true,
+// 		  confirmButtonColor: '#3085d6',
+// 		  cancelButtonColor: '#d33',
+// 		  confirmButtonText: 'YES',
+// 		  cancelButtonText: 'NO'
+// 		}).then(function () {
+// 			location.href = '/';
+// 		})
 	  
-  });
+//   });
+  
+  
+   document.getElementByname("logoutBtn").onclick = function() {
+ 	    document.getElementById("logout").submit();
   
   /** 회원수정 모달 띄우기*/
   $(function() {
 	$('#modalWrapper').on('click', function() {
-		console.log('1234');
 		$('#modifyModal').modal();
 	});
 });

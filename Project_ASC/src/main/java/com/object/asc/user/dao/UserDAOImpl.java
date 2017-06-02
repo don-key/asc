@@ -2,11 +2,13 @@ package com.object.asc.user.dao;
 
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import com.object.asc.user.domain.User;
@@ -18,7 +20,9 @@ public class UserDAOImpl implements UserDAO{
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.object.asc.mapper.UserMapper";
-
+	
+	Logger logger = Logger.getLogger(UserDAOImpl.class);
+	
 	@Override
 	public void register(User user) {
 		sqlSession.insert(namespace + ".register", user);
@@ -48,6 +52,28 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public User checkUserWithSessionKey(String cookieValue) {
 		return sqlSession.selectOne(namespace + ".checkUserWithSessionKey", cookieValue);
+	}
+
+	@Override
+	public User get(int userNo) {
+		
+		return sqlSession.selectOne(namespace + ".get", userNo);
+	}
+
+	@Override
+	public void delete(User user) {
+		sqlSession.update(namespace + ".delete", user);
+	}
+
+
+	@Override
+	public List<String> userFind(String id) {
+		return sqlSession.selectList(namespace + ".userFind", id);
+	}
+
+	@Override
+	public int userIdFind(String id) {
+		return sqlSession.selectOne(namespace + ".userIdFind", id);
 	}
 	
 

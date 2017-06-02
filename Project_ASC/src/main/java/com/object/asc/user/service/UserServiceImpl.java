@@ -1,6 +1,7 @@
 package com.object.asc.user.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -38,6 +39,27 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User checkUserWithSessionKey(String cookieValue) {
 		return dao.checkUserWithSessionKey(cookieValue);
+	}
+
+	@Override
+	public User get(int userNo) {
+		return dao.get(userNo);
+	}
+
+	@Override
+	public void delete(User user) {
+		dao.delete(user);
+		
+	}
+
+	@Override
+	public List<String> userFind(String id) {
+		return dao.userFind(id+"%");
+	}
+
+	@Override
+	public int userIdFind(String id) {
+		return dao.userIdFind(id);
 	}
 
 	

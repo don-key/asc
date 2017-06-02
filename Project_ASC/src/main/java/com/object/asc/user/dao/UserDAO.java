@@ -1,6 +1,7 @@
 package com.object.asc.user.dao;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.object.asc.user.domain.User;
 
@@ -8,6 +9,9 @@ public interface UserDAO {
 	
 	/** 회원 가입 */
 	public void register(User user);
+	
+	/** 회원 정보 불러오기*/
+	public User get(int userNo); 
 	
 	/** 회원 정보수정 */
 	public void modify(User user);
@@ -20,4 +24,13 @@ public interface UserDAO {
 	
 	/** 로그인쿠키로 사용자 조회 */
 	public User checkUserWithSessionKey(String cookieValue);
+	
+	/** 회원 탈퇴*/
+	public void delete(User user);
+	
+	/** 회원 '?%'로 시작하는 아이디 검색 */
+	public List<String> userFind(String id); 
+	
+	/** 회원 아이디로 번호 검색 */
+	public int userIdFind(String id);
 }

@@ -29,9 +29,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		if (session.getAttribute("login") == null) {
 			logger.info("현재 이용자는 로그인상태가 아니에용");
 			
-//			response.sendRedirect("/");
-//			return false;
-			
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
 			
 			if (loginCookie != null) {
@@ -45,7 +42,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 				}
 			}
 			
-			response.sendRedirect("/lobby/selectProject");
+			/** 로그인 상태 아닐 때 로그인 페이지로 보내줌*/
+			response.sendRedirect("/");
 			return false;
 		}
 		return true;

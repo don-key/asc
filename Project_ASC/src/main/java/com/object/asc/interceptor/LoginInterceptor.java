@@ -50,6 +50,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				response.addCookie(loginCookie);
 				
 				
+				Cookie userIdCookie = new Cookie("userIdCookie", "userIdCookie");
+				userIdCookie.setPath("/");
+				userIdCookie.setMaxAge(60 * 60 * 24 * 7);
+				response.addCookie(userIdCookie);
+				
+				
 			}
 			response.sendRedirect("/lobby/selectProject");
 		}

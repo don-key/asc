@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=utf-8"%>
-
 <style>
 #modifyIcon {
 	color: green;
@@ -39,81 +38,39 @@
          </div>
       </div>
    </div>
-
    <div class="row">
-
-      <div class="col-lg-3 col-md-3 col-xs-4">
-         <a href="#" class="thumbnail"> <img src="/resources/images/noimage.png" alt="">
-         </a>
-         <div class="panel">
-            <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트 이름</div>
-            <div class="text-right">2017.05.22~</div>
-            <br>
-            <div class="text-right" style="font-size: 15px;">
-               Object&nbsp; <i class="fa fa-child"></i>6
+   <c:choose>
+      <c:when test="${empty list }">
+               <div style="margin-top: 10%">
+                  <p style="text-align: center; font-size: 20px"> <mark>프로젝트를 생성해주세여</mark></p>
+               </div>
+      </c:when>
+      <c:otherwise>
+         <c:forEach items="${list }" var="projectList">
+            <div class="col-lg-3 col-md-3 col-xs-4">
+               <a href="#" class="thumbnail"> <img src="/resources/images/noimage.png" alt="">
+               </a>
+               <div class="panel">
+                  <div style="font-size: 17px; font-weight: bold;"></div>
+                  <div class="text-right">2017.05.22~</div>
+                  <br>
+                  <div class="text-right" style="font-size: 15px;">
+                     Object&nbsp; <i class="fa fa-child"></i>6
+                  </div>
+                  <br>
+                  <div class="text-right">
+                     <a href="#" id="modifyIcon" class="fa fa-pencil" data-toggle="modal" data-target="#modifyProjectModal">수정</a> <a href="#" id="deleteIcon" class="fa fa-trash-o">삭제</a>
+                  </div>
+               </div>
             </div>
-            <br>
-            <div class="text-right">
-               <a href="#" id="modifyIcon" class="fa fa-pencil" data-toggle="modal" data-target="#modifyProjectModal">수정</a> <a href="#" id="deleteIcon" class="fa fa-trash-o">삭제</a>
-            </div>
-         </div>
-      </div>
-
-
-      <div class="col-lg-3 col-md-3 col-xs-4">
-         <a href="#" class="thumbnail"> <img src="/resources/images/noimage.png" alt="">
-         </a>
-         <div class="panel">
-            <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트 이름</div>
-            <div class="text-right">2017.05.22~</div>
-            <br>
-            <div class="text-right" style="font-size: 15px;">
-               Object&nbsp; <i class="fa fa-child"></i>6
-            </div>
-            <br>
-            <div class="text-right">
-               <a href="#" id="modifyIcon" class="fa fa-pencil" data-toggle="modal" data-target="#modifyProjectModal">수정</a> <a href="#" id="deleteIcon" class="fa fa-trash-o">삭제</a>
-            </div>
-         </div>
-      </div>
-
-      <div class="col-lg-3 col-md-3 col-xs-4">
-         <a href="#" class="thumbnail"> <img src="/resources/images/noimage.png" alt="">
-         </a>
-         <div class="panel">
-            <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트 이름</div>
-            <div class="text-right">2017.05.22~</div>
-            <br>
-            <div class="text-right" style="font-size: 15px;">
-               Object&nbsp; <i class="fa fa-child"></i>6
-            </div>
-            <br>
-            <div class="text-right">
-               <a href="#" id="modifyIcon" class="fa fa-pencil" data-toggle="modal" data-target="#modifyProjectModal">수정</a> <a href="#" id="deleteIcon" class="fa fa-trash-o">삭제</a>
-            </div>
-         </div>
-      </div>
-
-      <div class="col-lg-3 col-md-3 col-xs-4">
-         <a href="#" class="thumbnail"> <img src="/resources/images/noimage.png" alt="">
-         </a>
-         <div class="panel">
-            <div style="font-size: 17px; font-weight: bold;">&nbsp;프로젝트 이름</div>
-            <div class="text-right">2017.05.22~</div>
-            <br>
-            <div class="text-right" style="font-size: 15px;">
-               Object&nbsp; <i class="fa fa-child"></i>6
-            </div>
-            <br>
-            <div class="text-right">
-               <a href="#" id="modifyIcon" class="fa fa-pencil" data-toggle="modal" data-target="#modifyProjectModal">수정</a> <a href="#" id="deleteIcon" class="fa fa-trash-o">삭제</a>
-            </div>
-         </div>
-      </div>
+         </c:forEach>
+      </c:otherwise>
+   </c:choose>
+   
+      
    </div>
 </div>
 <!-- /#page-wrapper -->
-
 <!-- Modal -->
 <jsp:include page="include/createProjectModal.jsp" />
 <jsp:include page="include/modifyProjectModal.jsp" />

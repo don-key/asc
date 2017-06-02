@@ -11,6 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>ASC</title>
+    <!-- 파비콘 설정 -->
+    <link rel="shortcut icon" type="image/x-icon" href="/resources/images/team.ico" />
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="/resources/css/bootstrap.vertical-tabs.min.css" rel="stylesheet">
@@ -22,9 +24,7 @@
     <!-- Custom CSS -->
     <link href="/resources/css/sb-admin-2.css" rel="stylesheet">
     <link href="/resources/css/bootstrap-datetimepicker.css" rel="stylesheet">
-    <!-- Main CSS -->
-<!--     <link href="/resources/css/main.css" rel="stylesheet"> -->
-<!--     <link href="/resources/css/reset.css" rel="stylesheet"> -->
+
     <!-- Custom Fonts -->
     <link href="/resources/css/font-awesome.css" rel="stylesheet" type="text/css">
     <!-- Gantt Chart CSS -->

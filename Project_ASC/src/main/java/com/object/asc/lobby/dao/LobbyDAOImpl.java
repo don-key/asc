@@ -1,6 +1,8 @@
 package com.object.asc.lobby.dao;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,6 +49,11 @@ public class LobbyDAOImpl implements LobbyDAO {
 	@Override
 	public ProjectJoin getProjectJoinNo() {
 		return sqlSession.selectOne(namespace+".projectJoinNo");
+	}
+
+	@Override
+	public List<ProjectList> projectListAll() {
+		return sqlSession.selectList(namespace+".projectListAll");
 	}
 
 }

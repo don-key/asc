@@ -1,6 +1,6 @@
 package com.object.asc.lobby.dao;
 
-import org.eclipse.core.internal.resources.Project;
+import java.util.List;
 
 import com.object.asc.lobby.domain.ProjectJoin;
 import com.object.asc.lobby.domain.ProjectJoinList;
@@ -26,6 +26,9 @@ public interface LobbyDAO {
 	
 	/** 참여 번호 조회*/
 	public ProjectJoin getProjectJoinNo();
+	
+	/** 프로젝트 리스트 조회*/
+	public List<ProjectList> projectListAll();
 	
 	/** 프로젝트 날짜 받아오기 */
 	public ProjectList projectDate (int projectListNo);

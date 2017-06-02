@@ -26,8 +26,16 @@ VALUES (null, #{projectJoinNo}, #{userNo}, #{status});
 <select id="projectJoinNo" resultType="com.object.asc.lobby.domain.ProjectJoin">
 SELECT project_join_no as projectJoinNo FROM project_join ORDER BY project_join_no DESC limit 1;
 </select>
+
+<!-- 자료실 내역 목록 조회 -->
+<select id="projectListAll" resultType="com.object.asc.lobby.domain.ProjectList">
+	SELECT project_list_no as 'projectListNo', project_join_no as 'projectJoinNo', project_name as 'projectName', project_photo as 'projectPhoto', chat_name as 'chatName', chat_content as 'chatContent', start_date as 'startDate', end_date as 'endDate', content 
+	FROM project_list;
+</select>
+
+
 <!-- 프로젝트 날짜 받아오기 -->
-<select id="projectDate" resultType="com.object.asc.lobby.domain.ProjectList">
+<select id="projectDate" resultType="com.objecst.asc.lobby.domain.ProjectList">
 select project_list_no as 'projectListNo', project_name as 'projectName', start_date as 'startDate', end_date as 'endDate'
 from project_list
 where project_list_no=#{projectListNo}

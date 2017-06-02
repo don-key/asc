@@ -1,6 +1,7 @@
 package com.object.asc.lobby.service;
 
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -118,6 +119,11 @@ public class LobbyServiceImpl implements LobbyService {
 	@Override
 	public ProjectList projectDate(int projectListNo) {
 		return lobbyDao.projectDate(projectListNo);
+	}
+
+	@Override
+	public List<ProjectList> projectListAll() {
+		return lobbyDao.projectListAll();
 	}
 
 }

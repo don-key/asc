@@ -1,5 +1,7 @@
 package com.object.asc.user;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.log4j.Logger;
@@ -8,8 +10,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.object.asc.lobby.dao.LobbyDAO;
-import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.user.dao.UserDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -26,4 +26,16 @@ public class UserDaoTest {
 		
 	}
 	
+	
+	
+	
+	@Test
+	public void userFind(){
+		
+		List<String> list = dao.userFind("d%");
+		
+		for (String string : list) {
+			logger.info(string+"test");
+		}
+	}
 }

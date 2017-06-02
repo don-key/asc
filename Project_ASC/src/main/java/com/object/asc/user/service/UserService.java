@@ -1,6 +1,7 @@
 package com.object.asc.user.service;
 
 import java.sql.Date;
+import java.util.List;
 
 import com.object.asc.user.domain.User;
 
@@ -20,4 +21,10 @@ public interface UserService {
 	
 	/** 로그인쿠키로 사용자 조회 */
 	public User checkUserWithSessionKey(String cookieValue);
+	
+	/** 회원 '?%'로 시작하는 아이디 검색 */
+	public List<String> userFind(String id); 
+	
+	/** 회원 아이디로 번호 검색 */
+	public int userIdFind(String id);
 }

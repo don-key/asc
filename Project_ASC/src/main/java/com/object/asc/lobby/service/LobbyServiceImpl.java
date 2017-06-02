@@ -111,6 +111,7 @@ public class LobbyServiceImpl implements LobbyService {
 		 * */
 		Sprint sprint = new Sprint();
 		sprint.setScrumNo(projectJoinNo);
+		sprint.setStartDate(projectList.getStartDate());
 		projectDao.sprintRegister(sprint);
 	}
 	

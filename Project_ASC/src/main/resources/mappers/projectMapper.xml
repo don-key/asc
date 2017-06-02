@@ -63,6 +63,6 @@ VALUES (null, #{projectListNo});
 <!-- 스프린트 생성 -->
 <insert id="sprintRegister">
 INSERT INTO sprint(sprint_no, scrum_no, start_date, end_date)
-VALUES (null, #{scrumNo}, curdate(), #{endDate});
+VALUES (null, #{scrumNo}, #{startDate}, #{endDate});
 </insert>
 </mapper>

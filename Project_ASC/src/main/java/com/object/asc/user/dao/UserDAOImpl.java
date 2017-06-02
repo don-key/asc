@@ -55,7 +55,6 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-<<<<<<< HEAD
 	public User get(int userNo) {
 		
 		return sqlSession.selectOne(namespace + ".get", userNo);
@@ -68,8 +67,6 @@ public class UserDAOImpl implements UserDAO{
 
 
 	@Override
-=======
->>>>>>> branch 'master' of https://github.com/don-key/asc
 	public List<String> userFind(String id) {
 		return sqlSession.selectList(namespace + ".userFind", id);
 	}

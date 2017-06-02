@@ -39,7 +39,6 @@ public class UserDaoTest {
 		
 	}
 	
-<<<<<<< HEAD
 	/** 회원정보 조회 테스트*/
 	@Test
 	public void TestGet(){
@@ -48,10 +47,6 @@ public class UserDaoTest {
 		logger.info(user.toString());
 		
 	}
-=======
->>>>>>> branch 'master' of https://github.com/don-key/asc
-	
-	
 	
 	@Test
 	public void userFind(){

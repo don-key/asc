@@ -42,7 +42,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public User get(int userNo) {
 		return dao.get(userNo);
 	}
@@ -54,8 +53,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-=======
->>>>>>> branch 'master' of https://github.com/don-key/asc
 	public List<String> userFind(String id) {
 		return dao.userFind(id+"%");
 	}

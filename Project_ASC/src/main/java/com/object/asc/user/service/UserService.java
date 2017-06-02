@@ -25,12 +25,9 @@ public interface UserService {
 	/** 로그인쿠키로 사용자 조회 */
 	public User checkUserWithSessionKey(String cookieValue);
 	
-<<<<<<< HEAD
 	/** 회원 탈퇴 */
 	public void delete(User user);
 	
-=======
->>>>>>> branch 'master' of https://github.com/don-key/asc
 	/** 회원 '?%'로 시작하는 아이디 검색 */
 	public List<String> userFind(String id); 
 	

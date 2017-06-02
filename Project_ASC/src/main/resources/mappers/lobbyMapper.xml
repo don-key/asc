@@ -7,35 +7,34 @@
 
 <!-- 참여 생성 -->
 <insert id="projectJoinRegister">
-INSERT INTO project_join(project_join_no) VALUES (null);
+INSERT INTO project_join(project_join_no) VALUES (null)
 </insert>
 
 <!-- 프로젝트 내역 생성 -->
 <insert id="projectListRegister">
 INSERT INTO project_list(project_join_no, project_name, project_photo, chat_name, chat_content, start_date, end_date, content) 
-VALUES (#{projectJoinNo}, #{projectName}, #{projectPhoto}, #{chatName}, #{chatContent}, #{startDate}, #{endDate}, #{content});
+VALUES (#{projectJoinNo}, #{projectName}, #{projectPhoto}, #{chatName}, #{chatContent}, #{startDate}, #{endDate}, #{content})
 </insert>
 
 <!-- 참여 내역 생성 -->
 <insert id="projectJoinListRegister">
 INSERT INTO project_join_list(project_join_list_no, project_join_no, user_no, status) 
-VALUES (null, #{projectJoinNo}, #{userNo}, #{status});
+VALUES (null, #{projectJoinNo}, #{userNo}, #{status})
 </insert>
 
 <!-- 참여 번호 조회 -->
 <select id="projectJoinNo" resultType="com.object.asc.lobby.domain.ProjectJoin">
-SELECT project_join_no as projectJoinNo FROM project_join ORDER BY project_join_no DESC limit 1;
+SELECT project_join_no as projectJoinNo FROM project_join ORDER BY project_join_no DESC limit 1
 </select>
 
 <!-- 자료실 내역 목록 조회 -->
-<select id="projectListAll" resultType="com.object.asc.lobby.domain.ProjectList">
+<select id="projectListAll" resultType="ProjectList">
 	SELECT project_list_no as 'projectListNo', project_join_no as 'projectJoinNo', project_name as 'projectName', project_photo as 'projectPhoto', chat_name as 'chatName', chat_content as 'chatContent', start_date as 'startDate', end_date as 'endDate', content 
-	FROM project_list;
+	FROM project_list
 </select>
 
-
 <!-- 프로젝트 날짜 받아오기 -->
-<select id="projectDate" resultType="com.objecst.asc.lobby.domain.ProjectList">
+<select id="projectDate" resultType="ProjectList">
 select project_list_no as 'projectListNo', project_name as 'projectName', start_date as 'startDate', end_date as 'endDate'
 from project_list
 where project_list_no=#{projectListNo}

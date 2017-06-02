@@ -12,9 +12,7 @@ public class ProjectList {
 	private Date startDate;
 	private Date endDate;
 	private String content;
-	
-	public ProjectList() {}
-	
+	public ProjectList() { }
 	public ProjectList(int projectListNo, int projectJoinNo, String projectName, String projectPhoto, String chatName,
 			String chatContent, Date startDate, Date endDate, String content) {
 		this.projectListNo = projectListNo;
@@ -81,13 +79,6 @@ public class ProjectList {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	@Override
-	public String toString() {
-		return "ProjectList [projectListNo=" + projectListNo + ", projectJoinNo=" + projectJoinNo + ", projectName="
-				+ projectName + ", projectPhoto=" + projectPhoto + ", chatName=" + chatName + ", chatContent="
-				+ chatContent + ", startDate=" + startDate + ", endDate=" + endDate + ", content=" + content + "]";
-	}
-	
 	
 	
 	

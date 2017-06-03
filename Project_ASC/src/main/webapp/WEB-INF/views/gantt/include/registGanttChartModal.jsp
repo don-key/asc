@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
 
@@ -13,86 +14,89 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 추가</h4>
       </div>
+      <form>
+      <input type="hidden" id="colorHidden" value="" style="width: 100px;">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-1">
+              <label for="ganttTitle" style="font-size: 20px;">제목</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="text" id="ganttTitle" style="width: 100%;">
+            </div>
+          </div>
+          <br>
 
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-xs-2 col-xs-offset-1">
-            <label for="ganttTitle" style="font-size: 20px;">제목</label>
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-1">
+              <label for="ganttWorker" style="font-size: 20px;">담당자</label>
+            </div>
+            <div class="col-xs-8">
+              <select id="ganttWorker" style="width: 100%; height: 30px;">
+                <option>공통</option>
+                <c:forEach items="${member}" var="member">
+                  <option>${member }</option>
+                </c:forEach>
+              </select>
+            </div>
           </div>
-          <div class="col-xs-8">
-            <input type="text" id="ganttTitle" style="width: 100%;">
-          </div>
-        </div>
-        <br>
 
-        <div class="row">
-          <div class="col-xs-2 col-xs-offset-1">
-            <label for="ganttWorker" style="font-size: 20px;">담당자</label>
+          <br>
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-1">
+              <label style="font-size: 20px;">기간</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="date">
+            </div>
+            <div class="col-xs-1" style="margin-left: 20px; height: 25px">~</div>
+            <div class="col-xs-4">
+              <input type="date">
+            </div>
           </div>
-          <div class="col-xs-8">
-            <select id="ganttWorker" style="width: 100%;">
-              <option>공통</option>
-              <option>김동현</option>
-              <option>마민</option>
-              <option>이지수</option>
-            </select>
-          </div>
-        </div>
+          <br>
 
-        <br>
-        <div class="row">
-          <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">기간</label>
-          </div>
-          <div class="col-xs-3">
-            <input type="date">
-          </div>
-          <div class="col-xs-1" style="margin-left: 25px">~</div>
-          <div class="col-xs-4">
-            <input type="date">
-          </div>
-        </div>
-        <br>
-
-        <div class="row">
-          <div class="col-xs-2 col-xs-offset-1">
-            <label style="font-size: 20px;">색상</label>
-          </div>
-          <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-1">
+              <label style="font-size: 20px;">색상</label>
+            </div>
+            <div class="col-xs-8">
               <!-- 색상 선택기 -->
               <div class="col-xs-7">
-              <span id="colorpicker"></span>
+                <span id="colorpicker"></span>
               </div>
               <div class="col-xs-2">
-              <input type="text" id="color" name="color" value="" style="width: 100px;">
+                <input type="text" id="color" name="color" value="" style="width: 100px;">
+                
               </div>
+            </div>
           </div>
         </div>
-        <br>
-
-      </div>
-
+      </form>
+      
       <div class="modal-footer">
         <div class="row">
           <div class="col-xs-2 col-xs-offset-4">
-            <button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">생성</button>
+            <button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">생성</button>
           </div>
           <div class="col-xs-2">
             <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
           </div>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>
 
-<script>
 
-// UI 구성.
-$('#colorpicker').farbtastic(function(data) {
-  color = data;
-  $('#color').val(color);
-  $('#color').css("background-color",color);
-  
+<script>
+	// UI 구성.
+	$('#colorpicker').farbtastic(function(data) {
+		color = data;
+		$('#colorHidden').val(color);
+		$('#color').css("background-color", color);
+
 	});
 </script>

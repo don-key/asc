@@ -42,7 +42,6 @@ public class GanttController {
 		String[] pEndDate = projList.getEndDate().toString().split("-");
 		List<GanttChartList> funcList = ganttService.ganttList(1);
 		
-		System.out.println("4가 나와야겠지 : " + funcList.size());
 		
 		int year = Integer.parseInt(pEndDate[0]) - Integer.parseInt(pStartDate[0]);
 		
@@ -53,17 +52,11 @@ public class GanttController {
 		for (GanttChartList func : funcList) {
 			String[] fStartDate = func.getStartDate().toString().split("-");
 			startCount[count] = calDays(fStartDate) - calDays(pStartDate) + 365*year;
-			System.out.println(count+1 + "번째 기능 시작일 : " + calDays(fStartDate));
-			System.out.println(count+1 + "번째 프로젝트 시작일 : " + calDays(pStartDate));
 				count++;
 		}
 		
 		int count2 = 0;
 		
-		for (int i = 0; i < startCount.length; i++) {
-			System.out.println("몇번째에서 시작인지 구해보자");
-			System.out.println(startCount[i]);
-		}
 		
 		/** 기능들 몇일동안인지 */
 		int[] duration = new int[funcList.size()];
@@ -71,13 +64,7 @@ public class GanttController {
 			String[] fStartDate = func2.getStartDate().toString().split("-");
 			String[] fEndDate = func2.getEndDate().toString().split("-");
 			duration[count2] = calDays(fEndDate) - calDays(fStartDate) + 365*year +1;
-			System.out.println(count2 + 1 + "번째 기능 시작일 : " + calDays(fStartDate));
-			System.out.println(count2 + 1 + "번째 기능 마감일 : " + calDays(fEndDate));
 			count2++;
-		}
-		for (int i = 0; i < duration.length; i++) {
-			System.out.println("기간을 구해보자");
-			System.out.println(duration[i]);
 		}
 		
 		
@@ -89,6 +76,9 @@ public class GanttController {
 		} else{
 			days = calDays(pEndDate) - calDays(pStartDate) +1;
 		}
+		
+		/** 간트 기능 추가 모달에 들어갈 참여 멤버 이름 조회 (동적으로 나중에 바꾸기) */
+		List<String> member = lobbyService.memberName(1);
 		
 
 
@@ -110,6 +100,10 @@ public class GanttController {
 		model.addAttribute("duration", duration);
 		// 기능 개수
 //		model.addAttribute("funcSize", funcList.size());
+		
+		// 멤버 조회
+		model.addAttribute("member", member);
+		
 
 		return "/gantt/ganttChart";
 	}
@@ -120,6 +114,15 @@ public class GanttController {
 		logger.info("간트 페이지 테스트");
 		return "/gantt/currentChart";
 	}
+	
+	@RequestMapping(value="/register", method=RequestMethod.GET)
+	public String register(Model model){
+		
+		return "/gantt/ganttChart";
+	}
+	
+	
+	
 
 	
 	/** 요일 계산해주는 메소드 */
@@ -141,5 +144,7 @@ public class GanttController {
 		}
 		return days;
 	}
+	
+	
 
 }

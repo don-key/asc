@@ -61,4 +61,9 @@ public class LobbyDAOImpl implements LobbyDAO {
 		return sqlSession.selectOne(namespace+".memberCount", projectJoinNo);
 	}
 
+	@Override
+	public List<String> memberName(int projectJoinNo) {
+		return sqlSession.selectList(namespace + ".memberName", projectJoinNo);
+	}
+
 }

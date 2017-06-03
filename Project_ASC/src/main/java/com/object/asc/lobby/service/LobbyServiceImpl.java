@@ -143,4 +143,9 @@ public class LobbyServiceImpl implements LobbyService {
 		return lobbyDao.memberCount(projectJoinNo);
 	}
 
+	@Override
+	public List<String> memberName(int projectJoinNo) {
+		return lobbyDao.memberName(projectJoinNo);
+	}
+
 }

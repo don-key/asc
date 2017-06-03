@@ -45,4 +45,12 @@ where project_list_no=#{projectListNo}
 select count(project_join_no) from project_join_list where project_join_no = #{projectJoinNo}
 </select>
 
+<!-- 프로젝트 참여 멤버 이름 조회 -->
+<select id="memberName" resultType="String">
+select name
+from users
+where user_no in (select user_no
+				from project_join_list
+				where project_join_no=#{projectJoinNo})
+</select>
 </mapper>

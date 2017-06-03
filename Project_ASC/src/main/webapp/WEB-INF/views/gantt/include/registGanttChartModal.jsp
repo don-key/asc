@@ -59,10 +59,13 @@
             <label style="font-size: 20px;">색상</label>
           </div>
           <div class="col-xs-8">
-            <div style="height:200">여긴디..
               <!-- 색상 선택기 -->
-              <div id="colorpicker"></div>
-            </div>
+              <div class="col-xs-7">
+              <span id="colorpicker"></span>
+              </div>
+              <div class="col-xs-2">
+              <input type="text" id="color" name="color" value="" style="width: 100px;">
+              </div>
           </div>
         </div>
         <br>
@@ -85,8 +88,11 @@
 
 <script>
 
-// UI를 구성합니다.
+// UI 구성.
 $('#colorpicker').farbtastic(function(data) {
   color = data;
-});
+  $('#color').val(color);
+  $('#color').css("background-color",color);
+  
+	});
 </script>

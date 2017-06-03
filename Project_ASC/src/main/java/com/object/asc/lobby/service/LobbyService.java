@@ -23,4 +23,7 @@ public interface LobbyService {
 	
 	/** 프로젝트 인원수 조회*/
 	public int memberCount(int projectJoinNo);
+	
+	/** 프로젝트 참여 멤버 이름 조회 */
+	public List<String> memberName (int projectJoinNo);
 }

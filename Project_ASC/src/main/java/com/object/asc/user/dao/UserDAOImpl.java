@@ -75,6 +75,23 @@ public class UserDAOImpl implements UserDAO{
 	public int userIdFind(String id) {
 		return sqlSession.selectOne(namespace + ".userIdFind", id);
 	}
+
+	@Override
+	public String findId(String name, String phone) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("name", name);
+		paramMap.put("phone", phone);
+		return sqlSession.selectOne(namespace + ".findId", paramMap);
+	}
+
+	@Override
+	public String findPw(String id, String name, String phone) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("id", id);
+		paramMap.put("name", name);
+		paramMap.put("phone", phone);
+		return sqlSession.selectOne(namespace + ".findPw", paramMap);
+	}
 	
 
 }

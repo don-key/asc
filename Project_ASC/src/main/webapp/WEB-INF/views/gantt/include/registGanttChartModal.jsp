@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="registGanttChartModal" role="dialog">
   <div class="modal-dialog">
@@ -57,8 +59,10 @@
             <label style="font-size: 20px;">색상</label>
           </div>
           <div class="col-xs-8">
-            <!-- 색상 선택기 -->
-            <div id="colorpicker"></div>
+            <div style="height:200">여긴디..
+              <!-- 색상 선택기 -->
+              <div id="colorpicker"></div>
+            </div>
           </div>
         </div>
         <br>
@@ -78,3 +82,11 @@
     </div>
   </div>
 </div>
+
+<script>
+
+// UI를 구성합니다.
+$('#colorpicker').farbtastic(function(data) {
+  color = data;
+});
+</script>

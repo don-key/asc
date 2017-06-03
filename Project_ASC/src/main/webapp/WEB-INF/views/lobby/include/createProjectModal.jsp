@@ -56,7 +56,7 @@
                   <div class="col-xs-3 col-xs-offset-1"></div>
                   <div class="col-xs-8">
                   <div id="invitation">
-                     <input type="hidden" name="invitationList" value="rlaehdzlsla@gmail.com">
+                     <input type="hidden" name="invitationList" value="${login.id}">
                   </div>
                   </div>
                </div>

@@ -11,11 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
@@ -85,9 +88,8 @@ public class UserController {
 		
 		if(loginCheck == null){return;}
 			
-		model.addAttribute("user", user);
-		model.addAttribute("loginCheck", loginCheck);
-		logger.info("로그인 유저 정보 받아랏"+loginCheck);
+		model.addAttribute("user", loginCheck);
+		logger.info("로그인 유저 정보 받아랏"+loginCheck.toString());
 		
 		
 		if (user.isUseCookie()) {
@@ -134,4 +136,44 @@ public class UserController {
 	
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value = "/findId")
+	@ResponseBody
+	public ResponseEntity<String> findId(String name, String phone) {
+		ResponseEntity<String> entity = null;
+	      
+	      try {
+	    	  logger.info("아이디 찾아준다");
+	    	  
+	    	  String returnId = service.findId(name, phone);
+	    	  logger.info("당신의 아이디는"+returnId);
+	         entity = new ResponseEntity<String>(returnId, HttpStatus.OK);
+	         logger.info("궁금하다 너의 정체"+ entity);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	      }
+	      return entity;
+	}
+	
+	@RequestMapping(value = "/findPw")
+	@ResponseBody
+	public ResponseEntity<String> findPw(String id, String name, String phone) {
+		ResponseEntity<String> entity = null;
+	      
+	      try {
+	    	  logger.info("비밀번호 찾아준다");
+	    	  
+	    	  String returnPw = service.findPw(id, name, phone);
+	    	  logger.info("당신의 비밀번호는: "+returnPw);
+	         entity = new ResponseEntity<String>(returnPw, HttpStatus.OK);
+	         logger.info("궁금하다 너의 정체:"+ entity);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	      }
+	      return entity;
+	}
+	
+	
 }

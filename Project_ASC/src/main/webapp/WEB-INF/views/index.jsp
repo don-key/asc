@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" type="text/css" href="/resources/css/main.css">
 <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
+<!-- SweetAlert CSS -->
+<link href="/resources/css/sweetalert2.min.css" rel="stylesheet">
 
 <!-- jQuery -->
 <script src="/resources/js/jquery.min.js"></script>
@@ -25,6 +27,8 @@
 <script type="text/javascript" src="/resources/js/ajaxchimp.js"></script>
 <script type="text/javascript" src="/resources/js/main.js"></script>
 <script type="text/javascript" src="/resources/js/index.js"></script>
+<!-- SweetAlert JavaScript -->
+<script src="/resources/js/sweetalert2.min.js"></script>
 
 </head>
 

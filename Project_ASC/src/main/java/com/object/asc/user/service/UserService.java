@@ -25,6 +25,12 @@ public interface UserService {
 	/** 로그인쿠키로 사용자 조회 */
 	public User checkUserWithSessionKey(String cookieValue);
 	
+	/** 이름과 전화번호로 회원아이디 찾기*/
+	public String findId(String name, String phone);
+	
+	/** 아이디, 이름, 전화번호로 비밀번호 찾기*/
+	public String findPw(String id, String name, String phone);
+	
 	/** 회원 탈퇴 */
 	public void delete(User user);
 	

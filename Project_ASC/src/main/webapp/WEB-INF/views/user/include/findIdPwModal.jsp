@@ -40,10 +40,12 @@ font-family: 'LotteMartDream';
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#tab1" data-toggle="tab">아이디 찾기</a></li>
 							<li><a href="#tab2" data-toggle="tab">비밀번호 찾기</a></li>
+							<li id="newPassword"><a href="#tab3" data-toggle="tab">새 비밀번호 만들기</a></li>
 						</ul>
 
 						<div class="tab-content">
 							<div class="tab-pane active" id="tab1">
+                          <form id="tab1Form" action="/user/findId">
 							<br>
 								<p style="text-align: center;">　 회원정보에 등록한 이름과 휴대전화 번호를 입력해 주세요.</p>
 							<br>
@@ -53,7 +55,7 @@ font-family: 'LotteMartDream';
 										<label class="regist_label">이름</label>
 									</div>
 									<div class="col-xs-7 col-sm-7">
-										<input type="text" class="form-control" name="name" placeholder="이름을 입력하세요" />
+										<input type="text" class="form-control" id="nameForId" name="name" placeholder="이름을 입력하세요" />
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -63,14 +65,25 @@ font-family: 'LotteMartDream';
 										<label class="regist_label">휴대폰 번호</label>
 									</div>
 									<div class="col-xs-7 col-sm-7 ">
-										<input type="tel" class="form-control placeholder" name="telephone" placeholder="휴대폰 번호를 입력하세요" />
+										<input type="tel" class="form-control placeholder" id="phoneForId" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 									</div>
 									<div class="clearfix"></div>
 								</div>
+                                <div class="modal-footer">
+                                  <div class="row">
+                                    <div class="col-xs-2 col-xs-offset-4">
+                                      <button type="submit" id="findIdBtn" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">찾기</button>
+                                    </div>
+                                    <div class="col-xs-2">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
+                                    </div>
+                                  </div>
+                                </div>
+                          </form>
 							</div>
 
-
-							<div class="tab-pane" id="tab2">
+						<div class="tab-pane" id="tab2">
+                       <form action="/user/findPw">
 							<br>
 								<p style="text-align: center;">회원정보에 등록한 아이디, 이름과 휴대전화 번호를 입력해 주세요. <br> 이메일로 임시 비밀번호를 발급합니다.</p>
 							<br>
@@ -80,7 +93,7 @@ font-family: 'LotteMartDream';
 										<label for="id" class="regist_label">아이디</label>
 									</div>
 									<div class="col-xs-7 col-sm-7">
-										<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="20">
+										<input type="email" class="form-control onlyAlphabetAndNumber" id="idForPw" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="20">
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -90,7 +103,7 @@ font-family: 'LotteMartDream';
 										<label class="regist_label">이름</label>
 									</div>
 									<div class="col-xs-7 col-sm-7">
-										<input type="text" class="form-control" name="name" placeholder="이름을 입력하세요" />
+										<input type="text" class="form-control" id="nameForPw" name="name" placeholder="이름을 입력하세요" />
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -100,27 +113,199 @@ font-family: 'LotteMartDream';
 										<label class="regist_label">휴대폰 번호</label>
 									</div>
 									<div class="col-xs-7 col-sm-7 ">
-										<input type="tel" class="form-control placeholder" name="telephone" placeholder="휴대폰 번호를 입력하세요" />
+										<input type="tel" class="form-control placeholder" id="phoneForPw" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 									</div>
 									<div class="clearfix"></div>
 								</div>
+                
+                                <div class="modal-footer">
+                                  <div class="row">
+                                    <div class="col-xs-2 col-xs-offset-4">
+                                      <button type="submit" id="findPwBtn" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">찾기</button>
+                                    </div>
+                                    <div class="col-xs-2">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
+                                    </div>
+                                  </div>
+                                </div>
+                         </form>
 							</div>
+                          
+                        <div class="tab-pane" id="tab3">
+                         <form action="/user/makeNewPw">
+                            <br>
+                              <p style="text-align: center;">새롭게 사용하실 비밀번호를 등록해주세요 <br> </p>
+                            <br>
+              
+                              <div class="form-group">
+                                <div class="col-xs-3 col-sm-3 text-center">
+                                  <label for="id" class="regist_label">비밀번호</label>
+                                </div>
+                                <div class="col-xs-7 col-sm-7">
+                                  <input type="email" class="form-control onlyAlphabetAndNumber" id="password" name="password" placeholder="새롭게 사용할 비밀번호를 입력하세요" maxlength="30">
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+              
+                              <div class="form-group">
+                                <div class="col-xs-3 col-sm-3 text-center">
+                                  <label class="regist_label">비밀번호 확인</label>
+                                </div>
+                                <div class="col-xs-7 col-sm-7">
+                                  <input type="text" class="form-control" id="rePassword" name="rePassword" placeholder="비밀번호를 다시 입력하세요" />
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                              
+                              <div class="modal-footer">
+                                  <div class="row">
+                                    <div class="col-xs-2 col-xs-offset-4">
+                                      <button type="submit" id="newPassword" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">등록</button>
+                                    </div>
+                                    <div class="col-xs-2">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
+                                    </div>
+                                  </div>
+                                </div>
+                          </form>
+                            </div>
+              
 						</div>
 					</div>
 				</div>
 			</div>
 			<br>
-
-			<div class="modal-footer">
-				<div class="row">
-					<div class="col-xs-2 col-xs-offset-4">
-						<button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">찾기</button>
-					</div>
-					<div class="col-xs-2">
-						<button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+/**이름과 전화번호로 아이디 찾기*/
+$(function (){
+    $('#findIdBtn').click(function(e){ 
+    	e.preventDefault();
+          var nameForId = $("#nameForId").val();
+          if(nameForId < 1){
+               swal({
+                    title: '이름 미입력!',
+                    text: '이름을 입력해주세요.',
+                    type: 'warning',
+                    confirmButtonText: '닫기'
+                  })
+              return false;
+            }
+          var phoneForId = $("#phoneForId").val();
+          if(phoneForId < 1){
+              swal({
+                   title: '전화번호 미입력!',
+                   text: '전화번호를 입력해주세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }   
+           $.ajax({
+               type : 'GET',
+               url : "/user/findId",
+               data:
+               {
+            	   name: nameForId,
+            	   phone: phoneForId,
+               },
+               success:function(request){
+                  if (request == '') {
+                       swal(
+                              '　',
+                              '찾는 아이디가 없습니다!',
+                              'success'
+                            )
+               
+            } else {
+                   swal(
+                         request,
+                         '찾으시는 아이디입니다 :)',
+                         'success'
+                       )
+                    }
+                   }
+         }); 
+       } 
+     );
+   });
+
+/** 아이디, 이름과 전화번호로 비밀번호 찾기*/
+$(function (){
+    $('#findPwBtn').click(function(e){ 
+    	e.preventDefault();
+          var id = $("#idForPw").val();
+          if(id < 1){
+               swal({
+                    title: '아이디 미입력!',
+                    text: '아이디를 입력해주세요.',
+                    type: 'warning',
+                    confirmButtonText: '닫기'
+                  })
+
+              return false;
+            }
+          var nameForPw = $("#nameForPw").val();
+          if(nameForPw < 1){
+              swal({
+                   title: '이름 미입력!',
+                   text: '이름을 입력해주세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }   
+          var phoneForPw = $("#phoneForPw").val();
+          if(phoneForPw < 1){
+              swal({
+                   title: '전화번호 미입력!',
+                   text: '전화번호를 입력해주세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }  
+           $.ajax({
+               type : 'GET',
+               url : "/user/findPw",
+               data:
+               {
+            	   id: id,
+            	   name: nameForPw,
+            	   phone: phoneForPw,
+               },
+               success:function(request){
+                  if (request == '') {
+                       swal(
+                              '　',
+                              '찾는 비밀번호가 없습니다!',
+                              'success'
+                            )
+               
+            } else {
+                   swal(
+                         '당신의 비밀번호는',
+                         request+'입니다!',
+                         'success'
+                       )
+                    }
+                   }
+         }); 
+       } 
+     );
+   });
+
+
+
+
+
+/**새로운 비밀번호 만들때 보여주기*/
+$(function() {
+	$('#newPassword').hide();	
+});
+
+
+</script>

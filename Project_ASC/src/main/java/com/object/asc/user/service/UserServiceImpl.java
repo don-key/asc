@@ -62,5 +62,15 @@ public class UserServiceImpl implements UserService {
 		return dao.userIdFind(id);
 	}
 
+	@Override
+	public String findId(String name, String phone) {
+		return dao.findId(name, phone);
+	}
+
+	@Override
+	public String findPw(String id, String name, String phone) {
+		return dao.findPw(id, name, phone);
+	}
+
 	
 }

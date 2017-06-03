@@ -6,6 +6,9 @@
 <title>ASC</title>
 <meta charset="utf-8">
 
+<!-- 파비콘 설정 -->
+<link rel="shortcut icon" type="image/x-icon" href="/resources/images/sharing.ico" />
+
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 

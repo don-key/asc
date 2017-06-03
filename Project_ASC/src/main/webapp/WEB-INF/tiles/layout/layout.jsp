@@ -60,7 +60,7 @@
     <script src="/resources/js/bootstrap-datetimepicker.js"></script>
     <script src="/resources/js/bootstrap-datetimepicker.ko.js"></script>
     
-    <!-- color picker js-->
+    <!-- color picker JavaScript-->
     <script src="/resources/js/farbtastic.js"></script>
   
 </head>

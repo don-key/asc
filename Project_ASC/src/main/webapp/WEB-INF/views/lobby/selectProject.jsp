@@ -46,16 +46,16 @@
                </div>
       </c:when>
       <c:otherwise>
-         <c:forEach items="${list }" var="projectList">
+         <c:forEach items="${list}" var="projectList" varStatus="status">
             <div class="col-lg-3 col-md-3 col-xs-4">
-               <a href="#" class="thumbnail"> <img src="/resources/images/noimage.png" alt="">
+               <a href="#" class="thumbnail"> <img src="/resources/images/upload${projectList.projectPhoto}" alt="">
                </a>
                <div class="panel">
                   <div style="font-size: 17px; font-weight: bold;"></div>
-                  <div class="text-right">2017.05.22~</div>
+                  <div class="text-right">${projectList.startDate}~${projectList.endDate}</div>
                   <br>
                   <div class="text-right" style="font-size: 15px;">
-                     Object&nbsp; <i class="fa fa-child"></i>6
+                     ${projectList.projectName}&nbsp; <i class="fa fa-child"></i>${count[status.index]}
                   </div>
                   <br>
                   <div class="text-right">

@@ -34,6 +34,9 @@
     <!-- SweetAlert CSS -->
     <link href="/resources/css/sweetalert2.min.css" rel="stylesheet">
     
+    <!-- color picker CSS -->
+    <link href="/resources/css/farbtastic.css" rel="stylesheet">
+    
       <!-- jQuery -->
     <script src="/resources/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -56,6 +59,9 @@
     <script src="/resources/js/sweetalert2.min.js"></script>
     <script src="/resources/js/bootstrap-datetimepicker.js"></script>
     <script src="/resources/js/bootstrap-datetimepicker.ko.js"></script>
+    
+    <!-- color picker js-->
+    <script src="/resources/js/farbtastic.js"></script>
   
 </head>
 <body>

@@ -32,4 +32,7 @@ public interface LobbyDAO {
 	
 	/** 프로젝트 날짜 받아오기 */
 	public ProjectList projectDate (int projectListNo);
+	
+	/** 프로젝트 인원수 조회*/
+	public int memberCount(int projectJoinNo);
 }

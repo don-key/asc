@@ -1,5 +1,6 @@
 package com.object.asc.lobby;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -14,7 +15,6 @@ import com.object.asc.lobby.dao.LobbyDAO;
 import com.object.asc.lobby.domain.ProjectJoin;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
-import com.object.asc.project.domain.DashBoard;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
@@ -64,6 +64,15 @@ public class LobbyDaoTest {
 	public void projectJoinTest(){
 		ProjectJoin projectJoin = lobbyDao.getProjectJoinNo();
 		int projectJoinNo = projectJoin.getProjectJoinNo();
+	}
+	
+	@Test
+	public void projectList(){
+		List<ProjectList>  projectList = lobbyDao.projectListAll();
+		
+		for (ProjectList projectList2 : projectList) {
+			logger.info(projectList2+"!!!!!!!!!!!!!!!!!");
+		}
 	}
 	
 }

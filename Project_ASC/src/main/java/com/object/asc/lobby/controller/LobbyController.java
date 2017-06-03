@@ -43,14 +43,21 @@ public class LobbyController {
 	@RequestMapping(value = "/selectProject", method = RequestMethod.GET)
 	public String selectProject(Model model) {
 		logger.info("간트 페이지 테스트");
-		model.addAttribute("list", lobbyService.projectListAll()); 
+		List<ProjectList> list = lobbyService.projectListAll();
+		List<Integer> memberCount = new ArrayList<Integer>();
+		for (ProjectList projectList : list) {
+			memberCount.add(lobbyService.memberCount(projectList.getProjectJoinNo()));
+		}
+		
+		model.addAttribute("list", list);
+		model.addAttribute("count", memberCount);
 		return "/lobby/selectProject";
 	}
 	
 	@RequestMapping(value = "/selectProject", method = RequestMethod.POST)
 	public String registerProject(@RequestParam("fileUpload")MultipartFile file, String[] invitationList, ProjectList projectList, Model model) {
 		lobbyService.projectRegister(projectList, file, invitationList);
-		return "/lobby/selectProject";
+		return "redirect:/lobby/selectProject";
 	}
 	
 	@RequestMapping("/memberList")

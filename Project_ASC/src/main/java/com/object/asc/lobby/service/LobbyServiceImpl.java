@@ -4,8 +4,10 @@ package com.object.asc.lobby.service;
 import java.util.List;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -24,6 +26,7 @@ import com.object.asc.project.domain.Scrum;
 import com.object.asc.project.domain.Sprint;
 import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.service.UserService;
+import com.object.asc.util.UploadFileUtils;
 
 @Service
 public class LobbyServiceImpl implements LobbyService {
@@ -37,6 +40,8 @@ public class LobbyServiceImpl implements LobbyService {
 	@Inject
 	private ProjectDAO projectDao;
 	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 	/** 
 	 * 파라미터로 일단 받아야 할것
 	 * 1. ProjectList
@@ -44,6 +49,12 @@ public class LobbyServiceImpl implements LobbyService {
 	@Transactional
 	@Override
 	public void projectRegister(ProjectList projectList, MultipartFile file, String[] invitationList) {
+		String savePath = "";
+		try {
+			savePath = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		/** 프로젝트 생성 시 */
 		/** 1-1. 참여 생성 */
 		lobbyDao.projectJoinRegister();
@@ -56,6 +67,7 @@ public class LobbyServiceImpl implements LobbyService {
 		projectList.setProjectPhoto(file.getOriginalFilename());
 		projectList.setChatName(projectJoinNo + "_" + uuid.toString());
 		projectList.setChatContent("chat.txt");
+		projectList.setProjectPhoto(savePath);
 //		projectList.setStartDate(java.sql.Date.valueOf("2017-05-31")); // +1 해야함
 //		projectList.setEndDate(java.sql.Date.valueOf("2017-06-12")); // +1 해야함
 		lobbyDao.projectListRegister(projectList);
@@ -124,6 +136,11 @@ public class LobbyServiceImpl implements LobbyService {
 	@Override
 	public List<ProjectList> projectListAll() {
 		return lobbyDao.projectListAll();
+	}
+
+	@Override
+	public int memberCount(int projectJoinNo) {
+		return lobbyDao.memberCount(projectJoinNo);
 	}
 
 }

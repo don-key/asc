@@ -9,17 +9,21 @@ public class LibraryList {
 	private String title;
 	private String fileName;
 	private String uuidName;
+	private String displayName;
 	private Date regdate;
 
 	public LibraryList() {	}
 
-	public LibraryList(int libraryListNo, int libraryNo, int userNo, String title, String fileName, String uuidName, Date regdate) {
+	public LibraryList(int libraryListNo, int libraryNo, int userNo, String title, String fileName, String uuidName,
+			String displayName, Date regdate) {
+		super();
 		this.libraryListNo = libraryListNo;
 		this.libraryNo = libraryNo;
 		this.userNo = userNo;
 		this.title = title;
 		this.fileName = fileName;
 		this.uuidName = uuidName;
+		this.displayName = displayName;
 		this.regdate = regdate;
 	}
 
@@ -71,6 +75,14 @@ public class LibraryList {
 		this.uuidName = uuidName;
 	}
 
+	public String getDisplayName() {
+		return displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -82,6 +94,7 @@ public class LibraryList {
 	@Override
 	public String toString() {
 		return "LibraryList [libraryListNo=" + libraryListNo + ", libraryNo=" + libraryNo + ", userNo=" + userNo
-				+ ", title=" + title + ", fileName=" + fileName + ", uuidName=" + uuidName + ", regdate=" + regdate	+ "]";
+				+ ", title=" + title + ", fileName=" + fileName + ", uuidName=" + uuidName + ", displayName="
+				+ displayName + ", regdate=" + regdate + "]";
 	}
 }

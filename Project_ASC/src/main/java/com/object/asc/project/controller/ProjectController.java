@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -31,6 +33,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.object.asc.project.domain.LibraryList;
 import com.object.asc.project.service.ProjectService;
+import com.object.asc.user.domain.User;
+import com.object.asc.user.service.UserService;
 import com.object.asc.util.MediaUtils;
 import com.object.asc.util.UploadFileUtils;
 
@@ -44,7 +48,10 @@ public class ProjectController {
 	private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 	
 	@Inject
-	private ProjectService service;
+	private ProjectService projectService;
+	
+	@Inject
+	private UserService userService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -61,8 +68,13 @@ public class ProjectController {
 		logger.info("자료실 입장~");
 		
 		logger.info("자료 내역 리스트 올~~~~~~~~~");
-		model.addAttribute("list", service.libraryListListAll());		// 자료 내역 리스트 목록 뿌려주기
-
+		List<LibraryList>  libraryLists= projectService.libraryListListAll();
+		List<User> name = new ArrayList<User>();
+		for (LibraryList libraryList : libraryLists) {
+			name.add(userService.get(libraryList.getUserNo()));
+		}
+		model.addAttribute("list", projectService.libraryListListAll());		// 자료 내역 리스트 목록 뿌려주기
+		model.addAttribute("name", name);
 		return "/project/library";
 	}
 	
@@ -82,7 +94,7 @@ public class ProjectController {
 		libraryList.setFileName(file.getOriginalFilename());
 		libraryList.setUuidName(uuidName);
 		
-		service.libraryListRegister(libraryList);		// 매퍼를 통해 등록 메소드 호출
+		projectService.libraryListRegister(libraryList);		// 매퍼를 통해 등록 메소드 호출
 		
 		rttr.addFlashAttribute("msg", "success");
 		
@@ -192,13 +204,13 @@ public class ProjectController {
 
 			in = new FileInputStream(uploadPath + fileName);
 
-			if (mType != null) {
+		/*	if (mType != null) {
 				headers.setContentType(mType);
-			} else {
+			} else {*/
 				fileName = fileName.substring(fileName.indexOf("_")+1);
 				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);	// 이미지가 아닌 경우 MIME 타입을 다운로드용으로 지정
 				headers.add("Content-Disposition", "attachment; filename=\"" + new String(fileName.getBytes("UTF-8"), "ISO-8859-1")+"\"");
-			}
+//			}
 			
 			entity = new ResponseEntity<byte[]> (IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
 			
@@ -275,7 +287,7 @@ public class ProjectController {
 	public String remove(@RequestParam("libraryListNo") int libraryListNo, RedirectAttributes rttr) {
 		logger.info("자료 내역 "+libraryListNo+"번 글 삭제 처리 요청");
 		
-		service.libraryListDelete(libraryListNo);
+		projectService.libraryListDelete(libraryListNo);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		

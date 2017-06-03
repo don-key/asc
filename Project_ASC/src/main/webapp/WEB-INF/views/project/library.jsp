@@ -1,7 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 
+<link href="/resources/css/library/lightbox.css" rel="stylesheet">
+
+<script src="/resources/js/library/lightbox.js"></script>
+
 <style>
+a{
+color: black;
+}
 .panel {
 	margin-top: 10% !important
 }
@@ -61,9 +68,7 @@
 				</c:when>
 				
 				<c:otherwise>
-				<c:forEach items="${list }" var="libraryList">
-
-
+				<c:forEach items="${list }" var="libraryList" varStatus="status">
 
 					<form role="form" method="post">
 						<input type="hidden" name="libraryListNo" value="${libraryList.libraryListNo }">
@@ -73,16 +78,27 @@
 					<div class="col-lg-4">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								${libraryList.title }<a class="btn btn-default btn-sm" id="removeBtn" style="float: right; padding: 2px 9px;"> <i class="fa fa-trash-o fa-sm"></i> <%-- 						<input type="hidden" name="libraryListNo" value="${libraryList.libraryListNo }"> --%>
+								${libraryList.title }  
+								
+								<a class="btn btn-default btn-sm" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
+									<i class="fa fa-trash-o fa-sm"></i> 
 								</a>
+								
 							</div>
 
 							<div class="panel-body" style="height: 90px">
 								<p>
-									<a href="/resources/images/upload${libraryList.uuidName}" class="thumbnailList" style="color: black;"> <img src="/resources/images/upload${libraryList.uuidName}" width="20%">${libraryList.fileName }</a>
+									<a href="/resources/images/upload${libraryList.uuidName}" class="thumbnailList" data-lightbox="image-${status.index}"> 
+									<img src="/resources/images/upload${libraryList.uuidName}" width="20%"  >${libraryList.fileName }</a>
 								</p>
 							</div>
-							<div class="panel-footer">작성자 : ${libraryList.userNo }</div>
+							
+							<div class="panel-footer">	작성자 : ${name[status.index].name}
+							<a href="/project/displayFile?fileName=${libraryList.uuidName}" class="btn btn-default btn-sm" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
+									<i class="fa fa-download fa-sm"></i> 
+							</a>
+							</div>
+							
 						</div>
 					</div>
 				</c:forEach>
@@ -94,112 +110,75 @@
 
 </div>
 
-
 <!-- Modal -->
 <jsp:include page="include/fileUploadModal.jsp" />
 
+
 <script>
-	function CallReady() {
-		$(".thumbnailList").on("click", function(event) {
-
-			var fileLink = $(this).attr("href");
-
-			if (checkImageType(fileLink)) {
-				event.preventDefault();
-
-				var imgTag = $("#popup_img");
-				imgTag.attr("src", fileLink);
-
-				$(".popup").show('slow');
-				imgTag.addClass("show");
-			}
-		});
-
-		$("#popup_img").on("click", function() {
-			$(".popup").hide('slow');
-		});
-
-		/** 삭제 버튼 이벤트 처리 */
-		$("#removeBtn").on(
-				"click",
+$(function() {
+/** 삭제 버튼 이벤트 처리 */
+	$("#removeBtn").on("click",	function() {
+		var link = $(this).parent().parent().parent().prev();
+		swal({
+			title : '자료를 삭제하시겠습니까?',
+			text : "",
+			type : 'question',
+			showCancelButton : true,
+			confirmButtonColor : '#3085d6',
+			cancelButtonColor : '#d33',
+			confirmButtonText : 'Yes',
+			cancelButtonText : 'No',
+		}).then(
 				function() {
-					var link = $(this).parent().parent().parent().prev();
-					console.log(link);
-					swal({
-						title : '자료를 삭제하시겠습니까?',
-						text : "",
-						type : 'question',
-						showCancelButton : true,
-						confirmButtonColor : '#3085d6',
-						cancelButtonColor : '#d33',
-						confirmButtonText : 'Yes',
-						cancelButtonText : 'No',
-					}).then(
-							function() {
-								var formObj = link;
+					var formObj = link;
+	
+					var arr = [];
+					$(".thumbnailList img").each(function(index) {
+						arr.push($(this).attr("src"));
+					});
+	
+					$.post("/project/deleteAllFiles", {
+						files : arr
+					}, function() {
+	
+					});
+	
+					formObj.attr("action", "/project/remove");
+					formObj.submit();
+					link = '';
+				})
+	});
 
-								var arr = [];
-								$(".thumbnailList img").each(function(index) {
-									arr.push($(this).attr("src"));
-								});
-
-								$.post("/project/deleteAllFiles", {
-									files : arr
-								}, function() {
-
-								});
-
-								formObj.attr("action", "/project/remove");
-								formObj.submit();
-								link = '';
-								swal('삭제 완료!', '요청이 처리되었습니다.', 'success')
-							},
-							function(dismiss) {
-								if (dismiss === 'cancel') {
-									link = '';
-									swal('Cancelled',
-											'Your imaginary file is safe :)',
-											'error')
-								}
-							})
-				});
-	};
-
-	CallReady();
 
 	/** 파일의 확장자가 존재하는지 검사 */
 	function checkImageType(fileName) {
 		var pattern = /jpg|gif|png|jpeg/i; // i는 대소문자 구분 없음을 의미
-
+	
 		return fileName.match(pattern);
 	}
-
+	
 	function getFileInfo(fullName) {
 		var fileName, imgsrc, getLink;
-
+		
 		var fileLink;
-
+		
 		if (checkImageType(fullName)) {
 			imgsrc = "/displayFile?fileName=" + fullName;
 			fileLink = fullName.substr(7);
-
-			var front = fileName.substr(0, 5); // /asc 경로 추출
-			var end = fileName.substr(7); // s_ 제거
-
+			
+			var front = fileName.substr(0, 5);	// /asc 경로 추출
+			var end = fileName.substr(7); 	// s_ 제거
+			
 			getLink = "/displayFile?fileName=" + front + end;
 		} else {
-			imgsrc = "resources/images/noimage.png";
+			imgsrc = "resources/images/file.png";
 			fileLink = fullName.substr(7);
 			getLink = "/displayFile?fileName=" + fullName;
 		}
-
-		fileName = fileLink.substr(fileLink.indexOf("_") + 1);
-
-		return {
-			fileName : fileName,
-			imgsrc : imgsrc,
-			getLink : getLink,
-			fullName : fullName
-		};
+		
+		fileName = fileLink.substr(fileLink.indexOf("_")+1);
+		
+		return {fileName:fileName, imgsrc:imgsrc, getLink:getLink, fullName:fullName};
 	}
+});
 </script>

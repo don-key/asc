@@ -53,20 +53,23 @@
 						<div class="col-xs-8">
 							<input type="file" class="fileSelect" id="fileSelect" name="file" style="width: 100%">
 							<input type="hidden"  id="uuidName"  name="uuidName">
+							<input type="hidden"  id="displayName"  name="displayName">
+							<input type="hidden"  id="userNo"  name="userNo" value="${login.userNo }">
 						</div>
 					</div>
 					<br>
 					
-					<div class="row">
-						<div class="col-xs-2 col-xs-offset-1">
-							<label style="font-size: 15px;">파일 선택 (드래그)</label>
-						</div>
-						<div class="col-xs-8">
-							<div class="thumbnail">
-								<div class="fileDrop"><label class="text-center"> 파일을 이곳에 드래그해 주세요 :) </label></div>
-							</div>
-						</div>
-					</div>
+					<!-- 드래그 앤 드롭 놓아준다......... -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-xs-2 col-xs-offset-1"> -->
+<!-- 							<label style="font-size: 15px;">파일 선택 (드래그)</label> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-xs-8"> -->
+<!-- 							<div class="thumbnail"> -->
+<!-- 								<div class="fileDrop"><label class="text-center"> 파일을 이곳에 드래그해 주세요 :) </label></div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 
 
 					<div class="modal-footer">
@@ -85,13 +88,12 @@
 	</div>
 </div>
 
-
 <script>
 $(function() {
-
-	$(".fileDrop").on("dragenter dragover", function(event) {
+	
+/* 	$(".fileDrop").on("dragenter dragover", function(event) {
 		event.preventDefault();
-	});
+	}); */
 	
 	$(".uploadedList").on("dragenter dragover", function(event) {
 		event.preventDefault();
@@ -101,51 +103,6 @@ $(function() {
 		event.preventDefault();
 	});
 	
-	$(".fileDrop").on("drop", function(event) {
-		event.preventDefault();
-		
-		// 전달된 파일 데이터를 가져오는 부분
-		var files = event.originalEvent.dataTransfer.files;	// dataTransfer : 이벤트와 같이 전달된 데이터, dataTransfer.files : 그 안에 포함된 파일 데이터 찾아내기 위함
-		var file = files[0];
-		
-		var formData = new FormData();
-		
-		formData.append("file", file);
-		
-		$.ajax({
-			url: '/project/uploadAjax',
-			data : formData,
-			dataType: 'text',
-			processData: false,
-			contentType: false,
-			type: 'POST',
-			success: function(data) {
-				var str ="";
-				
-				console.log(data);
-				console.log(checkImageType(data));
-				console.log(getOriginalName(data));
-				
-				if (checkImageType(data)) {
-					str ="<div>"
-						+ "<a href='displayFile?fileName=" + getImageLink(data) + "' style='color: black'>"
-						+ "<img src='displayFile?fileName="+data+"'/>"
-						+ "</a> data"
-						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>" 
-						+"</div>";
-				} else {
-					str ="<div>"
-						+ "<a href='displayFile?fileName=" + data + "' style='color: black'>"
-						+ getOriginalName(data) + "</a>"
-						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>"
-						+"</div>";
-				}
-				
-				$(".uploadedList").append(str);
-				
-			}
-		});
-	});
 	
 	$(".fileSelect").on("change", function(e) {
 		e.preventDefault();
@@ -176,20 +133,19 @@ $(function() {
 				
 				if (checkImageType(data)) {
 					str ="<div>"
-						+ "<a href='displayFile?fileName=" + getImageLink(data) + "' style='color: black'>"
 						+ "<img src='displayFile?fileName="+data+"'/>"
-						+ "</a>"
 						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>" 
 						+"</div>";
 				} else {
 					str ="<div>"
-						+ "<a href='displayFile?fileName=" + data + "' style='color: black'>"
-						+ getOriginalName(data) + "</a>"
+						+ "<img src='/resources/images/file.png'/>"
+						+ getOriginalName(data) 
 						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>"
 						+"</div>";
 				}
 				
 				$('#uuidName').val(data);
+				$('#displayName').val("displayFile?fileName="+data);
 				$(".uploadedList").append(str);
 			}
 		});
@@ -277,27 +233,5 @@ $(function() {
 	}
 });
 
-function getFileInfo(fullName) {
-	var fileName, imgsrc, getLink;
-	
-	var fileLink;
-	
-	if (checkImageType(fullName)) {
-		imgsrc = "/displayFile?fileName=" + fullName;
-		fileLink = fullName.substr(7);
-		
-		var front = fileName.substr(0, 5);	// /asc 경로 추출
-		var end = fileName.substr(7); 	// s_ 제거
-		
-		getLink = "/displayFile?fileName=" + front + end;
-	} else {
-		imgsrc = "resources/images/noimage.png";
-		fileLink = fullName.substr(7);
-		getLink = "/displayFile?fileName=" + fullName;
-	}
-	
-	fileName = fileLink.substr(fileLink.indexOf("_")+1);
-	
-	return {fileName:fileName, imgsrc:imgsrc, getLink:getLink, fullName:fullName};
-}
+
 </script>

@@ -12,4 +12,10 @@ from gantt_chart_list
 where gantt_no=#{ganttNo}
 </select>
 
+<!-- 기능 추가 -->
+<insert id="register">
+INSERT INTO gantt_chart_list(gantt_list_no, gantt_no, user_no, title, worker, start_date, end_date, color) 
+VALUES (null, #{ganttNo}, #{userNo}, #{title}, #{worker}, #{startDate}, #{endDate}, #{color})
+</insert>
+
 </mapper>

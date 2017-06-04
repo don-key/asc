@@ -20,4 +20,10 @@ public class GanttServiceImpl implements GanttService {
 		return dao.ganttList(ganttNo);
 	}
 
+	@Override
+	public void register(GanttChartList gcl) {
+		dao.register(gcl);
+		
+	}
+
 }

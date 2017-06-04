@@ -22,4 +22,10 @@ public class GanttDaoImpl implements GanttDao {
 		return sqlSession.selectList(namespace+".ganttList", ganttNo);
 	}
 
+	@Override
+	public void register(GanttChartList gcl) {
+		sqlSession.insert(namespace+".register", gcl);
+		
+	}
+
 }

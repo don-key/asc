@@ -1,5 +1,6 @@
 package com.object.asc.gantt.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.object.asc.gantt.domain.GanttChartList;
 import com.object.asc.gantt.service.GanttService;
@@ -105,7 +107,7 @@ public class GanttController {
 		model.addAttribute("member", member);
 		
 
-		return "/gantt/ganttChart";
+		return "/gantt/main";
 	}
 
 	
@@ -115,8 +117,27 @@ public class GanttController {
 		return "/gantt/currentChart";
 	}
 	
-	@RequestMapping(value="/register", method=RequestMethod.GET)
-	public String register(Model model){
+	
+	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public String register(@RequestParam("title") String title, @RequestParam("worker") String worker, @RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate, @RequestParam("color") String color, Model model){
+		int ganttNo = 1;
+		int userNo = 1;
+		
+		GanttChartList gcl = new GanttChartList();
+		gcl.setGanttNo(ganttNo);
+		gcl.setUserNo(userNo);
+		gcl.setTitle(title);
+		gcl.setWorker(worker);
+		gcl.setStartDate(startDate);
+		gcl.setEndDate(endDate);
+		gcl.setColor(color);
+		
+		ganttService.register(gcl);
+		
+		System.out.println("확인용 : " + gcl.toString());
+		
+		
 		
 		return "/gantt/ganttChart";
 	}

@@ -107,7 +107,7 @@ public class GanttController {
 		model.addAttribute("member", member);
 		
 
-		return "/gantt/main";
+		return "/gantt/ganttChart";
 	}
 
 	
@@ -139,7 +139,7 @@ public class GanttController {
 		
 		
 		
-		return "/gantt/ganttChart";
+		return "redirect:/gantt/ganttChart";
 	}
 	
 	

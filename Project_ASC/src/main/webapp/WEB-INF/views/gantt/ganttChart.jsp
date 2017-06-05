@@ -131,6 +131,7 @@ function addDay(month, day){
 		}
 		return [month, day];
 	}
+	
 </script>
 
 

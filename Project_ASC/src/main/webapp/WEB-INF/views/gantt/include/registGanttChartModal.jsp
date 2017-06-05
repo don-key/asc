@@ -9,7 +9,7 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="${pageContext.servletContext.contextPath}/gantt/register" method="post">
+      <form action="/gantt/register" method="post" >
 
       <div class="modal-header" style="background: #354555; color: #ffffff;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>

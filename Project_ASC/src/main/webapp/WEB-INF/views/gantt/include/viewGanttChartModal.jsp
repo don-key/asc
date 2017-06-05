@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- Modal -->
-<div class="modal fade" id="modifyGanttChartModal" role="dialog">
+<div class="modal fade" id="viewGanttChartModal" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -18,9 +18,7 @@
           <div class="col-xs-2 col-xs-offset-1">
             <label for="ganttTitle" style="font-size: 20px;">제목</label>
           </div>
-          <div class="col-xs-8">
-            <input type="text" id="ganttTitle" value="${gantt.title }" style="width: 100%;">
-          </div>
+          <div class="col-xs-8" id="viewTitle"></div>
         </div>
         <br>
 
@@ -28,14 +26,7 @@
           <div class="col-xs-2 col-xs-offset-1">
             <label for="ganttWorker" style="font-size: 20px;">담당자</label>
           </div>
-          <div class="col-xs-8">
-            <select id="ganttWorker"  style="width: 100%;">
-              <option>공통</option>
-              <option>김동현</option>
-              <option>마민</option>
-              <option>이지수</option>
-            </select>
-          </div>
+          <div class="col-xs-8" id="viewWorker"></div>
         </div>
 
         <br>
@@ -43,13 +34,9 @@
           <div class="col-xs-2 col-xs-offset-1">
             <label style="font-size: 20px;">기간</label>
           </div>
-          <div class="col-xs-3">
-            <input type="date" value="${gantt.startDate }">
-          </div>
-          <div class="col-xs-1" style="margin-left: 25px">~</div>
-          <div class="col-xs-4">
-            <input type="date">
-          </div>
+          <div class="col-xs-2" id="viewStartDate"></div>
+          <div class="col-xs-1" style="margin-left: 30px">~</div>
+          <div class="col-xs-2" id="viewEndDate"></div>
         </div>
         <br>
 
@@ -57,8 +44,8 @@
           <div class="col-xs-2 col-xs-offset-1">
             <label style="font-size: 20px;">색상</label>
           </div>
-          <div class="col-xs-8">
-            <input type="color" style="height: 30px;">
+          <div class="col-xs-2">
+            <p id="viewColor" >&nbsp;</p>
           </div>
         </div>
         <br>

@@ -2,6 +2,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
+a {
+  color: black;
+}
+
+a:hover, a:focus {
+    color: #2e689b;
+    text-decoration: none;
+}
+
+
 td, th {
 	padding: 5px;
 	height: 40px;
@@ -15,6 +25,46 @@ td, th {
 	width: 1000px;
 	overflow-x: auto;
 }
+
+
+/* Effect 1: Brackets */
+.ganttEffect th::before,
+.ganttEffect th::after {
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+.ganttEffect th::before {
+  margin-right: 10px;
+  content: '[';
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.ganttEffect th::after {
+  margin-left: 10px;
+  content: ']';
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+
+.ganttEffect th:hover::before,
+.ganttEffect th:hover::after,
+.ganttEffect th:focus::before,
+.ganttEffect th:focus::after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
+
+
 </style>
 
 <script>
@@ -132,6 +182,21 @@ function addDay(month, day){
 		return [month, day];
 	}
 	
+/** 기능 조회 모달에 값 넣어주기 */
+function viewModal(title, worker, startDate, endDate, color){
+	$('#viewTitle').html(title);
+	$('#viewWorker').html(worker);
+	$('#viewStartDate').html(startDate);
+	$('#viewEndDate').html(endDate);
+	$('#viewColor').css("background-color", color);
+	
+	console.log("들어왔니?");
+	
+	$("#viewGanttChartModal").modal('show');
+	
+}
+ 
+	
 </script>
 
 
@@ -157,8 +222,8 @@ function addDay(month, day){
           <th style="padding-right: 5%">&nbsp;</th>
         </tr>
         <c:forEach items="${ganttList}" var="gantt">
-          <tr>
-            <th>${gantt.title }</th>
+          <tr class="ganttEffect">
+            <th><a onclick="viewModal('${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) " >${gantt.title }</a></th>
           </tr>
         </c:forEach>
       </table>
@@ -243,6 +308,7 @@ function addDay(month, day){
 <!-- Modal -->
 <jsp:include page="include/registGanttChartModal.jsp" />
 <jsp:include page="include/modifyGanttChartModal.jsp" />
+<jsp:include page="include/viewGanttChartModal.jsp" />
 
 
 

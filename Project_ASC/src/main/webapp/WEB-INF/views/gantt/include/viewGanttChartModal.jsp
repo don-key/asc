@@ -10,7 +10,7 @@
 
       <div class="modal-header" style="background: #354555; color: #ffffff;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 수정</h4>
+        <h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 조회</h4>
       </div>
 
       <div class="modal-body">
@@ -55,7 +55,7 @@
       <div class="modal-footer">
         <div class="row">
           <div class="col-xs-2 col-xs-offset-3">
-            <button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
+            <button type="button" onclick="modal('modify')" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
           </div>
           <div class="col-xs-2">
             <button type="button" class="btn btn-waring" style="width: 100%; font-size: 15px; font-weight: bold;">삭제</button>

@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
+/** CSS는 나중에 뺄거임 */
+
 a {
   color: black;
 }
@@ -27,7 +29,7 @@ td, th {
 }
 
 
-/* Effect 1: Brackets */
+/** 기능 목록 css */
 .ganttEffect th::before,
 .ganttEffect th::after {
   display: inline-block;
@@ -182,20 +184,36 @@ function addDay(month, day){
 		return [month, day];
 	}
 	
-/** 기능 조회 모달에 값 넣어주기 */
-function viewModal(title, worker, startDate, endDate, color){
+/** 기능 모달에 값 넣어주기 */
+function modal(status, title, worker, startDate, endDate, color){
+	if (status == 'view') {
 	$('#viewTitle').html(title);
 	$('#viewWorker').html(worker);
 	$('#viewStartDate').html(startDate);
 	$('#viewEndDate').html(endDate);
 	$('#viewColor').css("background-color", color);
 	
-	console.log("들어왔니?");
+	$('#modifyTitle').val(title);
+	/** 여기 해결해야함 */
+	  $('#modifyWorker').each(function(){
+
+		    if($(this).val() == worker){
+		      $(this).attr("selected","selected");
+		    }
+
+		  });
+	$('#modifyStartDate').val(startDate);
+	$('#modifyEndDate').val(endDate);
+	$('#modifyColorView').css("background-color", color);
 	
 	$("#viewGanttChartModal").modal('show');
 	
+	} else if(status == 'modify'){
+		$("#viewGanttChartModal").modal('hide');
+		$("#modifyGanttChartModal").modal('show');
+	}
 }
- 
+
 	
 </script>
 
@@ -223,7 +241,7 @@ function viewModal(title, worker, startDate, endDate, color){
         </tr>
         <c:forEach items="${ganttList}" var="gantt">
           <tr class="ganttEffect">
-            <th><a onclick="viewModal('${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) " >${gantt.title }</a></th>
+            <th><a onclick="modal('view', '${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "  style="cursor:pointer">${gantt.title }</a></th>
           </tr>
         </c:forEach>
       </table>
@@ -305,11 +323,30 @@ function viewModal(title, worker, startDate, endDate, color){
 </div>
 
 
+
+
 <!-- Modal -->
 <jsp:include page="include/registGanttChartModal.jsp" />
 <jsp:include page="include/modifyGanttChartModal.jsp" />
 <jsp:include page="include/viewGanttChartModal.jsp" />
 
+
+<script>
+  // UI 구성.
+  $('#colorpicker').farbtastic(function(data) {
+    color = data;
+    $('#color').val(color);
+    $('#colorView').css("background-color", color);
+
+  });
+  
+  $('#modifyColorpicker').farbtastic(function(data) {
+    color = data;
+    $('#modifyColor').val(color);
+    $('#modifyColorView').css("background-color", color);
+
+  });
+</script>
 
 
 

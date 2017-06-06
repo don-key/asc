@@ -21,7 +21,7 @@
 <div id="page-wrapper">
    <div class="row">
       <div class="col-lg-12">
-         <div class="page-header" style="font-size: 30px; font-weight: bold;">Project</div>
+         <div class="page-header" style="font-size: 30px; font-weight: bold;">Project${user}</div>
       </div>
    </div>
 
@@ -56,6 +56,10 @@
                   <br>
                   <div class="text-right" style="font-size: 15px;">
                      ${projectList.projectName}&nbsp; <i class="fa fa-child"></i>${count[status.index]}
+                  </div>
+                  <br>
+                  <div class="text-center" style="font-size: 15px;">
+                    ${projectList.content}
                   </div>
                   <br>
                   <div class="text-right">

@@ -2,6 +2,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
+/** CSS는 나중에 뺄거임 */
+
+a {
+  color: black;
+}
+
+a:hover, a:focus {
+    color: #2e689b;
+    text-decoration: none;
+}
+
+
 td, th {
 	padding: 5px;
 	height: 40px;
@@ -15,6 +27,46 @@ td, th {
 	width: 1000px;
 	overflow-x: auto;
 }
+
+
+/** 기능 목록 css */
+.ganttEffect th::before,
+.ganttEffect th::after {
+  display: inline-block;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
+  transition: transform 0.3s, opacity 0.2s;
+}
+
+.ganttEffect th::before {
+  margin-right: 10px;
+  content: '[';
+  -webkit-transform: translateX(20px);
+  -moz-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+.ganttEffect th::after {
+  margin-left: 10px;
+  content: ']';
+  -webkit-transform: translateX(-20px);
+  -moz-transform: translateX(-20px);
+  transform: translateX(-20px);
+}
+
+.ganttEffect th:hover::before,
+.ganttEffect th:hover::after,
+.ganttEffect th:focus::before,
+.ganttEffect th:focus::after {
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  -moz-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
+
+
 </style>
 
 <script>
@@ -131,6 +183,38 @@ function addDay(month, day){
 		}
 		return [month, day];
 	}
+	
+/** 기능 모달에 값 넣어주기 */
+function modal(status, title, worker, startDate, endDate, color){
+	if (status == 'view') {
+	$('#viewTitle').html(title);
+	$('#viewWorker').html(worker);
+	$('#viewStartDate').html(startDate);
+	$('#viewEndDate').html(endDate);
+	$('#viewColor').css("background-color", color);
+	
+	$('#modifyTitle').val(title);
+	/** 여기 해결해야함 */
+	  $('#modifyWorker').each(function(){
+
+		    if($(this).val() == worker){
+		      $(this).attr("selected","selected");
+		    }
+
+		  });
+	$('#modifyStartDate').val(startDate);
+	$('#modifyEndDate').val(endDate);
+	$('#modifyColorView').css("background-color", color);
+	
+	$("#viewGanttChartModal").modal('show');
+	
+	} else if(status == 'modify'){
+		$("#viewGanttChartModal").modal('hide');
+		$("#modifyGanttChartModal").modal('show');
+	}
+}
+
+	
 </script>
 
 
@@ -156,8 +240,8 @@ function addDay(month, day){
           <th style="padding-right: 5%">&nbsp;</th>
         </tr>
         <c:forEach items="${ganttList}" var="gantt">
-          <tr>
-            <th>${gantt.title }</th>
+          <tr class="ganttEffect">
+            <th><a onclick="modal('view', '${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "  style="cursor:pointer">${gantt.title }</a></th>
           </tr>
         </c:forEach>
       </table>
@@ -239,10 +323,30 @@ function addDay(month, day){
 </div>
 
 
+
+
 <!-- Modal -->
 <jsp:include page="include/registGanttChartModal.jsp" />
 <jsp:include page="include/modifyGanttChartModal.jsp" />
+<jsp:include page="include/viewGanttChartModal.jsp" />
 
+
+<script>
+  // UI 구성.
+  $('#colorpicker').farbtastic(function(data) {
+    color = data;
+    $('#color').val(color);
+    $('#colorView').css("background-color", color);
+
+  });
+  
+  $('#modifyColorpicker').farbtastic(function(data) {
+    color = data;
+    $('#modifyColor').val(color);
+    $('#modifyColorView').css("background-color", color);
+
+  });
+</script>
 
 
 

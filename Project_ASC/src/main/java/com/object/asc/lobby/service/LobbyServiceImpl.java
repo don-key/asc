@@ -43,8 +43,10 @@ public class LobbyServiceImpl implements LobbyService {
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	/** 
-	 * 파라미터로 일단 받아야 할것
+	 * 파라미터로 받아야 할것
 	 * 1. ProjectList
+	 * 2. MultipartFile
+	 * 3. 프로젝트 참여 인원
 	 * */
 	@Transactional
 	@Override
@@ -68,8 +70,6 @@ public class LobbyServiceImpl implements LobbyService {
 		projectList.setChatName(projectJoinNo + "_" + uuid.toString());
 		projectList.setChatContent("chat.txt");
 		projectList.setProjectPhoto(savePath);
-//		projectList.setStartDate(java.sql.Date.valueOf("2017-05-31")); // +1 해야함
-//		projectList.setEndDate(java.sql.Date.valueOf("2017-06-12")); // +1 해야함
 		lobbyDao.projectListRegister(projectList);
 		/** 1-4. 참여 내역 생성 (초대) 
 		 * status : 1 -> 스크럼마스터
@@ -119,7 +119,7 @@ public class LobbyServiceImpl implements LobbyService {
 		scrum.setProjectListNo(projectJoinNo);
 		projectDao.scrumRegister(scrum);
 		/** 1-6. 스프린트 생성
-		 * 1. start_date에는 현재 날짜 들어감
+		 * 1. start_date에는 프로젝트 시작날짜 들어감
 		 * 2. end_date는 null
 		 * */
 		Sprint sprint = new Sprint();

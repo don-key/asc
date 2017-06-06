@@ -24,4 +24,12 @@ UPDATE gantt_chart_list
 SET title = #{title}, worker = #{worker}, start_date = date_add(#{startDate}, interval +1 day), end_date = date_add(#{endDate}, interval +1 day), color = #{color}
 where gantt_list_no=#{ganttListNo}
 </update>
+
+<!-- 기능 삭제 -->
+<delete id="delete">
+DELETE
+FROM gantt_chart_list
+WHERE gantt_list_no = #{ganttListNo};
+</delete>
+
 </mapper>

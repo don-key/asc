@@ -14,5 +14,8 @@ public interface GanttDao {
 	
 	/** 기능 수정 */
 	public void modify(GanttChartList gcl);
+	
+	/** 기능 삭제 */
+	public void delete(int ganttListNo);
 
 }

@@ -58,7 +58,7 @@
             <button type="button" onclick="modal('modify')" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
           </div>
           <div class="col-xs-2">
-            <button type="button" class="btn btn-waring" style="width: 100%; font-size: 15px; font-weight: bold;">삭제</button>
+            <button type="button" id="deleteBtn" onclick="deleteFunction()" class="btn btn-waring" style="width: 100%; font-size: 15px; font-weight: bold;">삭제</button>
           </div>
           <div class="col-xs-2">
             <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>

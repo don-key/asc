@@ -33,4 +33,10 @@ public class GanttDaoImpl implements GanttDao {
 		sqlSession.update(namespace +".modify", gcl);
 	}
 
+	@Override
+	public void delete(int ganttListNo) {
+		sqlSession.delete(namespace + ".delete", ganttListNo);
+		
+	}
+
 }

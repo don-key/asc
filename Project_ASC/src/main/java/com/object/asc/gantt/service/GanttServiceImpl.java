@@ -31,4 +31,9 @@ public class GanttServiceImpl implements GanttService {
 		dao.modify(gcl);
 	}
 
+	@Override
+	public void delete(int ganttListNo) {
+		dao.delete(ganttListNo);
+	}
+
 }

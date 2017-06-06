@@ -136,7 +136,7 @@ public class GanttController {
 		return "redirect:/gantt/ganttChart";
 	}
 	
-	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
+	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 받아오기 */
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modify(@RequestParam("modifyListNo") int modifyListNo, @RequestParam("modifyTitle") String modifyTitle, @RequestParam("modifyWorker") String modifyWorker, @RequestParam("modifyStartDate") Date modifyStartDate, @RequestParam("modifyEndDate") Date modifyEndDate, @RequestParam("modifyColor") String modifyColor, Model model){
 		int ganttNo = 1;
@@ -152,6 +152,13 @@ public class GanttController {
 		gcl.setColor(modifyColor);
 		
 		ganttService.modify(gcl);
+		
+		return "redirect:/gantt/ganttChart";
+	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String delete(@RequestParam("listNo") int listNo, Model model){
+		ganttService.delete(listNo);
 		
 		return "redirect:/gantt/ganttChart";
 	}

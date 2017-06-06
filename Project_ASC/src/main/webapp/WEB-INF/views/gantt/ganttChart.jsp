@@ -215,6 +215,12 @@ function modal(status, listNo, title, worker, startDate, endDate, color){
 	}
 }
 
+
+/** 기능 삭제 버튼 누를때 */
+function deleteFunction(){
+	var listNo = $('#modifyListNo').val();
+	location.href="/gantt/delete?listNo="+listNo;
+}
 	
 </script>
 

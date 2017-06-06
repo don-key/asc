@@ -21,22 +21,27 @@
                      <label for="projectName" style="font-size: 20px; margin-left: 1%;">프로젝트 이름</label>
                   </div>
                   <div class="col-xs-7">
-                     <input name="projectName" style="height: 37px;" placeholder="프로젝트 이름">
+                     <input name="projectName" style="height: 37px; width:68%" placeholder="프로젝트 이름">
                   </div>
                </div>
                <br>
 
                <div class="row">
-                  <div class="col-xs-2 col-xs-offset-1">
-                     <label style="font-size: 20px;">총 기간</label>
+                  <div class="col-xs-3 col-xs-offset-1">
+                     <label style="font-size: 20px;">프로젝트 시작</label>
                   </div>
-                  <div class="col-xs-4" style="padding-left: 0px">
+                  <div class="col-xs-5" style="height: 37px;">
                      <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                         <input class="form-control" size="8" type="text" name="startDate" value="" readonly> <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                      </div>
                   </div>
-                  <div class="col-xs-1" style="margin: 0; padding-top: 8px">~</div>
-                  <div class="col-xs-4" style="padding-left: 0px">
+               </div>
+               <br>
+               <div class="row">
+                  <div class="col-xs-3 col-xs-offset-1">
+                     <label style="font-size: 20px;">프로젝트 종료</label>
+                  </div>
+                  <div class="col-xs-5" style="height: 37px;">
                      <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                         <input class="form-control" size="8" type="text" name="endDate" value="" readonly> <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                      </div>
@@ -48,10 +53,9 @@
                      <label style="font-size: 20px;">참여인원</label>
                   </div>
                   <div class="col-xs-8">
-                       <input type="text" name="member" id="memberList" value="" style="height: 35px; width: 80%" placeholder="회원을 검색해주세요.">
+                       <input type="text" name="member" id="memberList" value="" style="height: 35px; width: 80%" placeholder="이메일을 검색해주세요.">
                   </div>
                </div>
-               
                <div class="row">
                   <div class="col-xs-3 col-xs-offset-1"></div>
                   <div class="col-xs-8">
@@ -60,6 +64,7 @@
                   </div>
                   </div>
                </div>
+               <br>
                <div class="row">
                   <div class="col-xs-3 col-xs-offset-1">
                      <label style="font-size: 20px;">대표이미지</label>
@@ -134,7 +139,6 @@ $(function() {
 	
 	$('#memberList').autocomplete({
 		 source : function( request, response ) {
-			 console.log(request.term);
 	       $.ajax({
 	              type: 'post',
 	              url: "/lobby/memberList",
@@ -155,10 +159,16 @@ $(function() {
 	  //조회를 위한 최소글자수
 	  minLength: 1,
 	  select: function( event, ui) {
-		  $('#invitation').append("<div class='col-xs-12'><input type='text' name='invitationList' style='border:none;' value="+ui.item.value+" readonly></div>");
+		  $('#invitation').append("<div class='col-xs-12'><input type='text' name='invitationList' style='border:none;' value="+ui.item.value+" readonly><i class='glyphicon glyphicon-remove'></i></div>");
 		  $(this).val('');
 		  return false;
 	  }
+	});
+	
+	$('#invitation').on('click', function() {
+		$('.glyphicon-remove').on('click', function() {
+			$(this).parent().remove();
+		});
 	});
 
 });

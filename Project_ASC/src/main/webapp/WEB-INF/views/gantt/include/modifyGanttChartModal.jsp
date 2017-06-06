@@ -8,7 +8,8 @@
     <!-- Modal content-->
     <div class="modal-content">
       <form action="/gantt/modify" method="post">
-        <input type="hidden" id="modifyColor" name="color" value="" style="width: 100px;">
+        <input type="hidden" id="modifyColor" name="modifyColor" value="" style="width: 100px;">
+        <input type="hidden" id="modifyListNo" name="modifyListNo" value="" style="width: 100px;">
 
         <div class="modal-header" style="background: #354555; color: #ffffff;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -21,7 +22,7 @@
               <label for="modifyTitle" style="font-size: 20px;">제목</label>
             </div>
             <div class="col-xs-8">
-              <input type="text" id="modifyTitle" value="" style="width: 100%;">
+              <input type="text" id="modifyTitle" name="modifyTitle" value="" style="width: 100%;">
             </div>
           </div>
           <br>
@@ -31,7 +32,7 @@
               <label for="modifyWorker" style="font-size: 20px;">담당자</label>
             </div>
             <div class="col-xs-8">
-              <select id="modifyWorker" style="width: 100%;">
+              <select id="modifyWorker" name="modifyWorker" style="width: 100%;">
                 <option>공통</option>
                 <c:forEach items="${member}" var="member">
                   <option>${member }</option>
@@ -46,11 +47,11 @@
               <label style="font-size: 20px;">기간</label>
             </div>
             <div class="col-xs-3">
-              <input type="date" id="modifyStartDate">
+              <input type="date" id="modifyStartDate" name="modifyStartDate">
             </div>
             <div class="col-xs-1" style="margin-left: 25px">~</div>
             <div class="col-xs-4">
-              <input type="date" id="modifyEndDate">
+              <input type="date" id="modifyEndDate" name="modifyEndDate">
             </div>
           </div>
           <br>
@@ -77,7 +78,7 @@
         <div class="modal-footer">
           <div class="row">
             <div class="col-xs-2 col-xs-offset-3">
-              <button type="button" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
+              <button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
             </div>
             <div class="col-xs-2">
               <button type="button" class="btn btn-waring" style="width: 100%; font-size: 15px; font-weight: bold;">삭제</button>

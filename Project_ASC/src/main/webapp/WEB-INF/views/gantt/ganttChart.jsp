@@ -185,7 +185,7 @@ function addDay(month, day){
 	}
 	
 /** 기능 모달에 값 넣어주기 */
-function modal(status, title, worker, startDate, endDate, color){
+function modal(status, listNo, title, worker, startDate, endDate, color){
 	if (status == 'view') {
 	$('#viewTitle').html(title);
 	$('#viewWorker').html(worker);
@@ -193,6 +193,7 @@ function modal(status, title, worker, startDate, endDate, color){
 	$('#viewEndDate').html(endDate);
 	$('#viewColor').css("background-color", color);
 	
+	$('#modifyListNo').val(listNo);
 	$('#modifyTitle').val(title);
 	/** 여기 해결해야함 */
 	  $('#modifyWorker').each(function(){
@@ -241,7 +242,7 @@ function modal(status, title, worker, startDate, endDate, color){
         </tr>
         <c:forEach items="${ganttList}" var="gantt">
           <tr class="ganttEffect">
-            <th><a onclick="modal('view', '${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "  style="cursor:pointer">${gantt.title }</a></th>
+            <th><a onclick="modal('view','${gantt.ganttListNo}','${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "  style="cursor:pointer">${gantt.title }</a></th>
           </tr>
         </c:forEach>
       </table>

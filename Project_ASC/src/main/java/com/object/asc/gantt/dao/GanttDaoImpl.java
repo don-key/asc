@@ -28,4 +28,9 @@ public class GanttDaoImpl implements GanttDao {
 		
 	}
 
+	@Override
+	public void modify(GanttChartList gcl) {
+		sqlSession.update(namespace +".modify", gcl);
+	}
+
 }

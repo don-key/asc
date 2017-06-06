@@ -26,4 +26,9 @@ public class GanttServiceImpl implements GanttService {
 		
 	}
 
+	@Override
+	public void modify(GanttChartList gcl) {
+		dao.modify(gcl);
+	}
+
 }

@@ -15,7 +15,13 @@ where gantt_no=#{ganttNo}
 <!-- 기능 추가 -->
 <insert id="register">
 INSERT INTO gantt_chart_list(gantt_list_no, gantt_no, user_no, title, worker, start_date, end_date, color) 
-VALUES (null, #{ganttNo}, #{userNo}, #{title}, #{worker}, #{startDate}, #{endDate}, #{color})
+VALUES (null, #{ganttNo}, #{userNo}, #{title}, #{worker}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day), #{color})
 </insert>
 
+<!-- 기능 수정 -->
+<update id="modify">
+UPDATE gantt_chart_list
+SET title = #{title}, worker = #{worker}, start_date = date_add(#{startDate}, interval +1 day), end_date = date_add(#{endDate}, interval +1 day), color = #{color}
+where gantt_list_no=#{ganttListNo}
+</update>
 </mapper>

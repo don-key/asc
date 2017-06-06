@@ -100,8 +100,6 @@ public class GanttController {
 		model.addAttribute("startCount", startCount);
 		// 기능 유지일 (계산한값)
 		model.addAttribute("duration", duration);
-		// 기능 개수
-//		model.addAttribute("funcSize", funcList.size());
 		
 		// 멤버 조회
 		model.addAttribute("member", member);
@@ -135,9 +133,25 @@ public class GanttController {
 		
 		ganttService.register(gcl);
 		
-		System.out.println("확인용 : " + gcl.toString());
+		return "redirect:/gantt/ganttChart";
+	}
+	
+	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
+	@RequestMapping(value="/modify", method=RequestMethod.POST)
+	public String modify(@RequestParam("modifyListNo") int modifyListNo, @RequestParam("modifyTitle") String modifyTitle, @RequestParam("modifyWorker") String modifyWorker, @RequestParam("modifyStartDate") Date modifyStartDate, @RequestParam("modifyEndDate") Date modifyEndDate, @RequestParam("modifyColor") String modifyColor, Model model){
+		int ganttNo = 1;
+		int userNo = 1;
+		GanttChartList gcl = new GanttChartList();
+		gcl.setGanttListNo(modifyListNo);
+		gcl.setGanttNo(ganttNo);
+		gcl.setUserNo(userNo);
+		gcl.setTitle(modifyTitle);
+		gcl.setWorker(modifyWorker);
+		gcl.setStartDate(modifyStartDate);
+		gcl.setEndDate(modifyEndDate);
+		gcl.setColor(modifyColor);
 		
-		
+		ganttService.modify(gcl);
 		
 		return "redirect:/gantt/ganttChart";
 	}
@@ -146,7 +160,7 @@ public class GanttController {
 	
 
 	
-	/** 요일 계산해주는 메소드 */
+	/** 일수 계산해주는 메소드 */
 	public int calDays (String[] date){
 		int days = Integer.parseInt(date[2]);
 		switch (Integer.parseInt(date[1])) {

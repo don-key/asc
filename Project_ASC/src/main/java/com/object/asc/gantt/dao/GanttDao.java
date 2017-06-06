@@ -12,6 +12,7 @@ public interface GanttDao {
 	/** 기능 추가 */
 	public void register(GanttChartList gcl);
 	
-	
+	/** 기능 수정 */
+	public void modify(GanttChartList gcl);
 
 }

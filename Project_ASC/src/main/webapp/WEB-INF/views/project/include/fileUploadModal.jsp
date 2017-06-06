@@ -74,7 +74,7 @@
 								<button type="submit" class="btn btn-warning"  style="width: 100%; font-size: 15px; font-weight: bold;">등록</button>
 							</div>
 							<div class="col-xs-2">
-								<button type="button" class="btn btn-default" id="cancelBtn" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
+								<button type="button" class="btn btn-default" id="cancelBtn" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; ">취소</button>
 							</div>
 						</div>
 					</div>
@@ -135,7 +135,6 @@ $(function() {
 				$('#uuidName').val(data);
 				$('#displayName').val("displayFile?fileName="+data);
 				$(".uploadedList").append(str);
-				$(".fileSelect").attr("readonly",true);
 			}
 		});
 	});

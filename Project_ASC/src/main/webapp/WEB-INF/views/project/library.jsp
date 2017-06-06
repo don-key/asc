@@ -87,11 +87,13 @@ color: black;
 							</div>
 
 							<div class="panel-body" style="height: 90px">
-								<p>
+								<div class="libraryList">
 									<a href="/resources/images/upload${libraryList.uuidName}" class="thumbnailList" data-lightbox="image-${status.index}"> 
-									<img src="/resources/images/upload${libraryList.uuidName}" width="20%"  class="thumbnailImage">${libraryList.fileName }</a>
+										<img src="/resources/images/upload${libraryList.uuidName}" width="20%"  class="thumbnailImage" onerror='this.src="/resources/images/file.png"'/>
+										${libraryList.fileName }
+									</a>
 									<input type="hidden" id="uuid" value="${libraryList.uuidName}">
-								</p>
+								</div>
 							</div>
 							
 							<div class="panel-footer">	작성자 : ${name[status.index].name}
@@ -138,9 +140,7 @@ $(function() {
 					console.log(arr);
 				});
 
-				$.post("/project/deleteAllFiles", {
-					files : arr
-				}, function() {
+				$.post("/project/deleteAllFiles", {files : arr}, function() {
 
 				});
 

@@ -89,12 +89,13 @@ color: black;
 							<div class="panel-body" style="height: 90px">
 								<p>
 									<a href="/resources/images/upload${libraryList.uuidName}" class="thumbnailList" data-lightbox="image-${status.index}"> 
-									<img src="/resources/images/upload${libraryList.uuidName}" width="20%"  >${libraryList.fileName }</a>
+									<img src="/resources/images/upload${libraryList.uuidName}" width="20%"  class="thumbnailImage">${libraryList.fileName }</a>
+									<input type="hidden" id="uuid" value="${libraryList.uuidName}">
 								</p>
 							</div>
 							
 							<div class="panel-footer">	작성자 : ${name[status.index].name}
-							<a href="/project/displayFile?fileName=${libraryList.uuidName}" class="btn btn-default btn-sm" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
+							<a class="btn btn-default btn-sm" id="downloadBtn"  style="float: right; padding: 2px 9px;"> 
 									<i class="fa fa-download fa-sm"></i> 
 							</a>
 							</div>
@@ -128,25 +129,42 @@ $(function() {
 			cancelButtonColor : '#d33',
 			confirmButtonText : 'Yes',
 			cancelButtonText : 'No',
-		}).then(
-				function() {
-					var formObj = link;
+		}).then(function() {
+				var formObj = link;
+
+				var arr = [];
+				$(".thumbnailList img").each(function(index) {
+					arr.push($(this).attr("src"));
+					console.log(arr);
+				});
+
+				$.post("/project/deleteAllFiles", {
+					files : arr
+				}, function() {
+
+				});
+
+				formObj.attr("action", "/project/remove");
+				formObj.submit();
+				link = '';
+			})
+	});
 	
-					var arr = [];
-					$(".thumbnailList img").each(function(index) {
-						arr.push($(this).attr("src"));
-					});
-	
-					$.post("/project/deleteAllFiles", {
-						files : arr
-					}, function() {
-	
-					});
-	
-					formObj.attr("action", "/project/remove");
-					formObj.submit();
-					link = '';
-				})
+	/** 다운로드 클릭 시 이벤트 */
+	$("#downloadBtn").on("click",	function(event) {
+		event.preventDefault();
+		
+		var data = $("#uuid").val();
+		var url="";
+		
+ 		if (checkImageType(data)) {
+			var front = data.substring(0, 5);	// /asc 경로 추출
+			var end = data.substring(7); 	// s_ 제거
+			
+			location.href = "/project/displayFile?fileName="+front+end; 
+		} else {
+			location.href = "/project/displayFile?fileName="+data; 
+		} 
 	});
 
 

@@ -1,9 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <style>
-.fileDrop {
-	width: 100%;
-	height: 50px;
-}
 
 .uploadedList {
 	width: 100%;
@@ -91,10 +87,6 @@
 <script>
 $(function() {
 	
-/* 	$(".fileDrop").on("dragenter dragover", function(event) {
-		event.preventDefault();
-	}); */
-	
 	$(".uploadedList").on("dragenter dragover", function(event) {
 		event.preventDefault();
 	});
@@ -126,11 +118,7 @@ $(function() {
 			type: 'POST',
 			success: function(data) {
 				var str ="";
-				
-				console.log(checkImageType(data));
-				console.log(getOriginalName(data));
-				console.log("data = " + data);
-				
+
 				if (checkImageType(data)) {
 					str ="<div>"
 						+ "<img src='displayFile?fileName="+data+"'/>"
@@ -147,6 +135,7 @@ $(function() {
 				$('#uuidName').val(data);
 				$('#displayName').val("displayFile?fileName="+data);
 				$(".uploadedList").append(str);
+				$(".fileSelect").attr("readonly",true);
 			}
 		});
 	});

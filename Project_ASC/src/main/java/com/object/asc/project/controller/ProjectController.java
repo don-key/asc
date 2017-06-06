@@ -196,7 +196,7 @@ public class ProjectController {
 		logger.info("파일 이름 : " + fileName);
 
 		try {
-			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
+			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);	// 파일 확장자 이름
 
 			MediaType mType = MediaUtils.getMediaType(formatName);	// 파일 이름에서 확장자 추출하고, 이미지 타입일 경우 적절한 MIME 타입 지정
 
@@ -204,13 +204,24 @@ public class ProjectController {
 
 			in = new FileInputStream(uploadPath + fileName);
 
-		/*	if (mType != null) {
-				headers.setContentType(mType);
-			} else {*/
+			if (mType != null) {
+				int length =  fileName.length();
+		    	String front = fileName.substring(0,5);
+		    	String end = fileName.substring(7, length);
+		    	String realImage = front+end;
+		    	
+		    	logger.info("앞에꺼"+front);
+		    	logger.info("뒤에꺼"+end);
+		    	logger.info("이미지 잘랐다ㅏㅏㅏ222222222"+realImage);
+		    	
+//				headers.setContentType(mType);
+		    	headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);	// 이미지가 아닌 경우 MIME 타입을 다운로드용으로 지정
+				headers.add("Content-Disposition", "attachment; filename=\"" + realImage +"\"");
+			} else {
 				fileName = fileName.substring(fileName.indexOf("_")+1);
 				headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);	// 이미지가 아닌 경우 MIME 타입을 다운로드용으로 지정
 				headers.add("Content-Disposition", "attachment; filename=\"" + new String(fileName.getBytes("UTF-8"), "ISO-8859-1")+"\"");
-//			}
+			}
 			
 			entity = new ResponseEntity<byte[]> (IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
 			

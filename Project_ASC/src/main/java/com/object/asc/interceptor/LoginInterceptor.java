@@ -10,6 +10,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.object.asc.user.domain.User;
+
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	
@@ -19,11 +21,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
 		
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		
-		if (session.getAttribute(LOGIN) != null) {
+		//Cookie loginCookie = new Cookie("loginCookie", user);
+		
+		if (request.getAttribute(LOGIN) != null) {
 			logger.info("이전 로그인 데이터 지우기");
-			session.removeAttribute(LOGIN);
+			request.removeAttribute(LOGIN);
 		}
 		return true;
 	}
@@ -36,11 +40,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object user = modelMap.get("user");
 		
+		
 		if (user != null) {
 			
 			logger.info("로그인 성공");
 			session.setAttribute(LOGIN, user);
 			
+
 			if (request.getParameter("useCookie") != null) {
 				logger.info("remember me~~~~~~~~~");
 				
@@ -49,16 +55,18 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				loginCookie.setMaxAge(60 * 60 * 24 * 7);
 				response.addCookie(loginCookie);
 				
-				
-				Cookie userIdCookie = new Cookie("userIdCookie", "userIdCookie");
+			}
+			
+				User userCookie = (User) user;
+				Cookie userIdCookie = new Cookie("userIdCookie", userCookie.getId());
 				userIdCookie.setPath("/");
 				userIdCookie.setMaxAge(60 * 60 * 24 * 7);
 				response.addCookie(userIdCookie);
-				
-				
-			}
+			
 			response.sendRedirect("/lobby/selectProject");
 		}
+		
+		
 		
 	}
 

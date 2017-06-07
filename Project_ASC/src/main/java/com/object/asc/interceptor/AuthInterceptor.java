@@ -26,6 +26,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		
 		HttpSession session = request.getSession();
 		
+		
 		if (session.getAttribute("login") == null) {
 			logger.info("현재 이용자는 로그인상태가 아니에용");
 			
@@ -33,8 +34,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 			
 			if (loginCookie != null) {
 				User user = service.checkUserWithSessionKey(loginCookie.getValue());
-				
-				logger.info("USER : " + user);
 				
 				if (user != null) {
 					session.setAttribute("login", user);

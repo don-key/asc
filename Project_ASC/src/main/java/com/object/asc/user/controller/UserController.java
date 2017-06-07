@@ -64,11 +64,18 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value="/get", method = RequestMethod.GET)
+	public void get(User user){
+		logger.info("가입정보 불러오기 테스트");
+		
+	}
+	
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modify(User user, RedirectAttributes rttr) {
 		logger.info("회원수정 테스트");
 		
+		service.get(user.getUserNo());
 		service.modify(user);
 		rttr.addFlashAttribute("message", "success");
 		
@@ -76,10 +83,10 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGET(User user) {
-		logger.info("로그인 들어갔다");
-	}
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public void loginGET(User user) {
+//		logger.info("로그인 들어갔다");
+//	}
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(User user, HttpSession session, Model model) {
@@ -89,8 +96,6 @@ public class UserController {
 		if(loginCheck == null){return;}
 			
 		model.addAttribute("user", loginCheck);
-		logger.info("로그인 유저 정보 받아랏"+loginCheck.toString());
-		
 		
 		if (user.isUseCookie()) {
 			int amount = 60 * 60 * 24 * 7;
@@ -175,5 +180,24 @@ public class UserController {
 	      return entity;
 	}
 	
+	@RequestMapping(value = "/createNewPw")
+	@ResponseBody
+	public ResponseEntity<String> createNewPw(String id) {
+		ResponseEntity<String> entity = null;
+	      
+	      try {
+	    	  logger.info("새로운 비밀번호 만들자");
+	    	  service.createNewPw(id);
+	    	  logger.info("아이디 받아오니ㅠㅠ"+ id);
+	    	  
+	    	  String success ="success";
+	    	  entity = new ResponseEntity<String>(success, HttpStatus.OK);
+	    	  logger.info("궁금하다 너의 정체:"+ entity);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	      }
+	      return entity;
+	}
 	
 }

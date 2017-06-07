@@ -64,7 +64,9 @@
   
   <script>
 //    $('.logoutBtn').on('click', function() {
-//  	  swal({
+//  	  
+// 		e.preventDefault();
+// 		swal({
 //  		  title: '로그아웃 하시겠습니까?',
 //  		  text: "",
 // 		  type: 'warning',

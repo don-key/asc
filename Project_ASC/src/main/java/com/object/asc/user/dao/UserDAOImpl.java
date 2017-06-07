@@ -92,6 +92,11 @@ public class UserDAOImpl implements UserDAO{
 		paramMap.put("phone", phone);
 		return sqlSession.selectOne(namespace + ".findPw", paramMap);
 	}
+
+	@Override
+	public void createNewPw(String id) {
+		sqlSession.update(namespace + ".createNewPw", id);
+	}
 	
 
 }

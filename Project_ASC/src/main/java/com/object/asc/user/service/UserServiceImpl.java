@@ -72,5 +72,11 @@ public class UserServiceImpl implements UserService {
 		return dao.findPw(id, name, phone);
 	}
 
+	@Override
+	public void createNewPw(String id) {
+		dao.createNewPw(id);
+		
+	}
+
 	
 }

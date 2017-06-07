@@ -64,6 +64,61 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	
+//	@RequestMapping(value = "/register", method = RequestMethod.POST)
+//	@ResponseBody
+//	public ResponseEntity<String> register(@RequestParam("fileupload")MultipartFile photo, @RequestParam("registerPassword") User user) {
+//		ResponseEntity<String> entity = null;
+//	    
+//		
+//	      try {
+//	    	  logger.info("회원가입 테스트");
+//	    	  
+//	    	  user.setPhoto(photo.getOriginalFilename());
+//	    	  
+//	    	  service.register(user);
+//	    	  
+//	    	  
+//	    	  String success = "success";
+//	    	  
+//	    	  entity = new ResponseEntity<String>(success, HttpStatus.OK);
+//	    	  
+//	      } catch (Exception e) {
+//	         e.printStackTrace();
+//	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+//	      }
+//	      return entity;
+//	}
+	
+	
+	@RequestMapping(value = "/idCheck")
+	@ResponseBody
+	public ResponseEntity<String> idCheck(@RequestParam("registerId") String registerId) {
+		ResponseEntity<String> entity = null;
+	    
+		String result = "";
+		
+	      try {
+	    	  logger.info("아이디 중복체크 테스트");
+	    	  
+	    	  boolean name = service.idCheck(registerId);
+	    	  
+	    	  if(name == true){
+	    		  result = "success";
+	    	  }else{
+	    		  result = "fail";
+	    	  }
+	    	  
+	    	  entity = new ResponseEntity<String>(result, HttpStatus.OK);
+	    	  
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	      }
+	      return entity;
+	}
+	
+	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public void get(User user){
 		logger.info("가입정보 불러오기 테스트");
@@ -83,19 +138,15 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public void loginGET(User user) {
-//		logger.info("로그인 들어갔다");
-//	}
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(User user, HttpSession session, Model model) {
 		
 		User loginCheck = service.login(user);
+		System.out.println("로그인체크 " + loginCheck);
+		if(loginCheck == null){return;} 
+		logger.info("이거이거이거"+loginCheck.toString());
 		
-		if(loginCheck == null){return;}
-			
-		model.addAttribute("user", loginCheck);
 		
 		if (user.isUseCookie()) {
 			int amount = 60 * 60 * 24 * 7;
@@ -105,6 +156,7 @@ public class UserController {
 
 		}
 		
+		model.addAttribute("user", loginCheck);
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -120,6 +172,7 @@ public class UserController {
 			session.invalidate();
 			
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			Cookie userIdCookie = WebUtils.getCookie(request, "userIdCookie");
 			
 			if (loginCookie != null) {
 				loginCookie.setPath("/");
@@ -127,6 +180,13 @@ public class UserController {
 				response.addCookie(loginCookie);
 				service.keepLogin(user.getId(), session.getId(), new Date(0));
 			}
+			if (userIdCookie != null) {
+				userIdCookie.setPath("/");
+				userIdCookie.setMaxAge(0);
+				response.addCookie(userIdCookie);
+				service.keepLogin(user.getId(), session.getId(), new Date(0));
+			}
+			
 		}
 		return "redirect:/";
 	}
@@ -151,9 +211,8 @@ public class UserController {
 	    	  logger.info("아이디 찾아준다");
 	    	  
 	    	  String returnId = service.findId(name, phone);
-	    	  logger.info("당신의 아이디는"+returnId);
-	         entity = new ResponseEntity<String>(returnId, HttpStatus.OK);
-	         logger.info("궁금하다 너의 정체"+ entity);
+	    	  entity = new ResponseEntity<String>(returnId, HttpStatus.OK);
+	    	  
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -170,9 +229,8 @@ public class UserController {
 	    	  logger.info("비밀번호 찾아준다");
 	    	  
 	    	  String returnPw = service.findPw(id, name, phone);
-	    	  logger.info("당신의 비밀번호는: "+returnPw);
-	         entity = new ResponseEntity<String>(returnPw, HttpStatus.OK);
-	         logger.info("궁금하다 너의 정체:"+ entity);
+	    	  entity = new ResponseEntity<String>(returnPw, HttpStatus.OK);
+	    	  
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -201,3 +259,5 @@ public class UserController {
 	}
 	
 }
+
+	

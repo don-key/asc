@@ -10,6 +10,9 @@ public interface UserService {
 	/** 회원 가입 */
 	public void register(User user);
 	
+	/** 회원 아이디 중복 체크*/
+	public boolean idCheck(String id);
+	
 	/** 회원 정보 불러오기*/
 	public User get(int userNo);
 	

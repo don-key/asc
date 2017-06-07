@@ -12,6 +12,12 @@ INSERT INTO users(id, password, name, phone, photo, status)
 VALUES (#{id}, #{password}, #{name}, #{phone}, #{photo}, #{status})
 
 </insert>
+<!-- 회원 아이디 중복 체크 -->
+<select id="idCheck" resultType="String">
+
+select name from users where id=#{id}
+
+</select>
 
 <!-- 회원번호로 회원정보 조회-->
 <select id="get" resultType="User">
@@ -39,8 +45,8 @@ select user_no as userNo, id, password, name from users where id=#{id} and passw
 <!-- 로그인한 사람의 세션키 세션리밋 업데이트 -->
 <update id="keepLogin">
 
-update users set session_key =#{sessionId}, session_limit=#{sessionLimit}
-where id=#{id}
+update users set session_key =#{paramMap.sessionId}, session_limit=#{paramMap.sessionLimit}
+where id=#{paramMap.id}
 
 </update>
 
@@ -93,4 +99,5 @@ select id from users where id like #{id}
 select user_no from users where id like #{id}
 
 </select>
+
 </mapper>

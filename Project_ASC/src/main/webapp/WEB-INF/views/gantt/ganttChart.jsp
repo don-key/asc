@@ -127,7 +127,7 @@ $(document).ready(function(){
     			var duration = ${duration[count]};
     			console.log("duration : " + duration);
     			for (var j = 0; j < duration; j++) {
-    			innerCode += "<td style='background-color: " + color + "'>&nbsp;</td>";
+    			innerCode += "<td style='background-color: " + color + ";'>&nbsp;</td>";
 				}
     			break;
 			} else {
@@ -139,6 +139,30 @@ $(document).ready(function(){
 	
     $('#rightTable').html(innerCode);
 	
+    
+
+    /** Today */
+    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
+	<c:set var="count">${status.index}</c:set>
+	var startCount =  ${count};
+	console.log("count : " + startCount);
+	var steps = $('#rightTable').children();
+	console.log("1"+steps.toString());
+	for (var i = 0; i < startCount; i++) {
+		steps = steps.next();
+	console.log("2"+steps.toString());
+	}
+    steps = steps.children();
+	console.log("3"+steps.toString());
+    for (var j = 0; j < 6; j++) {
+		steps = steps.next();
+	console.log("4"+steps.toString());
+	}
+	console.log("5"+steps.toString());
+    steps.css("background-image", "url(/resources/images/gantt/today.png)");
+    
+    </c:forEach>
+    
 
 	  
 });
@@ -241,6 +265,8 @@ function deleteFunction(){
 			});
 		});
 }
+
+
 	
 </script>
 

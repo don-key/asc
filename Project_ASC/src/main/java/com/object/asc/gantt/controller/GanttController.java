@@ -1,6 +1,7 @@
 package com.object.asc.gantt.controller;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -81,6 +82,15 @@ public class GanttController {
 		
 		/** 간트 기능 추가 모달에 들어갈 참여 멤버 이름 조회 (동적으로 나중에 바꾸기) */
 		List<String> member = lobbyService.memberName(1);
+		
+		/** Today 표현을 위한 오늘 날짜 받아오기 */
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String sdfSql = sdf.format(new java.util.Date());
+        java.sql.Date today = java.sql.Date.valueOf(sdfSql);
+        System.out.println("오늘날짜::::" + today);
+        
+        String[] todaySplit = today.toString().split("-");
+        
 		
 
 

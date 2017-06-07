@@ -36,4 +36,9 @@ public class GanttServiceImpl implements GanttService {
 		dao.delete(ganttListNo);
 	}
 
+	@Override
+	public List<String> todayList(int ganttNo) {
+		return dao.todayList(ganttNo);
+	}
+
 }

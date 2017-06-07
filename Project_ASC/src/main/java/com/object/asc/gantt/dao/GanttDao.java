@@ -17,5 +17,8 @@ public interface GanttDao {
 	
 	/** 기능 삭제 */
 	public void delete(int ganttListNo);
+	
+	/** 오늘 할 일(간트) */
+	public List<String> todayList (int ganttNo);
 
 }

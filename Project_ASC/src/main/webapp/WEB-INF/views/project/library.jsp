@@ -56,7 +56,7 @@ color: black;
 								${libraryList.title }
 								
 								<c:if test="${login.userNo == libraryList.userNo }">
-									<a class="btn btn-default btn-sm" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
+									<a class="btn btn-default btn-sm removeBtn" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
 										<i class="fa fa-trash-o fa-sm"></i> 
 									</a>
 								</c:if>
@@ -74,7 +74,7 @@ color: black;
 							</div>
 							
 							<div class="panel-footer">	작성자 : ${name[status.index].name}
-							<a class="btn btn-default btn-sm" id="downloadBtn"  style="float: right; padding: 2px 9px;"> 
+							<a class="btn btn-default btn-sm" id="downloadBtn"  onclick="downloadFunc('${libraryList.uuidName}')" style="float: right; padding: 2px 9px;"> 
 									<i class="fa fa-download fa-sm"></i> 
 							</a>
 							</div>
@@ -95,9 +95,8 @@ color: black;
 
 
 <script>
-$(function() {
 /** 삭제 버튼 이벤트 처리 */
-	$("#removeBtn").on("click",	function() {
+	$(".removeBtn").on("click",	function() {
 		var link = $(this).parent().parent().parent().prev();
 		swal({
 			title : '자료를 삭제하시겠습니까?',
@@ -126,15 +125,15 @@ $(function() {
 				link = '';
 			})
 	});
-	
+
 	/** 다운로드 클릭 시 이벤트 */
-	$("#downloadBtn").on("click",	function(event) {
+	function downloadFunc(uuidName){
 		event.preventDefault();
 		
-		var data = $("#uuid").val();
+		var data = uuidName;
 		var url="";
 		
- 		if (checkImageType(data)) {
+			if (checkImageType(data)) {
 			var front = data.substring(0, 5);	// /asc 경로 추출
 			var end = data.substring(7); 	// s_ 제거
 			
@@ -142,8 +141,7 @@ $(function() {
 		} else {
 			location.href = "/project/displayFile?fileName="+data; 
 		} 
-	});
-
+	}
 
 	/** 파일의 확장자가 존재하는지 검사 */
 	function checkImageType(fileName) {
@@ -175,5 +173,5 @@ $(function() {
 		
 		return {fileName:fileName, imgsrc:imgsrc, getLink:getLink, fullName:fullName};
 	}
-});
+
 </script>

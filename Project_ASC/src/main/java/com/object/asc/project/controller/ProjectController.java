@@ -59,7 +59,8 @@ public class ProjectController {
 	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
 	public String dashBoard(Locale locale, Model model) {
 		logger.info("대쉬보드 테스트");
-
+		String chatName = projectService.chatName(1);
+		model.addAttribute("chatName", chatName);
 		return "/project/dashboard";
 	}
 

@@ -73,4 +73,9 @@ public class ProjectServiceImpl implements ProjectService {
 		dao.sprintRegister(sprint);
 	}
 
+	@Override
+	public String chatName(int projectListNo) {
+		return dao.chatName(projectListNo);
+	}
+
 }

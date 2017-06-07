@@ -73,4 +73,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 	public void sprintRegister(Sprint sprint) {
 		sqlSession.insert(namespace+".sprintRegister", sprint);
 	}
+
+	@Override
+	public String chatName(int projectListNo) {
+		return sqlSession.selectOne(namespace+".chatName",projectListNo);
+	}
 }

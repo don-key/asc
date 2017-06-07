@@ -27,42 +27,50 @@
 <!-- 대쉬보드 생성(회원 전부) -->
 <insert id="dashBoardRegister">
 INSERT INTO dash_board(dash_board_no, project_list_no, user_no, memo) 
-VALUES (null, #{projectListNo}, #{userNo}, #{memo});
+VALUES (null, #{projectListNo}, #{userNo}, #{memo})
 </insert>
 
 <!-- 릴리즈 생성 -->
 <insert id="projectReleaseRegister">
 INSERT INTO project_release(project_release_no, project_list_no) 
-VALUES (null, #{projectListNo});
+VALUES (null, #{projectListNo})
 </insert>
 
 <!-- 자료실 생성 -->
 <insert id="libraryRegister">
 INSERT INTO library(library_no, project_list_no) 
-VALUES (null, #{projectListNo});
+VALUES (null, #{projectListNo})
 </insert>
 
 <!-- 간트차트 생성 -->
 <insert id="ganttChartRegister">
 INSERT INTO gantt_chart(gantt_no, project_list_no) 
-VALUES (null, #{projectListNo});
+VALUES (null, #{projectListNo})
 </insert>
 
 <!-- 계획 실행 차트 생성 -->
 <insert id="actionChartRegister">
 INSERT INTO action_chart(action_no, project_list_no)
-VALUES (null, #{projectListNo});
+VALUES (null, #{projectListNo})
 </insert>
 
 <!-- 스크럼 생성 -->
 <insert id="scrumRegister">
 INSERT INTO scrum(scrum_no, project_list_no)
-VALUES (null, #{projectListNo});
+VALUES (null, #{projectListNo})
 </insert>
 
 <!-- 스프린트 생성 -->
 <insert id="sprintRegister">
 INSERT INTO sprint(sprint_no, scrum_no, start_date, end_date)
-VALUES (null, #{scrumNo}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day));
+VALUES (null, #{scrumNo}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day))
 </insert>
+
+<!-- 채팅방 조회 -->
+<select id="chatName" resultType="String">
+SELECT chat_name as chatName 
+FROM project_list 
+WHERE project_list_no=#{projectListNo} 
+</select>
+
 </mapper>

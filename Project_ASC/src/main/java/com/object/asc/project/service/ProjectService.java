@@ -37,4 +37,7 @@ public interface ProjectService {
 	public void scrumRegister(Scrum scrum);
 	/** 1-10. 스프린트 생성*/
 	public void sprintRegister(Sprint sprint);
+	
+	/** 채팅방 이름 조회 */
+	public String chatName(int projectListNo);
 }

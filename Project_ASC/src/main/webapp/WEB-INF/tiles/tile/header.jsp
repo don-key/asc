@@ -28,10 +28,10 @@
                             <a href="/scrum/taskBoard"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="/scrum/taskBoard"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
+                                    <a href="http://localhost:4567/scrum/taskBoard"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
                                 </li>
                                 <li>
-                                   	<a href="/scrum/releasePlanning"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
+                                   	<a href="http://localhost:4567/scrum/releasePlanning"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

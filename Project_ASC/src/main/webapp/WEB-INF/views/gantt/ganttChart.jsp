@@ -141,29 +141,20 @@ $(document).ready(function(){
 	
     
 
-    /** Today */
-    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
-	<c:set var="count">${status.index}</c:set>
-	var startCount =  ${count};
-	console.log("count : " + startCount);
-	var steps = $('#rightTable').children();
-	console.log("1"+steps.toString());
-	for (var i = 0; i < startCount; i++) {
-		steps = steps.next();
-	console.log("2"+steps.toString());
-	}
-    steps = steps.children();
-	console.log("3"+steps.toString());
-    for (var j = 0; j < 6; j++) {
-		steps = steps.next();
-	console.log("4"+steps.toString());
-	}
-	console.log("5"+steps.toString());
-    steps.css("background-image", "url(/resources/images/gantt/today.png)");
-    
-    </c:forEach>
-    
 
+    /** Today */
+   var set = $('#rightTable').children().children()[7];
+      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
+    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
+   <c:set var="count">${status.index}</c:set>
+   var startCount =  ${count};
+   console.log("count : " + startCount);
+   var steps = '';
+      /** i는 세로 뒤에 2 자리는 날짜 범위 */
+      steps = $('#rightTable').children().next()[startCount].children[7];
+       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
+   </c:forEach> 
+    
 	  
 });
 

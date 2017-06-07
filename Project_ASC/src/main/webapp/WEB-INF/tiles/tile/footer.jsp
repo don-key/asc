@@ -25,11 +25,12 @@ img#chatBtn {
         });
         
         var chatName = $("#chatName").val();
+       	var popupUrl = "http://localhost:3000/chats/" + chatName;
         
         /*채팅창 팝업*/
     	function popupOpen() {
         	
-    		var popUrl = "http://localhost:3000/chats/" + chatName; //팝업창에 출력될 페이지 URL
+    		var popUrl = popupUrl; //팝업창에 출력될 페이지 URL
     		
     		//var popUrl = "http://www.naver.com";
     		

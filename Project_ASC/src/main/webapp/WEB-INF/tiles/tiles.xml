@@ -6,11 +6,19 @@
 		<put-attribute name="header" value="/WEB-INF/tiles/tile/header.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/tiles/tile/footer.jsp" />
 	</definition>
+	<definition name="Empty" template="/WEB-INF/tiles/layout/empty.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/tile/emptyHeader.jsp" />
+    </definition>
 	
+	<definition name="/lobby/selectProject" extends="Empty">
+        <put-attribute name="content" value="/WEB-INF/views/lobby/selectProject.jsp"/>  
+    </definition>
+    
 	<definition name="*/*" extends="Layout">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	<definition name="*/*/*" extends="Layout">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}/{3}.jsp"/>
 	</definition>
+	
 </tiles-definitions>

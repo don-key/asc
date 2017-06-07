@@ -13,32 +13,6 @@ color: black;
 	margin-top: 10% !important
 }
 
-.popup {
-	position: absolute;
-}
-
-.back {
-	background-color: red;
-	opacity: 0.5;
-	width: 20%;
-	height: 20%;
-	overflow: hidden;
-	z-index: 1101;
-}
-
-.front {
-	z-index: 1110;
-	opacity: 1;
-	border: 1px;
-	margin: auto;
-}
-
-.show {
-	position: relative;
-	max-width: 800px;
-	max-height: 600px;
-	overflow: auto;
-}
 </style>
 
 <div id="page-wrapper">
@@ -51,7 +25,8 @@ color: black;
 	<div class="row">
 
 		<div class="">
-			<a id="" class="btn btn-default btn-lg" style="margin-left: 85%;" data-toggle="modal" data-target="#fileUploadModal"> <i class="fa fa-upload fa-lg"></i> 파일 업로드
+			<a id="" class="btn btn-default btn-lg" style="margin-left: 85%;" data-toggle="modal" data-target="#fileUploadModal"> 
+				<i class="fa fa-upload fa-lg"></i> 파일 업로드
 			</a>
 		</div>
 
@@ -78,11 +53,13 @@ color: black;
 					<div class="col-lg-4">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								${libraryList.title }  
+								${libraryList.title }
 								
-								<a class="btn btn-default btn-sm" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
-									<i class="fa fa-trash-o fa-sm"></i> 
-								</a>
+								<c:if test="${login.userNo == libraryList.userNo }">
+									<a class="btn btn-default btn-sm" id="removeBtn"  style="float: right; padding: 2px 9px;"> 
+										<i class="fa fa-trash-o fa-sm"></i> 
+									</a>
+								</c:if>
 								
 							</div>
 

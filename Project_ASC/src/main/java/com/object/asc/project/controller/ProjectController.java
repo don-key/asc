@@ -209,12 +209,7 @@ public class ProjectController {
 		    	String front = fileName.substring(0,5);
 		    	String end = fileName.substring(7, length);
 		    	String realImage = front+end;
-		    	
-		    	logger.info("앞에꺼"+front);
-		    	logger.info("뒤에꺼"+end);
-		    	logger.info("이미지 잘랐다ㅏㅏㅏ222222222"+realImage);
-		    	
-//				headers.setContentType(mType);
+
 		    	headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);	// 이미지가 아닌 경우 MIME 타입을 다운로드용으로 지정
 				headers.add("Content-Disposition", "attachment; filename=\"" + realImage +"\"");
 			} else {

@@ -54,19 +54,6 @@
 						</div>
 					</div>
 					<br>
-					
-					<!-- 드래그 앤 드롭 놓아준다......... -->
-<!-- 					<div class="row"> -->
-<!-- 						<div class="col-xs-2 col-xs-offset-1"> -->
-<!-- 							<label style="font-size: 15px;">파일 선택 (드래그)</label> -->
-<!-- 						</div> -->
-<!-- 						<div class="col-xs-8"> -->
-<!-- 							<div class="thumbnail"> -->
-<!-- 								<div class="fileDrop"><label class="text-center"> 파일을 이곳에 드래그해 주세요 :) </label></div> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-
 
 					<div class="modal-footer">
 						<div class="row">
@@ -134,7 +121,7 @@ $(function() {
 				
 				$('#uuidName').val(data);
 				$('#displayName').val("displayFile?fileName="+data);
-				$(".uploadedList").append(str);
+				$(".uploadedList").html(str);
 			}
 		});
 	});

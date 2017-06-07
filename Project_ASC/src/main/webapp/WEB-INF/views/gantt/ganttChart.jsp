@@ -283,7 +283,7 @@ function deleteFunction(){
   <br>
   
   <div class="bottomPanel text-center">
-    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal">추가</a>
+    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal" style="margin-bottom: 5%;">추가</a>
   </div>
 
 

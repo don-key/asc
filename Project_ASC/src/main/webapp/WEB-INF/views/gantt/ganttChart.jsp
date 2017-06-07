@@ -187,31 +187,35 @@ function addDay(month, day){
 /** 기능 모달에 값 넣어주기 */
 function modal(status, listNo, title, worker, startDate, endDate, color){
 	if (status == 'view') {
-	$('#viewTitle').html(title);
-	$('#viewWorker').html(worker);
-	$('#viewStartDate').html(startDate);
-	$('#viewEndDate').html(endDate);
-	$('#viewColor').css("background-color", color);
-	
-	$('#modifyListNo').val(listNo);
-	$('#modifyTitle').val(title);
-	/** 여기 해결해야함 */
-	  $('#modifyWorker').each(function(){
-
-		    if($(this).val() == worker){
-		      $(this).attr("selected","selected");
-		    }
-
-		  });
-	$('#modifyStartDate').val(startDate);
-	$('#modifyEndDate').val(endDate);
-	$('#modifyColorView').css("background-color", color);
-	
-	$("#viewGanttChartModal").modal('show');
+    	$('#viewTitle').html(title);
+    	$('#viewWorker').html(worker);
+    	$('#viewStartDate').html(startDate);
+    	$('#viewEndDate').html(endDate);
+    	$('#viewColor').css("background-color", color);
+    	
+    	$('#modifyListNo').val(listNo);
+    	$('#modifyTitle').val(title);
+    	/** 여기 해결해야함 */
+    	  $('#modifyWorker').each(function(){
+    
+    		    if($(this).val() == worker){
+    		      $(this).attr("selected","selected");
+    		    }
+    
+    		  });
+    	$('#modifyStartDate').val(startDate);
+    	$('#modifyEndDate').val(endDate);
+    	$('#modifyColor').val(color);
+    	$('#modifyColorView').css("background-color", color);
+    	
+    	$("#viewGanttChartModal").modal('show');
 	
 	} else if(status == 'modify'){
 		$("#viewGanttChartModal").modal('hide');
+		$('#viewGanttChartModal').on('hidden.bs.modal', function (e) {
 		$("#modifyGanttChartModal").modal('show');
+			});
+		
 	}
 }
 
@@ -219,7 +223,23 @@ function modal(status, listNo, title, worker, startDate, endDate, color){
 /** 기능 삭제 버튼 누를때 */
 function deleteFunction(){
 	var listNo = $('#modifyListNo').val();
-	location.href="/gantt/delete?listNo="+listNo;
+	swal({
+		  title: 'Are you sure?',
+		  text: "한번 삭제된 기능은 돌이킬 수 없습니다.",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: "Delete!",
+		}).then(function () {
+		  swal(
+		    'Deleted!',
+		    '기능삭제 완료!',
+		    'success'
+		  ).then(function () {
+				location.href="/gantt/delete?listNo="+listNo;
+			});
+		});
 }
 	
 </script>
@@ -266,65 +286,7 @@ function deleteFunction(){
     <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal">추가</a>
   </div>
 
-  <div class="row">
-  <div>테스트 / 변수확인</div>
-    <table>
-      <c:forEach items="${ganttList}" var="gantt">
-        <tr>
-          <td>${gantt.ganttListNo }</td>
-          <td>${gantt.ganttNo }</td>
-          <td>${gantt.userNo }</td>
-          <td>${gantt.title }</td>
-          <td>${gantt.worker }</td>
-          <td>${gantt.startDate }</td>
-          <td>${gantt.endDate }</td>
-          <td>${gantt.color }</td>
-        </tr>
-      </c:forEach>
-    </table>
 
-  </div>
-  
-    <div class="row">
-    <table>
-        <tr>
-          <td>${projectDate.projectListNo }</td>
-          <td>${projectDate.projectName }</td>
-          <td>${projectDate.startDate }</td>
-          <td>${projectDate.endDate }</td>
-          <td>날짜는요? ${days}</td>
-        </tr>
-    </table>
-
-  </div>
-
-    <div class="row">
-    <div>받아온 값들</div>
-    <div>기간 : ${days }</div>
-    <div>프젝 시작일 : ${pStartDate[0] }</div>
-    <div>${pStartDate[1] }</div>
-    <div>${pStartDate[2] }</div>
-    <div>프젝 마감일 : ${pEndDate[0] }</div>
-    <div>${pEndDate[1] }</div>
-    <div>${pEndDate[2] }</div>
-    <div>기능 시작일 (계산한 값) : ${startCount[0] }</div>
-    <div>${startCount[1] }</div>
-    <div>${startCount[2] }</div>
-    <div>${startCount[3] }</div>
-    <div>${startCount[4] }</div>
-    <div>${startCount[5] }</div>
-    <div>${startCount[6] }</div>
-    <div>${startCount[7] }</div>
-    <div>기능 유지일 (계산한 값) : ${duration[0] }</div>
-    <div>${duration[1] }</div>
-    <div>${duration[2] }</div>
-    <div>${duration[3] }</div>
-    <div>${duration[4] }</div>
-    <div>${duration[5] }</div>
-    <div>${duration[6] }</div>
-    <div>${duration[7] }</div>
-    
-  </div>
 
 
 </div>

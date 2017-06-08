@@ -57,15 +57,15 @@ public class ProjectController {
 	private String uploadPath;
 
 	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
-	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model) {
+	public String dashBoard(Locale locale, Model model) {
 		logger.info("대쉬보드 테스트");
-		String chatName = projectService.chatName(projectListNo);
+		String chatName = projectService.chatName(1);
 		model.addAttribute("chatName", chatName);
 		return "/project/dashboard";
 	}
 
 	@RequestMapping(value = "/library", method = RequestMethod.GET)
-	public String library(Locale locale, Model model, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo) {
+	public String library(Locale locale, Model model) {
 		logger.info("자료실 입장~");
 		
 		logger.info("자료 내역 리스트 올~~~~~~~~~");
@@ -76,8 +76,6 @@ public class ProjectController {
 		}
 		model.addAttribute("list", projectService.libraryListListAll());		// 자료 내역 리스트 목록 뿌려주기
 		model.addAttribute("name", name);
-		model.addAttribute("projectListNo", projectListNo);
-		model.addAttribute("userNo", userNo);
 		return "/project/library";
 	}
 	
@@ -90,19 +88,18 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
-	public String libraryListRegist (@RequestParam("projectListNo") int projectListNo, @RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr, @RequestParam("userNo") int userNo) {
+	public String libraryListRegist (@RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr) {
 		logger.info("자료실 등록등록");
 		logger.info("자료실 내역 : "+ libraryList.toString());
 		 
 		libraryList.setFileName(file.getOriginalFilename());
 		libraryList.setUuidName(uuidName);
-		libraryList.setLibraryNo(projectListNo);
 		
-		projectService.libraryListRegister(libraryList); // 매퍼를 통해 등록 메소드 호출
+		projectService.libraryListRegister(libraryList);		// 매퍼를 통해 등록 메소드 호출
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/project/library?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/project/library";
 	}
 
 	/**

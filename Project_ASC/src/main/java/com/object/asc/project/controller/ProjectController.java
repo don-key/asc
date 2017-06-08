@@ -57,9 +57,9 @@ public class ProjectController {
 	private String uploadPath;
 
 	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
-	public String dashBoard(Locale locale, Model model) {
+	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model) {
 		logger.info("대쉬보드 테스트");
-		String chatName = projectService.chatName(1);
+		String chatName = projectService.chatName(projectListNo);
 		model.addAttribute("chatName", chatName);
 		return "/project/dashboard";
 	}

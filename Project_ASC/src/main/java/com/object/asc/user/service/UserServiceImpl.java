@@ -78,8 +78,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void createNewPw(String id) {
-		dao.createNewPw(id);
+	public void createNewPw(String id, String password) {
+		dao.createNewPw(id, password);
 		
 	}
 

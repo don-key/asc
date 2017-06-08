@@ -35,7 +35,7 @@ public interface UserService {
 	public String findPw(String id, String name, String phone);
 	
 	/** 비밀번호찾기 후 새로운 비밀번호 등록 */
-	public void createNewPw(String id);
+	public void createNewPw(String id, String password);
 	
 	/** 회원 탈퇴 */
 	public void delete(User user);

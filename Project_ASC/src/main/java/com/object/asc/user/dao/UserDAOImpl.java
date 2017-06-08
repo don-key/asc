@@ -105,8 +105,11 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public void createNewPw(String id) {
-		sqlSession.update(namespace + ".createNewPw", id);
+	public void createNewPw(String id, String password) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("id", id);
+		paramMap.put("password", password);
+		sqlSession.update(namespace + ".createNewPw", paramMap);
 	}
 
 	

@@ -31,7 +31,7 @@
 
 						<div class="col-xs-6 col-sm-6">
 						<br><br>
-							<p style="font-size: 25px; font-weight: bold;">Object@gmail.com</p>
+							<p style="font-size: 25px; font-weight: bold;">${login.id}</p>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -41,7 +41,7 @@
 							<label for="id" class="regist_label">아이디</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
-							<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="20">
+							<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" value="${login.id}" readonly>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -71,7 +71,7 @@
 							<label class="regist_label">이름</label>
 						</div>
 						<div class="col-xs-7 col-sm-7">
-							<input type="text" class="form-control" name="name" placeholder="이름을 입력하세요" />
+							<input type="text" class="form-control" name="name" value="${login.name }"placeholder="이름을 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -81,7 +81,7 @@
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
 						<div class="col-xs-7 col-sm-7 ">
-							<input type="tel" class="form-control placeholder" name="phone" placeholder="휴대폰 번호를 입력하세요" />
+							<input type="tel" class="form-control placeholder" name="phone" value="${user.phone }"placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>

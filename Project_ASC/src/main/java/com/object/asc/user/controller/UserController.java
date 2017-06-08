@@ -55,7 +55,7 @@ public class UserController {
 		logger.info(photo.getOriginalFilename());
 		
 		service.register(user);
-		rttr.addAttribute("message", "회원가입 완료");
+		rttr.addAttribute("message", "success");
 		
 		return "redirect:/";
 	}
@@ -93,6 +93,7 @@ public class UserController {
 	public void get(User user){
 		logger.info("가입정보 불러오기 테스트");
 		
+		service.get(user.getUserNo());
 	}
 	
 	
@@ -101,6 +102,12 @@ public class UserController {
 		logger.info("회원수정 테스트");
 		
 		service.get(user.getUserNo());
+		
+		User userInfo = service.get(user.getUserNo());
+		userInfo.setPhone(user.getPhone());
+
+		logger.info("전화번호 왜 못받냐고!!!!!!!"+user.getPhone());
+
 		service.modify(user);
 		rttr.addFlashAttribute("message", "success");
 		
@@ -209,14 +216,15 @@ public class UserController {
 	
 	@RequestMapping(value = "/createNewPw")
 	@ResponseBody
-	public ResponseEntity<String> createNewPw(String id) {
+	public ResponseEntity<String> createNewPw(@RequestParam("password")String password, @RequestParam("id")String id) {
 		ResponseEntity<String> entity = null;
 	      
 	      try {
 	    	  logger.info("새로운 비밀번호 만들자");
-	    	  service.createNewPw(id);
+	    	  service.createNewPw(id, password);
 	    	  
 	    	  String success ="success";
+	    	  
 	    	  entity = new ResponseEntity<String>(success, HttpStatus.OK);
 	      } catch (Exception e) {
 	         e.printStackTrace();
@@ -227,4 +235,3 @@ public class UserController {
 	
 }
 
-	

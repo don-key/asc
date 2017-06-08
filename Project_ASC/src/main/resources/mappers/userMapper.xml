@@ -31,7 +31,7 @@ select user_no as userNo, id, password, name, phone, photo, status, recent_login
 <update id="modify">
 
 UPDATE users SET password = #{password}, name = #{name}, phone = #{phone}, photo = #{photo}
-WHERE user_no = #{userNo}
+WHERE id = #{id}
 
 </update>
 

@@ -135,6 +135,7 @@ font-family: 'LotteMartDream';
                          <form action="/user/createNewPw">
                             <br>
                               <p style="text-align: center;">새롭게 사용하실 비밀번호를 등록해주세요 <br> </p>
+                              <input type="hidden" id="newId" value="">
                             <br>
               
                               <div class="form-group">
@@ -142,7 +143,7 @@ font-family: 'LotteMartDream';
                                   <label for="id" class="regist_label">비밀번호</label>
                                 </div>
                                 <div class="col-xs-7 col-sm-7">
-                                  <input type="password" class="form-control onlyAlphabetAndNumber" id="newPassword" name="password" placeholder="새롭게 사용할 비밀번호를 입력하세요" maxlength="30">
+                                  <input type="password" class="form-control onlyAlphabetAndNumber" id="newSetPassword" name="password" placeholder="새롭게 사용할 비밀번호를 입력하세요" maxlength="30">
                                 </div>
                                 <div class="clearfix"></div>
                               </div>
@@ -303,6 +304,7 @@ $(function (){
             	$('#tab3').addClass("active");
             	$('#findPassword').removeClass("active");
             	$('#newPassword').addClass("active");
+            	$('#newId').val(id);
             	
             	}
                }
@@ -311,49 +313,39 @@ $(function (){
     });
 });
  
-    /** 새로운 비밀번호 생성하기 -- 하는 중 */
+    /** 새로운 비밀번호 생성하기 */
     
     $(function (){
-   	var idForPw = $('#idForPw').val();
-   	var password = $('#newPassword').val();
-   		$('#newPassword').val('');
-   	var rePassword = $('#newRePassword').val();
-   		$('#newRePassword').val('');
        $('#newPwBtn').click(function(e){ 
+   		var id = $('#newId').val();
+//      	$('#newId').val('');
+     	var password = $('#newSetPassword').val();
+     		$('#newSetPassword').val('');
+   		var rePassword = $('#newRePassword').val();
+	   		$('#newRePassword').val('');
        	e.preventDefault();
-       $.ajax({
-           type : 'GET',
-           url : "/user/createNewPw",
-           data:
-           {
-        	   id : idForPw,
-        	   password: password,
-        	   rePassword: rePassword,
-           },
-           success:function(request){
-              if (request == 'success') {
-                   swal(
-                          '비밀번호가 변경되었습니다.',
-                          '',
-                          'success'
-                        ).then(function(){
-              				 location.href="/";
-                        	
-            })
-	     }
-   		}
-	});        
-    
-   }); 
-}); 
-
-
-
-           
-      
-
-
-
-
-
+           $.ajax({
+               type : 'GET',
+               url : "/user/createNewPw",
+               data:
+               {
+            	   password: password,
+            	   id : id
+               },
+               success:function(request){
+                  if (request == 'success') {
+                       swal(
+                              '비밀번호가 변경되었습니다.',
+                              '',
+                              'success'
+                            ).then(function(){
+                  				 location.href="/";
+                            	
+                })
+    	     }
+       		}
+    	});        
+        
+       }); 
+    }); 
 </script>

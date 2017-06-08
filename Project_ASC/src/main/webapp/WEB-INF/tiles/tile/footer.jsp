@@ -17,36 +17,45 @@ img#chatBtn {
 <script>
     $(function() {
         $("#chatBtn").click(function() {
-            /* $('html, body').animate({
-                scrollTop : 0
-            }, 400);
-            return false; */
-            popupOpen();
-        });
-        
-        var chatName = $("#chatName").val();
-       	var popupUrl = "http://192.168.0.62:3000/chats/" + chatName;
-        
-        /*채팅창 팝업*/
-    	function popupOpen() {
+        	var projectListNo = "<%= request.getParameter("projectListNo") %>";
         	
-    		var popUrl = popupUrl; //팝업창에 출력될 페이지 URL
-    		
-    		//var popUrl = "http://www.naver.com";
-    		
-    		console.log(popUrl);
-    		
-    		var cw = screen.availWidth; // 화면너비
-    		var ch = screen.availHeight; // 화면높이
-    		var sw = 1000; // 띄울 창 너비
-    		var sh = 500; // 띄울 창 높이
-    		var ml = (cw-sw)/2;
-    		var mt = (ch-sh)/2;
+           	$.ajax({
+           		url : "/project/getChatName",
+           		type : "POST",
+           		data : { projectListNo : projectListNo },
+           		success : function(data){
+		            popupOpen(data);
+           			
+           		}
+           	});
+           	
+        });
 
-    		var popOption = "width="+sw+", height="+sh+", top="+mt+",left="+ml+" resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
-
-    		window.open(popUrl, "", popOption);
-    	}
-    	
     });
+    
+    
+   	
+    /*채팅창 팝업*/
+	function popupOpen(chatName) {
+		var popupUrl = "http://192.168.0.62:3000/chats/" + chatName;
+		var popUrl = popupUrl; //팝업창에 출력될 페이지 URL
+		
+		//var popUrl = "http://www.naver.com";
+		
+		console.log(popUrl);
+		
+		
+		
+		var cw = screen.availWidth; // 화면너비
+		var ch = screen.availHeight; // 화면높이
+		var sw = 1000; // 띄울 창 너비
+		var sh = 500; // 띄울 창 높이
+		var ml = (cw-sw)/2;
+		var mt = (ch-sh)/2;
+
+		var popOption = "width="+sw+", height="+sh+", top="+mt+",left="+ml+" resizable=no, scrollbars=no, status=no;"; //팝업창 옵션(optoin)
+
+		window.open(popUrl, "", popOption);
+	}
+	
 </script>

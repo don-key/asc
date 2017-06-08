@@ -75,10 +75,4 @@ public class LobbyController {
 		return entity;
 	}
 	
-	@RequestMapping(value="/project", method=RequestMethod.GET)
-	public String enterProject(@RequestParam("listNo") int listNo, Model model){
-		
-		/** 변수명은 나중에 url 정리하기 */
-		return "redirect:/project/dashBoard?projectListNo="+listNo;
-	}
 }

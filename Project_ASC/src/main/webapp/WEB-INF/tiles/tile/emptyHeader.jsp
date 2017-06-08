@@ -63,30 +63,6 @@
 
   
   <script>
-//    $('.logoutBtn').on('click', function() {
-//  	  
-// 		e.preventDefault();
-// 		swal({
-//  		  title: '로그아웃 하시겠습니까?',
-//  		  text: "",
-// 		  type: 'warning',
-//  		  showCancelButton: true,
-// 		  confirmButtonColor: '#3085d6',
-//  		  cancelButtonColor: '#d33',
-//  		  confirmButtonText: 'YES',
-//  		  cancelButtonText: 'NO'
-// 		}).then(function () {
-// 			document.getElementById("logout").submit();
-//  			location.href = '/';
-//  		})
-	  
-//    });
-  
-  
-//    document.getElementById("logoutBtn").onclick = function(){
-//  	    document.getElementById("logout").submit();
-//    };
-  
 
 /** 회원수정 모달 띄우기*/
   $(function() {

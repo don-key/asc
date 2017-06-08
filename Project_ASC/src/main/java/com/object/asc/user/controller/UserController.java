@@ -215,11 +215,9 @@ public class UserController {
 	      try {
 	    	  logger.info("새로운 비밀번호 만들자");
 	    	  service.createNewPw(id);
-	    	  logger.info("아이디 받아오니ㅠㅠ"+ id);
 	    	  
 	    	  String success ="success";
 	    	  entity = new ResponseEntity<String>(success, HttpStatus.OK);
-	    	  logger.info("궁금하다 너의 정체:"+ entity);
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);

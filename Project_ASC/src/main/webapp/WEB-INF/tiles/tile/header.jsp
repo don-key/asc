@@ -49,7 +49,7 @@
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
                          <li>
-                            <a href="#" onclick="document.getElementById('logout').submit();"><img src="/resources/images/menu/logout.png"  id="logoutBtn" class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
+                            <a href="#"><img src="/resources/images/menu/logout.png" id="logoutBtn" class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
                         </li>
                         
                     </ul>
@@ -63,30 +63,24 @@
 
   
   <script>
-//    $('.logoutBtn').on('click', function() {
-//       
+   $('#logoutBtn').on('click', function() {
+      
 //       e.preventDefault();
-//       swal({
-//          title: '로그아웃 하시겠습니까?',
-//          text: "",
-//         type: 'warning',
-//          showCancelButton: true,
-//         confirmButtonColor: '#3085d6',
-//          cancelButtonColor: '#d33',
-//          confirmButtonText: 'YES',
-//          cancelButtonText: 'NO'
-//       }).then(function () {
-//          document.getElementById("logout").submit();
-//           location.href = '/';
-//        })
+      swal({
+         title: '로그아웃 하시겠습니까?',
+         text: "",
+        type: 'warning',
+         showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         confirmButtonText: 'YES',
+         cancelButtonText: 'NO'
+      }).then(function () {
+         document.getElementById("logout").submit();
+         
+       })
      
-//    });
-  
-  
-//    document.getElementById("logoutBtn").onclick = function(){
-//         document.getElementById("logout").submit();
-//    };
-  
+   });
 
 /** 회원수정 모달 띄우기*/
   $(function() {

@@ -37,10 +37,10 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="form-group">
-						<div class="col-xs-2 col-sm-2 text-center">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="id" class="regist_label">아이디</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
+						<div class="col-xs-6 col-sm-6">
 							<input type="email" class="form-control onlyAlphabetAndNumber" id="registerId" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="30" onkeyup="idCheck()">
 						</div>
                         <div class="col-xs-3 col-sm-3" style="font-size:small">
@@ -51,10 +51,10 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-2 col-sm-2 text-center">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="pw" class="regist_label">비밀번호</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
+						<div class="col-xs-6 col-sm-6">
 							<input type="password" class="form-control" id="registerPassword" name="password" placeholder="비밀번호를 입력하세요" >
 						</div>
                         <div class="col-xs-3 col-sm-3" style="font-size:small">
@@ -64,10 +64,10 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-2 col-sm-2 text-center">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="repw" class="regist_label">비밀번호 확인</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
+						<div class="col-xs-6 col-sm-6">
 							<input type="password" class="form-control" id="repassword" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요" >
 						</div>
                         <div class="col-md-3 col-sm-3">
@@ -77,34 +77,34 @@
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-2 col-sm-2 text-center">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">이름</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
+						<div class="col-xs-6 col-sm-6">
 							<input type="text" class="form-control" id="registerName" name="name" placeholder="이름을 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-2 col-sm-2 text-center">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
-						<div class="col-xs-7 col-sm-7 ">
+						<div class="col-xs-6 col-sm-6 ">
 							<input type="tel" class="form-control placeholder" id="registerPhone" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
 
 					<div class="form-group">
-						<div class="col-xs-2 col-sm-2 text-center">
+						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">프로필 사진</label>
 						</div>
 							<div class="col-xs-2 col-sm-2 ">
 								<div class="wen"><img src="../resources/images/noimage.png"></div>
 							</div>
 
-							<div class="col-xs-5 col-sm-5">
+							<div class="col-xs-4 col-sm-4">
 								<input type="file" class="form-control placeholder" name="fileupload" />
 							</div>
 							<div class="clearfix"></div>

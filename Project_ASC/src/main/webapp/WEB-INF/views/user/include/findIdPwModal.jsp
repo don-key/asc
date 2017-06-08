@@ -226,7 +226,7 @@ $(function (){
                        swal(
                               '　',
                               '찾는 아이디가 없습니다!',
-                              'success'
+                              'warning'
                             )
                
             } else {
@@ -294,7 +294,7 @@ $(function (){
                        swal(
                               '　',
                               '찾는 비밀번호가 없습니다!',
-                              'success'
+                              'warning'
                             )
             }else{
 

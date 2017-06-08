@@ -99,7 +99,7 @@ public class ProjectController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/project/library";
+		return "redirect:/project/library?projectListNo=1";
 	}
 
 	/**
@@ -298,7 +298,7 @@ public class ProjectController {
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/project/library";
+		return "redirect:/project/library?projectListNo=1";
 	}
 	
 }

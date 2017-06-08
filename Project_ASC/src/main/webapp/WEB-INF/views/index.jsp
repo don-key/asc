@@ -42,7 +42,7 @@
 					<img src="/resources/images/logo5.png">
 				</div>
 				<div class="login__form">
-              <form action="/user/loginPost" method="post" onsubmit="return checkSubmit(this)">
+              <form action="/user/loginPost" method="post" >
 					<div class="login__row">
 						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
             				<path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
@@ -82,30 +82,30 @@
 
 <script>
 
-	/** 로그인 체크*/
-	function checkSubmit(e){
-    	if(e.id.value.trim().length <1){
-    		swal({
-                title: '아이디 미입력!',
-                text: '아이디를 입력해주세요.',
-                type: 'warning',
-                confirmButtonText: '닫기'
-              })
-          return false;
-    	};
-    	
-    	if(e.password.value.trim().length <1){
-    		swal({
-                title : '비밀번호 미입력',
-                text : '비밀번호를 입력해주세요.',
-                type : 'warning',
-                confirmButtonText : '닫기'
-             })
-    		return false;
-    	};
-    	
-    	return true;
+$("#loginBtn").on("click", function() {
+	var id = $(".login__input").val();
+	var password = $("#password").val();
+	
+	if(id.trim().length <1){
+		swal({
+            title: '아이디 미입력!',
+            text: '아이디를 입력해주세요.',
+            type: 'warning',
+            confirmButtonText: '닫기'
+          })
+      return false;
 	};
+	
+	if(password.trim().length <1){
+		swal({
+            title : '비밀번호 미입력',
+            text : '비밀번호를 입력해주세요.',
+            type : 'warning',
+            confirmButtonText : '닫기'
+         })
+		return false;
+	};
+});
 
 </script>
 

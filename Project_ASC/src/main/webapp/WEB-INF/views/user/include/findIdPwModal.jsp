@@ -93,7 +93,7 @@ font-family: 'LotteMartDream';
 										<label for="id" class="regist_label">아이디</label>
 									</div>
 									<div class="col-xs-7 col-sm-7">
-										<input type="email" class="form-control onlyAlphabetAndNumber" id="idForPw" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="20">
+										<input type="email" class="form-control onlyAlphabetAndNumber" id="idForPw" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="30">
 									</div>
 									<div class="clearfix"></div>
 								</div>

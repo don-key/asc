@@ -192,6 +192,7 @@ $(function (){
     $('#findIdBtn').click(function(e){ 
     	e.preventDefault();
           var nameForId = $("#nameForId").val();
+          	$("#nameForId").val('');
           if(nameForId < 1){
                swal({
                     title: '이름 미입력!',
@@ -202,6 +203,7 @@ $(function (){
               return false;
             }
           var phoneForId = $("#phoneForId").val();
+        	  $("#phoneForId").val('');
           if(phoneForId < 1){
               swal({
                    title: '전화번호 미입력!',
@@ -244,6 +246,7 @@ $(function (){
     $('#findPwBtn').click(function(e){ 
     	e.preventDefault();
           var id = $("#idForPw").val();
+         	 $("#idForPw").val('');
           if(id < 1){
                swal({
                     title: '아이디 미입력!',
@@ -255,6 +258,7 @@ $(function (){
               return false;
             }
           var nameForPw = $("#nameForPw").val();
+          		$("#nameForPw").val('');
           if(nameForPw < 1){
               swal({
                    title: '이름 미입력!',
@@ -265,6 +269,7 @@ $(function (){
              return false;
            }   
           var phoneForPw = $("#phoneForPw").val();
+          		$("#phoneForPw").val('');
           if(phoneForPw < 1){
               swal({
                    title: '전화번호 미입력!',
@@ -311,7 +316,9 @@ $(function (){
     $(function (){
    	var idForPw = $('#idForPw').val();
    	var password = $('#newPassword').val();
+   		$('#newPassword').val('');
    	var rePassword = $('#newRePassword').val();
+   		$('#newRePassword').val('');
        $('#newPwBtn').click(function(e){ 
        	e.preventDefault();
        $.ajax({
@@ -324,12 +331,15 @@ $(function (){
         	   rePassword: rePassword,
            },
            success:function(request){
-              if (request.success == 'success') {
+              if (request == 'success') {
                    swal(
                           '비밀번호가 변경되었습니다.',
                           '',
                           'success'
-                        )
+                        ).then(function(){
+              				 location.href="/";
+                        	
+            })
 	     }
    		}
 	});        

@@ -28,10 +28,10 @@
                             <a href="/scrum/taskBoard?projectListNo=<%= request.getParameter("projectListNo") %>&userNo=${login.userNo}"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="http://192.168.0.62:4567/taskBoard/1/0"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
+                                    <a href="http://192.168.0.62:4567/taskBoard/<%= request.getParameter("projectListNo") %>/0/${login.userNo}"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
                                 </li>
                                 <li>
-                                      <a href="http://192.168.0.62:4567/releasePlanning/1"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
+                                      <a href="http://192.168.0.62:4567/releasePlanning/<%= request.getParameter("projectListNo") %>/${login.userNo}"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

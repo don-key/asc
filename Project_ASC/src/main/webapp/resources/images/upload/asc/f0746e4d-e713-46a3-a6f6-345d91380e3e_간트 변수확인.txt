@@ -1,0 +1,59 @@
+  <div class="row">
+  <div>테스트 / 변수확인</div>
+    <table>
+      <c:forEach items="${ganttList}" var="gantt">
+        <tr>
+          <td>${gantt.ganttListNo }</td>
+          <td>${gantt.ganttNo }</td>
+          <td>${gantt.userNo }</td>
+          <td>${gantt.title }</td>
+          <td>${gantt.worker }</td>
+          <td>${gantt.startDate }</td>
+          <td>${gantt.endDate }</td>
+          <td>${gantt.color }</td>
+        </tr>
+      </c:forEach>
+    </table>
+
+  </div>
+  
+    <div class="row">
+    <table>
+        <tr>
+          <td>${projectDate.projectListNo }</td>
+          <td>${projectDate.projectName }</td>
+          <td>${projectDate.startDate }</td>
+          <td>${projectDate.endDate }</td>
+          <td>날짜는요? ${days}</td>
+        </tr>
+    </table>
+
+  </div>
+
+    <div class="row">
+    <div>받아온 값들</div>
+    <div>기간 : ${days }</div>
+    <div>프젝 시작일 : ${pStartDate[0] }</div>
+    <div>${pStartDate[1] }</div>
+    <div>${pStartDate[2] }</div>
+    <div>프젝 마감일 : ${pEndDate[0] }</div>
+    <div>${pEndDate[1] }</div>
+    <div>${pEndDate[2] }</div>
+    <div>기능 시작일 (계산한 값) : ${startCount[0] }</div>
+    <div>${startCount[1] }</div>
+    <div>${startCount[2] }</div>
+    <div>${startCount[3] }</div>
+    <div>${startCount[4] }</div>
+    <div>${startCount[5] }</div>
+    <div>${startCount[6] }</div>
+    <div>${startCount[7] }</div>
+    <div>기능 유지일 (계산한 값) : ${duration[0] }</div>
+    <div>${duration[1] }</div>
+    <div>${duration[2] }</div>
+    <div>${duration[3] }</div>
+    <div>${duration[4] }</div>
+    <div>${duration[5] }</div>
+    <div>${duration[6] }</div>
+    <div>${duration[7] }</div>
+    
+  </div>

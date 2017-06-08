@@ -39,7 +39,7 @@ public class ProjectDaoTest {
 	      libraryList.setTitle("오늘의 테스트");
 	      libraryList.setFileName("1234.png");
 	      
-	      dao.libraryListRegister(libraryList);
+//	      dao.libraryListRegister(libraryList);
 	      logger.info("자료실 내역 신규 등록 완료");
 	   }
 	

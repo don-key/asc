@@ -88,14 +88,14 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
-	public String libraryListRegist (@RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr) {
+	public String libraryListRegist (@RequestParam("projectListNo") int projectListNo, @RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr) {
 		logger.info("자료실 등록등록");
 		logger.info("자료실 내역 : "+ libraryList.toString());
 		 
 		libraryList.setFileName(file.getOriginalFilename());
 		libraryList.setUuidName(uuidName);
 		
-		projectService.libraryListRegister(libraryList);		// 매퍼를 통해 등록 메소드 호출
+		projectService.libraryListRegister(projectListNo, libraryList);		// 매퍼를 통해 등록 메소드 호출
 		
 		rttr.addFlashAttribute("msg", "success");
 		

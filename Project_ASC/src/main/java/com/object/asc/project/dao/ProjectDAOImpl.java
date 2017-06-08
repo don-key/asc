@@ -1,6 +1,8 @@
 package com.object.asc.project.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -25,8 +27,11 @@ public class ProjectDAOImpl implements ProjectDAO {
 	private static String namespace="com.object.asc.mapper.ProjectMapper";
 
 	@Override
-	public void libraryListRegister(LibraryList libraryList) {
-		sqlSession.insert(namespace+".libraryListRegister", libraryList);
+	public void libraryListRegister(int projectListNo, LibraryList libraryList) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("projectListNo", projectListNo);
+		map.put("libraryList", libraryList);
+		sqlSession.insert(namespace+".libraryListRegister", map);
 	}
 
 	@Override

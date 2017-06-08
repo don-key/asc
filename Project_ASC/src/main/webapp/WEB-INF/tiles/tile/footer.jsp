@@ -25,7 +25,7 @@ img#chatBtn {
         });
         
         var chatName = $("#chatName").val();
-       	var popupUrl = "http://localhost:3000/chats/" + chatName;
+       	var popupUrl = "http://192.168.0.62:3000/chats/" + chatName;
         
         /*채팅창 팝업*/
     	function popupOpen() {

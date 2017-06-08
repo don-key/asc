@@ -259,7 +259,7 @@ function deleteFunction(){
 		    '기능삭제 완료!',
 		    'success'
 		  ).then(function () {
-				location.href="/gantt/delete?listNo="+listNo;
+				location.href="/gantt/delete?listNo="+listNo+"&projectListNo="+${projectListNo}+"&userNo="+${userNo};
 			});
 		});
 }

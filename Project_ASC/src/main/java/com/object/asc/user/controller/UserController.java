@@ -49,46 +49,16 @@ public class UserController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@RequestParam("fileupload")MultipartFile photo, User user, RedirectAttributes rttr) {
-		
-		
 		logger.info("회원가입 테스트");
 		
 		user.setPhoto(photo.getOriginalFilename());
 		logger.info(photo.getOriginalFilename());
 		
-		
 		service.register(user);
-		rttr.addFlashAttribute("message", "success");
-		
+		rttr.addAttribute("message", "회원가입 완료");
 		
 		return "redirect:/";
 	}
-	
-	
-//	@RequestMapping(value = "/register", method = RequestMethod.POST)
-//	@ResponseBody
-//	public ResponseEntity<String> register(@RequestParam("fileupload")MultipartFile photo, @RequestParam("registerPassword") User user) {
-//		ResponseEntity<String> entity = null;
-//	    
-//		
-//	      try {
-//	    	  logger.info("회원가입 테스트");
-//	    	  
-//	    	  user.setPhoto(photo.getOriginalFilename());
-//	    	  
-//	    	  service.register(user);
-//	    	  
-//	    	  
-//	    	  String success = "success";
-//	    	  
-//	    	  entity = new ResponseEntity<String>(success, HttpStatus.OK);
-//	    	  
-//	      } catch (Exception e) {
-//	         e.printStackTrace();
-//	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-//	      }
-//	      return entity;
-//	}
 	
 	
 	@RequestMapping(value = "/idCheck")
@@ -143,9 +113,8 @@ public class UserController {
 	public void loginPOST(User user, HttpSession session, Model model) {
 		
 		User loginCheck = service.login(user);
-		System.out.println("로그인체크 " + loginCheck);
+
 		if(loginCheck == null){return;} 
-		logger.info("이거이거이거"+loginCheck.toString());
 		
 		
 		if (user.isUseCookie()) {

@@ -37,8 +37,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object user = modelMap.get("user");
+		
 		User user2 = (User) user;
-		logger.info("KKK"+user);
 		if (user2.getName() != null) {
 			
 			logger.info("로그인 성공");

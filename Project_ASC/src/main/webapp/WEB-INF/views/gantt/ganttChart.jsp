@@ -24,7 +24,7 @@ td, th {
 }
 
 #right_div {
-	width: 1000px;
+	width: 3000px;
 	overflow-x: auto;
 }
 
@@ -300,7 +300,16 @@ function deleteFunction(){
   <br>
   
   <div class="bottomPanel text-center">
-    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal" style="margin-bottom: 5%;">추가</a>
+    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal" style="margin-bottom: 3%;">추가</a>
+  </div>
+  
+  
+  <div class="test-center">
+  <div>오늘의 기능</div>
+  <c:forEach items="${todayList}" var="today">
+  <div>${today }</div>
+  
+  </c:forEach>
   </div>
 
 

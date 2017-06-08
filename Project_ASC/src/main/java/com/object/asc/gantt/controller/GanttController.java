@@ -91,6 +91,9 @@ public class GanttController {
         
         String[] todaySplit = today.toString().split("-");
         
+        /** 동적으로 */
+        List<String> todayList = ganttService.todayList(1);
+        
 		
 
 
@@ -113,6 +116,9 @@ public class GanttController {
 		
 		// 멤버 조회
 		model.addAttribute("member", member);
+		
+		// 간트용 오늘 기능
+		model.addAttribute("todayList", todayList);
 		
 
 		return "/gantt/ganttChart";

@@ -39,4 +39,9 @@ public class GanttDaoImpl implements GanttDao {
 		
 	}
 
+	@Override
+	public List<String> todayList(int ganttNo) {
+		return sqlSession.selectList(namespace+".todayList", ganttNo);
+	}
+
 }

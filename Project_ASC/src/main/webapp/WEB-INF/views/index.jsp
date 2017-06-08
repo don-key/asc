@@ -30,6 +30,28 @@
 <!-- SweetAlert JavaScript -->
 <script src="/resources/js/sweetalert2.min.js"></script>
 
+<script>
+$(function(){
+	var status = getUrlParams();
+	var result = status.result; // 비밀번호 잘못쓰면 error
+	if(result == "error") {
+		swal({
+            title: '',
+            text: '블로그에 등록되지 않은 아이디이거나, 아이디 또는 비밀번호를 잘못 입력하셨습니다.',
+            type: 'warning',
+            confirmButtonText: 'OK'
+          });
+	}
+});
+
+function getUrlParams() {
+    var params = {};
+    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, 
+    		function(str, key, value) { params[key] = value; });
+    return params;
+}
+</script>
+
 </head>
 
 

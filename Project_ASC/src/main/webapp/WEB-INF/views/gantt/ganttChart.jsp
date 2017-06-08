@@ -143,17 +143,22 @@ $(document).ready(function(){
 
 
     /** Today */
-   var set = $('#rightTable').children().children()[7];
-      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
-    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
-   <c:set var="count">${status.index}</c:set>
-   var startCount =  ${count};
-   console.log("count : " + startCount);
-   var steps = '';
-      /** i는 세로 뒤에 2 자리는 날짜 범위 */
-      steps = $('#rightTable').children().next()[startCount].children[7];
-       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
-   </c:forEach> 
+    var todayDays = ${todayDays};
+    if (todayDays != -1) {
+    	   var set = $('#rightTable').children().children()[todayDays];
+    	      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
+    	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
+    	   <c:set var="count">${status.index}</c:set>
+    	   var startCount =  ${count};
+    	   console.log("count : " + startCount);
+    	   var steps = '';
+    	      /** i는 세로 뒤에 2 자리는 날짜 범위 */
+    	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
+    	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
+    	   </c:forEach> 
+	}
+    
+
     
 	  
 });

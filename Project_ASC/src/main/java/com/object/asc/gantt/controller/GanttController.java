@@ -90,6 +90,14 @@ public class GanttController {
         System.out.println("오늘날짜::::" + today);
         
         String[] todaySplit = today.toString().split("-");
+        int todayDays=0;
+        if (calDays(pStartDate) <= calDays(todaySplit)) {
+			todayDays = calDays(todaySplit) - calDays(pStartDate);
+		} else{
+			todayDays = -1;
+		}
+        
+        
         
         /** 동적으로 */
         List<String> todayList = ganttService.todayList(1);
@@ -119,6 +127,9 @@ public class GanttController {
 		
 		// 간트용 오늘 기능
 		model.addAttribute("todayList", todayList);
+		
+		// 오늘 동적으로 받아오기
+		model.addAttribute("todayDays", todayDays);
 		
 
 		return "/gantt/ganttChart";

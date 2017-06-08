@@ -9,7 +9,7 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="/gantt/register" method="post" >
+      <form action="/gantt/register?projectListNo=${projectListNo }&userNo=${userNo}" method="post" >
       <input type="hidden" id="color" name="color" value="" style="width: 100px;">
 
       <div class="modal-header" style="background: #354555; color: #ffffff;">

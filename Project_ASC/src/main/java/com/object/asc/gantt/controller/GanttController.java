@@ -35,7 +35,7 @@ public class GanttController {
 	private LobbyService lobbyService;
 
 	@RequestMapping(value = "/ganttChart", method = RequestMethod.GET)
-	public String ganttChart(@RequestParam("projectListNo") int projectListNo, Model model) {
+	public String ganttChart(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, Model model) {
 		logger.info("간트 페이지 테스트");
 		
 		/** test 나중에 1 이거 고정으로 넣은거 잊지말고 동적으로 변경하기!!!!!!!!!! 간트리스트랑 프로젝트리스트!!!!!!!!!!!!!!!!!!!!!!*/
@@ -131,6 +131,10 @@ public class GanttController {
 //		 오늘 동적으로 받아오기
 		model.addAttribute("todayDays", todayDays);
 		
+		// 리스트 넘버
+		model.addAttribute("projectListNo", projectListNo);
+		model.addAttribute("userNo", userNo);
+		
 
 		return "/gantt/ganttChart";
 	}
@@ -146,18 +150,12 @@ public class GanttController {
 	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String register(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, @RequestParam("title") String title, @RequestParam("worker") String worker, @RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate, @RequestParam("color") String color, Model model){
+		System.out.println("유저넘" + userNo);
+		System.out.println("유저넘" + projectListNo);
 		
-		GanttChartList gcl = new GanttChartList();
-		gcl.setUserNo(userNo);
-		gcl.setTitle(title);
-		gcl.setWorker(worker);
-		gcl.setStartDate(startDate);
-		gcl.setEndDate(endDate);
-		gcl.setColor(color);
+		ganttService.register(projectListNo, userNo, title, worker, startDate, endDate, color);
 		
-		ganttService.register(projectListNo, gcl);
-		
-		return "redirect:/gantt/ganttChart";
+		return "redirect:/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
 	}
 	
 	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 받아오기 */

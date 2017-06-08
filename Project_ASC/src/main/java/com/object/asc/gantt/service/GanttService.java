@@ -1,5 +1,6 @@
 package com.object.asc.gantt.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.object.asc.gantt.domain.GanttChartList;
@@ -10,7 +11,7 @@ public interface GanttService {
 	public List<GanttChartList> ganttList(int projectListNo);
 
 	/** 기능 추가 */
-	public void register(int projectListNo, GanttChartList gcl);
+	public void register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color);
 	
 	/** 기능 수정 */
 	public void modify(GanttChartList gcl);

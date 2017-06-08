@@ -71,6 +71,8 @@ td, th {
 
 <script>
 $(document).ready(function(){
+	var userNo = ${userNo};
+	console.log("유저넘 "+userNo);
 	
 	$('#actionChartBtn').on('click', function() {
 		location.href = "currentChart";

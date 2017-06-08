@@ -1,5 +1,6 @@
 package com.object.asc.gantt.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -21,8 +22,8 @@ public class GanttServiceImpl implements GanttService {
 	}
 
 	@Override
-	public void register(int projectListNo, GanttChartList gcl) {
-		dao.register(projectListNo, gcl);
+	public void register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color) {
+		dao.register(projectListNo, userNo, title, worker, startDate, endDate, color);
 		
 	}
 

@@ -19,8 +19,7 @@ where gantt_no= (select gantt_no
 INSERT INTO gantt_chart_list(gantt_list_no, gantt_no, user_no, title, worker, start_date, end_date, color) 
 VALUES (null, (select gantt_no
 			   from gantt_chart
-               where project_list_no = #{projectListNo})
-               , #{userNo}, #{title}, #{worker}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day), #{color})
+               where project_list_no = #{projectListNo}), #{userNo}, #{title}, #{worker}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day), #{color})
 </insert>
 
 <!-- 기능 수정 -->

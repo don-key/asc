@@ -1,5 +1,7 @@
 package com.object.asc.gantt.dao;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,10 +27,16 @@ public class GanttDaoImpl implements GanttDao {
 	}
 
 	@Override
-	public void register(int projectListNo, GanttChartList gcl) {
-		Map<String, Object> map = new HashMap<String, Object>();
+	public void register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color) {
+		Map<String, Object> map = new HashMap<>();
 		map.put("projectListNo", projectListNo);
-		map.put("gcl", gcl);
+		map.put("userNo", userNo);
+		map.put("title", title);
+		map.put("worker", worker);
+		map.put("startDate", startDate);
+		map.put("endDate", endDate);
+		map.put("color", color);
+		
 		sqlSession.insert(namespace+".register", map);
 		
 	}

@@ -68,7 +68,7 @@ public class LobbyDaoTest {
 	
 	@Test
 	public void projectList(){
-		List<ProjectList>  projectList = lobbyDao.projectListAll();
+		List<ProjectList>  projectList = lobbyDao.projectListAll(1);
 		
 		for (ProjectList projectList2 : projectList) {
 			logger.info(projectList2+"!!!!!!!!!!!!!!!!!");

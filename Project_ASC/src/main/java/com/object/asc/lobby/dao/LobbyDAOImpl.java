@@ -52,8 +52,8 @@ public class LobbyDAOImpl implements LobbyDAO {
 	}
 
 	@Override
-	public List<ProjectList> projectListAll() {
-		return sqlSession.selectList(namespace+".projectListAll");
+	public List<ProjectList> projectListAll(int userNo) {
+		return sqlSession.selectList(namespace+".projectListAll", userNo);
 	}
 
 	@Override

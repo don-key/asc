@@ -141,8 +141,8 @@ public class LobbyServiceImpl implements LobbyService {
 	}
 
 	@Override
-	public List<ProjectList> projectListAll() {
-		return lobbyDao.projectListAll();
+	public List<ProjectList> projectListAll(int userNo) {
+		return lobbyDao.projectListAll(userNo);
 	}
 
 	@Override

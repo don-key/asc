@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,9 +42,9 @@ public class LobbyController {
 	private UserService userService;
 	 
 	@RequestMapping(value = "/selectProject", method = RequestMethod.GET)
-	public String selectProject(Model model) {
-		logger.info("간트 페이지 테스트");
-		List<ProjectList> list = lobbyService.projectListAll();
+	public String selectProject(@CookieValue(value="userIdCookie") String userIdCookie,Model model) {
+		int userNo = userService.userIdFind(userIdCookie);
+		List<ProjectList> list = lobbyService.projectListAll(userNo);
 		List<Integer> memberCount = new ArrayList<Integer>();
 		for (ProjectList projectList : list) {
 			memberCount.add(lobbyService.memberCount(projectList.getProjectJoinNo()));

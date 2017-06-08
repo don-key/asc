@@ -31,6 +31,7 @@ SELECT project_join_no as projectJoinNo FROM project_join ORDER BY project_join_
 <select id="projectListAll" resultType="ProjectList">
 	SELECT project_list_no as 'projectListNo', project_join_no as 'projectJoinNo', project_name as 'projectName', project_photo as 'projectPhoto', chat_name as 'chatName', chat_content as 'chatContent', start_date as 'startDate', end_date as 'endDate', content 
 	FROM project_list
+	WHERE project_join_no in (SELECT project_join_no FROM project_join_list WHERE user_no = #{userNo})
 </select>
 <!-- 프로젝트 날짜 받아오기 -->
 <select id="projectDate" resultType="ProjectList">

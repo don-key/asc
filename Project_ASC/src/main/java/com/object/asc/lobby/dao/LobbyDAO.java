@@ -28,7 +28,7 @@ public interface LobbyDAO {
 	public ProjectJoin getProjectJoinNo();
 	
 	/** 프로젝트 리스트 조회*/
-	public List<ProjectList> projectListAll();
+	public List<ProjectList> projectListAll(int userNo);
 	
 	/** 프로젝트 날짜 받아오기 */
 	public ProjectList projectDate (int projectListNo);

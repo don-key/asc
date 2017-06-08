@@ -50,6 +50,8 @@ select name
 from users
 where user_no in (select user_no
 				from project_join_list
-				where project_join_no=#{projectJoinNo})
+				where project_join_no=(select project_join_no
+									   from project_list
+                                       where project_list_no = #{projectListNo}))
 </select>
 </mapper>

@@ -126,6 +126,13 @@ public class LobbyServiceImpl implements LobbyService {
 		sprint.setScrumNo(projectJoinNo);
 		sprint.setStartDate(projectList.getStartDate());
 		projectDao.sprintRegister(sprint);
+		
+	    /** 1-7. 자료실 생성*/
+	    Library library = new Library();
+	    library.setProjectListNo(projectJoinNo);
+	    projectDao.libraryRegister(library);
+		
+		
 	}
 	
 	@Override
@@ -144,8 +151,8 @@ public class LobbyServiceImpl implements LobbyService {
 	}
 
 	@Override
-	public List<String> memberName(int projectJoinNo) {
-		return lobbyDao.memberName(projectJoinNo);
+	public List<String> memberName(int projectListNo) {
+		return lobbyDao.memberName(projectListNo);
 	}
 
 }

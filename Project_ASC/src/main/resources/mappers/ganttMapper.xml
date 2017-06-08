@@ -9,13 +9,18 @@
 <select id="ganttList" resultType="com.object.asc.gantt.domain.GanttChartList">
 select gantt_list_no as 'ganttListNo', gantt_no as 'ganttNo', user_no as 'userNo', title, worker, start_date as 'startDate', end_date as 'endDate', color
 from gantt_chart_list
-where gantt_no=#{ganttNo}
+where gantt_no= (select gantt_no
+				from gantt_chart
+				where project_list_no = #{projectListNo});
 </select>
 
 <!-- 기능 추가 -->
 <insert id="register">
 INSERT INTO gantt_chart_list(gantt_list_no, gantt_no, user_no, title, worker, start_date, end_date, color) 
-VALUES (null, #{ganttNo}, #{userNo}, #{title}, #{worker}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day), #{color})
+VALUES (null, (select gantt_no
+			   from gantt_chart
+               where project_list_no = #{projectListNo})
+               , #{userNo}, #{title}, #{worker}, date_add(#{startDate}, interval +1 day), date_add(#{endDate}, interval +1 day), #{color})
 </insert>
 
 <!-- 기능 수정 -->

@@ -1,6 +1,8 @@
 package com.object.asc.gantt.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -18,13 +20,16 @@ public class GanttDaoImpl implements GanttDao {
 	private static String namespace = "com.object.asc.mapper.GanttMapper";
 
 	@Override
-	public List<GanttChartList> ganttList(int ganttNo) {
-		return sqlSession.selectList(namespace+".ganttList", ganttNo);
+	public List<GanttChartList> ganttList(int projectListNo) {
+		return sqlSession.selectList(namespace+".ganttList", projectListNo);
 	}
 
 	@Override
-	public void register(GanttChartList gcl) {
-		sqlSession.insert(namespace+".register", gcl);
+	public void register(int projectListNo, GanttChartList gcl) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("projectListNo", projectListNo);
+		map.put("gcl", gcl);
+		sqlSession.insert(namespace+".register", map);
 		
 	}
 

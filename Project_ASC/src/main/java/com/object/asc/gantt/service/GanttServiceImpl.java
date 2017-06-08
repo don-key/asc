@@ -16,13 +16,13 @@ public class GanttServiceImpl implements GanttService {
 	private GanttDao dao;
 
 	@Override
-	public List<GanttChartList> ganttList(int ganttNo) {
-		return dao.ganttList(ganttNo);
+	public List<GanttChartList> ganttList(int projectListNo) {
+		return dao.ganttList(projectListNo);
 	}
 
 	@Override
-	public void register(GanttChartList gcl) {
-		dao.register(gcl);
+	public void register(int projectListNo, GanttChartList gcl) {
+		dao.register(projectListNo, gcl);
 		
 	}
 

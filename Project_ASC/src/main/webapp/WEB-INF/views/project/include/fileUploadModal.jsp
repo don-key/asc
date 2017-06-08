@@ -20,7 +20,7 @@
 				</h4>
 			</div>
 			
-			<form id="uploadForm"  action="/project/registLibraryList"  method="post" enctype="multipart/form-data">
+			<form id="uploadForm"  action="/project/registLibraryList?projectListNo=${projectListNo}&userNo=${userNo}"  method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-1">

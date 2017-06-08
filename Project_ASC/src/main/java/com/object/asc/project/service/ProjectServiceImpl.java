@@ -24,8 +24,8 @@ public class ProjectServiceImpl implements ProjectService {
 	private ProjectDAO dao;
 
 	@Override
-	public void libraryListRegister(int projectListNo, LibraryList libraryList) {
-		dao.libraryListRegister(projectListNo, libraryList);
+	public void libraryListRegister(LibraryList libraryList) {
+		dao.libraryListRegister(libraryList);
 	}
 
 	@Override

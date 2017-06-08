@@ -14,7 +14,7 @@ import com.object.asc.project.domain.Sprint;
 public interface ProjectDAO {
 	
 	/** 자료 내역 신규 등록 */
-	public void libraryListRegister (int projectListNo, LibraryList libraryList);
+	public void libraryListRegister (LibraryList libraryList);
 	
 	/** 자료 내역 삭제 */
 	public void libraryListDelete (int libraryListNo);

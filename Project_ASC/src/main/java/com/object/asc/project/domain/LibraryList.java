@@ -16,7 +16,6 @@ public class LibraryList {
 
 	public LibraryList(int libraryListNo, int libraryNo, int userNo, String title, String fileName, String uuidName,
 			String displayName, Date regdate) {
-		super();
 		this.libraryListNo = libraryListNo;
 		this.libraryNo = libraryNo;
 		this.userNo = userNo;

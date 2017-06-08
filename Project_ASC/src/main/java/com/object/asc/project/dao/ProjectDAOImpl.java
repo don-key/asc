@@ -27,11 +27,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 	private static String namespace="com.object.asc.mapper.ProjectMapper";
 
 	@Override
-	public void libraryListRegister(int projectListNo, LibraryList libraryList) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("projectListNo", projectListNo);
-		map.put("libraryList", libraryList);
-		sqlSession.insert(namespace+".libraryListRegister", map);
+	public void libraryListRegister(LibraryList libraryList) {
+
+		sqlSession.insert(namespace+".libraryListRegister", libraryList);
 	}
 
 	@Override

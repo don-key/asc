@@ -68,7 +68,7 @@ public class LobbyServiceImpl implements LobbyService {
 		projectList.setProjectJoinNo(projectJoinNo);
 		projectList.setProjectPhoto(file.getOriginalFilename());
 		projectList.setChatName(projectJoinNo + "_" + uuid.toString());
-		projectList.setChatContent("chat.txt");
+		projectList.setChatContent(projectJoinNo + "_" + uuid.toString()+".txt");
 		projectList.setProjectPhoto(savePath);
 		lobbyDao.projectListRegister(projectList);
 		/** 1-4. 참여 내역 생성 (초대) 
@@ -126,6 +126,13 @@ public class LobbyServiceImpl implements LobbyService {
 		sprint.setScrumNo(projectJoinNo);
 		sprint.setStartDate(projectList.getStartDate());
 		projectDao.sprintRegister(sprint);
+		
+	    /** 1-7. 자료실 생성*/
+	    Library library = new Library();
+	    library.setProjectListNo(projectJoinNo);
+	    projectDao.libraryRegister(library);
+		
+		
 	}
 	
 	@Override

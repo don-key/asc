@@ -39,7 +39,7 @@ font-family: 'LotteMartDream';
 
 						<ul class="nav nav-tabs">
 							<li class="active"><a href="#tab1" data-toggle="tab">아이디 찾기</a></li>
-							<li><a href="#tab2" data-toggle="tab">비밀번호 찾기</a></li>
+							<li id="findPassword"><a href="#tab2" data-toggle="tab">비밀번호 찾기</a></li>
 							<li id="newPassword"><a href="#tab3" data-toggle="tab">새 비밀번호 만들기</a></li>
 						</ul>
 
@@ -85,7 +85,7 @@ font-family: 'LotteMartDream';
 						<div class="tab-pane" id="tab2">
                        <form action="/user/findPw">
 							<br>
-								<p style="text-align: center;">회원정보에 등록한 아이디, 이름과 휴대전화 번호를 입력해 주세요. <br> 이메일로 임시 비밀번호를 발급합니다.</p>
+								<p style="text-align: center;">회원정보에 등록한 아이디, 이름과 휴대전화 번호를 입력해 주세요. <br> 새로운 비밀번호를 발급합니다.</p>
 							<br>
 
 								<div class="form-group">
@@ -93,7 +93,7 @@ font-family: 'LotteMartDream';
 										<label for="id" class="regist_label">아이디</label>
 									</div>
 									<div class="col-xs-7 col-sm-7">
-										<input type="email" class="form-control onlyAlphabetAndNumber" id="idForPw" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="20">
+										<input type="email" class="form-control onlyAlphabetAndNumber" id="idForPw" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="30">
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -132,7 +132,7 @@ font-family: 'LotteMartDream';
 							</div>
                           
                         <div class="tab-pane" id="tab3">
-                         <form action="/user/makeNewPw">
+                         <form action="/user/createNewPw">
                             <br>
                               <p style="text-align: center;">새롭게 사용하실 비밀번호를 등록해주세요 <br> </p>
                             <br>
@@ -142,7 +142,7 @@ font-family: 'LotteMartDream';
                                   <label for="id" class="regist_label">비밀번호</label>
                                 </div>
                                 <div class="col-xs-7 col-sm-7">
-                                  <input type="email" class="form-control onlyAlphabetAndNumber" id="password" name="password" placeholder="새롭게 사용할 비밀번호를 입력하세요" maxlength="30">
+                                  <input type="password" class="form-control onlyAlphabetAndNumber" id="newPassword" name="password" placeholder="새롭게 사용할 비밀번호를 입력하세요" maxlength="30">
                                 </div>
                                 <div class="clearfix"></div>
                               </div>
@@ -152,7 +152,7 @@ font-family: 'LotteMartDream';
                                   <label class="regist_label">비밀번호 확인</label>
                                 </div>
                                 <div class="col-xs-7 col-sm-7">
-                                  <input type="text" class="form-control" id="rePassword" name="rePassword" placeholder="비밀번호를 다시 입력하세요" />
+                                  <input type="password" class="form-control" id="newRePassword" name="rePassword" placeholder="비밀번호를 다시 입력하세요" />
                                 </div>
                                 <div class="clearfix"></div>
                               </div>
@@ -160,7 +160,7 @@ font-family: 'LotteMartDream';
                               <div class="modal-footer">
                                   <div class="row">
                                     <div class="col-xs-2 col-xs-offset-4">
-                                      <button type="submit" id="newPassword" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">등록</button>
+                                      <button type="submit" id="newPwBtn" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">등록</button>
                                     </div>
                                     <div class="col-xs-2">
                                       <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
@@ -180,11 +180,19 @@ font-family: 'LotteMartDream';
 </div>
 
 <script>
+
+/**새로운 비밀번호등록 탭 안보이기*/
+$(function() {
+	$('#newPassword').hide();	
+});
+
+
 /**이름과 전화번호로 아이디 찾기*/
 $(function (){
     $('#findIdBtn').click(function(e){ 
     	e.preventDefault();
           var nameForId = $("#nameForId").val();
+          	$("#nameForId").val('');
           if(nameForId < 1){
                swal({
                     title: '이름 미입력!',
@@ -195,6 +203,7 @@ $(function (){
               return false;
             }
           var phoneForId = $("#phoneForId").val();
+        	  $("#phoneForId").val('');
           if(phoneForId < 1){
               swal({
                    title: '전화번호 미입력!',
@@ -229,8 +238,7 @@ $(function (){
                     }
                    }
          }); 
-       } 
-     );
+       });
    });
 
 /** 아이디, 이름과 전화번호로 비밀번호 찾기*/
@@ -238,6 +246,7 @@ $(function (){
     $('#findPwBtn').click(function(e){ 
     	e.preventDefault();
           var id = $("#idForPw").val();
+         	 $("#idForPw").val('');
           if(id < 1){
                swal({
                     title: '아이디 미입력!',
@@ -249,6 +258,7 @@ $(function (){
               return false;
             }
           var nameForPw = $("#nameForPw").val();
+          		$("#nameForPw").val('');
           if(nameForPw < 1){
               swal({
                    title: '이름 미입력!',
@@ -259,6 +269,7 @@ $(function (){
              return false;
            }   
           var phoneForPw = $("#phoneForPw").val();
+          		$("#phoneForPw").val('');
           if(phoneForPw < 1){
               swal({
                    title: '전화번호 미입력!',
@@ -268,6 +279,7 @@ $(function (){
                  })
              return false;
            }  
+          
            $.ajax({
                type : 'GET',
                url : "/user/findPw",
@@ -284,28 +296,64 @@ $(function (){
                               '찾는 비밀번호가 없습니다!',
                               'success'
                             )
-               
-            } else {
-                   swal(
-                         '당신의 비밀번호는',
-                         request+'입니다!',
-                         'success'
-                       )
-                    }
-                   }
-         }); 
-       } 
-     );
-   });
+            }else{
 
-
-
-
-
-/**새로운 비밀번호 만들때 보여주기*/
-$(function() {
-	$('#newPassword').hide();	
+            	$('#newPassword').show();
+            	$('#tab2').removeClass("active");
+            	$('#tab3').addClass("active");
+            	$('#findPassword').removeClass("active");
+            	$('#newPassword').addClass("active");
+            	
+            	}
+               }
+    });
+    
+    });
 });
+ 
+    /** 새로운 비밀번호 생성하기 -- 하는 중 */
+    
+    $(function (){
+   	var idForPw = $('#idForPw').val();
+   	var password = $('#newPassword').val();
+   		$('#newPassword').val('');
+   	var rePassword = $('#newRePassword').val();
+   		$('#newRePassword').val('');
+       $('#newPwBtn').click(function(e){ 
+       	e.preventDefault();
+       $.ajax({
+           type : 'GET',
+           url : "/user/createNewPw",
+           data:
+           {
+        	   id : idForPw,
+        	   password: password,
+        	   rePassword: rePassword,
+           },
+           success:function(request){
+              if (request == 'success') {
+                   swal(
+                          '비밀번호가 변경되었습니다.',
+                          '',
+                          'success'
+                        ).then(function(){
+              				 location.href="/";
+                        	
+            })
+	     }
+   		}
+	});        
+    
+   }); 
+}); 
+
+
+
+           
+      
+
+
+
 
 
 </script>

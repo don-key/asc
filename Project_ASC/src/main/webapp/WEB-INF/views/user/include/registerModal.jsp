@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+
 <style>
 .regist_label {
  font-size: 15px;
@@ -39,9 +40,13 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="id" class="regist_label">아이디</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="30">
+						<div class="col-xs-6 col-sm-6">
+							<input type="email" class="form-control onlyAlphabetAndNumber" id="registerId" name="id" placeholder="이메일 형식으로만 입력 가능" maxlength="30" onkeyup="idCheck()">
 						</div>
+                        <div class="col-xs-3 col-sm-3" style="font-size:small">
+                          <label id="display">(영문소문자/숫자, 이메일 형식)</label>
+                        </div>
+            
 						<div class="clearfix"></div>
 					</div>
 
@@ -49,9 +54,12 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="pw" class="regist_label">비밀번호</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요">
+						<div class="col-xs-6 col-sm-6">
+							<input type="password" class="form-control" id="registerPassword" name="password" placeholder="비밀번호를 입력하세요" >
 						</div>
+                        <div class="col-xs-3 col-sm-3" style="font-size:small">
+                          <label id="info">(영문소문자/숫자, 4~16자)</label>
+                        </div>            
 						<div class="clearfix"></div>
 					</div>
 
@@ -59,9 +67,12 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="repw" class="regist_label">비밀번호 확인</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요">
+						<div class="col-xs-6 col-sm-6">
+							<input type="password" class="form-control" id="repassword" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요" >
 						</div>
+                        <div class="col-md-3 col-sm-3">
+                          <label id="info"></label>
+                        </div>
 						<div class="clearfix"></div>
 					</div>
 
@@ -69,8 +80,8 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">이름</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="text" class="form-control" name="name" placeholder="이름을 입력하세요" />
+						<div class="col-xs-6 col-sm-6">
+							<input type="text" class="form-control" id="registerName" name="name" placeholder="이름을 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -79,8 +90,8 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
-						<div class="col-xs-7 col-sm-7 ">
-							<input type="tel" class="form-control placeholder" name="phone" placeholder="휴대폰 번호를 입력하세요" />
+						<div class="col-xs-6 col-sm-6 ">
+							<input type="tel" class="form-control placeholder" id="registerPhone" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -93,7 +104,7 @@
 								<div class="wen"><img src="../resources/images/noimage.png"></div>
 							</div>
 
-							<div class="col-xs-5 col-sm-5">
+							<div class="col-xs-4 col-sm-4">
 								<input type="file" class="form-control placeholder" name="fileupload" />
 							</div>
 							<div class="clearfix"></div>
@@ -120,33 +131,134 @@
 </form>
 
 <script>
-  /** 회원가입 완료 모달*/
-//      $(function() {
+	
+/** 아이디 중복체크 */
+   function idCheck() {
+      var registerId = $('#registerId').val();
+      if (registerId.length > 3) {
 
-//       $('#registerBtn').on('click', function() {
-//           var password = $('#password').val();
-//           var rePassword = $('#rePassword').val();
-//          $.ajax({
-//             type : 'GET',
-//             url : "/user/register",
-//             data : {
-//               password : password,
-//                rePassword:rePassword
-//             },
-//             success : function(request) {
-//                if (request == "success") {
-        
-//         swal({     
-//         		 '환영합니다!',
-//         	     '회원가입이 완료되었습니다.',
-//         	     'success'
-//         		})
-//                }     
-//              }
-//          });
+         $.ajax({
+            type : 'GET',
+            url : "/user/idCheck",
+            data : {
+            	
+            	registerId : registerId
 
-//       });
-//    });
+            },
+            success : function(request) {
+               var display = document.getElementById("display");
+               if (request == "success") {
+                  display.innerHTML = "사용가능한 아이디입니다.";
+               } else if (request == "fail") {
+                  display.innerHTML = "이미 사용중인 아이디입니다.";
+               }
+            }
+
+         });
+
+      }
+
+   }	
+	
+	
+// $(function(){
+//     $('#registerBtn').click(function(e){ 
+//     	e.preventDefault();
+    	
+//     		/**아이디 체크*/
+//            var registerId = $("#registerId").val();
+//           if(registerId < 1){
+//                swal({
+//                     title: '아이디 미입력!',
+//                     text: '아이디를 입력해주세요.',
+//                     type: 'warning',
+//                     confirmButtonText: '닫기'
+//                   })
+//               return false;
+//             }
+    
+          
+//            var registerPassword = $("#registerPassword").val();
+//            var repassword = $("#repassword").val();
+//           if (registerPassword < 1
+//                   || repassword < 1) {
+//                swal({
+//                   title : '비밀번호 미입력',
+//                   text : '비밀번호를 입력해주세요.',
+//                   type : 'warning',
+//                   confirmButtonText : '닫기'
+//                })
+//                $('#registerPassword').focus();
+//                return false;
+
+//             }
+
+
+//             if ($('#registerPassword').val() != $('#repassword').val()) {
+//                swal({
+//                   title : '비밀번호 불일치',
+//                   text : '비밀번호를 확인해주세요.',
+//                   type : 'warning',
+//                   confirmButtonText : '닫기'
+//                })
+//                $('#registerPassword').focus();
+//                return false;
+//             }
+          
+//           var registerName = $("#registerName").val();
+//           if(registerName < 1){
+//               swal({
+//                    title: '이름 미입력!',
+//                    text: '이름을 입력해주세요.',
+//                    type: 'warning',
+//                    confirmButtonText: '닫기'
+//                  })
+//              return false;
+//            }
+          
+//           var registerPhone = $("#registerPhone").val();
+//           if(registerPhone < 1){
+//               swal({
+//                    title: '전화번호 미입력!',
+//                    text: '전화번호를 입력해주세요.',
+//                    type: 'warning',
+//                    confirmButtonText: '닫기'
+//                  })
+//              return false;
+//            }	
+          
+//        $.ajax({
+//        type : 'GET',
+//        url : "/user/register",
+//        data : {
+    	   
+//     	   registerId:registerId,
+//     	   repassword:repassword,
+//     	   registerPassword : registerPassword,
+//     	   registerName:registerName,
+//     	   registerPhone:registerPhone,
+    	   
+//        },
+//        success : function(request) {
+       
+//           if (request == "success") {
+   
+//            swal(     
+//            		 '환영합니다!',
+//            	     '회원가입이 완료되었습니다.',
+//            	     'success'
+//            		)
+   		
+//           }     
+//         }
+//     });
+          
+
+          
+//        });
+
+// });
+
 
 </script> 
   

@@ -9,7 +9,7 @@
 <body>
   <script type="text/javascript">
   
-  document.location.href = "${pageContext.servletContext.contextPath}/lobby/selectProject";
+  /* document.location.href = "${pageContext.servletContext.contextPath}/lobby/selectProject"; */
   
   </script>
 </body>

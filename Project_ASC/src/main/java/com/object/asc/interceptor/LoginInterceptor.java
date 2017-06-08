@@ -21,13 +21,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
 		
-		//HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		
-		//Cookie loginCookie = new Cookie("loginCookie", user);
-		
-		if (request.getAttribute(LOGIN) != null) {
+		if (session.getAttribute(LOGIN) != null) {
 			logger.info("이전 로그인 데이터 지우기");
-			request.removeAttribute(LOGIN);
+			session.removeAttribute(LOGIN);
 		}
 		return true;
 	}
@@ -40,8 +38,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object user = modelMap.get("user");
 		
-		
-		if (user != null) {
+		User user2 = (User) user;
+		if (user2.getName() != null) {
 			
 			logger.info("로그인 성공");
 			session.setAttribute(LOGIN, user);
@@ -62,8 +60,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				userIdCookie.setPath("/");
 				userIdCookie.setMaxAge(60 * 60 * 24 * 7);
 				response.addCookie(userIdCookie);
+				
+				response.sendRedirect("/lobby/selectProject");
 			
-			response.sendRedirect("/lobby/selectProject");
+		} else {
+			logger.info("로그인실패");
+			response.sendRedirect("/?result=error");
 		}
 		
 		

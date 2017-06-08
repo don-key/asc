@@ -1,5 +1,6 @@
 package com.object.asc.gantt.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,13 +17,13 @@ public class GanttServiceImpl implements GanttService {
 	private GanttDao dao;
 
 	@Override
-	public List<GanttChartList> ganttList(int ganttNo) {
-		return dao.ganttList(ganttNo);
+	public List<GanttChartList> ganttList(int projectListNo) {
+		return dao.ganttList(projectListNo);
 	}
 
 	@Override
-	public void register(GanttChartList gcl) {
-		dao.register(gcl);
+	public void register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color) {
+		dao.register(projectListNo, userNo, title, worker, startDate, endDate, color);
 		
 	}
 
@@ -34,6 +35,11 @@ public class GanttServiceImpl implements GanttService {
 	@Override
 	public void delete(int ganttListNo) {
 		dao.delete(ganttListNo);
+	}
+
+	@Override
+	public List<String> todayList(int ganttNo) {
+		return dao.todayList(ganttNo);
 	}
 
 }

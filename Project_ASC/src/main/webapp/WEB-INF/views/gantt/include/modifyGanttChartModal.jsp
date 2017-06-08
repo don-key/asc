@@ -7,7 +7,7 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="/gantt/modify" method="post">
+      <form action="/gantt/modify?projectListNo=${projectListNo }&userNo=${userNo}" method="post">
         <input type="hidden" id="modifyColor" name="modifyColor" value="" style="width: 100px;">
         <input type="hidden" id="modifyListNo" name="modifyListNo" value="" style="width: 100px;">
 

@@ -25,7 +25,18 @@ public class UserDAOImpl implements UserDAO{
 	
 	@Override
 	public void register(User user) {
+		
 		sqlSession.insert(namespace + ".register", user);
+	}
+
+	@Override
+	public boolean idCheck(String id) {
+		String idCheck = sqlSession.selectOne(namespace + ".idCheck", id);
+		if (idCheck == null) {
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 	@Override
@@ -97,6 +108,7 @@ public class UserDAOImpl implements UserDAO{
 	public void createNewPw(String id) {
 		sqlSession.update(namespace + ".createNewPw", id);
 	}
+
 	
 
 }

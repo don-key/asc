@@ -1,6 +1,10 @@
 package com.object.asc.gantt.dao;
 
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -18,13 +22,22 @@ public class GanttDaoImpl implements GanttDao {
 	private static String namespace = "com.object.asc.mapper.GanttMapper";
 
 	@Override
-	public List<GanttChartList> ganttList(int ganttNo) {
-		return sqlSession.selectList(namespace+".ganttList", ganttNo);
+	public List<GanttChartList> ganttList(int projectListNo) {
+		return sqlSession.selectList(namespace+".ganttList", projectListNo);
 	}
 
 	@Override
-	public void register(GanttChartList gcl) {
-		sqlSession.insert(namespace+".register", gcl);
+	public void register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("projectListNo", projectListNo);
+		map.put("userNo", userNo);
+		map.put("title", title);
+		map.put("worker", worker);
+		map.put("startDate", startDate);
+		map.put("endDate", endDate);
+		map.put("color", color);
+		
+		sqlSession.insert(namespace+".register", map);
 		
 	}
 
@@ -37,6 +50,11 @@ public class GanttDaoImpl implements GanttDao {
 	public void delete(int ganttListNo) {
 		sqlSession.delete(namespace + ".delete", ganttListNo);
 		
+	}
+
+	@Override
+	public List<String> todayList(int ganttNo) {
+		return sqlSession.selectList(namespace+".todayList", ganttNo);
 	}
 
 }

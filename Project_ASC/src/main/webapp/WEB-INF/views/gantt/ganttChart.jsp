@@ -24,7 +24,7 @@ td, th {
 }
 
 #right_div {
-	width: 1000px;
+	width: 3000px;
 	overflow-x: auto;
 }
 
@@ -71,6 +71,8 @@ td, th {
 
 <script>
 $(document).ready(function(){
+	var userNo = ${userNo};
+	console.log("유저넘 "+userNo);
 	
 	$('#actionChartBtn').on('click', function() {
 		location.href = "currentChart";
@@ -141,29 +143,25 @@ $(document).ready(function(){
 	
     
 
+
     /** Today */
-    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
-	<c:set var="count">${status.index}</c:set>
-	var startCount =  ${count};
-	console.log("count : " + startCount);
-	var steps = $('#rightTable').children();
-	console.log("1"+steps.toString());
-	for (var i = 0; i < startCount; i++) {
-		steps = steps.next();
-	console.log("2"+steps.toString());
+    var todayDays = ${todayDays};
+    if (todayDays != -1) {
+    	   var set = $('#rightTable').children().children()[todayDays];
+    	      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
+    	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
+    	   <c:set var="count">${status.index}</c:set>
+    	   var startCount =  ${count};
+    	   console.log("count : " + startCount);
+    	   var steps = '';
+    	      /** i는 세로 뒤에 2 자리는 날짜 범위 */
+    	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
+    	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
+    	   </c:forEach> 
 	}
-    steps = steps.children();
-	console.log("3"+steps.toString());
-    for (var j = 0; j < 6; j++) {
-		steps = steps.next();
-	console.log("4"+steps.toString());
-	}
-	console.log("5"+steps.toString());
-    steps.css("background-image", "url(/resources/images/gantt/today.png)");
-    
-    </c:forEach>
     
 
+    
 	  
 });
 
@@ -261,7 +259,7 @@ function deleteFunction(){
 		    '기능삭제 완료!',
 		    'success'
 		  ).then(function () {
-				location.href="/gantt/delete?listNo="+listNo;
+				location.href="/gantt/delete?listNo="+listNo+"&projectListNo="+${projectListNo}+"&userNo="+${userNo};
 			});
 		});
 }
@@ -309,8 +307,17 @@ function deleteFunction(){
   <br>
   
   <div class="bottomPanel text-center">
-    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal" style="margin-bottom: 5%;">추가</a>
+    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal" style="margin-bottom: 3%;">추가</a>
   </div>
+  
+  
+<%--   <div class="test-center">
+  <div>오늘의 기능</div>
+  <c:forEach items="${todayList}" var="today">
+  <div>${today }</div>
+  
+  </c:forEach>
+  </div> --%>
 
 
 

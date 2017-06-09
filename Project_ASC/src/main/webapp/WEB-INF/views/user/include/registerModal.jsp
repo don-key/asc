@@ -174,10 +174,9 @@
   
    }
 	
-	
+	/** 회원가입 유효성 검사*/
 $(function(){
     $('#registerBtn').click(function(e){ 
-    	e.preventDefault();
     	
            var registerId = $("#registerId").val();
           if(registerId < 1){
@@ -250,15 +249,12 @@ $(function(){
                  })
              return false;
            }	
-    
-		return true;
           
-	
+		return true;
+
        });
-});
 
 });
 
 
-</script> 
-  
+</script>

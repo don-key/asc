@@ -250,37 +250,12 @@ $(function(){
                  })
              return false;
            }	
-		return true;
     
-       $.ajax({
-       type : 'GET',
-       url : "/user/register",
-       data : {
-    	   
-    	   registerId:registerId,
-    	   repassword:repassword,
-    	   registerPassword : registerPassword,
-    	   registerName:registerName,
-    	   registerPhone:registerPhone,
-    	   
-       },
-       success : function(request) {
-       
-          if (request == "success") {
-   
-           swal(     
-           		 '환영합니다!',
-           	     '회원가입이 완료되었습니다.',
-           	     'success'
-           		)
-   		
-          }     
-        }
-    });
+		return true;
           
-
-          
+	
        });
+});
 
 });
 

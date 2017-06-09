@@ -81,4 +81,23 @@ public class ProjectDAOImpl implements ProjectDAO {
 	public String chatName(int projectListNo) {
 		return sqlSession.selectOne(namespace+".chatName",projectListNo);
 	}
+
+	@Override
+	public int findDashBoard(int projectListNo, int userNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("projectListNo", projectListNo);
+		map.put("userNo", userNo);
+		
+		return sqlSession.selectOne(namespace+".findDashBoard", map);
+	}
+
+	@Override
+	public void memoUpdate(int dashBoardNo, String memo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("dashBoardNo", dashBoardNo);
+		map.put("memo", memo);
+		
+		sqlSession.update(namespace+".memoUpdate", map);
+	}
+
 }

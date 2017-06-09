@@ -65,11 +65,19 @@
 								<div class="col-xs-9 text-center">
 									<div class="huge">　　　　　메모</div>
 								</div>
+								
 								<div class="col-xs-3 text-right">
 									<button type='submit' class='btn btn-success btn-circle btn-lg'>
 										<i class="fa fa-check"></i>
 									</button>
 								</div>
+								
+								<div class="col-xs-3 text-right">
+									<button type='submit' class='btn btn-success btn-circle btn-lg'>
+										<i class="fa fa-check"></i>
+									</button>
+								</div>
+								
 							</div>
 						</div>
 						<div class="panel-footer textarea" style="background-color: white;">

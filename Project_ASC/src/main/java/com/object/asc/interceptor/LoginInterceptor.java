@@ -67,9 +67,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			logger.info("로그인실패");
 			response.sendRedirect("/?result=error");
 		}
-		
-		
-		
 	}
 
  }

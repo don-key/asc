@@ -8,8 +8,13 @@
 </style>
 
 
+<script>
+
+</script> 
+
 <!-- Modal -->
 <form action="/user/modify">
+<input type="hidden" value="">
 <div class="modal fade" id="modifyModal" role="dialog">
 	<div class="modal-dialog" style="width: 35%">
 
@@ -87,7 +92,7 @@
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input type="tel" class="form-control placeholder" id="phone" name="phone" value="${user.phone }"placeholder="휴대폰 번호를 입력하세요" />
+							<input type="tel" class="form-control placeholder" id="phone" name="phone" value="${user.phone}"placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -108,7 +113,7 @@
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-3">
-						<button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
+						<button type="submit" id="modifyBtn"class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">수정</button>
 					</div>
 					<div class="col-xs-2">
 						<button type="button" class="btn btn-danger" data-dismiss="modal" style="width: 100%; font-size: 15px;">탈퇴</button>
@@ -132,10 +137,105 @@ function passwdCheck() {
     var passwdText = document.getElementById("info");
     if (password == repassword) {
        passwdText.innerHTML = "비밀번호가 일치합니다.";
+       $("#info").css("color","blue");
     } else {
        passwdText.innerHTML = "비밀번호가 일치하지 않습니다.";
+       $("#info").css("color","red");
     }
 
  }
+ 
+ /** 정보 수정 유효성 검사*/
+$(function(){
+    $('#modifyBtn').click(function(e){ 
+          var password = $("#password").val();
+          var repassword = $("#repassword").val();
+          if (password < 1
+                  || repassword < 1) {
+               swal({
+                  title : '',
+                  text : '비밀번호를 입력해주세요.',
+                  type : 'warning',
+                  confirmButtonText : '닫기'
+               })
+               $('#password').focus();
+               return false;
+
+            }
+
+
+            if ($('#password').val() != $('#repassword').val()) {
+               swal({
+                  title : '비밀번호 불일치',
+                  text : '비밀번호를 확인해주세요.',
+                  type : 'warning',
+                  confirmButtonText : '닫기'
+               })
+               $('#password').focus();
+               return false;
+            }
+            
+            
+            if ($('#password').val().length < 4) {
+                swal({
+                   title : '',
+                   text : '비밀번호는 4자 이상이여야합니다.',
+                   type : 'warning',
+                   confirmButtonText : '닫기'
+                })
+                $('#password').focus();
+                return false;
+             }  
+          
+          var patternEng = /^[A-za-z]/g;
+          var patternKor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
+          var name = $("#name").val();
+          if(name < 1){
+              swal({
+                   title: '',
+                   text: '이름을 입력해주세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }
+          
+          if(!(patternEng).test(registerName) && !(patternKor).test(name)){
+              swal({
+                   title: '',
+                   text: '이름은 한글이나 영문자만 가능합니다.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }
+          
+          var phone = $("#phone").val();
+          if(phone < 1){
+              swal({
+                   title: '',
+                   text: '전화번호를 입력해주세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }
+          
+          var phonepattern = /^\d{3}-\d{3,4}-\d{4}$/;
+          var phone = $("#phone").val();
+          if(!(phonepattern).test(phone)){
+              swal({
+                   title: 'EX)010-1234-1234',
+                   text: '"-"를 포함해서 입력하세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }	
+		return true;
+       });
+
+});
+
 
 </script>

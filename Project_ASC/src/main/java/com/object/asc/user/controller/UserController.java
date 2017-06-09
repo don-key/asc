@@ -101,18 +101,13 @@ public class UserController {
 	public String modify(User user, RedirectAttributes rttr) {
 		logger.info("회원수정 테스트");
 		
-		service.get(user.getUserNo());
-		
-		User userInfo = service.get(user.getUserNo());
-		userInfo.setPhone(user.getPhone());
-
-		logger.info("전화번호 왜 못받냐고!!!!!!!"+user.getPhone());
-
 		service.modify(user);
-		rttr.addFlashAttribute("message", "success");
+		logger.info("dddddddddddd"+user.getId());
+		logger.info("전화번호"+ user.getPhone());
+		rttr.addFlashAttribute("user1", user);
 		
 		
-		return "redirect:/";
+		return "redirect:/lobby/selectProject";
 	}
 	
 	

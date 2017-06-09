@@ -39,4 +39,10 @@ public interface ProjectDAO {
 	
 	/** 채팅방 이름 조회 */
 	public String chatName(int projectListNo);
+	
+	/** 대시보드 번호 조회 */
+	public int findDashBoard (int projectListNo, int userNo);
+	
+	/** 메모 업데이트 */
+	public void memoUpdate (int dashBoardNo, String memo);
 }

@@ -61,6 +61,18 @@ public class ProjectController {
   		logger.info("대쉬보드 테스트");
 		return "/project/dashboard";
 	}
+	
+	@RequestMapping(value = "/memoUpdate", method = RequestMethod.POST)
+	public String memoUpdate (String memo, @RequestParam("projectListNo") int projectListNo, int userNo, RedirectAttributes rttr) {
+		logger.info("메모 업데이트 테스트");
+		
+		int dashBoardNo = projectService.findDashBoard(projectListNo, userNo);
+		projectService.memoUpdate(dashBoardNo, memo);
+		
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/project/dashBoard?projectListNo="+projectListNo;
+	}
 
 	@RequestMapping(value = "/library", method = RequestMethod.GET)
 	public String library(Locale locale, Model model, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo) {

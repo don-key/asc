@@ -42,6 +42,16 @@ $(function(){
             confirmButtonText: 'OK'
           });
 	}
+
+	var message = $("#successMessage").val();
+	if(message == "success") {
+		swal(     
+          		 '환영합니다!',
+          	     '회원가입이 완료되었습니다.',
+          	     'success'
+          		)
+	}
+	
 });
 
 function getUrlParams() {
@@ -56,7 +66,7 @@ function getUrlParams() {
 
 
 <body>
-
+<input type="hidden" id="successMessage" value="${message}"/>
 	<div class="cont">
 		<div class="demo">
 			<div class="login">

@@ -55,7 +55,7 @@ public class UserController {
 		logger.info(photo.getOriginalFilename());
 		
 		service.register(user);
-		rttr.addAttribute("message", "success");
+		rttr.addFlashAttribute("message", "success");
 		
 		return "redirect:/";
 	}

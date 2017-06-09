@@ -3,21 +3,19 @@
 
 <style>
 /** CSS는 나중에 뺄거임 */
-
 a {
-  color: black;
+	color: black;
 }
 
 a:hover, a:focus {
-    color: #2e689b;
-    text-decoration: none;
+	color: #2e689b;
+	text-decoration: none;
 }
-
 
 td, th {
 	padding: 5px;
 	height: 40px;
-} 
+}
 
 #total_div {
 	overflow-x: auto;
@@ -28,45 +26,38 @@ td, th {
 	overflow-x: auto;
 }
 
-
 /** 기능 목록 css */
-.ganttEffect th::before,
-.ganttEffect th::after {
-  display: inline-block;
-  opacity: 0;
-  -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
-  -moz-transition: -moz-transform 0.3s, opacity 0.2s;
-  transition: transform 0.3s, opacity 0.2s;
+.ganttEffect th::before, .ganttEffect th::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
 }
 
 .ganttEffect th::before {
-  margin-right: 10px;
-  content: '[';
-  -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
-  transform: translateX(20px);
+	margin-right: 10px;
+	content: '[';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
 }
 
 .ganttEffect th::after {
-  margin-left: 10px;
-  content: ']';
-  -webkit-transform: translateX(-20px);
-  -moz-transform: translateX(-20px);
-  transform: translateX(-20px);
+	margin-left: 10px;
+	content: ']';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
 }
 
-.ganttEffect th:hover::before,
-.ganttEffect th:hover::after,
-.ganttEffect th:focus::before,
-.ganttEffect th:focus::after {
-  opacity: 1;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  transform: translateX(0px);
+.ganttEffect th:hover::before, .ganttEffect th:hover::after,
+	.ganttEffect th:focus::before, .ganttEffect th:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
 }
-
-
-
 </style>
 
 <script>
@@ -132,8 +123,8 @@ $(document).ready(function(){
     			innerCode += "<td style='background-color: " + color + ";'>&nbsp;</td>";
 				}
     			for (var j = 0; j < days-duration-i; j++) {
-    				innerCode += "<td>&nbsp;</td>";
-    				}
+    			innerCode += "<td>&nbsp;</td>";
+    			}
     			break;
 			} else {
 				innerCode += "<td>&nbsp;</td>";
@@ -275,11 +266,13 @@ function deleteFunction(){
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <br> <img alt="" src="/resources/images/header/gantt.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
+      <br> <img alt="" src="/resources/images/header/gantt.png"
+        style="margin-left: auto; margin-right: auto; display: block; width: 20%">
     </div>
   </div>
   <div class="row text-right">
-    <input type="button" id="actionChartBtn" class="btn btn-primary" value="현재 진행률">
+    <input type="button" id="actionChartBtn" class="btn btn-primary"
+      value="현재 진행률">
   </div>
 
   <br>
@@ -295,26 +288,29 @@ function deleteFunction(){
         </tr>
         <c:forEach items="${ganttList}" var="gantt">
           <tr class="ganttEffect">
-            <th><a onclick="modal('view','${gantt.ganttListNo}','${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "  style="cursor:pointer">${gantt.title }</a></th>
+            <th><a
+              onclick="modal('view','${gantt.ganttListNo}','${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "
+              style="cursor: pointer">${gantt.title }</a></th>
           </tr>
         </c:forEach>
       </table>
 
-      <div id="right_div" style="padding-bottom : 5%;">
+      <div id="right_div" style="padding-bottom: 5%;">
         <table id="rightTable">
         </table>
       </div>
     </div>
   </div>
-  
+
   <br>
-  
+
   <div class="bottomPanel text-center">
-    <a class="btn btn-danger" data-toggle="modal" data-target="#registGanttChartModal" style="margin-bottom: 3%;">추가</a>
+    <a class="btn btn-danger" data-toggle="modal"
+      data-target="#registGanttChartModal" style="margin-bottom: 3%;">추가</a>
   </div>
-  
-  
-<%--   <div class="test-center">
+
+
+  <%--   <div class="test-center">
   <div>오늘의 기능</div>
   <c:forEach items="${todayList}" var="today">
   <div>${today }</div>

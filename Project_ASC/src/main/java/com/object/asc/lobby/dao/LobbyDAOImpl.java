@@ -1,6 +1,5 @@
 package com.object.asc.lobby.dao;
 
-
 import java.util.List;
 
 import javax.inject.Inject;
@@ -18,47 +17,48 @@ import com.object.asc.project.domain.Library;
 import com.object.asc.project.domain.ProjectRelease;
 import com.object.asc.project.domain.Scrum;
 import com.object.asc.project.domain.Sprint;
+
 @Repository
 public class LobbyDAOImpl implements LobbyDAO {
-	
+
 	@Inject
 	private SqlSession sqlSession;
-	
+
 	private static String namespace = "com.object.asc.mapper.LobbyMapper";
-	
+
 	@Override
 	public void projectJoinRegister() {
-		sqlSession.insert(namespace+".projectJoinRegister");
+		sqlSession.insert(namespace + ".projectJoinRegister");
 	}
-	
+
 	@Override
 	public void projectListRegister(ProjectList projectList) {
-		sqlSession.insert(namespace+".projectListRegister", projectList);
+		sqlSession.insert(namespace + ".projectListRegister", projectList);
 	}
-	
+
 	@Override
 	public ProjectList projectDate(int projectListNo) {
-		return sqlSession.selectOne(namespace+".projectDate", projectListNo);
+		return sqlSession.selectOne(namespace + ".projectDate", projectListNo);
 	}
 
 	@Override
 	public void projectJoinListRegister(ProjectJoinList projectJoinList) {
-		sqlSession.insert(namespace+".projectJoinListRegister",projectJoinList);
+		sqlSession.insert(namespace + ".projectJoinListRegister", projectJoinList);
 	}
 
 	@Override
 	public ProjectJoin getProjectJoinNo() {
-		return sqlSession.selectOne(namespace+".projectJoinNo");
+		return sqlSession.selectOne(namespace + ".projectJoinNo");
 	}
 
 	@Override
-	public List<ProjectList> projectListAll() {
-		return sqlSession.selectList(namespace+".projectListAll");
+	public List<ProjectList> projectListAll(int userNo) {
+		return sqlSession.selectList(namespace + ".projectListAll", userNo);
 	}
 
 	@Override
 	public int memberCount(int projectJoinNo) {
-		return sqlSession.selectOne(namespace+".memberCount", projectJoinNo);
+		return sqlSession.selectOne(namespace + ".memberCount", projectJoinNo);
 	}
 
 	@Override

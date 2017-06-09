@@ -78,4 +78,14 @@ public class ProjectServiceImpl implements ProjectService {
 		return dao.chatName(projectListNo);
 	}
 
+	@Override
+	public int findDashBoard(int projectListNo, int userNo) {
+		return dao.findDashBoard(projectListNo, userNo);
+	}
+
+	@Override
+	public void memoUpdate(int dashBoardNo, String memo) {
+		dao.memoUpdate(dashBoardNo, memo);
+	}
+
 }

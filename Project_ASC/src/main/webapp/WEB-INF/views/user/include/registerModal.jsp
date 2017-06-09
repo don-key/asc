@@ -250,8 +250,9 @@ $(function(){
              return false;
            }	
           
+		alert("회원가입완료");
+          
 		return true;
-
        });
 
 });

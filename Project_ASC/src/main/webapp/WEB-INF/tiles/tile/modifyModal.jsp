@@ -40,7 +40,7 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="id" class="regist_label">아이디</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
+						<div class="col-xs-6 col-sm-6">
 							<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" value="${login.id}" readonly>
 						</div>
 						<div class="clearfix"></div>
@@ -50,9 +50,12 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="pw" class="regist_label">비밀번호</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요">
+						<div class="col-xs-6 col-sm-6">
+							<input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요">
 						</div>
+                        <div class="col-xs-3 col-sm-3" style="font-size:small">
+                          <label id="">(영문소문자/숫자, 4~16자)</label>
+                        </div>            
 						<div class="clearfix"></div>
 					</div>
 
@@ -60,9 +63,12 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label for="repw" class="regist_label">비밀번호 확인</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="password" class="form-control" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요">
+						<div class="col-xs-6 col-sm-6">
+							<input type="password" class="form-control" id="repassword" name="repassword" placeholder="비밀번호를 한 번 더 입력하세요" onkeyup="passwdCheck()">
 						</div>
+                        <div class="col-xs-3 col-sm-3" style="font-size:small">
+                          <label id="info"></label>
+                        </div>            
 						<div class="clearfix"></div>
 					</div>
 
@@ -70,8 +76,8 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">이름</label>
 						</div>
-						<div class="col-xs-7 col-sm-7">
-							<input type="text" class="form-control" name="name" value="${login.name }"placeholder="이름을 입력하세요" />
+						<div class="col-xs-6 col-sm-6">
+							<input type="text" class="form-control" id="name" name="name" value="${login.name }"placeholder="이름을 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -80,8 +86,8 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
-						<div class="col-xs-7 col-sm-7 ">
-							<input type="tel" class="form-control placeholder" name="phone" value="${user.phone }"placeholder="휴대폰 번호를 입력하세요" />
+						<div class="col-xs-6 col-sm-6">
+							<input type="tel" class="form-control placeholder" id="phone" name="phone" value="${user.phone }"placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -90,8 +96,8 @@
 						<div class="col-xs-3 col-sm-3 text-center">
 							<label class="regist_label">사진</label>
 						</div>
-						<div class="col-xs-7 col-sm-7 ">
-							<input type="file" class="form-control placeholder" name="photo" />
+						<div class="col-xs-6 col-sm-6">
+							<input type="file" class="form-control placeholder" id="photo" name="photo" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -116,3 +122,20 @@
 	</div>
 </div>
 </form>
+
+<script>
+
+/** 비밀번호 일치 체크*/
+function passwdCheck() {
+    var password = $('#password').val();
+    var repassword = $('#repassword').val();
+    var passwdText = document.getElementById("info");
+    if (password == repassword) {
+       passwdText.innerHTML = "비밀번호가 일치합니다.";
+    } else {
+       passwdText.innerHTML = "비밀번호가 일치하지 않습니다.";
+    }
+
+ }
+
+</script>

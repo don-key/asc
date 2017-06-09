@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -13,6 +12,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
@@ -58,9 +58,7 @@ public class ProjectController {
 
 	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
 	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model) {
-		logger.info("대쉬보드 테스트");
-		String chatName = projectService.chatName(projectListNo);
-		model.addAttribute("chatName", chatName);
+  		logger.info("대쉬보드 테스트");
 		return "/project/dashboard";
 	}
 
@@ -303,5 +301,17 @@ public class ProjectController {
 		
 		return "redirect:/project/library";
 	}
+	
+	@RequestMapping(value="/getChatName", method=RequestMethod.POST)
+	 	public void getChatName(@RequestParam("projectListNo") int projectListNo, HttpServletResponse response){
+	 		String chatName = projectService.chatName(projectListNo);
+	 		
+	 		try {
+	 			response.getWriter().print(chatName);
+	 		} catch (IOException e) {
+	 			e.printStackTrace();
+	 		}
+	 		
+	 	}
 	
 }

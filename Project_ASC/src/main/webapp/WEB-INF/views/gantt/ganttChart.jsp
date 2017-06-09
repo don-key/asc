@@ -131,9 +131,12 @@ $(document).ready(function(){
     			for (var j = 0; j < duration; j++) {
     			innerCode += "<td style='background-color: " + color + ";'>&nbsp;</td>";
 				}
+    			for (var j = 0; j < days-duration-i; j++) {
+    				innerCode += "<td>&nbsp;</td>";
+    				}
     			break;
 			} else {
-				innerCode += "<td>&nbsp;</td>"
+				innerCode += "<td>&nbsp;</td>";
 			}
 		}
     	innerCode += "</tr>";

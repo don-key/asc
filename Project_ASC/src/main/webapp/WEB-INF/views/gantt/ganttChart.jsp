@@ -148,12 +148,23 @@ $(document).ready(function(){
     	   var startCount =  ${count};
     	   console.log("count : " + startCount);
     	   var steps = '';
-    	      /** i는 세로 뒤에 2 자리는 날짜 범위 */
     	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
     	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
+    	       var check = $(steps).css("background-color");
+    	       if (check != 'rgba(0, 0, 0, 0)') {
+    	    	$(steps).css("cursor", "pointer");
+    	    	$(steps).addClass("today");
+				$(steps).attr("id",startCount+":"+todayDays);
+			}
     	   </c:forEach> 
 	}
     
+    /** 오늘꺼 누르면 모달로 가기/정보가져가기 */
+    $(".today").on("click",function(){
+    	var test = $(this).attr('id').split(':');
+    	alert(test[0]);
+    	alert(test[1]);
+    });
 
     
 	  
@@ -330,6 +341,7 @@ function deleteFunction(){
 <jsp:include page="include/registGanttChartModal.jsp" />
 <jsp:include page="include/modifyGanttChartModal.jsp" />
 <jsp:include page="include/viewGanttChartModal.jsp" />
+<jsp:include page="include/stateCheckModal.jsp" />
 
 
 <script>

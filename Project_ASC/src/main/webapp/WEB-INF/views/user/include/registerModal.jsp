@@ -134,7 +134,9 @@
 	
 	/** 아이디 중복체크 */
    function idCheck() {
+   	  var emailpattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
       var registerId = $('#registerId').val();
+      
       if (registerId.length > 3) {
 
          $.ajax({
@@ -148,9 +150,11 @@
             success : function(request) {
                var display = document.getElementById("display");
                if (request == "success") {
-                  display.innerHTML = "사용가능한 아이디입니다.";
+                  display.innerHTML = "사용가능합니다.";
+                  $("#display").css("color", "blue");
                } else if (request == "fail") {
-                  display.innerHTML = "이미 사용중인 아이디입니다.";
+                  display.innerHTML = "이미 사용중입니다.";
+                  $("#display").css("color", "red");
                }
             }
 
@@ -168,20 +172,22 @@
       var passwdText = document.getElementById("info");
       if (registerPassword == repassword) {
          passwdText.innerHTML = "비밀번호가 일치합니다.";
+         $("#info").css("color","blue");
       } else {
          passwdText.innerHTML = "비밀번호가 일치하지 않습니다.";
+         $("#info").css("color","red");
       }
   
    }
 	
-	/** 회원가입 유효성 검사*/
+/** 회원가입 유효성 검사*/
 $(function(){
     $('#registerBtn').click(function(e){ 
     	
-           var registerId = $("#registerId").val();
+          var registerId = $("#registerId").val();
           if(registerId < 1){
                swal({
-                    title: '아이디 미입력!',
+                    title: '',
                     text: '아이디를 입력해주세요.',
                     type: 'warning',
                     confirmButtonText: '닫기'
@@ -189,6 +195,17 @@ $(function(){
               return false;
             }
     
+          if (registerId.length < 4) {
+              swal({
+                 title : '',
+                 text : '아이디는 4자 이상이여야합니다.',
+                 type : 'warning',
+                 confirmButtonText : '닫기'
+              })
+              $('#registerId').focus();
+              return false;
+           }	
+          
           if ($('#display').text() == "이미 사용중인 아이디입니다.") {
               swal({
                  title : '아이디 중복',
@@ -201,12 +218,12 @@ $(function(){
            }
           
           
-           var registerPassword = $("#registerPassword").val();
-           var repassword = $("#repassword").val();
+          var registerPassword = $("#registerPassword").val();
+          var repassword = $("#repassword").val();
           if (registerPassword < 1
                   || repassword < 1) {
                swal({
-                  title : '비밀번호 미입력',
+                  title : '',
                   text : '비밀번호를 입력해주세요.',
                   type : 'warning',
                   confirmButtonText : '닫기'
@@ -227,12 +244,36 @@ $(function(){
                $('#registerPassword').focus();
                return false;
             }
+            
+            
+            if ($('#registerPassword').val().length < 4) {
+                swal({
+                   title : '',
+                   text : '비밀번호는 4자 이상이여야합니다.',
+                   type : 'warning',
+                   confirmButtonText : '닫기'
+                })
+                $('#registerPassword').focus();
+                return false;
+             }  
           
+          var patternEng = /^[A-za-z]/g;
+          var patternKor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
           var registerName = $("#registerName").val();
           if(registerName < 1){
               swal({
-                   title: '이름 미입력!',
+                   title: '',
                    text: '이름을 입력해주세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }
+          
+          if(!(patternEng).test(registerName) && !(patternKor).test(registerName)){
+              swal({
+                   title: '',
+                   text: '이름은 한글이나 영문자만 가능합니다.',
                    type: 'warning',
                    confirmButtonText: '닫기'
                  })
@@ -242,16 +283,26 @@ $(function(){
           var registerPhone = $("#registerPhone").val();
           if(registerPhone < 1){
               swal({
-                   title: '전화번호 미입력!',
+                   title: '',
                    text: '전화번호를 입력해주세요.',
                    type: 'warning',
                    confirmButtonText: '닫기'
                  })
              return false;
-           }	
+           }
           
+          var phonepattern = /^\d{3}-\d{3,4}-\d{4}$/;
+          var registerPhone = $("#registerPhone").val();
+          if(!(phonepattern).test(registerPhone)){
+              swal({
+                   title: 'EX)010-1234-1234',
+                   text: '"-"를 포함해서 입력하세요.',
+                   type: 'warning',
+                   confirmButtonText: '닫기'
+                 })
+             return false;
+           }	
 		return true;
-
        });
 
 });

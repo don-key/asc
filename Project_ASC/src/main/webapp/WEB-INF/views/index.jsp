@@ -115,6 +115,7 @@ function getUrlParams() {
 <script>
 
 $("#loginBtn").on("click", function() {
+	var emailpattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var id = $(".login__input").val();
 	var password = $("#password").val();
 	
@@ -127,6 +128,17 @@ $("#loginBtn").on("click", function() {
           })
       return false;
 	};
+	
+	if(!(emailpattern).test(id)){
+		swal({
+            title: 'email 형식으로 입력하세요.',
+            text: 'EX) asc@gmail.com',
+            type: 'warning',
+            confirmButtonText: '닫기'
+          })
+      return false;
+	};
+	
 	
 	if(password.trim().length <1){
 		swal({

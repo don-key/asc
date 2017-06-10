@@ -9,8 +9,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -215,9 +217,35 @@ public class ProjectController {
 	
 
 	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public String member(Locale locale, Model model) {
+	public String member(int projectListNo, Model model) {
 		logger.info("참여 인원 테스트");
-
+		
+		String status = null;
+		int index = 0;
+		Map<Integer, List<String>> map = new HashMap<Integer, List<String>>();
+		
+		
+		List<Map<String, Object>> joinListMap = lobbyService.memberId(projectListNo);
+		for (Map<String, Object> row : joinListMap) {
+			List<String> joinList = new ArrayList<String>();
+			String id = (String) row.get("id");
+			String name = (String) row.get("name");
+			String phone = (String) row.get("phone");
+			String photo = (String) row.get("photo");
+			Date recentLogin = (Date) row.get("recentLogin");
+			int stautsInt = (int) row.get("status");
+			if(stautsInt == 1) status = "스크럼";
+			else status = "팀원";
+			joinList.add(id);
+			joinList.add(name);
+			joinList.add(phone);
+			joinList.add(photo);
+			joinList.add(recentLogin.toString());
+			joinList.add(status);
+			map.put(index, joinList);
+			index++;
+		}
+		model.addAttribute("map", map);
 		return "/project/member";
 	}
 

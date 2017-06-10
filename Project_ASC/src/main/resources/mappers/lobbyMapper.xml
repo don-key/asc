@@ -66,7 +66,7 @@ where user_no in (select user_no
 
 <!-- 프로젝트 참여 멤버 id/status 조회 -->
 <select id="memberId" resultType="map">
-select u.id as 'id', p.status as 'status'
+select u.id as 'id', u.name as 'name', u.phone as 'phone', u.photo as 'photo', u.recent_login as 'recentLogin',p.status as 'status'
 from users u
 	 JOIN project_join_list p
 	   ON u.user_no = p.user_no

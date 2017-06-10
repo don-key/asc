@@ -64,7 +64,7 @@
 							<div class="row">
 							
 								<div class="col-xs-2 text-left">
-									<button type='submit' class='btn btn-success btn-circle btn-lg'>
+									<button type="button" class='btn btn-success btn-circle btn-lg' id="delBtn">
 										<i class="fa fa-trash"></i>
 									</button>
 								</div>
@@ -89,9 +89,19 @@
 									<input type="hidden" id="projectListNo" name="projectListNo" value="<%=request.getParameter("projectListNo")%>"> 
 									<input type="hidden" id="msg" name="msg" value="${msg}">
 									<script>
+									if($("#memo").val().trim().length <1){
+										swal({
+								            title: '메모를 입력해 주세요!',
+								            text: '',
+								            type: 'warning',
+								            confirmButtonText: '닫기'
+								          })
+									} else{
 										if ($("#msg").val() == "success") {
 											swal('메모가 저장되었습니다!', '', 'success')
 										}
+										
+									}
 									</script>
 								</div>
 							</div>
@@ -160,6 +170,11 @@
 			date : moment(),
 			lang : 'ko',
 			theme : 'light'
+		});
+		
+		/** 메모 초기화 */
+		$("#delBtn").on("click", function() {
+			$("#memo").val("");
 		});
 	});
 </script>

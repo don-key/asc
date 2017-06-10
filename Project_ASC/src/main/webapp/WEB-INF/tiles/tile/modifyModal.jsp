@@ -254,52 +254,82 @@ $(function(){
 });
 
 /** 회원 탈퇴 */
-// $(function() {
-//     var Dpassword = $("#password").val();
-//     var Drepassword = $("#repassword").val();
-//     var userNo = $('#userNo').val();
-    
-//    $('#deleteBtn').on('click', function() {
-//       $.ajax({
-//          type : 'GET',
-//          url : "/user/delete",
-//          data : {
-        	 
-//          	userNo : userNo,
-//          	password: Dpassword,
-//          	repassword: Drepassword
-         		
-         	
-//          },
-//          success : function(request) {
-//           if (request == 'success') {
-//              swal({
-//                  title: '탈퇴 하시겠습니까?',
-//                  text: "",
-//                 type: 'warning',
-//                  showCancelButton: true,
-//                 confirmButtonColor: '#3085d6',
-//                  cancelButtonColor: '#d33',
-//                  confirmButtonText: 'YES',
-//                  cancelButtonText: 'NO'
-//               }).then(function () {
-//     				swal('탈퇴완료','같은아이디로 재가입 할 수 없습니다.','success').then(function () {
-//             			location.href = "/";
-//     				})
-//                })
-//             }else if(request=='fail'){
-//                 swal('비밀번호가', '틀립니다!', 'warning')
-//                 return false;
-//             }else{
-//             	console.log(password);
-//                 swal('비밀번호 미입력', '비밀번호를 입력해주세요!', 'warning')
-//                 return false;
-//             }
-//          }
-//       });
+$(function() {
+   $('#deleteBtn').on('click', function() {
+        var userNo = $('#userNo').val();
+	    var password = $('#password').val();
+	    $('#password').val("");
+	    var repassword = $('#repassword').val();
+	    $('#repassword').val("");
+	    console.log("비번"+password);
+	    console.log("비번확인"+repassword);
+	    
+        if (password < 1
+                || repassword < 1) {
+             swal({
+                title : '',
+                text : '비밀번호를 입력해주세요.',
+                type : 'warning',
+                confirmButtonText : '닫기'
+             })
+             $('#password').focus();
+             return false;
 
-//    });
-// });
+          }
+	    
+        if ($('#password').val() != $('#repassword').val()) {
+            swal({
+               title : '비밀번호 불일치',
+               text : '비밀번호를 확인해주세요.',
+               type : 'warning',
+               confirmButtonText : '닫기'
+            })
+            $('#password').focus();
+            return false;
+         }
+        
+      	 swal({
+               title: '탈퇴 하시겠습니까?',
+               text: "",
+               type: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'YES',
+               cancelButtonText: 'NO'
+            }).then(function () {
+
+                $.ajax({
+                   type : 'GET',
+                   url : "/user/delete",
+                   data : {
+                  	 
+                   	userNo : userNo,
+                   	password: password,
+                   	repassword: repassword
+                   	
+                   },
+                   success : function(request) {
+                    if (request == 'fail') {
+                  	  swal('', '가입한 비밀번호가 아닙니다!', 'warning')
+                        return false;
+                  	  
+                      }else{
+        				swal('탈퇴완료','같은아이디로 재가입 하실 수 없습니다.','success').then(function () {
+                  			location.href = "/";
+          				})
+                	  
+                      }
+                   }
+                });
+            	
+            	
+            	
+             })
+	    
+
+   });
+});
 
 
 </script>

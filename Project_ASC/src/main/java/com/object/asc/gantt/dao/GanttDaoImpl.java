@@ -64,10 +64,15 @@ public class GanttDaoImpl implements GanttDao {
 		map.put("projectListNo", projectListNo);
 		map.put("ganttListNo", actionChartList.getGanttListNo());
 		map.put("userNo", actionChartList.getUserNo());
-		map.put("actionDate", actionChartList.getGanttDate());
+		map.put("actionDate", actionChartList.getActionDate());
 		map.put("status", actionChartList.getStatus());
 		
 		sqlSession.insert(namespace+".actionRegister", map);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> actionList(int projectListNo) {
+		return sqlSession.selectList(namespace+".actionList", projectListNo);
 	}
 
 }

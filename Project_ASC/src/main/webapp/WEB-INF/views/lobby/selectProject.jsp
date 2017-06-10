@@ -19,11 +19,12 @@
 }
 </style>
 <div id="page-wrapper">
-   <div class="row">
-      <div class="col-lg-12">
-         <div class="page-header" style="font-size: 30px; font-weight: bold;">Project${user}</div>
-      </div>
-   </div>
+   
+   	<div class="row">
+		<div class="col-lg-12">
+			<br> <img alt="" src="/resources/images/header/lobby.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
+		</div>
+	</div>
 
    <div class="row">
       <div class=" col-xs-2 col-xs-offset-10">
@@ -49,7 +50,7 @@
          <c:forEach items="${list}" var="projectList" varStatus="status">
             <div class="col-lg-3 col-md-3 col-xs-4">
             <a href="/project/dashBoard?projectListNo=${projectList.projectListNo }&userNo=${login.userNo}" class="thumbnail"> 
-            <img src="/resources/images/upload${projectList.projectPhoto}" alt="">
+            <img src="/resources/images/upload${projectList.projectPhoto}" onerror='this.src="/resources/images/file.png"'>
                </a>
                <div class="panel">
                   <div style="font-size: 17px; font-weight: bold;"></div>

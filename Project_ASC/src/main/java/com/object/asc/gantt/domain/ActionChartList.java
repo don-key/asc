@@ -7,19 +7,19 @@ public class ActionChartList {
 	private int actionNo;
 	private int ganttListNo;
 	private int userNo;
-	private Date ganttDate;
+	private Date actionDate;
 	private int status;
 	
 	public ActionChartList() {
 	}
 
-	public ActionChartList(int actionListNo, int actionNo, int ganttListNo, int userNo, Date ganttDate, int status) {
+	public ActionChartList(int actionListNo, int actionNo, int ganttListNo, int userNo, Date actionDate, int status) {
 		super();
 		this.actionListNo = actionListNo;
 		this.actionNo = actionNo;
 		this.ganttListNo = ganttListNo;
 		this.userNo = userNo;
-		this.ganttDate = ganttDate;
+		this.actionDate = actionDate;
 		this.status = status;
 	}
 
@@ -55,12 +55,12 @@ public class ActionChartList {
 		this.userNo = userNo;
 	}
 
-	public Date getGanttDate() {
-		return ganttDate;
+	public Date getActionDate() {
+		return actionDate;
 	}
 
-	public void setGanttDate(Date ganttDate) {
-		this.ganttDate = ganttDate;
+	public void setActionDate(Date actionDate) {
+		this.actionDate = actionDate;
 	}
 
 	public int getStatus() {
@@ -74,7 +74,7 @@ public class ActionChartList {
 	@Override
 	public String toString() {
 		return "ActionChartList [actionListNo=" + actionListNo + ", actionNo=" + actionNo + ", ganttListNo="
-				+ ganttListNo + ", userNo=" + userNo + ", ganttDate=" + ganttDate + ", status=" + status + "]";
+				+ ganttListNo + ", userNo=" + userNo + ", actionDate=" + actionDate + ", status=" + status + "]";
 	}
 	
 	

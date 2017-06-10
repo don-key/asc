@@ -132,7 +132,38 @@ $(document).ready(function(){
 
 	
     $('#rightTable').html(innerCode);
+    
+    /** Today */
+    var todayDays = ${todayDays};
+    if (todayDays != -1) {
+    	   var set = $('#rightTable').children().children()[todayDays];
+    	      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
+    	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
+    	   <c:set var="count">${status.index}</c:set>
+    	   var startCount =  ${count};
+    	   var listNo = ${gantt.ganttListNo};
+    	   console.log("count : " + startCount);
+    	   var steps = '';
+    	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
+    	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
+    	       var check = $(steps).css("background-color");
+    	       if (check != 'rgba(0, 0, 0, 0)') {
+    	    	$(steps).css("cursor", "pointer");
+    	    	$(steps).addClass("today");
+				$(steps).attr("id",listNo+":"+todayDays);
+			}
+    	   </c:forEach> 
+	}
 
+    /** 실행된거 색입히기 */
+    <c:forEach items="${actionList}" var="action" varStatus="status">
+    <c:set var="count">${status.index}</c:set>
+	var theDay = ${theDay[count]};
+	var funcCount = ${action.ganttListNo};
+	var color = '${action.color}';
+    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
+    $(steps).css("background-color", color);
+    </c:forEach> 
     	
 
     
@@ -240,6 +271,7 @@ function addDay(month, day){
             ${action.status },
             ${action.color }</div>
         </c:forEach>
+        
   </div>
 
 

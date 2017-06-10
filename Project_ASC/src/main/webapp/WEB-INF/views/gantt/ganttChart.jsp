@@ -62,11 +62,11 @@ td, th {
 
 <script>
 $(document).ready(function(){
-	var userNo = ${userNo};
-	console.log("유저넘 "+userNo);
+	var projectListNo = <%=request.getParameter("projectListNo")%>;
+	var userNo = <%=request.getParameter("userNo")%>;
 	
 	$('#actionChartBtn').on('click', function() {
-		location.href = "currentChart";
+		location.href = "/gantt/actionChart?projectListNo="+projectListNo+"&userNo="+userNo;
 	});
 
 	$('.dataPanel').on('click', function() {
@@ -164,8 +164,7 @@ $(document).ready(function(){
     $(".today").on("click",function(){
     	var info = $(this).attr('id').split(':');
     	var ganttListNo = info[0];
-    	var projectListNo = <%=request.getParameter("projectListNo")%>;
-    	var userNo = <%=request.getParameter("userNo")%>;
+
     	
     	swal({
     		  title: '기능 이름',
@@ -327,7 +326,7 @@ function deleteFunction(){
 		    '기능삭제 완료!',
 		    'success'
 		  ).then(function () {
-				location.href="/gantt/delete?listNo="+listNo+"&projectListNo="+${projectListNo}+"&userNo="+${userNo};
+				location.href="/gantt/delete?listNo="+listNo+"&projectListNo="+<%=request.getParameter("projectListNo")%>+"&userNo="+<%=request.getParameter("userNo")%>;
 			});
 		});
 }

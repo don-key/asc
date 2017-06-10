@@ -1,6 +1,7 @@
 package com.object.asc.gantt.service;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,6 +47,11 @@ public class GanttServiceImpl implements GanttService {
 	@Override
 	public void actionRegister(int projectListNo, ActionChartList actionChartList) {
 		dao.actionRegister(projectListNo, actionChartList);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> actionList(int projectListNo) {
+		return dao.actionList(projectListNo);
 	}
 
 }

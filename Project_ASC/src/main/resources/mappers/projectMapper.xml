@@ -96,5 +96,14 @@
 		FROM dash_board
 		WHERE dash_board_no = #{dashBoardNo}
 	</select>
+	
+	<!-- 오늘 할 일 기능 조회(간트) -->
+	<select id="todayList" resultType="String">
+	<![CDATA[
+	select title
+	from gantt_chart_list
+	where start_date <= date(now()) and end_date >= date(now()) and gantt_no= #{projectListNo} 
+	]]>
+	</select>
 
 </mapper>

@@ -93,4 +93,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return dao.getMemo(dashBoardNo);
 	}
 
+	@Override
+	public List<String> todayListDashboard(int projectListNo, String worker) {
+		return dao.todayListDashboard(projectListNo, worker);
+	}
+
 }

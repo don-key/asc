@@ -1,5 +1,6 @@
 package com.object.asc.interceptor;
 
+import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,9 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.object.asc.user.domain.User;
+import com.object.asc.user.service.UserService;
 
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
+	
+	@Inject
+	UserService service;
 	
 	private static final String LOGIN = "login";
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
@@ -42,8 +47,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if (user2.getName() != null) {
 			
 			logger.info("로그인 성공");
-			session.setAttribute(LOGIN, user);
-			
+			User userInfo = service.get(user2.getUserNo());
+			session.setAttribute(LOGIN, userInfo);
 
 			if (request.getParameter("useCookie") != null) {
 				logger.info("remember me~~~~~~~~~");

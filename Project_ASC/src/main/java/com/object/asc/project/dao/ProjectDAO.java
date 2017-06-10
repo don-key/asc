@@ -45,4 +45,7 @@ public interface ProjectDAO {
 	
 	/** 메모 업데이트 */
 	public void memoUpdate (int dashBoardNo, String memo);
+	
+	/** 메모 불러오기 */
+	public String getMemo (int dashBoardNo);
 }

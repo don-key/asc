@@ -116,8 +116,16 @@ public class ProjectDaoTest {
 	@Test
 	public void testMemoUpdate() {
 		
-		dao.memoUpdate(4, "테스트 메소드에서 수정44");
+		dao.memoUpdate(6, "테스트 메소드에서 수정44");
 		
 		logger.info("메모 수정 완료");
+	}
+	
+	@Test
+	public void testGetMemo() {
+		int dashBoardNo = dao.findDashBoard(1, 1);
+		
+		logger.info("대시보드 번호 : " + dao.findDashBoard(1, 1));
+		logger.info("불러온 메모 : " + dao.getMemo(dashBoardNo));
 	}
 }

@@ -88,4 +88,9 @@ public class ProjectServiceImpl implements ProjectService {
 		dao.memoUpdate(dashBoardNo, memo);
 	}
 
+	@Override
+	public String getMemo(int dashBoardNo) {
+		return dao.getMemo(dashBoardNo);
+	}
+
 }

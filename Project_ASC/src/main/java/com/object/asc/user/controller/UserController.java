@@ -94,6 +94,7 @@ public class UserController {
 		logger.info("가입정보 불러오기 테스트");
 		
 		service.get(user.getUserNo());
+		
 	}
 	
 	
@@ -102,10 +103,8 @@ public class UserController {
 		logger.info("회원수정 테스트");
 		
 		service.modify(user);
-		logger.info("dddddddddddd"+user.getId());
-		logger.info("전화번호"+ user.getPhone());
-		rttr.addFlashAttribute("user1", user);
 		
+		rttr.addFlashAttribute("message", "success");
 		
 		return "redirect:/lobby/selectProject";
 	}
@@ -164,13 +163,36 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(User user, RedirectAttributes rttr) {
-		logger.info("탈퇴합니다~~");
-		
-		service.delete(user);/** 회원 상태 2로 변경*/
-		rttr.addFlashAttribute("message", "success");
-	
-		return "redirect:/";
+	@ResponseBody
+	public ResponseEntity<String> delete(@RequestParam("userNo") int userNo, String password, String repassword) {
+		ResponseEntity<String> entity = null;
+		  
+	      
+		String result="";
+		  try {
+	    	  
+	    	  logger.info("탈퇴합니다~~");
+	    	  
+	    	  service.delete(userNo);/** 회원 상태 2로 변경*/
+	    	  
+	    	  if(password.equals("")){
+	    		  result = "null";
+	    		  
+	    	  }else if(password != repassword){
+	    		  result="fail";
+	    		  
+	    	  }else{
+	    		  result = "success";
+	    	  };
+	    	  logger.info(result+"모라고나오냥");
+	    	  
+	    	  entity = new ResponseEntity<String>(result, HttpStatus.OK);
+	    	  
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+	      }
+	      return entity;
 	}
 	
 	@RequestMapping(value = "/findId")

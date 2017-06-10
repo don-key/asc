@@ -48,7 +48,8 @@
       <c:otherwise>
          <c:forEach items="${list}" var="projectList" varStatus="status">
             <div class="col-lg-3 col-md-3 col-xs-4">
-            <a href="/project/dashBoard?projectListNo=${projectList.projectListNo }" class="thumbnail"> <img src="/resources/images/upload${projectList.projectPhoto}" alt="">
+            <a href="/project/dashBoard?projectListNo=${projectList.projectListNo }&userNo=${login.userNo}" class="thumbnail"> 
+            <img src="/resources/images/upload${projectList.projectPhoto}" alt="">
                </a>
                <div class="panel">
                   <div style="font-size: 17px; font-weight: bold;"></div>

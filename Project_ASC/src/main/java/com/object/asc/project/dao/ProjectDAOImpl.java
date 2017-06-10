@@ -100,4 +100,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 		sqlSession.update(namespace+".memoUpdate", map);
 	}
 
+	@Override
+	public String getMemo(int dashBoardNo) {
+		return sqlSession.selectOne(namespace + ".getMemo", dashBoardNo);
+	}
+
 }

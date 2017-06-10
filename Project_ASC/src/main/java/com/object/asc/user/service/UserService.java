@@ -38,7 +38,7 @@ public interface UserService {
 	public void createNewPw(String id, String password);
 	
 	/** 회원 탈퇴 */
-	public void delete(User user);
+	public void delete(int userNo);
 	
 	/** 회원 '?%'로 시작하는 아이디 검색 */
 	public List<String> userFind(String id); 

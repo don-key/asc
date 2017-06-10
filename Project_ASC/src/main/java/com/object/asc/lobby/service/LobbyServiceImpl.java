@@ -95,7 +95,7 @@ public class LobbyServiceImpl implements LobbyService {
 			DashBoard dashBoard = new DashBoard();
 			dashBoard.setProjectListNo(projectJoinNo);
 			dashBoard.setUserNo(userDao.userIdFind(invitation));
-			dashBoard.setMemo("환영합니다!");
+			dashBoard.setMemo("자유롭게 작성하세용 :)");
 			projectDao.dashBoardRegister(dashBoard);
 		}
 		/**

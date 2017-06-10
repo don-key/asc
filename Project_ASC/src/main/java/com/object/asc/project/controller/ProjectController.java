@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
@@ -31,6 +32,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.lobby.service.LobbyService;
 import com.object.asc.project.domain.LibraryList;
 import com.object.asc.project.service.ProjectService;
 import com.object.asc.user.domain.User;
@@ -52,13 +55,27 @@ public class ProjectController {
 	
 	@Inject
 	private UserService userService;
+	
+	@Inject
+	private LobbyService lobbyService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 
 	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
-	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model) {
+	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model, @RequestParam("userNo") int userNo) {
   		logger.info("대쉬보드 테스트");
+  		
+  		logger.info("메모 불러오깅ㅎㅎ");
+  		
+  		String memo = projectService.getMemo(projectService.findDashBoard(projectListNo, userNo));
+  		ProjectList projectList = new ProjectList();
+  		projectList = lobbyService.projectDate(projectListNo);
+  		Date endDate = projectList.getEndDate();
+  		
+  		model.addAttribute("memo", memo);
+  		model.addAttribute("endDate", endDate);
+  		
 		return "/project/dashboard";
 	}
 	
@@ -71,7 +88,7 @@ public class ProjectController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/project/dashBoard?projectListNo="+projectListNo;
+		return "redirect:/project/dashBoard?projectListNo="+projectListNo+"&userNo="+userNo;
 	}
 
 	@RequestMapping(value = "/library", method = RequestMethod.GET)

@@ -1,6 +1,8 @@
 package com.object.asc.lobby.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -65,7 +67,7 @@ public class LobbyServiceImpl implements LobbyService {
 		projectList.setProjectJoinNo(projectJoinNo);
 		projectList.setProjectPhoto(file.getOriginalFilename());
 		projectList.setChatName(projectJoinNo + "_" + uuid.toString());
-		projectList.setChatContent("chat.txt");
+		projectList.setChatContent(projectJoinNo + "_" + uuid.toString()+".txt");
 		projectList.setProjectPhoto(savePath);
 		lobbyDao.projectListRegister(projectList);
 		/**
@@ -148,4 +150,94 @@ public class LobbyServiceImpl implements LobbyService {
 		return lobbyDao.memberName(projectListNo);
 	}
 
+	@Override
+	public ProjectList getProjectList(int projectListNo) {
+		return lobbyDao.getProjectList(projectListNo);
+	}
+
+	@Override
+	public List<Map<String, Object>> memberId(int projectListNo) {
+		return lobbyDao.memberId(projectListNo);
+	}
+	@Transactional
+	@Override
+	public void projectUpdate(ProjectList projectList, MultipartFile file, String[] invitationList) {
+		String savePath = "";
+		
+		/** 파일 미수정 시 */
+		if(file.getOriginalFilename().length() == 0){
+			projectList.setProjectPhoto(null);
+		}else{
+			/** 파일 수정 시 */
+			try {
+				savePath = UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+				projectList.setProjectPhoto(savePath);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/** 이전 내역과 현재 내역 비교해서 중복값 제거 후 결과 리스트 추가 */
+		List<Map<String, Object>> previousMap = null;
+		List<String> previousList = new ArrayList<String>();
+		List<String> currentList = new ArrayList<String>();
+		List<String> deleteList = new ArrayList<String>();
+		List<String> registList = new ArrayList<String>();
+		previousMap = lobbyDao.memberId(projectList.getProjectListNo());
+		for (Map<String, Object> row : previousMap) {
+			String id = (String) row.get("id");
+			previousList.add(id);
+		}
+		// 현재 참여 내역 검색
+		for (String invitation : invitationList) {
+			currentList.add(invitation);
+		}
+		// 이전 내역과 현재 내역 비교해서 중복값 제거 후 결과 리스트 추가 (탈퇴)
+		for (String list : previousList) {
+			if(!currentList.contains(list)){
+				deleteList.add(list);
+			}
+		}
+		
+		// 이전 내역과 현재 내역 비교해서 중복값 제거 후 결과 리스트 추가 (추가)
+		for (String list : currentList) {
+			if(!previousList.contains(list)){
+				registList.add(list);
+			}
+		}
+		
+	    /** 참여 내역 생성, 대쉬보드 추가 */
+		for (String regist : registList) {
+			ProjectJoinList projectJoinList = new ProjectJoinList();
+			projectJoinList.setProjectJoinNo(projectList.getProjectListNo());
+			projectJoinList.setUserNo(userDao.userIdFind(regist));
+			projectJoinList.setStatus(0); // 팀원
+			lobbyDao.projectJoinListRegister(projectJoinList);
+			DashBoard dashBoard = new DashBoard();
+			dashBoard.setProjectListNo(projectList.getProjectListNo());
+			dashBoard.setUserNo(userDao.userIdFind(regist));
+			dashBoard.setMemo("자유롭게 작성하세용 :)");
+			projectDao.dashBoardRegister(dashBoard);
+		} 
+		
+		/** 참여 내역 삭제, 대쉬보드 삭제 */
+		for (String delete : deleteList) {
+			ProjectJoinList projectJoinList = new ProjectJoinList();
+			projectJoinList.setProjectJoinNo(projectList.getProjectListNo());
+			projectJoinList.setUserNo(userDao.userIdFind(delete));
+			lobbyDao.projectJoinListDelete(projectJoinList);
+			DashBoard dashBoard = new DashBoard();
+			dashBoard.setProjectListNo(projectList.getProjectListNo());
+			dashBoard.setUserNo(userDao.userIdFind(delete));
+			lobbyDao.dashBoardDelete(dashBoard);
+		}
+		lobbyDao.projectListUpdate(projectList);
+	}
+
+	@Override
+	public void projectListDelete(int projectListNo) {
+		lobbyDao.projectListDelete(projectListNo);
+	}
+	
+	
 }

@@ -33,6 +33,14 @@ SELECT project_join_no as projectJoinNo FROM project_join ORDER BY project_join_
 	FROM project_list
 	WHERE project_join_no in (SELECT project_join_no FROM project_join_list WHERE user_no = #{userNo})
 </select>
+
+<!-- 프로젝트 내역 조회 -->
+<select id="getProjectList" resultType="ProjectList">
+	SELECT project_list_no as 'projectListNo', project_join_no as 'projectJoinNo', project_name as 'projectName', project_photo as 'projectPhoto', chat_name as 'chatName', chat_content as 'chatContent', start_date as 'startDate', end_date as 'endDate', content 
+	FROM project_list
+	WHERE project_join_no = #{projectListNo}
+</select>
+
 <!-- 프로젝트 날짜 받아오기 -->
 <select id="projectDate" resultType="ProjectList">
 select project_list_no as 'projectListNo', project_name as 'projectName', start_date as 'startDate', end_date as 'endDate'
@@ -55,4 +63,40 @@ where user_no in (select user_no
 									   from project_list
                                        where project_list_no = #{projectListNo}))
 </select>
+
+<!-- 프로젝트 참여 멤버 id/status 조회 -->
+<select id="memberId" resultType="map">
+select u.id as 'id', p.status as 'status'
+from users u
+	 JOIN project_join_list p
+	   ON u.user_no = p.user_no
+where p.project_join_no = #{projectListNo}
+order by p.status desc
+</select>
+
+<!-- 프로젝트 수정 -->
+<update id="projectListUpdate">
+UPDATE project_list
+  <set>
+	 <if test="projectName != null">project_name = #{projectName},</if>
+	 <if test="projectPhoto != null">project_photo = #{projectPhoto}, </if>
+	 <if test="content != null">content = #{content}</if>
+  </set>
+WHERE project_list_no = #{projectListNo}
+</update>
+
+<!-- 대쉬보드 삭제 -->
+<delete id="dashBoardDelete">
+DELETE from dash_board WHERE project_list_no = #{projectListNo} AND user_no = #{userNo}
+</delete>
+
+<!-- 참여 내역 삭제-->
+<delete id="projectJoinListDelete">
+DELETE from project_join_list WHERE project_join_no = #{projectJoinNo} AND user_no = #{userNo}
+</delete>
+
+<!-- 프로젝트 내역 삭제 -->
+<delete id="projectListDelete">
+DELETE from project_list WHERE project_list_no = #{projectListNo}
+</delete>
 </mapper>

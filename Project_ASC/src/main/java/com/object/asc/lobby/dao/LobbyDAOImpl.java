@@ -1,6 +1,8 @@
 package com.object.asc.lobby.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -57,6 +59,11 @@ public class LobbyDAOImpl implements LobbyDAO {
 	}
 
 	@Override
+	public ProjectList getProjectList(int projectListNo) {
+		return sqlSession.selectOne(namespace + ".getProjectList", projectListNo);
+	}
+	
+	@Override
 	public int memberCount(int projectJoinNo) {
 		return sqlSession.selectOne(namespace + ".memberCount", projectJoinNo);
 	}
@@ -65,5 +72,31 @@ public class LobbyDAOImpl implements LobbyDAO {
 	public List<String> memberName(int projectListNo) {
 		return sqlSession.selectList(namespace + ".memberName", projectListNo);
 	}
+
+	@Override
+	public List<Map<String, Object>> memberId(int projectListNo) {
+		return sqlSession.selectList(namespace + ".memberId", projectListNo);
+	}
+
+	@Override
+	public void projectListUpdate(ProjectList projectList) {
+		sqlSession.update(namespace + ".projectListUpdate", projectList);
+	}
+
+	@Override
+	public void projectJoinListDelete(ProjectJoinList projectJoinList) {
+		sqlSession.delete(namespace + ".projectJoinListDelete", projectJoinList);
+	}
+	
+	@Override
+	public void projectListDelete(int projectListNo) {
+		sqlSession.delete(namespace + ".projectListDelete", projectListNo);
+	}
+
+	@Override
+	public void dashBoardDelete(DashBoard dashBoard) {
+		sqlSession.delete(namespace + ".dashBoardDelete", dashBoard);
+	}
+
 
 }

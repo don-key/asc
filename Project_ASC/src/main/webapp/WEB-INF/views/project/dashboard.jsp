@@ -118,13 +118,14 @@
 						<div class='row'>
 							<div class='col-xs-12 text-center'>
 								<div class="huge">D-Day</div>
+								<input type="hidden" id="endDate" name="endDate" value="${endDate}">
 							</div>
 						</div>
 					</div>
 					<div class="panel-footer foot">
 						<div class='row'>
 							<div class='col-xs-12 text-center'>
-								<div class='huge daysLeft'>D-20</div>
+								<div class='huge daysLeft'  id="d_day"> </div>
 							</div>
 						</div>
 					</div>
@@ -176,6 +177,33 @@
 		$("#delBtn").on("click", function() {
 			$("#memo").val("");
 		});
+		
+		/** D-Day 계산 */
+		var str = $("#endDate").val().split('-');
+		var year = str[0];
+		var month = str[1];
+		var date = str[2];
+		
+		var today = new Date();
+		var dday = new Date(year, month-1, date	);
+		
+		var gap = dday-today;
+		var currDay = 24 * 60 * 60 * 1000; // 시 * 분 * 초 * 밀리세컨
+		
+		var day = Math.ceil(gap/currDay);
+		
+		if (day == 0) {
+			$("#d_day").html("D-DAY!");
+			return;
+		}
+		
+		if (day < 0 ) {
+			$("#d_day").html("프로젝트 종료");
+			return;
+		}
+		
+		$("#d_day").html("D-"+day);
+	
 	});
 </script>
 

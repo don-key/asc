@@ -40,6 +40,12 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
+	public User get(int userNo) {
+		
+		return sqlSession.selectOne(namespace + ".get", userNo);
+	}
+
+	@Override
 	public void modify(User user) {
 		sqlSession.update(namespace + ".modify", user);
 	}
@@ -65,15 +71,10 @@ public class UserDAOImpl implements UserDAO{
 		return sqlSession.selectOne(namespace + ".checkUserWithSessionKey", cookieValue);
 	}
 
-	@Override
-	public User get(int userNo) {
-		
-		return sqlSession.selectOne(namespace + ".get", userNo);
-	}
 
 	@Override
-	public void delete(User user) {
-		sqlSession.update(namespace + ".delete", user);
+	public void delete(int userNo) {
+		sqlSession.update(namespace + ".delete", userNo);
 	}
 
 

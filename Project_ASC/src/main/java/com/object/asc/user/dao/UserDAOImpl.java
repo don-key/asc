@@ -113,6 +113,11 @@ public class UserDAOImpl implements UserDAO{
 		sqlSession.update(namespace + ".createNewPw", paramMap);
 	}
 
+	@Override
+	public void setStatus(String id) {
+		sqlSession.update(namespace + ".setStatus", id);
+	}
+
 	
 
 }

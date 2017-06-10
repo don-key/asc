@@ -44,34 +44,48 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		Object user = modelMap.get("user");
 		
 		User user2 = (User) user;
+		
 		if (user2.getName() != null) {
 			
-			logger.info("로그인 성공");
 			User userInfo = service.get(user2.getUserNo());
-			session.setAttribute(LOGIN, userInfo);
 
-			if (request.getParameter("useCookie") != null) {
-				logger.info("remember me~~~~~~~~~");
+			if(userInfo.getStatus() == 1){
 				
-				Cookie loginCookie = new Cookie("loginCookie", session.getId());
-				loginCookie.setPath("/");
-				loginCookie.setMaxAge(60 * 60 * 24 * 7);
-				response.addCookie(loginCookie);
+				logger.info("로그인 성공");
+				session.setAttribute(LOGIN, userInfo);
+	
+				if (request.getParameter("useCookie") != null) {
+					logger.info("remember me~~~~~~~~~");
+					
+					Cookie loginCookie = new Cookie("loginCookie", session.getId());
+					loginCookie.setPath("/");
+					loginCookie.setMaxAge(60 * 60 * 24 * 7);
+					response.addCookie(loginCookie);
+					
+				}
 				
-			}
+					User userCookie = (User) user;
+					Cookie userIdCookie = new Cookie("userIdCookie", userCookie.getId());
+					userIdCookie.setPath("/");
+					userIdCookie.setMaxAge(60 * 60 * 24 * 7);
+					response.addCookie(userIdCookie);
+					
+					response.sendRedirect("/lobby/selectProject");
+				
 			
-				User userCookie = (User) user;
-				Cookie userIdCookie = new Cookie("userIdCookie", userCookie.getId());
-				userIdCookie.setPath("/");
-				userIdCookie.setMaxAge(60 * 60 * 24 * 7);
-				response.addCookie(userIdCookie);
+			 }else if(userInfo.getStatus() == 0){
+					logger.info("메일 미인증 회원");
+					response.sendRedirect("/?result=notAuth");
+				}else {
+					logger.info("탈퇴회원");
+					response.sendRedirect("/?result=delete");
+				}
 				
-				response.sendRedirect("/lobby/selectProject");
-			
-		} else {
-			logger.info("로그인실패");
-			response.sendRedirect("/?result=error");
+		}else{
+					logger.info("아이디 비번 불일치");
+					response.sendRedirect("/?result=error");
+				}
 		}
 	}
 
- }
+ 

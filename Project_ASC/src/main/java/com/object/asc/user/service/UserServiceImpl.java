@@ -83,5 +83,11 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public void setStatus(String id) {
+		dao.setStatus(id);
+		
+	}
+
 	
 }

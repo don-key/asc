@@ -10,6 +10,9 @@ public interface UserService {
 	/** 회원 가입 */
 	public void register(User user);
 	
+	/** 메일인증 후 계정 활성화 */
+	public void setStatus(String id);
+	
 	/** 회원 아이디 중복 체크*/
 	public boolean idCheck(String id);
 	

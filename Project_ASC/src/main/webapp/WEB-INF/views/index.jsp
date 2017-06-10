@@ -42,7 +42,28 @@ $(function(){
             confirmButtonText: 'OK'
           });
 	}
+	
+	
+	if(result == "notAuth") {
+		swal({
+            title: '메인 미인증',
+            text: '메일인증이 필요한 회원입니다.',
+            type: 'warning',
+            confirmButtonText: 'OK'
+          });
+	}
 
+	if(result == "delete") {
+		swal({
+            title: '',
+            text: '탈퇴한 회원입니다.',
+            type: 'warning',
+            confirmButtonText: 'OK'
+          });
+	}
+	
+
+	
 	var message = $("#successMessage").val();
 	if(message == "success") {
 		swal(     
@@ -51,6 +72,15 @@ $(function(){
           	     'success'
           		)
 	}
+	
+	var message = $("#statusMessage").val();
+	if(message == "status") {
+		swal(     
+          		 '메일인증 성공!',
+          	     '로그인 후 이용가능합니다.',
+          	     'success'
+          		)
+	}	
 	
 });
 
@@ -67,6 +97,7 @@ function getUrlParams() {
 
 <body>
 <input type="hidden" id="successMessage" value="${message}"/>
+<input type="hidden" id="statusMessage" value="${setStatus}"/>
 	<div class="cont">
 		<div class="demo">
 			<div class="login">

@@ -12,6 +12,15 @@ INSERT INTO users(id, password, name, phone, photo, status)
 VALUES (#{id}, #{password}, #{name}, #{phone}, #{photo}, #{status})
 
 </insert>
+
+<!-- 메일인증 후 계정 활성화 -->
+<update id="setStatus">
+
+update users set status=1 where id=#{id}
+
+</update>
+
+
 <!-- 회원 아이디 중복 체크 -->
 <select id="idCheck" resultType="String">
 

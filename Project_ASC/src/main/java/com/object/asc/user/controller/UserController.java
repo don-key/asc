@@ -66,7 +66,7 @@ public class UserController {
 		service.register(user);
 		rttr.addFlashAttribute("message", "success");
 		
-		return "redirect:/";
+		return "redirect:/user/mailSender";
 	}
 	
 	
@@ -260,7 +260,7 @@ public class UserController {
 	
 	/**이메일인증 하는 중이야!!!!!!!!!!!!!*/
 	@RequestMapping(value = "/mailSender") 
-	   public String mailSender(HttpServletRequest request, ModelMap mo) throws AddressException, MessagingException { 
+	   public String mailSender(HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException { 
 	      // 네이버일 경우 smtp.naver.com 을 입력합니다. 
 	      // Google일 경우 smtp.gmail.com 을 입력합니다. 
 	      String host = "smtp.gmail.com"; 
@@ -304,6 +304,8 @@ public class UserController {
 	      Transport.send(mimeMessage); 
 	      //javax.mail.Transport.send() 이용
 	      
+	      
+		  rttr.addFlashAttribute("message", "success");
 	      return "redirect:/";
 	     	}
 	

@@ -46,8 +46,8 @@ $(function(){
 	var message = $("#successMessage").val();
 	if(message == "success") {
 		swal(     
-          		 '환영합니다!',
-          	     '회원가입이 완료되었습니다.',
+          		 '회원가입 신청완료!',
+          	     '메일 인증을 하시면 이용가능합니다.',
           	     'success'
           		)
 	}

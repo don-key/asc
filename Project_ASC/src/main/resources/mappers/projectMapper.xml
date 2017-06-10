@@ -98,11 +98,11 @@
 	</select>
 	
 	<!-- 오늘 할 일 기능 조회(간트) -->
-	<select id="todayList" resultType="String">
+	<select id="todayListDashboard" resultType="String">
 	<![CDATA[
-	select title
-	from gantt_chart_list
-	where start_date <= date(now()) and end_date >= date(now()) and gantt_no= #{projectListNo} 
+		select title
+		from gantt_chart_list
+		where start_date <= now() and end_date >= now() and gantt_no= #{projectListNo}  and (worker=#{worker} or worker='공통');
 	]]>
 	</select>
 

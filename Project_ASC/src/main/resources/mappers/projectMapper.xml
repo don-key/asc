@@ -91,10 +91,10 @@
 	</update>
 	
 	<!-- 대시보드 번호로 메모 검색 -->
-	<select id="findDashBoard" resultType="String">
+	<select id="getMemo" resultType="String">
 		SELECT memo
 		FROM dash_board
-		WHERE dash_board_no = #{dashBoardNo} 
+		WHERE dash_board_no = #{dashBoardNo}
 	</select>
 
 </mapper>

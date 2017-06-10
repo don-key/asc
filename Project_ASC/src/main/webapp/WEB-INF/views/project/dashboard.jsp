@@ -62,17 +62,18 @@
 					<div class="panel panel-memo">
 						<div class="panel-heading">
 							<div class="row">
-								<div class="col-xs-9 text-center">
-									<div class="huge">　　　　　메모</div>
-								</div>
-								
-								<div class="col-xs-3 text-right">
+							
+								<div class="col-xs-2 text-left">
 									<button type='submit' class='btn btn-success btn-circle btn-lg'>
-										<i class="fa fa-check"></i>
+										<i class="fa fa-trash"></i>
 									</button>
 								</div>
 								
-								<div class="col-xs-3 text-right">
+								<div class="col-xs-8 text-center">
+									<div class="huge">메모</div>
+								</div>
+								
+								<div class="col-xs-2 text-right">
 									<button type='submit' class='btn btn-success btn-circle btn-lg'>
 										<i class="fa fa-check"></i>
 									</button>
@@ -83,8 +84,10 @@
 						<div class="panel-footer textarea" style="background-color: white;">
 							<div class='row'>
 								<div class='col-xs-12'>
-									<textarea id="memo" name="memo" placeholder="자유롭게 작성하세용 :)"></textarea>
-									<input type="hidden" id="userNo" name="userNo" value="${login.userNo }"> <input type="hidden" id="projectListNo" name="projectListNo" value="<%=request.getParameter("projectListNo")%>"> <input type="hidden" id="msg" name="msg" value="${msg}">
+									<textarea id="memo" name="memo" placeholder="자유롭게 작성하세용 :)" >${memo }</textarea>
+									<input type="hidden" id="userNo" name="userNo" value="${login.userNo }"> 
+									<input type="hidden" id="projectListNo" name="projectListNo" value="<%=request.getParameter("projectListNo")%>"> 
+									<input type="hidden" id="msg" name="msg" value="${msg}">
 									<script>
 										if ($("#msg").val() == "success") {
 											swal('메모가 저장되었습니다!', '', 'success')

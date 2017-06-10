@@ -57,8 +57,15 @@ public class ProjectController {
 	private String uploadPath;
 
 	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
-	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model) {
+	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model, @RequestParam("userNo") int userNo) {
   		logger.info("대쉬보드 테스트");
+  		
+  		logger.info("메모 불러오깅ㅎㅎ");
+  		
+  		String memo = projectService.getMemo(projectService.findDashBoard(projectListNo, userNo));
+  		
+  		model.addAttribute("memo", memo);
+  		
 		return "/project/dashboard";
 	}
 	
@@ -71,7 +78,7 @@ public class ProjectController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/project/dashBoard?projectListNo="+projectListNo;
+		return "redirect:/project/dashBoard?projectListNo="+projectListNo+"&userNo="+userNo;
 	}
 
 	@RequestMapping(value = "/library", method = RequestMethod.GET)

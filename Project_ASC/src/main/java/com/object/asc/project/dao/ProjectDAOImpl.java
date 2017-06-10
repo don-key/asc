@@ -102,7 +102,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
 	@Override
 	public String getMemo(int dashBoardNo) {
-		return null;
+		return sqlSession.selectOne(namespace + ".getMemo", dashBoardNo);
 	}
 
 }

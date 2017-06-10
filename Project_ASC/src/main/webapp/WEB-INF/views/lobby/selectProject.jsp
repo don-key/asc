@@ -19,11 +19,12 @@
 }
 </style>
 <div id="page-wrapper">
-   <div class="row">
-      <div class="col-lg-12">
-         <div class="page-header" style="font-size: 30px; font-weight: bold;">Project${user}</div>
-      </div>
-   </div>
+   
+   	<div class="row">
+		<div class="col-lg-12">
+			<br> <img alt="" src="/resources/images/header/lobby.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
+		</div>
+	</div>
 
    <div class="row">
       <div class=" col-xs-2 col-xs-offset-10">

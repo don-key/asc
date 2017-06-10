@@ -133,6 +133,18 @@ $(document).ready(function(){
 	
     $('#rightTable').html(innerCode);
     
+    /** 실행된거 색입히기 */
+    <c:forEach items="${actionList}" var="action" varStatus="status">
+    <c:set var="count">${status.index}</c:set>
+	var theDay = ${theDay[count]};
+	var funcCount = ${action.ganttListNo}-1;
+	var color = '${action.color}';
+    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
+    $(steps).css("background-color", color);
+    </c:forEach> 
+    	
+    
+    
     /** Today */
     var todayDays = ${todayDays};
     if (todayDays != -1) {
@@ -155,17 +167,28 @@ $(document).ready(function(){
     	   </c:forEach> 
 	}
 
-    /** 실행된거 색입히기 */
-    <c:forEach items="${actionList}" var="action" varStatus="status">
-    <c:set var="count">${status.index}</c:set>
-	var theDay = ${theDay[count]};
-	var funcCount = ${action.ganttListNo};
-	var color = '${action.color}';
-    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
-    $(steps).css("background-color", color);
-    </c:forEach> 
-    	
 
+    
+	/** 안한거 X표 치기 */
+    <c:forEach items="${ganttList}" var="gantt" varStatus="status2">
+    <c:set var="count2">${status2.index}</c:set>
+    var count = ${count2};
+    for (var i = 0; i < todayDays; i++) {
+    	console.log("들어오나" +i);
+    	console.log($(steps).hasClass('distance'));
+    	var steps = $('#rightTable').children().next()[count].children[i];
+		if ($(steps).hasClass('distance')) {
+			var backColor = $(steps).css("background-color");
+			console.log("배경색 : "+ backColor);
+			if (backColor == 'rgba(0, 0, 0, 0)') {
+				$(steps).css("background-image", "url(/resources/images/gantt/ganttX.PNG)");
+				$(steps).css("background-repeat", "no-repeat");
+			}
+			
+		}
+	}
+	</c:forEach>
+	
     
 	  
 });

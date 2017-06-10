@@ -1,6 +1,7 @@
 package com.object.asc.gantt.dao;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import com.object.asc.gantt.domain.ActionChartList;
@@ -25,5 +26,8 @@ public interface GanttDao {
 	
 	/** 계획 실행 내역 추가 */
 	public void actionRegister(int projectListNo, ActionChartList actionChartList);
+	
+	/** 계획 실행 차트 목록 조회 */
+	public List<HashMap<String, Object>> actionList(int projectListNo);
 
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 .col-xs-12 {
 	margin-top: 25px;
@@ -21,102 +22,26 @@
 			<div class="col-lg-12">
 				<img alt="" src="/resources/images/header/member.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
 			</div>
-
+         <c:forEach items="${map}" var="projectList" varStatus="status">
 			<div class="form-group">
-				<div class="col-xs-12 col-sm-12">
+				<div class="col-xs-12 col-sm-12 ">
 					<div class="col-xs-2 col-sm-2">
 						<div class="wen"><img src="../resources/images/noimage.png"></div>
-					</div>
+                         ${map[status.index].get(3)}(파일명) <- 회원 이미지 완료되면 넣을꺼!
+					</div> 
 					<div class="col-xs-3 col-sm-3 ">
-						<p class="name">김동현</p>
-						<p>010-0000-0000 / babo @ gmail.com</p>
-						<p>최근 접속일 : 2017-05-29 12:34:56</p>
+						<p class="name">${map[status.index].get(1)}</p>
+						<p>${map[status.index].get(2)} / ${map[status.index].get(0)}</p>
+						<p>${map[status.index].get(4)}</p>
 					</div>
 					<div class="col-xs-1 col-sm-1 ">
 						<br>
-						<h5>마스터</h5>
-					</div>
-
-
-					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-					</div>
-					<div class="col-xs-3 col-sm-3 ">
-						<p class="name">마 민</p>
-						<p>010-0000-0000 / babo @ gmail.com</p>
-						<p>최근 접속일 : 2017-05-29 12:34:56</p>
-					</div>
-					<div class="col-xs-1 col-sm-1 ">
-						<br>
-						<h5>팀원</h5>
+						<h5>${map[status.index].get(5)}</h5>
 					</div>
 					<div class="clearfix"></div>
 				</div>
 			</div>
-
-			<div class="form-group">
-				<div class="col-xs-12 col-sm-12">
-					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-					</div>
-					<div class="col-xs-3 col-sm-3 ">
-						<p class="name">이종윤</p>
-						<p>010-0000-0000 / jjang @ gmail.com</p>
-						<p>최근 접속일 : 2017-05-29 12:34:56</p>
-					</div>
-					<div class="col-xs-1 col-sm-1 ">
-						<br>
-						<h5>팀원</h5>
-					</div>
-
-
-					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-					</div>
-					<div class="col-xs-3 col-sm-3 ">
-						<p class="name">이현명</p>
-						<p>010-0000-0000 / babo @ gmail.com</p>
-						<p>최근 접속일 : 2017-05-29 12:34:56</p>
-					</div>
-					<div class="col-xs-1 col-sm-1 ">
-						<br>
-						<h5>팀원</h5>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-xs-12 col-sm-12">
-					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-					</div>
-					<div class="col-xs-3 col-sm-3 ">
-						<p class="name">이지수</p>
-						<p>010-0000-0000 / babo @ gmail.com</p>
-						<p>최근 접속일 : 2017-05-29 12:34:56</p>
-					</div>
-					<div class="col-xs-1 col-sm-1 ">
-						<br>
-						<h5>팀원</h5>
-					</div>
-
-
-					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-					</div>
-					<div class="col-xs-3 col-sm-3 ">
-						<p class="name">최신영</p>
-						<p>010-0000-0000 / babo @ gmail.com</p>
-						<p>최근 접속일 : 2017-05-29 12:34:56</p>
-					</div>
-					<div class="col-xs-1 col-sm-1 ">
-						<br>
-						<h5>팀원</h5>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
+         </c:forEach>
 		</div>
 	</div>
 </div>

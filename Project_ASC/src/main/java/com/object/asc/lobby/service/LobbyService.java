@@ -1,6 +1,8 @@
 package com.object.asc.lobby.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,8 +17,11 @@ public interface LobbyService {
 	
 	/** 기능 */
 	
-	/** 프로젝트 리스트 조회*/
+	/** 프로젝트 리스트 전체 조회*/
 	public List<ProjectList> projectListAll(int userNo);
+	  
+	/** 프로젝트 리스트 조회 */
+	public ProjectList getProjectList(int projectListNo);
 	
 	/** 프로젝트 날짜 받아오기 */
 	public ProjectList projectDate (int projectListNo);
@@ -26,4 +31,13 @@ public interface LobbyService {
 	
 	/** 프로젝트 참여 멤버 이름 조회 */
 	public List<String> memberName (int projectListNo);
+	
+	/** 프로젝트 참여 멤버 아이디/구성원 조회 */
+	public List<Map<String, Object>> memberId(int projectListNo);
+	
+	/** 프로젝트 수정 */
+	public void projectUpdate(ProjectList projectList, MultipartFile file, String[] invitationList);
+	
+	/** 프로젝트 내역 삭제 */
+	public void projectListDelete(int projectListNo);
 }

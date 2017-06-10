@@ -128,4 +128,15 @@ public class ProjectDaoTest {
 		logger.info("대시보드 번호 : " + dao.findDashBoard(1, 1));
 		logger.info("불러온 메모 : " + dao.getMemo(dashBoardNo));
 	}
+	
+	@Test
+	public void todayListDashboard() {
+		List<String> list = new ArrayList<String>();
+		
+		list = dao.todayListDashboard(3, "최신영");
+		
+		for (String today : list) {
+			logger.info(today);
+		}
+	}
 }

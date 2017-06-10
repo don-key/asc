@@ -48,4 +48,8 @@ public interface ProjectDAO {
 	
 	/** 메모 불러오기 */
 	public String getMemo (int dashBoardNo);
+	
+	/** 오늘 할 일 조회 */
+	public List<String> todayListDashboard (int projectListNo, String worker);
+	
 }

@@ -105,4 +105,13 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return sqlSession.selectOne(namespace + ".getMemo", dashBoardNo);
 	}
 
+	@Override
+	public List<String> todayListDashboard(int projectListNo, String worker) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("projectListNo", projectListNo);
+		map.put("worker", worker);
+		
+		return sqlSession.selectList(namespace+".todayListDashboard", map);
+	}
+
 }

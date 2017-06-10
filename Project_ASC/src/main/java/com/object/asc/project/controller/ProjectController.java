@@ -1,5 +1,7 @@
 package com.object.asc.project.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -68,13 +70,21 @@ public class ProjectController {
   		
   		logger.info("메모 불러오깅ㅎㅎ");
   		
+  		logger.info("오늘의 할 일~~~~~~~~~~~~~~ ");
+  		
   		String memo = projectService.getMemo(projectService.findDashBoard(projectListNo, userNo));
   		ProjectList projectList = new ProjectList();
   		projectList = lobbyService.projectDate(projectListNo);
   		Date endDate = projectList.getEndDate();
   		
+  		User user = userService.get(userNo);
+  		
+  		List<String> todayList = projectService.todayListDashboard(projectListNo, user.getName());
+  		
+  		
   		model.addAttribute("memo", memo);
   		model.addAttribute("endDate", endDate);
+  		model.addAttribute("todayList", todayList);
   		
 		return "/project/dashboard";
 	}

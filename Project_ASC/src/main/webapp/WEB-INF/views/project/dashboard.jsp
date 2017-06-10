@@ -50,7 +50,9 @@
 					<div class="panel-footer" style="background-color: white; height: 15em">
 						<div class="row">
 							<div class="col-xs-12 text-left">
-								<div>1. 일해야지</div>
+								<c:forEach items="${todayList }" var="todayList" varStatus="status">
+									<div>${status.index + 1 }. ${todayList}</div>
+								</c:forEach>
 							</div>
 						</div>
 					</div>

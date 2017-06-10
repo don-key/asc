@@ -313,7 +313,7 @@ public class GanttController {
 		model.addAttribute("actionList", actionList);
 		
 
-		return "/gantt/actionChart";
+		return "gantt/actionChart";
 	}
 	
 	

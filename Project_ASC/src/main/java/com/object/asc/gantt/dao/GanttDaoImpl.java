@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 
 @Repository
@@ -55,6 +56,18 @@ public class GanttDaoImpl implements GanttDao {
 	@Override
 	public List<String> todayList(int ganttNo) {
 		return sqlSession.selectList(namespace+".todayList", ganttNo);
+	}
+
+	@Override
+	public void actionRegister(int projectListNo, ActionChartList actionChartList) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("projectListNo", projectListNo);
+		map.put("ganttListNo", actionChartList.getGanttListNo());
+		map.put("userNo", actionChartList.getUserNo());
+		map.put("actionDate", actionChartList.getGanttDate());
+		map.put("status", actionChartList.getStatus());
+		
+		sqlSession.insert(namespace+".actionRegister", map);
 	}
 
 }

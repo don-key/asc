@@ -146,6 +146,7 @@ $(document).ready(function(){
     	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
     	   <c:set var="count">${status.index}</c:set>
     	   var startCount =  ${count};
+    	   var listNo = ${gantt.ganttListNo};
     	   console.log("count : " + startCount);
     	   var steps = '';
     	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
@@ -154,17 +155,79 @@ $(document).ready(function(){
     	       if (check != 'rgba(0, 0, 0, 0)') {
     	    	$(steps).css("cursor", "pointer");
     	    	$(steps).addClass("today");
-				$(steps).attr("id",startCount+":"+todayDays);
+				$(steps).attr("id",listNo+":"+todayDays);
 			}
     	   </c:forEach> 
 	}
     
     /** 오늘꺼 누르면 모달로 가기/정보가져가기 */
     $(".today").on("click",function(){
-    	var test = $(this).attr('id').split(':');
-    	alert(test[0]);
-    	alert(test[1]);
-    });
+    	var info = $(this).attr('id').split(':');
+    	var ganttListNo = info[0];
+    	var projectListNo = <%=request.getParameter("projectListNo")%>;
+    	var userNo = <%=request.getParameter("userNo")%>;
+    	
+    	swal({
+    		  title: '기능 이름',
+    		  text: "오늘 할당량을 채우셨습니까?",
+    		  type: 'warning',
+    		  showCancelButton: true,
+    		  confirmButtonColor: '#3085d6',
+    		  cancelButtonColor: '#d33',
+    		  confirmButtonText: 'Yes',
+    		  cancelButtonText: 'No',
+    		}).then(function () {
+    			$.ajax({
+  				url : "/gantt/actionRegister",
+  				type : "POST",
+  				data : {
+  					projectListNo : projectListNo,
+  					userNo : userNo,
+  					ganttListNo : ganttListNo,
+  					tOrY : 'today',
+  					status : 1
+  					
+  				},
+  				success : function(data) {
+  					swal(
+  			    		    'Success!',
+  			    		    '수고하셨습니다.',
+  			    		    'success'
+  			    		  );
+  				}
+  			});
+    			  
+    		}, function (dismiss) {
+    		  if (dismiss === 'cancel') {
+      			$.ajax({
+      				url : "/gantt/actionRegister",
+      				type : "POST",
+      				data : {
+      	  				projectListNo : projectListNo,
+      	  				userNo : userNo,
+      	  				ganttListNo : ganttListNo,
+      	  				tOrY : 'today',
+      	  				status : 0
+      				},
+      				success : function(data) {
+      					swal(
+      		    		      'Failure!',
+      		    		      '일해라 일해!',
+      		    		      'error'
+      		    		    );
+      				}
+      			});
+    		  }
+    		  
+    		});
+      	
+      	
+      	
+      });
+
+    	
+    	
+    	
 
     
 	  

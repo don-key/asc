@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.object.asc.gantt.dao.GanttDao;
+import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 
 @Service
@@ -40,6 +41,11 @@ public class GanttServiceImpl implements GanttService {
 	@Override
 	public List<String> todayList(int ganttNo) {
 		return dao.todayList(ganttNo);
+	}
+
+	@Override
+	public void actionRegister(int projectListNo, ActionChartList actionChartList) {
+		dao.actionRegister(projectListNo, actionChartList);
 	}
 
 }

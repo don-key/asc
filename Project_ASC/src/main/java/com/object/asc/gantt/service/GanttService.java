@@ -3,6 +3,7 @@ package com.object.asc.gantt.service;
 import java.sql.Date;
 import java.util.List;
 
+import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 
 public interface GanttService {
@@ -21,4 +22,8 @@ public interface GanttService {
 	
 	/** 오늘 할 일(간트) */
 	public List<String> todayList (int ganttNo);
+	
+	/** 계획 실행 내역 추가 */
+	public void actionRegister(int projectListNo, ActionChartList actionChartList);
+	
 }

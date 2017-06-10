@@ -2,6 +2,7 @@ package com.object.asc.gantt.controller;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 import com.object.asc.gantt.service.GanttService;
 import com.object.asc.lobby.domain.ProjectList;
@@ -33,6 +35,8 @@ public class GanttController {
 
 	@Inject
 	private LobbyService lobbyService;
+	
+	/** Gantt Chart */
 
 	@RequestMapping(value = "/ganttChart", method = RequestMethod.GET)
 	public String ganttChart(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, Model model) {
@@ -84,11 +88,8 @@ public class GanttController {
 		List<String> member = lobbyService.memberName(projectListNo);
 		
 		/** Today 표현을 위한 오늘 날짜 받아오기 */
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String sdfSql = sdf.format(new java.util.Date());
-        java.sql.Date today = java.sql.Date.valueOf(sdfSql);
-        System.out.println("오늘날짜::::" + today);
-        
+		Date today = date("today");
+		
         String[] todaySplit = today.toString().split("-");
         int todayDays=0;
         if (calDays(pStartDate) <= calDays(todaySplit)) {
@@ -182,6 +183,25 @@ public class GanttController {
 	}
 	
 	
+	/** Action Chart */
+	@RequestMapping(value="/actionRegister", method=RequestMethod.POST)
+	public String actionRegister(int projectListNo, int userNo, int ganttListNo, int status, String tOrY){
+		Date actionDate = date(tOrY);
+		
+		ActionChartList actionChartList = new ActionChartList();
+		actionChartList.setGanttDate(actionDate);
+		actionChartList.setGanttListNo(ganttListNo);
+		actionChartList.setStatus(status);
+		actionChartList.setUserNo(userNo);
+		
+		ganttService.actionRegister(projectListNo, actionChartList);
+		
+		return "/gantt/ganttChart";
+		
+	}
+	
+	
+	
 	
 
 	
@@ -205,6 +225,21 @@ public class GanttController {
 		return days;
 	}
 	
+	/** 오늘 날짜 받아오는 메소드 (오늘인지 어제인지 구별, X표시위해) */
+	public Date date (String tOrY){
+		System.out.println("오늘인가 어제인가 : " + tOrY);
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar cal = Calendar.getInstance();
+	    cal.setTime(new java.util.Date());
+		if (tOrY == "yesterday") {
+			cal.add(Calendar.DATE, -1);
+		}
+		String sdfSql = sdf.format(cal.getTime());
+        java.sql.Date date = java.sql.Date.valueOf(sdfSql);
+        System.out.println(date.toString());
+        return date;
+	}
 	
 
 }

@@ -45,4 +45,13 @@ where start_date <= date(now()) and end_date >= date(now()) and gantt_no= #{gant
 ]]>
 </select>
 
+<!-- 계획 실행 내역 추가 -->
+<insert id="actionRegister">
+INSERT INTO action_chart_list (action_list_no, action_no, gantt_list_no, user_no, action_date, status)
+VALUES (null, (select action_no
+			   from action_chart
+			   where project_list_no=#{projectListNo}),
+		#{ganttListNo}, #{userNo}, date_add(#{actionDate}, interval +1 day), #{status})
+</insert>
+
 </mapper>

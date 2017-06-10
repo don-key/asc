@@ -66,7 +66,7 @@ public class UserController {
 		service.register(user);
 		rttr.addFlashAttribute("message", "success");
 		
-		return "redirect:/user/mailSender";
+		return "redirect:/";
 	}
 	
 	
@@ -257,8 +257,10 @@ public class UserController {
 	      return entity;
 	}
 	
+	
+	/**이메일인증 하는 중이야!!!!!!!!!!!!!*/
 	@RequestMapping(value = "/mailSender") 
-	   public void mailSender(HttpServletRequest request, ModelMap mo) throws AddressException, MessagingException { 
+	   public String mailSender(HttpServletRequest request, ModelMap mo) throws AddressException, MessagingException { 
 	      // 네이버일 경우 smtp.naver.com 을 입력합니다. 
 	      // Google일 경우 smtp.gmail.com 을 입력합니다. 
 	      String host = "smtp.gmail.com"; 
@@ -270,7 +272,7 @@ public class UserController {
 	      //받는 사람의 메일주소를 입력해주세요. 
 	      String subject = "메일테스트"; 
 	      //메일 제목 입력해주세요. 
-	      String content = "<a href='http://192.168.0.1/'>회원 가입 인증</a>"; 
+	      String content = "<a href='http://192.168.0.65/'>회원 가입 인증</a>"; 
 	      //메일 내용 입력해주세요. 
 	      Properties props = System.getProperties(); 
 	      // 정보를 담기 위한 객체 생성 
@@ -286,6 +288,7 @@ public class UserController {
 	            return new javax.mail.PasswordAuthentication(un, pw); 
 	            } 
 	         }); 
+	
 	      session.setDebug(true); 
 	      //for debug 
 	      Message mimeMessage = new MimeMessage(session); 
@@ -300,7 +303,10 @@ public class UserController {
 	      //내용셋팅 
 	      Transport.send(mimeMessage); 
 	      //javax.mail.Transport.send() 이용
-	      }
+	      
+	      return "redirect:/";
+	     	}
+	
 	
 }
 

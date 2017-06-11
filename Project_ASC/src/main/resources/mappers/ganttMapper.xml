@@ -58,7 +58,7 @@ VALUES (null, (select action_no
 <select id="actionList" resultType="hashmap">
 select a.action_list_no as actionListNo, a.action_no as actionNo, a.gantt_list_no as ganttListNo, a.user_no as userNo, a.action_date as actionDate, a.status, g.color
 from action_chart_list as a inner join gantt_chart_list as g on a.gantt_list_no = g.gantt_list_no
-where a.status = 1 and action_no = (select action_no
+where action_no = (select action_no
 				   from action_chart
                    where project_list_no=#{projectListNo})
 </select>

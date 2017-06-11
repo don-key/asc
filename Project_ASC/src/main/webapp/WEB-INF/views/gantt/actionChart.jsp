@@ -104,7 +104,7 @@ $(document).ready(function(){
 	   
 	   innerCode += "</tr>";
 	   
-		/** 기능(색) 출력 */
+		/** 원래부분 class주기 (x표 표시를 위해서) */
 	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
 	    	innerCode += "<tr>";
 	    	<c:set var="count">${status.index}</c:set>
@@ -133,18 +133,6 @@ $(document).ready(function(){
 	
     $('#rightTable').html(innerCode);
     
-    /** 실행된거 색입히기 */
-    <c:forEach items="${actionList}" var="action" varStatus="status">
-    <c:set var="count">${status.index}</c:set>
-	var theDay = ${theDay[count]};
-	var funcCount = ${action.ganttListNo}-1;
-	var color = '${action.color}';
-    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
-    $(steps).css("background-color", color);
-    </c:forEach> 
-    	
-    
-    
     /** Today */
     var todayDays = ${todayDays};
     if (todayDays != -1) {
@@ -157,7 +145,12 @@ $(document).ready(function(){
     	   console.log("count : " + startCount);
     	   var steps = '';
     	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
+    	      console.log("이미지 : " + $(steps).css("background-image"));
+    	      if ($(steps).css("background-image") == 'url(/resources/images/gantt/X.png)') {
+    	       $(steps).css("background-image", "url(/resources/images/gantt/X.png)");
+			} else {
     	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
+			}
     	       var check = $(steps).css("background-color");
     	       if (check != 'rgba(0, 0, 0, 0)') {
     	    	$(steps).css("cursor", "pointer");
@@ -166,6 +159,26 @@ $(document).ready(function(){
 			}
     	   </c:forEach> 
 	}
+    
+    
+    /** 실행된거 색입히기 */
+    <c:forEach items="${actionList}" var="action" varStatus="status">
+    <c:set var="count">${status.index}</c:set>
+	var theDay = ${theDay[count]};
+	var funcCount = ${action.ganttListNo}-1;
+	var color = '${action.color}';
+    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
+    if (${action.status} == 0) {
+    	$(steps).css("background-image", "url(/resources/images/gantt/today.png), url(/resources/images/gantt/X.png)");
+		$(steps).css("background-repeat", "no-repeat");
+	} else {
+   		$(steps).css("background-color", color);
+	}
+    </c:forEach> 
+    	
+    
+    
+
 
 
     
@@ -181,7 +194,7 @@ $(document).ready(function(){
 			var backColor = $(steps).css("background-color");
 			console.log("배경색 : "+ backColor);
 			if (backColor == 'rgba(0, 0, 0, 0)') {
-				$(steps).css("background-image", "url(/resources/images/gantt/ganttX.PNG)");
+				$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
 				$(steps).css("background-repeat", "no-repeat");
 			}
 			

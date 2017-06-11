@@ -45,17 +45,17 @@ public class GanttController {
 		logger.info("간트 페이지 테스트");
 		
 		/** test 나중에 1 이거 고정으로 넣은거 잊지말고 동적으로 변경하기!!!!!!!!!! 간트리스트랑 프로젝트리스트!!!!!!!!!!!!!!!!!!!!!!*/
-		
+		System.out.println(11);
 		ProjectList projList = lobbyService.projectDate(projectListNo);
 		String[] pStartDate = projList.getStartDate().toString().split("-");
 		String[] pEndDate = projList.getEndDate().toString().split("-");
 		List<HashMap<String, Object>> funcList = ganttService.ganttList(projectListNo);
 		
-		System.out.println(funcList.get(1));
 		int year = Integer.parseInt(pEndDate[0]) - Integer.parseInt(pStartDate[0]);
 		
 		int count = 0;
 		
+		System.out.println(22);
 		/** 기능들 시작일 몇번째인지 */
 		int[] startCount = new int[funcList.size()];
 		for (HashMap<String, Object> func : funcList) {
@@ -64,6 +64,7 @@ public class GanttController {
 				count++;
 		}
 		
+		System.out.println(33);
 		int count2 = 0;
 		
 		
@@ -76,6 +77,7 @@ public class GanttController {
 			count2++;
 		}
 		
+		System.out.println(44);
 		
 		int days = 0;
 		
@@ -85,10 +87,12 @@ public class GanttController {
 		} else{
 			days = calDays(pEndDate) - calDays(pStartDate) +1;
 		}
+		System.out.println(55);
 		
 		/** 간트 기능 추가 모달에 들어갈 참여 멤버 이름 조회 (동적으로 나중에 바꾸기) */
 		List<String> member = lobbyService.memberName(projectListNo);
 		
+		System.out.println(66);
 		/** Today 표현을 위한 오늘 날짜 받아오기 */
 		Date today = date("today");
 		
@@ -100,6 +104,7 @@ public class GanttController {
 			todayDays = -1;
 		}
         
+        System.out.println(77);
         
         
         /** 동적으로 나중에 */
@@ -116,9 +121,11 @@ public class GanttController {
 			theDay[count3] = calDays(fDate) - calDays(pStartDate) + 365*year;
 			count3++;
 		}
+		System.out.println(88);
         
 		/** 오늘 기능 체크상태 확인 */
 		List<String> todayCheck = ganttService.todayCheck(projectListNo);
+		System.out.println(99);
 		
 
 

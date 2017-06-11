@@ -207,11 +207,19 @@ $(document).ready(function(){
 	/** progress bar 제어하깅 */
 	var idealBar = $("#ideal"); 
 	var idealWidth = ((ideal/totalCount)*100).toFixed(1);
+	console.log("몇이냐 : " + idealWidth.length);
+	/** 100%일때는 소수점 안나오게 하기 */
+	if (idealWidth.length==5) {
+		idealWidth = idealWidth.toFixed(0);
+	}
 	idealBar.css("width", idealWidth+'%');
 	idealBar.html('이상 >> ' + idealWidth * 1 + '%');
 	
 	var realBar = $("#real"); 
     var realWidth = ((real/totalCount)*100).toFixed(1);
+    if (realWidth.length==5) {
+    	realWidth = realWidth.toFixed(0);
+	}
     realBar.css("width", realWidth+'%');
     realBar.html('현실 >> ' + realWidth * 1 + '%');
     

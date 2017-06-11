@@ -118,7 +118,6 @@ $(document).ready(function(){
     		var color = "${gantt.color }";
     		if (i == startCount) {
     			var duration = ${duration[count]};
-    			console.log("duration : " + duration);
     			for (var j = 0; j < duration; j++) {
     			innerCode += "<td style='background-color: " + color + ";'>&nbsp;</td>";
 				}
@@ -145,26 +144,33 @@ $(document).ready(function(){
     	      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
     	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
     	   <c:set var="count">${status.index}</c:set>
-    	   var startCount =  ${count};
+    	   var count =  ${count};
     	   var listNo = ${gantt.ganttListNo};
-    	   console.log("count : " + startCount);
-    	   var steps = '';
-    	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
+    	   var todayCheck = ${todayCheck};
+    	   console.log(todayCheck);
+    	   var steps = $('#rightTable').children().next()[count].children[todayDays];
     	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
     	       var check = $(steps).css("background-color");
     	       if (check != 'rgba(0, 0, 0, 0)') {
     	    	$(steps).css("cursor", "pointer");
+    	    	if ($.inArray((count+1), todayCheck) != -1) {
+    	    		console.log("done" + (count+1));
+				$(steps).addClass("done");					
+				} else {
+    	    		console.log("today" + (count+1));
     	    	$(steps).addClass("today");
+				}
 				$(steps).attr("id",listNo+":"+todayDays);
 			}
     	   </c:forEach> 
 	}
     
+
+    
     /** 오늘꺼 누르면 모달로 가기/정보가져가기 */
     $(".today").on("click",function(){
     	var info = $(this).attr('id').split(':');
     	var ganttListNo = info[0];
-
     	
     	swal({
     		  title: '기능 이름',
@@ -209,19 +215,31 @@ $(document).ready(function(){
       	  				status : 0
       				},
       				success : function(data) {
+      					location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
       					swal(
       		    		      'Failure!',
       		    		      '일해라 일해!',
       		    		      'error'
-      		    		    );
+      		    		    ).then(function(){
+      		    		    	/** 이부분 어떻게 할지 고민중 */
+      		    		    	location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
+      		    		    });
       				}
       			});
     		  }
     		  
     		});
       	
-      	
-      	
+      });
+    
+    /** 이미 체크 한 거 눌렀을때 */
+    $(".done").on("click",function(){
+    	swal(
+    			  '기능 이름',
+    			  '이미 체크된 기능입니다.',
+    			  'success'
+    			)
+    			.catch(swal.noop);
       });
 
     	
@@ -326,7 +344,7 @@ function deleteFunction(){
 		    '기능삭제 완료!',
 		    'success'
 		  ).then(function () {
-				location.href="/gantt/delete?listNo="+listNo+"&projectListNo="+<%=request.getParameter("projectListNo")%>+"&userNo="+<%=request.getParameter("userNo")%>;
+				location.href="/gantt/delete?ganttListNo="+listNo+"&projectListNo="+<%=request.getParameter("projectListNo")%>+"&userNo="+<%=request.getParameter("userNo")%>;
 			});
 		});
 }

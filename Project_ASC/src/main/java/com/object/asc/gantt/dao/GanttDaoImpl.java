@@ -75,4 +75,14 @@ public class GanttDaoImpl implements GanttDao {
 		return sqlSession.selectList(namespace+".actionList", projectListNo);
 	}
 
+	@Override
+	public List<String> todayCheck(int projectListNo) {
+		return sqlSession.selectList(namespace+".todayCheck", projectListNo);
+	}
+
+	@Override
+	public void deleteAction(int ganttListNo) {
+		sqlSession.delete(namespace+".deleteAction", ganttListNo);
+	}
+
 }

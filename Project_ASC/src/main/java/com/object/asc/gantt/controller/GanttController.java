@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,8 +40,8 @@ public class GanttController {
 	
 	/** Gantt Chart */
 
-	@RequestMapping(value = "/ganttChart", method = RequestMethod.GET)
-	public String ganttChart(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, Model model) {
+	@RequestMapping(value = {"/{type}"}, method = RequestMethod.GET)
+	public String ganttChart(@PathVariable("type") String type, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, Model model) {
 		logger.info("간트 페이지 테스트");
 		
 		/** test 나중에 1 이거 고정으로 넣은거 잊지말고 동적으로 변경하기!!!!!!!!!! 간트리스트랑 프로젝트리스트!!!!!!!!!!!!!!!!!!!!!!*/
@@ -104,6 +105,20 @@ public class GanttController {
         /** 동적으로 나중에 */
 //        List<String> todayList = ganttService.todayList(1);
         
+        /** action */
+        int count3=0;
+        /** action chart */
+        List<HashMap<String, Object>> actionList = ganttService.actionList(projectListNo);
+		/** 실행일 (몇번째인지) */
+		int[] theDay = new int[actionList.size()];
+		for (HashMap<String, Object> hashMap : actionList) {
+			String[] fDate = hashMap.get("actionDate").toString().split("-");
+			theDay[count3] = calDays(fDate) - calDays(pStartDate) + 365*year;
+			count3++;
+		}
+        
+		/** 오늘 기능 체크상태 확인 */
+		List<String> todayCheck = ganttService.todayCheck(projectListNo);
 		
 
 
@@ -137,17 +152,26 @@ public class GanttController {
 //		model.addAttribute("projectListNo", projectListNo);
 //		model.addAttribute("userNo", userNo);
 		
-
-		return "/gantt/ganttChart";
+		/** action */
+		// 실행일 (계산한값)
+		model.addAttribute("theDay", theDay);
+		
+		// 실행리스트
+		model.addAttribute("actionList", actionList);
+		
+		// 오늘 기능 체크 확인
+		model.addAttribute("todayCheck", todayCheck);
+		
+		
+		if (type == "ganttChart") {
+			return "/gantt/ganttChart";
+		} else if(type == "actionChart") {
+			return "/gantt/actionChart";
+		}
+		
+		return null;
 	}
 
-	
-	@RequestMapping(value = "/currentChart", method = RequestMethod.GET)
-	public String currentChart(Model model) {
-		logger.info("간트 페이지 테스트");
-		return "/gantt/currentChart";
-	}
-	
 	
 	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
@@ -177,8 +201,8 @@ public class GanttController {
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String delete(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, @RequestParam("listNo") int listNo, Model model){
-		ganttService.delete(listNo);
+	public String delete(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, @RequestParam("ganttListNo") int ganttListNo, Model model){
+		ganttService.delete(ganttListNo);
 		
 		return "redirect:/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
 	}
@@ -313,7 +337,7 @@ public class GanttController {
 		model.addAttribute("actionList", actionList);
 		
 
-		return "gantt/actionChart";
+		 return "gantt/actionChart";
 	}
 	
 	

@@ -68,6 +68,11 @@ $(document).ready(function(){
 	$('#ganttChartBtn').on('click', function() {
 		location.href = "/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
 	});
+	
+	/** 이상/현실 표현을 위한 변수 */
+	var totalCount = 0;
+	var ideal = 0;
+	var real = 0;
 
 	var days = ${days};
  	var pStartYear = ${pStartDate[0]};
@@ -113,9 +118,9 @@ $(document).ready(function(){
 	    		var color = "${gantt.color }";
 	    		if (i == startCount) {
 	    			var duration = ${duration[count]};
-	    			console.log("duration : " + duration);
 	    			for (var j = 0; j < duration; j++) {
 	    			innerCode += "<td class='distance'>&nbsp;</td>";
+	    			totalCount++;
 					}
 	    			for (var j = 0; j < days-duration-i; j++) {
 	    			innerCode += "<td>&nbsp;</td>";
@@ -133,6 +138,24 @@ $(document).ready(function(){
 	
     $('#rightTable').html(innerCode);
     
+    /** 실행된거 색입히기 */
+    <c:forEach items="${actionList}" var="action" varStatus="status">
+    <c:set var="count">${status.index}</c:set>
+	var theDay = ${theDay[count]};
+	var funcCount = ${action.ganttListNo}-1;
+	var color = '${action.color}';
+    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
+    var status = ${action.status};
+    if (status == 0) {
+    	$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
+		$(steps).css("background-repeat", "no-repeat");
+	} else {
+   		$(steps).css("background-color", color);
+   		real++;
+	}
+    </c:forEach> 
+    
+    
     /** Today */
     var todayDays = ${todayDays};
     if (todayDays != -1) {
@@ -142,43 +165,18 @@ $(document).ready(function(){
     	   <c:set var="count">${status.index}</c:set>
     	   var startCount =  ${count};
     	   var listNo = ${gantt.ganttListNo};
-    	   console.log("count : " + startCount);
     	   var steps = '';
     	      steps = $('#rightTable').children().next()[startCount].children[todayDays];
-    	      console.log("이미지 : " + $(steps).css("background-image"));
-    	      if ($(steps).css("background-image") == 'url(/resources/images/gantt/X.png)') {
-    	       $(steps).css("background-image", "url(/resources/images/gantt/X.png)");
-			} else {
+    	      if ($(steps).css("background-image") == 'none') {
     	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
-			}
-    	       var check = $(steps).css("background-color");
-    	       if (check != 'rgba(0, 0, 0, 0)') {
-    	    	$(steps).css("cursor", "pointer");
-    	    	$(steps).addClass("today");
-				$(steps).attr("id",listNo+":"+todayDays);
+			} else {
+    	       $(steps).css("background-image", "url(/resources/images/gantt/today.png), url(/resources/images/gantt/X.png)");
+    	       $(steps).css("background-repeat", "no-repeat");
 			}
     	   </c:forEach> 
 	}
     
     
-    /** 실행된거 색입히기 */
-    <c:forEach items="${actionList}" var="action" varStatus="status">
-    <c:set var="count">${status.index}</c:set>
-	var theDay = ${theDay[count]};
-	var funcCount = ${action.ganttListNo}-1;
-	var color = '${action.color}';
-    var steps = $('#rightTable').children().next()[funcCount].children[theDay];
-    if (${action.status} == 0) {
-    	$(steps).css("background-image", "url(/resources/images/gantt/today.png), url(/resources/images/gantt/X.png)");
-		$(steps).css("background-repeat", "no-repeat");
-	} else {
-   		$(steps).css("background-color", color);
-	}
-    </c:forEach> 
-    	
-    
-    
-
 
 
     
@@ -186,23 +184,36 @@ $(document).ready(function(){
     <c:forEach items="${ganttList}" var="gantt" varStatus="status2">
     <c:set var="count2">${status2.index}</c:set>
     var count = ${count2};
-    for (var i = 0; i < todayDays; i++) {
-    	console.log("들어오나" +i);
-    	console.log($(steps).hasClass('distance'));
+    for (var i = 0; i <= todayDays; i++) {
     	var steps = $('#rightTable').children().next()[count].children[i];
 		if ($(steps).hasClass('distance')) {
-			var backColor = $(steps).css("background-color");
-			console.log("배경색 : "+ backColor);
-			if (backColor == 'rgba(0, 0, 0, 0)') {
-				$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
-				$(steps).css("background-repeat", "no-repeat");
+			ideal++;
+			if (i != todayDays) {
+				var backColor = $(steps).css("background-color");
+				if (backColor == 'rgba(0, 0, 0, 0)') {
+					$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
+					$(steps).css("background-repeat", "no-repeat");
+				}
 			}
-			
 		}
 	}
 	</c:forEach>
 	
+	/** progress bar 제어하깅 */
+	var idealBar = $("#ideal"); 
+	var idealWidth = ((ideal/totalCount)*100).toFixed(1);
+	idealBar.css("width", idealWidth+'%');
+	idealBar.html('이상 >> ' + idealWidth * 1 + '%');
+	
+	var realBar = $("#real"); 
+    var realWidth = ((real/totalCount)*100).toFixed(1);
+    realBar.css("width", realWidth+'%');
+    realBar.html('현실 >> ' + realWidth * 1 + '%');
     
+    
+console.log("총 갯수 : " + totalCount);
+console.log("이상 : " + ideal);
+console.log("현실 : " + real);
 	  
 });
 
@@ -268,7 +279,14 @@ function addDay(month, day){
   </div>
 
   <br>
-
+    <div class="progress">
+        <div class="progress-bar" id="ideal" role="progressbar" 
+        aria-valuemin="0" aria-valuemax="100" ></div>
+   </div>
+    <div class="progress">
+        <div class="progress-bar" id="real" role="progressbar" 
+        aria-valuemin="0" aria-valuemax="100" ></div>
+   </div>
 
 
   <div id="total_div">
@@ -296,19 +314,6 @@ function addDay(month, day){
 
   <br>
   
-  <div class="row">
-    <div>변수 확인</div>
-         <c:forEach items="${actionList}" var="action">
-            <div>${action.actionListNo },
-            ${action.actionNo },
-            ${action.ganttListNo },
-            ${action.userNo },
-            ${action.actionDate },
-            ${action.status },
-            ${action.color }</div>
-        </c:forEach>
-        
-  </div>
 
 
 </div>

@@ -29,5 +29,11 @@ public interface GanttDao {
 	
 	/** 계획 실행 차트 목록 조회 */
 	public List<HashMap<String, Object>> actionList(int projectListNo);
+	
+	/** 오늘 기능 체크 상태 확인 */
+	public List<String> todayCheck(int projectListNo);
+	
+	/** 기능 삭제시에 action 차트애들도 지우기 */
+	public void deleteAction(int ganttListNo);
 
 }

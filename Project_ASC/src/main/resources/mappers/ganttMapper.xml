@@ -63,4 +63,18 @@ where action_no = (select action_no
                    where project_list_no=#{projectListNo})
 </select>
 
+<!-- 오늘 기능 체크 상태 확인 -->
+<select id="todayCheck" resultType="String">
+select gantt_list_no as ganttListNo
+from action_chart_list
+where action_date = date(now()) and action_no = (select action_no
+												   from action_chart
+								                   where project_list_no=#{projectListNo})
+</select>
+
+<!-- 기능삭제시에 action차트에서도 지워주기 -->
+<delete id="deleteAction">
+DELETE FROM action_chart_list WHERE gantt_list_no = #{ganttListNo}
+</delete>
+
 </mapper>

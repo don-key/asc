@@ -36,6 +36,7 @@ public class GanttServiceImpl implements GanttService {
 
 	@Override
 	public void delete(int ganttListNo) {
+		dao.deleteAction(ganttListNo);
 		dao.delete(ganttListNo);
 	}
 
@@ -53,5 +54,12 @@ public class GanttServiceImpl implements GanttService {
 	public List<HashMap<String, Object>> actionList(int projectListNo) {
 		return dao.actionList(projectListNo);
 	}
+
+	@Override
+	public List<String> todayCheck(int projectListNo) {
+		return dao.todayCheck(projectListNo);
+	}
+
+		
 
 }

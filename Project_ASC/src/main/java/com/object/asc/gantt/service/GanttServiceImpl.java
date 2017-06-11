@@ -19,7 +19,7 @@ public class GanttServiceImpl implements GanttService {
 	private GanttDao dao;
 
 	@Override
-	public List<GanttChartList> ganttList(int projectListNo) {
+	public List<HashMap<String, Object>> ganttList(int projectListNo) {
 		return dao.ganttList(projectListNo);
 	}
 

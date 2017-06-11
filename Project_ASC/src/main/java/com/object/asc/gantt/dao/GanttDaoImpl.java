@@ -23,7 +23,7 @@ public class GanttDaoImpl implements GanttDao {
 	private static String namespace = "com.object.asc.mapper.GanttMapper";
 
 	@Override
-	public List<GanttChartList> ganttList(int projectListNo) {
+	public List<HashMap<String, Object>> ganttList(int projectListNo) {
 		return sqlSession.selectList(namespace+".ganttList", projectListNo);
 	}
 

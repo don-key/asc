@@ -10,7 +10,7 @@ import com.object.asc.gantt.domain.GanttChartList;
 public interface GanttService {
 	
 	/** 간트 차트 기능 조회 */
-	public List<GanttChartList> ganttList(int projectListNo);
+	public List<HashMap<String, Object>> ganttList(int projectListNo);
 
 	/** 기능 추가 */
 	public void register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color);

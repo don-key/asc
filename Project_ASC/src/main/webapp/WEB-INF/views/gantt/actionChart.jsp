@@ -141,15 +141,20 @@ $(document).ready(function(){
     /** 실행된거 색입히기 */
     <c:forEach items="${actionList}" var="action" varStatus="status">
     <c:set var="count">${status.index}</c:set>
+    console.log("들어는오지?");
 	var theDay = ${theDay[count]};
-	var funcCount = ${action.ganttListNo}-1;
+	var funcCount = ${action.count}-1;
+	console.log("기능 순서 : " + funcCount);
 	var color = '${action.color}';
     var steps = $('#rightTable').children().next()[funcCount].children[theDay];
     var status = ${action.status};
     if (status == 0) {
+    	console.log("0일때" + funcCount);
     	$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
 		$(steps).css("background-repeat", "no-repeat");
 	} else {
+		console.log("1일때" + funcCount);
+		console.log("1일때" + color);
    		$(steps).css("background-color", color);
    		real++;
 	}
@@ -163,7 +168,7 @@ $(document).ready(function(){
     	      $(set).css('background-image', "url(/resources/images/gantt/today.png)");
     	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
     	   <c:set var="count">${status.index}</c:set>
-    	   var startCount =  ${count};
+    	   var startCount =  ${gantt.count}-1;
     	   var listNo = ${gantt.ganttListNo};
     	   var steps = '';
     	      steps = $('#rightTable').children().next()[startCount].children[todayDays];

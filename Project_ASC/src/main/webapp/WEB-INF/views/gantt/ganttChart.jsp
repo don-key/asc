@@ -73,6 +73,9 @@ $(document).ready(function(){
 		$('#modifyGanttChartModal').modal();
 	});
 	
+	
+	
+	
 	var days = ${days};
  	var pStartYear = ${pStartDate[0]};
 	var pStartMonth = ${pStartDate[1]};
@@ -171,6 +174,11 @@ $(document).ready(function(){
     $(".today").on("click",function(){
     	var info = $(this).attr('id').split(':');
     	var ganttListNo = info[0];
+    	var trNum = $(this).closest('tr').prevAll().length;
+    	var tdNum = $(this).closest('td').prevAll().length;
+    	console.log("행 가져오길.. " + trNum);
+    	console.log("열 가져오길.. " + tdNum);
+    	
     	
     	swal({
     		  title: '기능 이름',
@@ -238,8 +246,7 @@ $(document).ready(function(){
     			  '기능 이름',
     			  '이미 체크된 기능입니다.',
     			  'success'
-    			)
-    			.catch(swal.noop);
+    			);
       });
 
     	

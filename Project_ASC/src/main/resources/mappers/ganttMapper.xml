@@ -5,13 +5,16 @@
 <!-- 네임스페이스(사용영역) 설정 -->
 <mapper namespace="com.object.asc.mapper.GanttMapper">
 
+
 <!-- 간트차트조회 -->
-<select id="ganttList" resultType="com.object.asc.gantt.domain.GanttChartList">
-select gantt_list_no as 'ganttListNo', gantt_no as 'ganttNo', user_no as 'userNo', title, worker, start_date as 'startDate', end_date as 'endDate', color
-from gantt_chart_list
+<select id="ganttList" resultType="hashmap">
+<![CDATA[
+select @num:=@num+1 as 'count', gantt_list_no as 'ganttListNo', gantt_no as 'ganttNo', user_no as 'userNo', title, worker, start_date as 'startDate', end_date as 'endDate', color
+from gantt_chart_list as a, (select @num := 0) as b
 where gantt_no= (select gantt_no
 				from gantt_chart
 				where project_list_no = #{projectListNo});
+				]]>
 </select>
 
 <!-- 기능 추가 -->
@@ -56,20 +59,31 @@ VALUES (null, (select action_no
 
 <!-- 계획실행차트조회 -->
 <select id="actionList" resultType="hashmap">
-select a.action_list_no as actionListNo, a.action_no as actionNo, a.gantt_list_no as ganttListNo, a.user_no as userNo, a.action_date as actionDate, a.status, g.color
-from action_chart_list as a inner join gantt_chart_list as g on a.gantt_list_no = g.gantt_list_no
-where action_no = (select action_no
-				   from action_chart
-                   where project_list_no=#{projectListNo})
+<![CDATA[
+select a.action_list_no as actionListNo, a.action_no as actionNo, a.gantt_list_no as ganttListNo, user_no as userNo, action_date as actionDate, a.status, b.count, b.color
+from action_chart_list as a inner join(
+select @num:=@num+1 as 'count', gantt_list_no as 'ganttListNo', gantt_no as 'ganttNo', user_no as 'userNo', title, worker, start_date as 'startDate', end_date as 'endDate', color
+from gantt_chart_list as a, (select @num := 0) as b
+where gantt_no= (select gantt_no
+				from gantt_chart
+				where project_list_no = #{projectListNo})) as b
+                on a.gantt_list_no = b.ganttListNo
+]]>
 </select>
 
 <!-- 오늘 기능 체크 상태 확인 -->
 <select id="todayCheck" resultType="String">
-select gantt_list_no as ganttListNo
-from action_chart_list
-where action_date = date(now()) and action_no = (select action_no
-												   from action_chart
-								                   where project_list_no=#{projectListNo})
+<![CDATA[
+select b.count
+from action_chart_list as a inner join(
+select @num:=@num+1 as 'count', gantt_list_no as 'ganttListNo', gantt_no as 'ganttNo', user_no as 'userNo', title, worker, start_date as 'startDate', end_date as 'endDate', color
+from gantt_chart_list as a, (select @num := 0) as b
+where gantt_no= (select gantt_no
+				from gantt_chart
+				where project_list_no = #{projectListNo})) as b
+                on a.gantt_list_no = b.ganttListNo
+where action_date = date(now())
+]]>
 </select>
 
 <!-- 기능삭제시에 action차트에서도 지워주기 -->

@@ -71,7 +71,7 @@
                      <a href="/lobby/deleteProject?projectListNo=${projectList.projectListNo}" id="deleteIcon" class="fa fa-trash-o">삭제</a>
                   </div>
                   </c:if>
-               </div>
+               </div> 
             </div>
           </div>
          </c:forEach>

@@ -48,16 +48,20 @@ public class LobbyController {
 		List<Integer> memberCount = new ArrayList<Integer>();
 		List<Map<String, Object>> invitationListMap = null;
 		List<String> sId = new ArrayList<String>();
+		List<String> sName = new ArrayList<String>();
+		
 		
 		for (ProjectList projectList : list) {
 			memberCount.add(lobbyService.memberCount(projectList.getProjectJoinNo()));
 			invitationListMap = lobbyService.memberId(projectList.getProjectJoinNo());
-			sId.add((String) invitationListMap.get(0).get("name"));
+			sId.add((String) invitationListMap.get(0).get("id"));
+			sName.add((String) invitationListMap.get(0).get("name"));
 		}
 		
 		model.addAttribute("list", list);
 		model.addAttribute("count", memberCount);
-		model.addAttribute("name", sId);
+		model.addAttribute("id", sId);
+		model.addAttribute("name", sName);
 		return "/lobby/selectProject";
 	}
 	

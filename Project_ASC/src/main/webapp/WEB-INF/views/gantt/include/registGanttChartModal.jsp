@@ -18,7 +18,7 @@
       
         <div class="modal-body">
           <div class="row">
-            <div class="col-xs-2 col-xs-offset-1">
+            <div class="col-xs-3 col-xs-offset-1">
               <label for="title" style="font-size: 20px;">제목</label>
             </div>
             <div class="col-xs-8">
@@ -28,7 +28,7 @@
           <br>
 
           <div class="row">
-            <div class="col-xs-2 col-xs-offset-1">
+            <div class="col-xs-3 col-xs-offset-1">
               <label for="worker" style="font-size: 20px;">담당자</label>
             </div>
             <div class="col-xs-8">
@@ -43,19 +43,27 @@
 
           <br>
           <div class="row">
-            <div class="col-xs-2 col-xs-offset-1">
-              <label style="font-size: 20px;">기간</label>
+            <div class="col-xs-3 col-xs-offset-1">
+              <label style="font-size: 20px;">기능 시작</label>
             </div>
-            <div class="col-xs-3">
-              <input type="date" id="startDate" name="startDate">
-            </div>
-            <div class="col-xs-1" style="margin-left: 20px; height: 25px">~</div>
-            <div class="col-xs-4">
-              <input type="date" id="endDate" name="endDate">
+            <div class="col-xs-5">
+              <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <input class="form-control" size="8" type="text" id="startDate" name="startDate" value="" readonly> <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
             </div>
           </div>
           <br>
-
+           <div class="row">
+            <div class="col-xs-3 col-xs-offset-1">
+              <label style="font-size: 20px;">기능 종료</label>
+            </div>
+            <div class="col-xs-5">
+              <div class="input-group date form_date" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        <input class="form-control" size="8" type="text" id="endDate" name="endDate" value="" readonly> <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+              </div>
+            </div>
+          </div>
+          <br>
           <div class="row">
             <div class="col-xs-2 col-xs-offset-1">
               <label style="font-size: 20px;">색상</label>
@@ -90,5 +98,20 @@
   </div>
 </div>
 
+
+<script>
+	$(function() {
+		$('.form_date').datetimepicker({
+			language : 'ko',
+			weekStart : 1,
+			todayBtn : 1,
+			autoclose : 1,
+			todayHighlight : 1,
+			startView : 2,
+			minView : 2,
+			forceParse : 0
+		});
+	});
+</script>
 
 

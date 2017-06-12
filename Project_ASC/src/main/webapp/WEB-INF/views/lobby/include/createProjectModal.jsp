@@ -166,7 +166,7 @@ $(function() {
 	
 	$('#createForm').submit(function(form) {
 		var createForm = $(form)[0].target;
-		if(createForm.projectName.value.trim.length == 0){
+		if(createForm.projectName.value.trim().length == 0){
 			swal({
                 title : '프로젝트',
                 type : 'warning',

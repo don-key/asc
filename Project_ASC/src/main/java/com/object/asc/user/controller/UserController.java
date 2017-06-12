@@ -62,7 +62,9 @@ public class UserController {
 		
 		user.setPhoto(uuidName);
 		logger.info(photo.getOriginalFilename());
-		
+		if(photo.getOriginalFilename().equals("")){
+			user.setPhoto("noimage2.png");
+		}
 		service.register(user);
 		rttr.addFlashAttribute("message", "success");
 		
@@ -117,9 +119,13 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public String modify(User user, RedirectAttributes rttr) {
+	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, RedirectAttributes rttr) {
 		logger.info("회원수정 테스트");
+		user.setPhoto(uuidName);
 		
+		if(photo.getOriginalFilename().equals("")){
+			user.setPhoto("noimage2.png");
+		}
 		service.modify(user);
 		
 		rttr.addFlashAttribute("message", "success");

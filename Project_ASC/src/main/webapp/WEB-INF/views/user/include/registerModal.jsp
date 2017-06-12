@@ -101,11 +101,11 @@
 							<label class="regist_label">프로필 사진</label>
 						</div>
 							<div class="col-xs-2 col-sm-2 ">
-                            <div class="imgPreview"><div class='wen'><img src="/resources/images/upload/noimage.png"/></div></div>
+                            <div class="imgPreview"><div class='wen'><img src="/resources/images/upload/noimage.png" /></div></div>
 							</div>
 
 							<div class="col-xs-4 col-sm-4">
-								<input id="imgSelect" type="file" class="form-control placeholder" name="fileupload" />
+								<input id="imgSelect" type="file" class="form-control placeholder" name="fileupload" accept=".jpg,.jpeg,.png,.gif" />
                                 <input type="hidden"  id="uuidName"  name="uuidName">
                                 <input type="hidden"  id="displayName"  name="displayName">
 							</div>

@@ -13,10 +13,12 @@
                     
                     <div class="row" id="modalWrapper">
                     	<div class="col-xs-2 col-sm-2">
-		                    <div class="profile"><img src="/resources/images/noimage2.png"></div>
+		                    <div class="profile">
+                                  <img src="/resources/images/upload/${login.photo }">
+                            </div>
                     	</div>
-                    	<div class="col-xs-10 col-sm-10">
-		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">${login.name}</div>
+                      	<div class="col-xs-10 col-sm-10">
+  		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">${login.name}</div>
 		                </div>
                     </div>
                         <!-- <form action="/user/logout" id="logout">

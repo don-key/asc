@@ -26,8 +26,7 @@
 			<div class="form-group">
 				<div class="col-xs-12 col-sm-12 ">
 					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-                         ${map[status.index].get(3)}(파일명) <- 회원 이미지 완료되면 넣을꺼!
+						<div class="wen"><img src="/project/displayFile?fileName=${map[status.index].get(3)}"></div>
 					</div> 
 					<div class="col-xs-3 col-sm-3 ">
 						<p class="name">${map[status.index].get(1)}</p>

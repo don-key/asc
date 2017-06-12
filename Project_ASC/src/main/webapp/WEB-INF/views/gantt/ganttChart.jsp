@@ -73,6 +73,7 @@ $(document).ready(function(){
 		$('#modifyGanttChartModal').modal();
 	});
 	
+	/** 유효성 검사 */
 	
 	
 	
@@ -174,11 +175,6 @@ $(document).ready(function(){
     $(".today").on("click",function(){
     	var info = $(this).attr('id').split(':');
     	var ganttListNo = info[0];
-    	var trNum = $(this).closest('tr').prevAll().length;
-    	var tdNum = $(this).closest('td').prevAll().length;
-    	console.log("행 가져오길.. " + trNum);
-    	console.log("열 가져오길.. " + tdNum);
-    	
     	
     	swal({
     		  title: '기능 이름',
@@ -206,7 +202,9 @@ $(document).ready(function(){
   			    		    'Success!',
   			    		    '수고하셨습니다.',
   			    		    'success'
-  			    		  );
+  			    		  ).then(function(){
+    		    		    	location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
+    		    		    });
   				}
   			});
     			  
@@ -223,13 +221,11 @@ $(document).ready(function(){
       	  				status : 0
       				},
       				success : function(data) {
-      					location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
       					swal(
       		    		      'Failure!',
       		    		      '일해라 일해!',
       		    		      'error'
       		    		    ).then(function(){
-      		    		    	/** 이부분 어떻게 할지 고민중 */
       		    		    	location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
       		    		    });
       				}
@@ -356,6 +352,7 @@ function deleteFunction(){
 		});
 }
 
+/** 등록 모달 유효성 검사 */
 
 	
 </script>
@@ -406,16 +403,6 @@ function deleteFunction(){
     <a class="btn btn-danger" data-toggle="modal"
       data-target="#registGanttChartModal" style="margin-bottom: 3%;">추가</a>
   </div>
-
-
-  <%--   <div class="test-center">
-  <div>오늘의 기능</div>
-  <c:forEach items="${todayList}" var="today">
-  <div>${today }</div>
-  
-  </c:forEach>
-  </div> --%>
-
 
 
 

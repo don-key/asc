@@ -7,10 +7,8 @@
 
 	<!-- 자료실 내역 신규 등록 -->
 	<insert id="libraryListRegister">
-		INSERT INTO library_list(library_no, user_no, title, file_name, uuid_name,
-		display_name, regdate)
-		VALUES (1, #{userNo}, #{title}, #{fileName}, #{uuidName}, #{displayName},
-		now())
+		INSERT INTO library_list(library_no, user_no, title, file_name, uuid_name,display_name, regdate)
+		VALUES (1, #{userNo}, #{title}, #{fileName}, #{uuidName}, #{displayName},now())
 	</insert>
 
 	<!-- 자료실 내역 삭제 -->

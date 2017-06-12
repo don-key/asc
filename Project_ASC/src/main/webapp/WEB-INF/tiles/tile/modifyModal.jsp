@@ -30,7 +30,7 @@ if (message == 'success') {
 <input type="hidden" id="modifySuccess" value="${message}">
 <input type="hidden" id="deleteSuccess" value="${message2}">
 <input type="hidden" id="userNo" value="${login.userNo}">
-<form action="/user/modify">
+<form action="/user/modify" method="post" enctype="multipart/form-data">
 <div class="modal fade" id="modifyModal" role="dialog">
 	<div class="modal-dialog" style="width: 35%">
 
@@ -118,7 +118,7 @@ if (message == 'success') {
 							<label class="regist_label">사진</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input id="mImgSelect" type="file" class="form-control placeholder" id="photo" name="photo" accept=".jpg,.jpeg,.png,.gif"/>
+							<input id="mImgSelect" type="file" class="form-control placeholder" id="photo" name="fileupload" accept=".jpg,.jpeg,.png,.gif"/>
                             <input type="hidden"  id="mUuidName"  name="uuidName">
                             <input type="hidden"  id="mDisplayName"  name="displayName">						
                         </div>
@@ -127,7 +127,7 @@ if (message == 'success') {
 				</div>
 				<br>
 			</div>
-
+ 
 			<div class="modal-footer">
 				<div class="row">
 					<div class="col-xs-2 col-xs-offset-3">

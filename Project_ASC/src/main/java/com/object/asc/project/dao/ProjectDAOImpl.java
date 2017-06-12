@@ -123,4 +123,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return sqlSession.selectOne(namespace + ".getSprintNo", scrumNo);
 	}
 
+	@Override
+	public String getActionPercent(int projectListNo) {
+		return sqlSession.selectOne(namespace+".getActionPercent", projectListNo);
+	}
+
 }

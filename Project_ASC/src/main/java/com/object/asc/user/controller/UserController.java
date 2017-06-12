@@ -118,11 +118,10 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, RedirectAttributes rttr) {
 		logger.info("회원수정 테스트");
 		user.setPhoto(uuidName);
-		
 		if(photo.getOriginalFilename().equals("")){
 			user.setPhoto("noimage2.png");
 		}

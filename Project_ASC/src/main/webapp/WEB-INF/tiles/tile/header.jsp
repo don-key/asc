@@ -13,7 +13,7 @@
                     
                     <div class="row" id="modalWrapper">
                        <div class="col-xs-2 col-sm-2">
-                          <div class="profile"><img src='/project/displayFile?fileName=${login.photo }'></div>
+                          <div class="profile"><img src='/resources/images/upload/${login.photo }'></div>
                             <input type="hidden"  id="mUuidName"  name="uuidName">
                             <input type="hidden"  id="mDisplayName"  name="displayName">
                        </div>

@@ -227,6 +227,17 @@ $(document).ready(function(){
 console.log("총 갯수 : " + totalCount);
 console.log("이상 : " + ideal);
 console.log("현실 : " + real);
+
+	  
+  $.ajax({
+  		url : "/gantt/percentUpdate",
+  		type : "POST",
+  		data : {
+  			projectListNo : projectListNo,
+  			percent : (realWidth * 1) + '%'
+  		}
+  	});
+	  
 	  
 });
 

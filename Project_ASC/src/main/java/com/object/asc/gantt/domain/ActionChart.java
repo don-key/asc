@@ -4,14 +4,16 @@ public class ActionChart {
 	
 	private int actionNo;
 	private int projectListNo;
+	private String actionPercent;
 	
 	public ActionChart() {
 	}
-	
-	public ActionChart(int actionNo, int projectListNo) {
+
+	public ActionChart(int actionNo, int projectListNo, String actionPercent) {
 		super();
 		this.actionNo = actionNo;
 		this.projectListNo = projectListNo;
+		this.actionPercent = actionPercent;
 	}
 
 	public int getActionNo() {
@@ -30,10 +32,20 @@ public class ActionChart {
 		this.projectListNo = projectListNo;
 	}
 
+	public String getActionPercent() {
+		return actionPercent;
+	}
+
+	public void setActionPercent(String actionPercent) {
+		this.actionPercent = actionPercent;
+	}
+
 	@Override
 	public String toString() {
-		return "ActionChart [actionNo=" + actionNo + ", projectListNo=" + projectListNo + "]";
+		return "ActionChart [actionNo=" + actionNo + ", projectListNo=" + projectListNo + ", actionPercent="
+				+ actionPercent + "]";
 	}
+	
 	
 	
 	

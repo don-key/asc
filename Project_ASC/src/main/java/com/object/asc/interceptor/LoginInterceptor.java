@@ -1,15 +1,19 @@
 package com.object.asc.interceptor;
 
+import java.sql.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.WebUtils;
 
 import com.object.asc.user.domain.User;
 import com.object.asc.user.service.UserService;
@@ -32,7 +36,18 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			logger.info("이전 로그인 데이터 지우기");
 			session.removeAttribute(LOGIN);
 		}
-		return true;
+		Object obj = session.getAttribute("login");
+		Cookie userIdCookie = WebUtils.getCookie(request, "userIdCookie");
+		if (obj != null) {
+			User user = (User) obj;
+			if (userIdCookie != null) {
+				userIdCookie.setPath("/");
+				userIdCookie.setMaxAge(0);
+				response.addCookie(userIdCookie);
+				service.keepLogin(user.getId(), session.getId(), new Date(0));
+				}
+		}
+		return true;	
 	}
 	
 	@Override	

@@ -60,6 +60,12 @@ public class GanttServiceImpl implements GanttService {
 		return dao.todayCheck(projectListNo);
 	}
 
+	@Override
+	public void percentUpdate(int projectListNo, String percent) {
+		dao.percentUpdate(projectListNo, percent);
+		
+	}
+
 		
 
 }

@@ -35,5 +35,8 @@ public interface GanttDao {
 	
 	/** 기능 삭제시에 action 차트애들도 지우기 */
 	public void deleteAction(int ganttListNo);
+	
+	/** 달성률 업데이트 */
+	public void percentUpdate (int projectListNo, String percent);
 
 }

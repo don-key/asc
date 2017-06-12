@@ -26,6 +26,9 @@
                         <li>
                             <a href="/project/dashBoard?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
                         </li>
+                        <li>
+                            <a href="/gantt/ganttChart?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
+                        </li>
                         <li id="scrum">
                             <a href="#"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -37,9 +40,6 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="/gantt/ganttChart?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
                         <li>
                             <a href="/project/library?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/library.png" style="width: 50%"></a>

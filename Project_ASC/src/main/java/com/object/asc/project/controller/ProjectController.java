@@ -359,14 +359,14 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(@RequestParam("libraryListNo") int libraryListNo, RedirectAttributes rttr) {
+	public String remove(@RequestParam("libraryListNo") int libraryListNo, RedirectAttributes rttr, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo) {
 		logger.info("자료 내역 "+libraryListNo+"번 글 삭제 처리 요청");
 		
-		projectService.libraryListDelete(libraryListNo);
+		projectService.libraryListDelete(libraryListNo, projectListNo);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/project/library";
+		return "redirect:/project/library?projectListNo="+projectListNo+"&userNo="+userNo;
 	}
 	
 	@RequestMapping(value="/getChatName", method=RequestMethod.POST)

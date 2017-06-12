@@ -46,7 +46,7 @@ public class ProjectDaoTest {
 	@Test
 	public void testDelete() {
 
-		dao.libraryListDelete(4);
+		dao.libraryListDelete(4, 1);
 
 		logger.info("자료실 내역 삭제 완료");
 	}

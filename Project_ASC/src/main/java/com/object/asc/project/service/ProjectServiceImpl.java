@@ -29,8 +29,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void libraryListDelete(int libraryListNo) {
-		dao.libraryListDelete(libraryListNo);
+	public void libraryListDelete(int libraryListNo, int libraryNo) {
+		dao.libraryListDelete(libraryListNo, libraryNo);
 	}
 
 	@Override

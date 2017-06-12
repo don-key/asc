@@ -20,14 +20,14 @@
 				</h4>
 			</div>
 			
-			<form id="uploadForm"  action="/project/registLibraryList"  method="post" enctype="multipart/form-data">
+			<form id="uploadForm"  action="/project/registLibraryList?projectListNo=<%=request.getParameter("projectListNo")%>"  method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-1">
 							<label style="font-size: 15px;"> 제목 </label>
 						</div>
 						<div class="col-xs-8">
-							<input type="text" name="title" style="width: 100%;">
+							<input type="text" name="title" id="title" style="width: 100%;">
 						</div>
 					</div>
 					<br>
@@ -95,6 +95,7 @@ $(function() {
 		var formData = new FormData();
 		
 		formData.append("file", file);
+		
 		
 		$.ajax({
 			url: '/project/uploadAjax',
@@ -166,6 +167,26 @@ $(function() {
 		event.preventDefault();
 		
 		var that = $(this);
+		
+		if($("#title").val().trim().length <1){
+			swal({
+	            title: '제목을 입력해 주세요!',
+	            text: '',
+	            type: 'warning',
+	            confirmButtonText: '닫기'
+	          })
+	          return false;	
+		} 
+		
+		if(that["0"].file.value == "") {
+			swal({
+	            title: '파일을 선택해 주세요!',
+	            text: '',
+	            type: 'warning',
+	            confirmButtonText: '닫기'
+			})
+			return false;	
+		}
 		
 		var str = "";
 		

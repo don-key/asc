@@ -120,7 +120,7 @@ color: black;
 
 				});
 
-				formObj.attr("action", "/project/remove");
+				formObj.attr("action", "/project/remove?projectListNo="+<%=request.getParameter("projectListNo")%>+"&userNo="+<%=request.getParameter("userNo")%>);
 				formObj.submit();
 				link = '';
 			})

@@ -13,7 +13,9 @@
                     
                     <div class="row" id="modalWrapper">
                        <div class="col-xs-2 col-sm-2">
-                          <div class="profile"><img src="/resources/images/noimage2.png"></div>
+                          <div class="profile"><div class='wen'><img src='/project/displayFile?fileName=${login.photo }'></div></div>
+                            <input type="hidden"  id="mUuidName"  name="uuidName">
+                            <input type="hidden"  id="mDisplayName"  name="displayName">
                        </div>
                        <div class="col-xs-10 col-sm-10">
                           <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">${login.name}</div>
@@ -63,6 +65,79 @@
 
   
   <script>
+//   /** 파일 썸네일 띄우기*/
+//   $("#mImgSelect").on("change", function(e) {
+//   e.preventDefault();
+
+//   var upload = $('#mImgSelect');
+//   console.log(upload);
+//   // 전달된 파일 데이터를 가져오는 부분
+//   var file = upload[0].files[0];
+//   console.log(file);
+
+//   var formData = new FormData();
+
+//   formData.append("file", file);
+
+//   $.ajax({
+//     url: '/project/uploadAjax',
+//     data : formData,
+//     dataType: 'text',
+//     processData: false,
+//     contentType: false,
+//     type: 'POST',
+//     success: function(data) {
+//        var str ="";
+
+//        if (checkImageType(data)) {
+//           str ="<div class='wen'><img src='/project/displayFile?fileName="+data+"'/></div>"
+//         } else {
+//           str ="<div>"
+//              + "<img src='/resources/images/file.png'/>"
+//              + getOriginalName(data) 
+//              + "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>"
+//              +"</div>";
+//        }
+       
+//        $('#mUuidName').val(data);
+//        $('#mDisplayName').val("/project/displayFile?fileName="+data);
+//        $(".imgPreview").html(str);
+//     }
+//   });
+//   });
+
+//   	/** 파일의 확장자가 존재하는지 검사 */
+//   	function checkImageType(fileName) {
+//   		var pattern = /jpg|gif|png|jpeg/i;	// i는 대소문자 구분 없음을 의미
+  		
+//   		return fileName.match(pattern);
+//   	}
+  	
+//   	/** uuid로 인해 길어진 파일 이름 줄여주는 기능*/
+//   	function getOriginalName (fileName) {
+//   		if (checkImageType(fileName)) {
+//   			return;
+//   		}
+  		
+//   		var idx = fileName.indexOf("_")+1;	// 원본 파일 이름만 추출
+  		
+//   		return fileName.substr(idx);
+//   	}
+  	
+//   	/** 이미지 파일의 원본 파일 찾기 */
+//   	function getImageLink(fileName) {
+//   		if (!checkImageType(fileName)) {
+//   			return;
+//   		}
+  		
+//   		var front = fileName.substr(0, 5);	// /asc 경로 추출
+//   		var end = fileName.substr(7); 	// s_ 제거
+  		
+//   		return front + end;
+//   	}
+  
+  
+  
    $('#logoutBtn').on('click', function() {
       swal({
          title: '로그아웃 하시겠습니까?',

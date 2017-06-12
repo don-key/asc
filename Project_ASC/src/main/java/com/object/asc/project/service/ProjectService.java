@@ -18,7 +18,7 @@ public interface ProjectService {
 	public void libraryListRegister (LibraryList libraryList);
 	
 	/** 자료 내역 삭제 */
-	public void libraryListDelete (int libraryListNo);
+	public void libraryListDelete (int libraryListNo, int libraryNo);
 	
 	/** 자료 내역 목록 뿌려주기 */
 	public List<LibraryList> libraryListListAll();

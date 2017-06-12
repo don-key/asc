@@ -7,8 +7,8 @@
 	padding-bottom: 18px
 }
 
-.wen {width:100px; height:100px; border-radius:100px; margin:0 auto; overflow:hidden;}
-.wen img {height:100px; width:100px;}
+.profile {width:70px; height:70px; border-radius:70px; margin:0 auto; margin-left: 70%; float: left; overflow:hidden;}
+.profile img {height:70px; width:70px;}
 
 .name {
 	font-size: 20px
@@ -26,8 +26,7 @@
 			<div class="form-group">
 				<div class="col-xs-12 col-sm-12 ">
 					<div class="col-xs-2 col-sm-2">
-						<div class="wen"><img src="../resources/images/noimage.png"></div>
-                         ${map[status.index].get(3)}(파일명) <- 회원 이미지 완료되면 넣을꺼!
+						<div class="profile"><img src="/resources/images/upload/${map[status.index].get(3)}"></div>
 					</div> 
 					<div class="col-xs-3 col-sm-3 ">
 						<p class="name">${map[status.index].get(1)}</p>

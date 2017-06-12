@@ -177,7 +177,7 @@ $(document).ready(function(){
     	var ganttListNo = info[0];
     	
     	swal({
-    		  title: '기능 이름',
+    		  title: '실행 여부 체크',
     		  text: "오늘 할당량을 채우셨습니까?",
     		  type: 'warning',
     		  showCancelButton: true,
@@ -239,7 +239,7 @@ $(document).ready(function(){
     /** 이미 체크 한 거 눌렀을때 */
     $(".done").on("click",function(){
     	swal(
-    			  '기능 이름',
+    			  '실행 여부 체크',
     			  '이미 체크된 기능입니다.',
     			  'success'
     			);

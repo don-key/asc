@@ -1,5 +1,15 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<div id="loding" style="text-align: center;display:none; width:100%; background-color: rgba(0,0,0,1); position: absolute; z-index: 999999">
+   <img src="/resources/images/loding.gif" style="margin-top: 15%">
+</div>
+<script>
+	var h = $(window).height();
+	$('#loding').height(h);
+	if(location.pathname.split('/')[2] == 'dashBoard' || location.pathname.split('/')[5] == 'go'){
+		$('#loding').show();
+	}
+</script>
 
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
@@ -94,25 +104,29 @@
 /** 메뉴 링크 */
 $(function() {
 	var userNo = ${login.userNo};
-	console.log(location.pathname);
-	console.log(location.pathname.split('/')[3]);
 	var projectListNo = location.pathname.split('/')[3];
 	$('#dashBoard').on('click', function() {
-		location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
+		event.preventDefault();
+		//location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
+		location.href="/gantt/actionChart/"+projectListNo+"/"+userNo+"/go";
 	});
 	$('#ganttChart').on('click', function() {
+		event.preventDefault();
 		location.href="/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	});
 	
 	$('#library').on('click', function() {
+		event.preventDefault();
 		location.href="/project/library/"+projectListNo+"/"+userNo;
 	});
 	
 	$('#member').on('click', function() {
+		event.preventDefault();
 		location.href="/project/member/"+projectListNo;
 	});
 	
 	$('#taskBoard').on('click', function() {
+		event.preventDefault();
 		   var projectListNo = 1;
 		   
 		   
@@ -132,6 +146,7 @@ $(function() {
 	   });
 	   
    $('#releasePlanning').on('click', function() {
+	   event.preventDefault();
        location.href="http://localhost:4567/releasePlanning/"+projectListNo+"/"+userNo;
     });
 });

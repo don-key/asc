@@ -49,7 +49,7 @@
          <c:forEach items="${list}" var="projectList" varStatus="status">
          <div class="project-wrapper">
             <div class="col-lg-3 col-md-3 col-xs-4">
-            <a href="/project/dashBoard/${projectList.projectListNo}/${login.userNo}" class="thumbnail"> 
+            <a href="/gantt/actionChart/${projectList.projectListNo}/${login.userNo}/go" class="thumbnail"> 
             <img src="/resources/images/upload${projectList.projectPhoto}" onerror='this.src="/resources/images/file.png"'>
                </a>
                <div class="panel">

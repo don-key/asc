@@ -237,7 +237,10 @@ console.log("현실 : " + real);
   			percent : (realWidth * 1) + '%'
   		}
   	});
-	  
+  
+ if('${goDashBoard}' != ''){
+	 location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
+ }
 	  
 });
 
@@ -284,7 +287,6 @@ function addDay(month, day){
   
 
 
-  
 </script>
 
 
@@ -341,7 +343,6 @@ function addDay(month, day){
 
 
 </div>
-
 
 
 

@@ -40,8 +40,8 @@ public class GanttController {
 	
 	/** Gantt Chart */
 
-	@RequestMapping(value = {"/{type}/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
-	public String ganttChart(@PathVariable("type") String type, @PathVariable int projectListNo, @PathVariable int userNo, Model model) {
+	@RequestMapping(value = {"/{type}/{projectListNo}/{userNo}","/{type}/{projectListNo}/{userNo}/{go}"}, method = RequestMethod.GET)
+	public String ganttChart(@PathVariable String type, @PathVariable int projectListNo, @PathVariable int userNo, @PathVariable(required=false) String go, Model model) {
 		logger.info("간트 페이지 테스트");
 		
 		/** test 나중에 1 이거 고정으로 넣은거 잊지말고 동적으로 변경하기!!!!!!!!!! 간트리스트랑 프로젝트리스트!!!!!!!!!!!!!!!!!!!!!!*/
@@ -168,6 +168,11 @@ public class GanttController {
 		
 		// 오늘 기능 체크 확인
 		model.addAttribute("todayCheck", todayCheck);
+		
+		if(go != null){
+			model.addAttribute("goDashBoard", go);
+			System.out.println("여기들어와야해");
+		}
 		
 		
 		if (type.equals("ganttChart")) {

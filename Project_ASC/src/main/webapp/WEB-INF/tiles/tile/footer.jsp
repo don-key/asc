@@ -51,4 +51,7 @@ img#chatBtn {
 
 		window.open(popUrl, "", popOption);
 	}
+	setTimeout(function() {
+		$('#loding').fadeOut();	
+	}, 1500);
 </script>

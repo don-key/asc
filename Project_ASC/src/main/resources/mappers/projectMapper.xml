@@ -104,6 +104,15 @@
 	]]>
 	</select>
 	
+	
+	<!-- 달성률 조회 -->
+	<select id="getActionPercent" resultType="String">
+		select action_percent
+		from action_chart
+		where project_list_no = #{projectListNo};
+	</select>
+		
+	
 	<!-- 스프린트 최신 번호 조회 -->
 	<select id="getSprintNo" resultType="int">
 		select sprint_no from sprint where scrum_no = #{scrumNo} order by sprint_no desc limit 1

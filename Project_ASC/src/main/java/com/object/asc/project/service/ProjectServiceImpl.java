@@ -103,4 +103,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return dao.getSprintNo(scrumNo);
 	}
 
+	@Override
+	public String getActionPercent(int projectListNo) {
+		return dao.getActionPercent(projectListNo);
+	}
+
 }

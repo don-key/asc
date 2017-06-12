@@ -145,7 +145,7 @@
 					<div class="panel-footer foot">
 						<div class='row'>
 							<div class='col-xs-12 text-center'>
-								<div class='huge daysLeft'>10%</div>
+								<div class='huge daysLeft'>${actionPercent }</div>
 							</div>
 						</div>
 					</div>

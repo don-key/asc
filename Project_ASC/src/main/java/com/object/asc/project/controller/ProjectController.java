@@ -74,6 +74,8 @@ public class ProjectController {
   		
   		logger.info("오늘의 할 일~~~~~~~~~~~~~~ ");
   		
+  		logger.info("달성률 조회 테스트 ");
+  		
   		String memo = projectService.getMemo(projectService.findDashBoard(projectListNo, userNo));
   		ProjectList projectList = new ProjectList();
   		projectList = lobbyService.projectDate(projectListNo);
@@ -83,10 +85,13 @@ public class ProjectController {
   		
   		List<String> todayList = projectService.todayListDashboard(projectListNo, user.getName());
   		
+  		String actionPercent = projectService.getActionPercent(projectListNo);
+  		
   		
   		model.addAttribute("memo", memo);
   		model.addAttribute("endDate", endDate);
   		model.addAttribute("todayList", todayList);
+  		model.addAttribute("actionPercent", actionPercent);
   		
 		return "/project/dashboard";
 	}

@@ -57,10 +57,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(@RequestParam("fileupload")MultipartFile photo, User user, RedirectAttributes rttr) {
+	public String register(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, RedirectAttributes rttr) {
 		logger.info("회원가입 테스트");
 		
-		user.setPhoto(photo.getOriginalFilename());
+		user.setPhoto(uuidName);
 		logger.info(photo.getOriginalFilename());
 		
 		service.register(user);

@@ -14,7 +14,7 @@
 	<!-- 자료실 내역 삭제 -->
 	<delete id="libraryListDelete">
 		DELETE FROM library_list
-		WHERE library_list_no = #{libraryListNo} AND library_no = 1
+		WHERE library_list_no = #{libraryListNo} AND library_no = #{libraryNo}
 	</delete>
 
 	<!-- 자료실 내역 목록 조회 -->

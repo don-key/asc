@@ -33,8 +33,12 @@ public class ProjectDAOImpl implements ProjectDAO {
 	}
 
 	@Override
-	public void libraryListDelete(int libraryListNo) {
-		sqlSession.delete(namespace+".libraryListDelete", libraryListNo);
+	public void libraryListDelete(int libraryListNo, int libraryNo) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("libraryListNo", libraryListNo);
+		map.put("libraryNo", libraryNo);
+		
+		sqlSession.delete(namespace+".libraryListDelete", map);
 	}
 
 	@Override

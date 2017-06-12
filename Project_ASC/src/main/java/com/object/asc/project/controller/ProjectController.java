@@ -29,6 +29,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,15 +67,11 @@ public class ProjectController {
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 
-	@RequestMapping(value = "/dashBoard", method = RequestMethod.GET)
-	public String dashBoard(@RequestParam("projectListNo") int projectListNo, Locale locale, Model model, @RequestParam("userNo") int userNo) {
-  		logger.info("대쉬보드 테스트");
-  		
-  		logger.info("메모 불러오깅ㅎㅎ");
-  		
-  		logger.info("오늘의 할 일~~~~~~~~~~~~~~ ");
-  		
-  		logger.info("달성률 조회 테스트 ");
+	@RequestMapping(value = {"/dashBoard/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
+	public String dashBoard(@PathVariable int projectListNo, Locale locale, Model model, @PathVariable int userNo) {
+		
+		System.out.println(projectListNo + "테스트!!!!!!!!!!!!!!!!!!!");
+		System.out.println(userNo + "테스트!!!!!!!!!!!!!!!!!!!");
   		
   		String memo = projectService.getMemo(projectService.findDashBoard(projectListNo, userNo));
   		ProjectList projectList = new ProjectList();
@@ -92,12 +89,13 @@ public class ProjectController {
   		model.addAttribute("endDate", endDate);
   		model.addAttribute("todayList", todayList);
   		model.addAttribute("actionPercent", actionPercent);
+  		model.addAttribute("projectListNo", projectListNo);
   		
 		return "/project/dashboard";
 	}
 	
 	@RequestMapping(value = "/memoUpdate", method = RequestMethod.POST)
-	public String memoUpdate (String memo, @RequestParam("projectListNo") int projectListNo, int userNo, RedirectAttributes rttr) {
+	public String memoUpdate (String memo, int projectListNo, int userNo, RedirectAttributes rttr) {
 		logger.info("메모 업데이트 테스트");
 		
 		int dashBoardNo = projectService.findDashBoard(projectListNo, userNo);
@@ -105,11 +103,11 @@ public class ProjectController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/project/dashBoard?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/project/dashBoard/"+projectListNo+"/"+userNo;
 	}
 
-	@RequestMapping(value = "/library", method = RequestMethod.GET)
-	public String library(Locale locale, Model model, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo) {
+	@RequestMapping(value = "/library/{projectListNo}/{userNo}", method = RequestMethod.GET)
+	public String library(Locale locale, Model model, @PathVariable int projectListNo, @PathVariable int userNo) {
 		logger.info("자료실 입장~");
 		
 		logger.info("자료 내역 리스트 올~~~~~~~~~");
@@ -134,7 +132,7 @@ public class ProjectController {
 	 * @return
 	 */
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
-	public String libraryListRegist (@RequestParam("projectListNo") int projectListNo, @RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr, @RequestParam("userNo") int userNo) {
+	public String libraryListRegist (int projectListNo, @RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr, int userNo) {
 		logger.info("자료실 등록등록");
 		logger.info("자료실 내역 : "+ libraryList.toString());
 		 
@@ -146,7 +144,7 @@ public class ProjectController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/project/library?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/project/library/"+projectListNo+"/"+userNo;
 	}
 
 	/**
@@ -221,8 +219,8 @@ public class ProjectController {
 	
 	
 
-	@RequestMapping(value = "/member", method = RequestMethod.GET)
-	public String member(int projectListNo, Model model) {
+	@RequestMapping(value = "/member/{projectListNo}", method = RequestMethod.GET)
+	public String member(@PathVariable int projectListNo, Model model) {
 		logger.info("참여 인원 테스트");
 		
 		String status = null;
@@ -262,7 +260,7 @@ public class ProjectController {
 	 * @throws Exception
 	 */
 	@ResponseBody
-	@RequestMapping("/displayFile")
+	@RequestMapping("/library/{projectListNo}/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
 		InputStream in = null;
 		ResponseEntity<byte[]> entity = null;
@@ -363,19 +361,19 @@ public class ProjectController {
 	 * @param rttr
 	 * @return
 	 */
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(@RequestParam("libraryListNo") int libraryListNo, RedirectAttributes rttr, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo) {
+	@RequestMapping(value = "/remove/{projectListNo}/{userNo}", method = RequestMethod.POST)
+	public String remove(@RequestParam int libraryListNo, RedirectAttributes rttr, @PathVariable int projectListNo,@PathVariable int userNo) {
 		logger.info("자료 내역 "+libraryListNo+"번 글 삭제 처리 요청");
 		
 		projectService.libraryListDelete(libraryListNo, projectListNo);
 		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/project/library?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/project/library/"+projectListNo+"/"+userNo;
 	}
 	
 	@RequestMapping(value="/getChatName", method=RequestMethod.POST)
-	 	public void getChatName(@RequestParam("projectListNo") int projectListNo, HttpServletResponse response){
+	 	public void getChatName(int projectListNo, HttpServletResponse response){
 	 		String chatName = projectService.chatName(projectListNo);
 	 		
 	 		try {

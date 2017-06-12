@@ -40,8 +40,8 @@ public class GanttController {
 	
 	/** Gantt Chart */
 
-	@RequestMapping(value = {"/{type}"}, method = RequestMethod.GET)
-	public String ganttChart(@PathVariable("type") String type, @RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, Model model) {
+	@RequestMapping(value = {"/{type}/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
+	public String ganttChart(@PathVariable("type") String type, @PathVariable int projectListNo, @PathVariable int userNo, Model model) {
 		logger.info("간트 페이지 테스트");
 		
 		/** test 나중에 1 이거 고정으로 넣은거 잊지말고 동적으로 변경하기!!!!!!!!!! 간트리스트랑 프로젝트리스트!!!!!!!!!!!!!!!!!!!!!!*/
@@ -156,8 +156,8 @@ public class GanttController {
 		model.addAttribute("todayDays", todayDays);
 		
 		// 리스트 넘버
-//		model.addAttribute("projectListNo", projectListNo);
-//		model.addAttribute("userNo", userNo);
+		model.addAttribute("projectListNo", projectListNo);
+		model.addAttribute("userNo", userNo);
 		
 		/** action */
 		// 실행일 (계산한값)
@@ -182,18 +182,18 @@ public class GanttController {
 	
 	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String register(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, @RequestParam("title") String title, @RequestParam("worker") String worker, @RequestParam("startDate") Date startDate, @RequestParam("endDate") Date endDate, @RequestParam("color") String color, Model model){
+	public String register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color, Model model){
 		System.out.println("유저넘" + userNo);
 		System.out.println("유저넘" + projectListNo);
 		
 		ganttService.register(projectListNo, userNo, title, worker, startDate, endDate, color);
 		
-		return "redirect:/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	}
 	
 	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 받아오기 */
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String modify(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, @RequestParam("modifyListNo") int modifyListNo, @RequestParam("modifyTitle") String modifyTitle, @RequestParam("modifyWorker") String modifyWorker, @RequestParam("modifyStartDate") Date modifyStartDate, @RequestParam("modifyEndDate") Date modifyEndDate, @RequestParam("modifyColor") String modifyColor, Model model){
+	public String modify(int projectListNo, int userNo, int modifyListNo, String modifyTitle, String modifyWorker, Date modifyStartDate, Date modifyEndDate, String modifyColor, Model model){
 		GanttChartList gcl = new GanttChartList();
 		gcl.setGanttListNo(modifyListNo);
 		gcl.setTitle(modifyTitle);
@@ -204,14 +204,14 @@ public class GanttController {
 		
 		ganttService.modify(gcl);
 		
-		return "redirect:/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	}
 	
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String delete(@RequestParam("projectListNo") int projectListNo, @RequestParam("userNo") int userNo, @RequestParam("ganttListNo") int ganttListNo, Model model){
+	@RequestMapping(value="/delete/{ganttListNo}/{projectListNo}/{userNo}", method=RequestMethod.GET)
+	public String delete(@PathVariable int projectListNo, @PathVariable int userNo, @PathVariable int ganttListNo, Model model){
 		ganttService.delete(ganttListNo);
 		
-		return "redirect:/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
+		return "redirect:/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	}
 	
 	

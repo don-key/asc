@@ -62,11 +62,11 @@ td, th {
 
 <script>
 $(document).ready(function(){
-	var projectListNo = <%=request.getParameter("projectListNo")%>;
-	var userNo = <%=request.getParameter("userNo")%>;
+	var userNo = ${login.userNo};
+	var projectListNo = location.pathname.split('/')[3];
 	
 	$('#actionChartBtn').on('click', function() {
-		location.href = "/gantt/actionChart?projectListNo="+projectListNo+"&userNo="+userNo;
+		location.href = "/gantt/actionChart/"+projectListNo+"/"+userNo;
 	});
 
 	$('.dataPanel').on('click', function() {
@@ -202,7 +202,7 @@ $(document).ready(function(){
   			    		    '수고하셨습니다.',
   			    		    'success'
   			    		  ).then(function(){
-    		    		    	location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
+    		    		    	location.href="/gantt/ganttChart/"+projectListNo+"/"+userNo;
     		    		    });
   				}
   			});
@@ -225,7 +225,7 @@ $(document).ready(function(){
       		    		      '일해라 일해!',
       		    		      'error'
       		    		    ).then(function(){
-      		    		    	location.href="/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo+"&ganttListNo="+ganttListNo;
+      		    		    	location.href="/gantt/ganttChart/"+projectListNo+"/"+userNo;
       		    		    });
       				}
       			});
@@ -332,6 +332,8 @@ function modal(status, listNo, title, worker, startDate, endDate, color){
 /** 기능 삭제 버튼 누를때 */
 function deleteFunction(){
 	var listNo = $('#modifyListNo').val();
+	var userNo = ${login.userNo};
+	var projectListNo = location.pathname.split('/')[3];
 	swal({
 		  title: 'Are you sure?',
 		  text: "한번 삭제된 기능은 돌이킬 수 없습니다.",
@@ -346,7 +348,7 @@ function deleteFunction(){
 		    '기능삭제 완료!',
 		    'success'
 		  ).then(function () {
-				location.href="/gantt/delete?ganttListNo="+listNo+"&projectListNo="+<%=request.getParameter("projectListNo")%>+"&userNo="+<%=request.getParameter("userNo")%>;
+				location.href="/gantt/delete/"+listNo+"/"+projectListNo+"/"+userNo;
 			});
 		});
 }

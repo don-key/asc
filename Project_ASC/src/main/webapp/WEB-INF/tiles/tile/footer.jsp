@@ -17,7 +17,7 @@ img#chatBtn {
 <script>
     $(function() {
         $("#chatBtn").click(function() {
-        	var projectListNo = "<%=request.getParameter("projectListNo")%>";
+        	var projectListNo = location.pathname.split('/')[3];
 			$.ajax({
 				url : "/project/getChatName",
 				type : "POST",

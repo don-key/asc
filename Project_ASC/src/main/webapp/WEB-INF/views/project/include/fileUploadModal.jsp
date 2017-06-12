@@ -20,7 +20,7 @@
 				</h4>
 			</div>
 			
-			<form id="uploadForm"  action="/project/registLibraryList?projectListNo=<%=request.getParameter("projectListNo")%>"  method="post" enctype="multipart/form-data">
+			<form id="uploadForm"  action="/project/registLibraryList"  method="post" enctype="multipart/form-data">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-1">
@@ -51,6 +51,7 @@
 							<input type="hidden"  id="uuidName"  name="uuidName">
 							<input type="hidden"  id="displayName"  name="displayName">
 							<input type="hidden"  id="userNo"  name="userNo" value="${login.userNo }">
+                            <input type="hidden" name="projectListNo" value="${projectListNo}">
 						</div>
 					</div>
 					<br>
@@ -73,7 +74,8 @@
 
 <script>
 $(function() {
-	
+	var userNo = ${login.userNo};
+	var projectListNo = location.pathname.split('/')[3];
 	$(".uploadedList").on("dragenter dragover", function(event) {
 		event.preventDefault();
 	});
@@ -109,7 +111,7 @@ $(function() {
 
 				if (checkImageType(data)) {
 					str ="<div>"
-						+ "<img src='displayFile?fileName="+data+"'/>"
+						+ "<img src='/project/library/"+projectListNo+"/displayFile?fileName="+data+"'/>"
 						+ "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>" 
 						+"</div>";
 				} else {
@@ -121,7 +123,7 @@ $(function() {
 				}
 				
 				$('#uuidName').val(data);
-				$('#displayName').val("displayFile?fileName="+data);
+				$('#displayName').val("/project/library/"+projectListNo+"/displayFile?fileName="+data);
 				$(".uploadedList").html(str);
 			}
 		});

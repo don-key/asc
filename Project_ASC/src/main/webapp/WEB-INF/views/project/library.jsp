@@ -109,7 +109,8 @@ color: black;
 			cancelButtonText : 'No',
 		}).then(function() {
 				var formObj = link;
-
+				var projectListNo = location.pathname.split('/')[3];
+				var userNo = ${login.userNo};
 				var arr = [];
 				$(".thumbnailList img").each(function(index) {
 					arr.push($(this).attr("src"));
@@ -120,7 +121,7 @@ color: black;
 
 				});
 
-				formObj.attr("action", "/project/remove?projectListNo="+<%=request.getParameter("projectListNo")%>+"&userNo="+<%=request.getParameter("userNo")%>);
+				formObj.attr("action", "/project/remove/"+projectListNo+"/"+userNo);
 				formObj.submit();
 				link = '';
 			})

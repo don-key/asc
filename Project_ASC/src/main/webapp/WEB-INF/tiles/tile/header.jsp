@@ -23,11 +23,11 @@
                     </div>
                         <form action="/user/logout" id="logout">
                     <ul class="nav" id="side-menu" style="margin-top: 15px">
-                        <li>
-                            <a href="/project/dashBoard?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
+                        <li id="dashBoard"> 
+                            <a href="#"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
                         </li>
-                        <li>
-                            <a href="/gantt/ganttChart?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
+                        <li id="ganttChart">
+                            <a href="#"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
                         <li id="scrum">
                             <a href="#"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
@@ -41,11 +41,11 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        <li>
-                            <a href="/project/library?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/library.png" style="width: 50%"></a>
+                        <li id="library">
+                            <a href="#"><img src="/resources/images/menu/library.png" style="width: 50%"></a>
                         </li>
-                         <li>
-                            <a href="/project/member?projectListNo=${param.projectListNo}&userNo=${login.userNo}"><img src="/resources/images/menu/member.png" style="width: 50%"></a>
+                         <li id="member">
+                            <a href="#"><img src="/resources/images/menu/member.png" style="width: 50%"></a>
                         </li>
                          <li>
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
@@ -89,33 +89,52 @@
       $('#modifyModal').modal();
    });
    
-   $('#taskBoard').on('click', function() {
-	   var projectListNo = ${param.projectListNo};
-	   var userNo = ${login.userNo};
-	   
-	   $.ajax({
-           type : 'post',
-           url : "/project/getSprintNo",
-           data:
-           {
-        	   scrumNo: projectListNo
-           },
-           success:function(request){
-              console.log(request.value);
-        	   location.href="http://localhost:4567/taskBoard/"+projectListNo+"/"+request+"/"+userNo;
-           }
-           
-       });
-   });
-   
-   $('#releasePlanning').on('click', function() {
-	   var projectListNo = ${param.projectListNo};
-	   var userNo = ${login.userNo};
-       location.href="http://localhost:4567/releasePlanning/"+projectListNo+"/"+userNo;
-       });
-  
   });
 
+/** 메뉴 링크 */
+$(function() {
+	var userNo = ${login.userNo};
+	console.log(location.pathname);
+	console.log(location.pathname.split('/')[3]);
+	var projectListNo = location.pathname.split('/')[3];
+	$('#dashBoard').on('click', function() {
+		location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
+	});
+	$('#ganttChart').on('click', function() {
+		location.href="/gantt/ganttChart/"+projectListNo+"/"+userNo;
+	});
+	
+	$('#library').on('click', function() {
+		location.href="/project/library/"+projectListNo+"/"+userNo;
+	});
+	
+	$('#member').on('click', function() {
+		location.href="/project/member/"+projectListNo;
+	});
+	
+	$('#taskBoard').on('click', function() {
+		   var projectListNo = 1;
+		   
+		   
+		   $.ajax({
+	           type : 'post',
+	           url : "/project/getSprintNo",
+	           data:
+	           {
+	        	   scrumNo: projectListNo
+	           },
+	           success:function(request){
+	              console.log(request.value);
+	        	   location.href="http://localhost:4567/taskBoard/"+projectListNo+"/"+request+"/"+userNo;
+	           }
+	           
+	       });
+	   });
+	   
+   $('#releasePlanning').on('click', function() {
+       location.href="http://localhost:4567/releasePlanning/"+projectListNo+"/"+userNo;
+    });
+});
 </script>
   
   

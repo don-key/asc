@@ -33,5 +33,8 @@ public interface GanttService {
 	/** 오늘 기능 체크 상태 확인 */
 	public List<String> todayCheck(int projectListNo);
 	
+	/** 달성률 업데이트 */
+	public void percentUpdate (int projectListNo, String percent);
+	
 	
 }

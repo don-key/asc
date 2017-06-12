@@ -85,4 +85,13 @@ public class GanttDaoImpl implements GanttDao {
 		sqlSession.delete(namespace+".deleteAction", ganttListNo);
 	}
 
+	@Override
+	public void percentUpdate(int projectListNo, String percent) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("projectListNo", projectListNo);
+		map.put("percent", percent);
+		
+		sqlSession.update(namespace+".percentUpdate", map);
+	}
+
 }

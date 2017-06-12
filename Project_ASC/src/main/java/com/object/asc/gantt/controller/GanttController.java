@@ -233,6 +233,15 @@ public class GanttController {
 		
 	}
 	
+	@RequestMapping(value="/percentUpdate", method=RequestMethod.POST)
+	public String actionRegister(int projectListNo, String percent){
+		
+		ganttService.percentUpdate(projectListNo, percent);
+		
+		return "/gantt/actionChart";
+		
+	}
+	
 	
 
 	

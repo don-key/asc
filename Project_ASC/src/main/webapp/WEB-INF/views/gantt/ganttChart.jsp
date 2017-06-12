@@ -73,8 +73,7 @@ $(document).ready(function(){
 		$('#modifyGanttChartModal').modal();
 	});
 	
-	/** 유효성 검사 */
-	
+
 	
 	
 	var days = ${days};

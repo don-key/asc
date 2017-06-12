@@ -91,4 +91,11 @@ where action_date = date(now())
 DELETE FROM action_chart_list WHERE gantt_list_no = #{ganttListNo}
 </delete>
 
+
+<!-- 달성률 업데이트 -->
+<update id="percentUpdate">
+UPDATE action_chart
+SET action_percent = #{percent}
+WHERE project_list_no = #{projectListNo}
+</update>
 </mapper>

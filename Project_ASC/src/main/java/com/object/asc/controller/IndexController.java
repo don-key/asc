@@ -30,7 +30,7 @@ public class IndexController {
 		return "chatting";
 	}
 
-	
+
 	
 
 	

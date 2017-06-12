@@ -52,12 +52,12 @@ public class LobbyController {
 		for (ProjectList projectList : list) {
 			memberCount.add(lobbyService.memberCount(projectList.getProjectJoinNo()));
 			invitationListMap = lobbyService.memberId(projectList.getProjectJoinNo());
-			sId.add((String) invitationListMap.get(0).get("id"));
+			sId.add((String) invitationListMap.get(0).get("name"));
 		}
 		
 		model.addAttribute("list", list);
 		model.addAttribute("count", memberCount);
-		model.addAttribute("id", sId);
+		model.addAttribute("name", sId);
 		return "/lobby/selectProject";
 	}
 	

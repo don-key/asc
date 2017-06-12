@@ -103,5 +103,9 @@
 		where start_date <= now() and end_date >= now() and gantt_no= #{projectListNo}  and (worker=#{worker} or worker='공통');
 	]]>
 	</select>
-
+	
+	<!-- 스프린트 최신 번호 조회 -->
+	<select id="getSprintNo" resultType="int">
+		select sprint_no from sprint where scrum_no = #{scrumNo} order by sprint_no desc limit 1
+	</select>
 </mapper>

@@ -52,4 +52,7 @@ public interface ProjectDAO {
 	/** 오늘 할 일 조회 */
 	public List<String> todayListDashboard (int projectListNo, String worker);
 	
+	/** 스프린트 최신 번호 조회*/
+	public int getSprintNo(int scrumNo);
+	
 }

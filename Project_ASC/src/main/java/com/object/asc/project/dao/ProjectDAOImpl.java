@@ -118,4 +118,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return sqlSession.selectList(namespace+".todayListDashboard", map);
 	}
 
+	@Override
+	public int getSprintNo(int scrumNo) {
+		return sqlSession.selectOne(namespace + ".getSprintNo", scrumNo);
+	}
+
 }

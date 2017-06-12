@@ -98,4 +98,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return dao.todayListDashboard(projectListNo, worker);
 	}
 
+	@Override
+	public int getSprintNo(int scrumNo) {
+		return dao.getSprintNo(scrumNo);
+	}
+
 }

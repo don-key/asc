@@ -9,7 +9,7 @@
    <div class="modal-dialog">
 
       <!-- Modal content-->
-      <form action="/lobby/selectProject" method="post" enctype="multipart/form-data">
+      <form action="/lobby/selectProject" id="createForm" method="post" enctype="multipart/form-data">
          <div class="modal-content">
             <div class="modal-header" style="background: #354555; color: #ffffff;">
                <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -89,7 +89,7 @@
                <div class="modal-footer">
                   <div class="row">
                      <div class="col-xs-2 col-xs-offset-4">
-                        <button type="submit" class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">생성</button>
+                        <button type="submit"  class="btn btn-warning" style="width: 100%; font-size: 15px; font-weight: bold;">생성</button>
                      </div>
                      <div class="col-xs-2">
                         <button type="button" class="btn btn-default" data-dismiss="modal" style="width: 100%; font-size: 15px; font-weight: bold; background-color: #333; color: #ffffff;">취소</button>
@@ -105,16 +105,6 @@
 <script>
 
 $(function() {
-	$('.form_datetime').datetimepicker({
-		//language:  'fr',
-		weekStart : 1,
-		todayBtn : 1,
-		autoclose : 1,
-		todayHighlight : 1,
-		startView : 2,
-		forceParse : 0,
-		showMeridian : 1
-	});
 	$('.form_date').datetimepicker({
 		language : 'ko',
 		weekStart : 1,
@@ -123,17 +113,6 @@ $(function() {
 		todayHighlight : 1,
 		startView : 2,
 		minView : 2,
-		forceParse : 0
-	});
-	$('.form_time').datetimepicker({
-		language : 'ko',
-		weekStart : 1,
-		todayBtn : 1,
-		autoclose : 1,
-		todayHighlight : 1,
-		startView : 1,
-		minView : 0,
-		maxView : 1,
 		forceParse : 0
 	});
 	
@@ -147,7 +126,6 @@ $(function() {
 	              success: function(data) {
 	               response(
 	                      $.map(data, function(item) {
-	                              console.log(item);
 	                          return {
 	                              value: item
 	                          }
@@ -159,8 +137,23 @@ $(function() {
 	  //조회를 위한 최소글자수
 	  minLength: 1,
 	  select: function( event, ui) {
-		  $('#invitation').append("<div class='col-xs-12'><input type='text' name='invitationList' style='border:none;' value="+ui.item.value+" readonly><i class='glyphicon glyphicon-remove'></i></div>");
-		  $(this).val('');
+		  var invitationList = $('#invitation').find("input[name=invitationList]");
+		  var check = true;
+		  for(var i=0;i<invitationList.length;i++){
+			  if(invitationList.get(i).value == ui.item.value){
+				  check=false;
+			  }
+	      }
+		  if(check){
+		 	 $('#invitation').append("<div class='col-xs-12'><input type='text' name='invitationList' style='border:none;' value="+ui.item.value+" readonly><i class='glyphicon glyphicon-remove'></i></div>");
+	     	 $(this).val('');
+		  }else{
+			  swal({
+	                 title : '이미 참여 중인 팀원입니다',
+	                 type : 'warning',
+	                 confirmButtonText : '닫기'
+	              })
+		  }
 		  return false;
 	  }
 	});
@@ -170,7 +163,19 @@ $(function() {
 			$(this).parent().remove();
 		});
 	});
-
+	
+	$('#createForm').submit(function(form) {
+		var createForm = $(form)[0].target;
+		if(createForm.projectName.value.trim.length == 0){
+			swal({
+                title : '프로젝트',
+                type : 'warning',
+                confirmButtonText : '닫기'
+                 });
+			return false;
+		}
+		return true;
+	});
 });
 	
 </script>

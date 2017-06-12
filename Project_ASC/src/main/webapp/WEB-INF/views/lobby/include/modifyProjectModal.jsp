@@ -128,8 +128,23 @@ $(function() {
 	  //조회를 위한 최소글자수
 	  minLength: 1,
 	  select: function( event, ui) {
-		  $('#modifyInvitation').append("<div class='col-xs-12'><input type='text' name='invitationList' style='border:none;' value="+ui.item.value+" readonly><i class='glyphicon glyphicon-remove'></i></div>");
-		  $(this).val('');
+		  var invitationList = $('#modifyInvitation').find("input[name=invitationList]");
+		  var check = true;
+		  for(var i=0;i<invitationList.length;i++){
+			  if(invitationList.get(i).value == ui.item.value){
+				  check=false;
+			  }
+	      }
+		  if(check){
+		 	 $('#modifyInvitation').append("<div class='col-xs-12'><input type='text' name='invitationList' style='border:none;' value="+ui.item.value+" readonly><i class='glyphicon glyphicon-remove'></i></div>");
+	     	 $(this).val('');
+		  }else{
+			  swal({
+	                 title : '이미 참여 중인 팀원입니다',
+	                 type : 'warning',
+	                 confirmButtonText : '닫기'
+	              })
+		  }
 		  return false;
 	  }
 	});

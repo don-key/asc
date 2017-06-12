@@ -381,4 +381,19 @@ public class ProjectController {
 	 		
 	 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/getSprintNo")
+	public ResponseEntity<Integer> getSprintNo(int scrumNo) {
+		ResponseEntity<Integer> entity = null;
+		int sprintNo = projectService.getSprintNo(scrumNo);
+		
+		try {
+			entity = new ResponseEntity<Integer> (sprintNo, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		return entity; 
+	}
+	
 }

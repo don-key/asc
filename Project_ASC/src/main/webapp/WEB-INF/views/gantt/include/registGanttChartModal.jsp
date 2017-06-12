@@ -8,7 +8,7 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="/gantt/register?projectListNo=<%=request.getParameter("projectListNo")%>&userNo=<%=request.getParameter("userNo")%>" method="post" >
+      <form action="/gantt/register?projectListNo=<%=request.getParameter("projectListNo")%>&userNo=<%=request.getParameter("userNo")%>" onsubmit="return registerCheck(this);" method="post" >
       <input type="hidden" id="color" name="color" value="" style="width: 100px;">
 
       <div class="modal-header" style="background: #354555; color: #ffffff;">

@@ -353,8 +353,351 @@ function deleteFunction(){
 }
 
 /** 등록 모달 유효성 검사 */
-
+function registerCheck(){
+	var title = $('#title').val();
+	var worker = $('#worker').val();
+	var startDate = $('#startDate').val();
+	var startDateSplit = startDate.split('-');
+	var endDate = $('#endDate').val();
+	var endDateSplit = endDate.split('-');
+	var colorView = $('#color').val();
 	
+	
+	
+	if (title== '' || title.length<1) {
+		swal(
+			    'False!',
+			    '제목을 확인해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (worker== '' || worker.length<1) {
+		swal(
+			    'False!',
+			    '작업자를 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (startDate== '' || startDate.length<1) {
+		swal(
+			    'False!',
+			    '시작일을 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('start',startDateSplit)) {
+		swal(
+			    'False!',
+			    '프로젝트 시작일보다 빠릅니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('end',startDateSplit)) {
+		swal(
+			    'False!',
+			    '시작일이 프로젝트 마감일을 넘습니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (endDate== '' || endDate.length<1) {
+		swal(
+			    'False!',
+			    '마감일을 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('end',endDateSplit)) {
+		swal(
+			    'False!',
+			    '프로젝트 마감일보다 늦습니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('start',endDateSplit)) {
+		swal(
+			    'False!',
+			    '마감일이 프로젝트 시작일보다 빠릅니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!betweenDate(startDateSplit,endDateSplit)) {
+		swal(
+			    'False!',
+			    '마감일이 시작일보다 빠릅니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (colorView== '' || colorView.length<1) {
+		swal(
+			    'False!',
+			    '색상을 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (colorView=='#ffffff') {
+		swal(
+			    'False!',
+			    '흰색은 지정하실 수 없습니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	return true;
+	
+}
+
+/** 수정 모달 유효성 검사 */
+function modifyCheck(){
+	var title = $('#modifyTitle').val();
+	var worker = $('#modifyWorker').val();
+	var startDate = $('#modifyStartDate').val();
+	var startDateSplit = startDate.split('-');
+	var endDate = $('#modifyEndDate').val();
+	var endDateSplit = endDate.split('-');
+	var colorView = $('#modifyColor').val();
+	
+	
+	
+	if (title== '' || title.length<1) {
+		swal(
+			    'False!',
+			    '제목을 확인해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (worker== '' || worker.length<1) {
+		swal(
+			    'False!',
+			    '작업자를 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (startDate== '' || startDate.length<1) {
+		swal(
+			    'False!',
+			    '시작일을 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('start',startDateSplit)) {
+		swal(
+			    'False!',
+			    '프로젝트 시작일보다 빠릅니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('end',startDateSplit)) {
+		swal(
+			    'False!',
+			    '시작일이 프로젝트 마감일을 넘습니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (endDate== '' || endDate.length<1) {
+		swal(
+			    'False!',
+			    '마감일을 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('end',endDateSplit)) {
+		swal(
+			    'False!',
+			    '프로젝트 마감일보다 늦습니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!considerDate('start',endDateSplit)) {
+		swal(
+			    'False!',
+			    '마감일이 프로젝트 시작일보다 빠릅니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (!betweenDate(startDateSplit,endDateSplit)) {
+		swal(
+			    'False!',
+			    '마감일이 시작일보다 빠릅니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (colorView== '' || colorView.length<1) {
+		swal(
+			    'False!',
+			    '색상을 선택해주세요!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	if (colorView=='#ffffff') {
+		swal(
+			    'False!',
+			    '흰색은 지정하실 수 없습니다!',
+			    'warning'
+			  );
+		return false;
+	}
+	
+	return true;
+	
+}
+
+/** 프로젝트랑 날짜 비교해주는 메소드 */
+function considerDate(type, date){
+	var pStartYear = ${pStartDate[0]};
+	var pStartMonth = ${pStartDate[1]};
+	var pStartDay = ${pStartDate[2]};
+	var pEndYear = ${pEndDate[0]};
+	var pEndMonth = ${pEndDate[1]};
+	var pEndDay = ${pEndDate[2]};
+	var year = date[0];
+	var month = date[1];
+	var day = date[2];
+	
+	if (type == 'start') {
+		if (pStartYear <year) {
+			return true;
+			
+		} else if (pStartYear > year){
+			return false;
+			
+		} else if (pStartYear == year){
+			if (pStartMonth <month) {
+				return true;
+				
+			} else if (pStartMonth > month){
+				return false;
+				
+			} else if (pStartMonth == month){
+				if (pStartDay <day) {
+					return true;
+					
+				} else if (pStartDay > day){
+					return false;
+					
+				} else if (pStartDay == day){
+					return true;
+				}
+			}
+		}
+		
+	} else if (type == 'end') {
+		if (pEndYear >year) {
+			return true;
+			
+		} else if (pEndYear < year){
+			return false;
+			
+		} else if (pEndYear == year){
+			if (pEndMonth >month) {
+				return true;
+				
+			} else if (pEndMonth < month){
+				return false;
+				
+			} else if (pEndMonth == month){
+				if (pEndDay >day) {
+					return true;
+					
+				} else if (pEndDay < day){
+					return false;
+					
+				} else if (pEndDay == day){
+					return true;
+				}
+			}
+
+		}
+
+	}
+		
+	return true;
+	
+	
+}
+
+/** 유효성/ 시작날짜 마감날짜 비교 */
+function betweenDate(start, end){
+	var startYear = start[0];
+	var startMonth = start[1];
+	var startDay = start[2];
+	var endYear = end[0];
+	var endMonth = end[1];
+	var endDay = end[2];
+	
+		if (startYear <endYear) {
+			return true;
+			
+		} else if (startYear > endYear){
+			return false;
+			
+		} else if (startYear == endYear){
+			if (startMonth <endMonth) {
+				return true;
+				
+			} else if (startMonth > endMonth){
+				return false;
+				
+			} else if (startMonth == endMonth){
+				if (startDay <endDay) {
+					return true;
+					
+				} else if (startDay > endDay){
+					return false;
+					
+				} else if (startDay == endDay){
+					return true;
+				}
+			}
+		}
+		
+		
+	return true;
+	
+	
+}
+
+
 </script>
 
 

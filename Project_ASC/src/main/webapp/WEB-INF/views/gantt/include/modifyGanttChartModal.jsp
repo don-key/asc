@@ -7,7 +7,7 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="/gantt/modify?projectListNo=<%=request.getParameter("projectListNo")%>&userNo=<%=request.getParameter("userNo")%>" method="post">
+      <form action="/gantt/modify?projectListNo=<%=request.getParameter("projectListNo")%>&userNo=<%=request.getParameter("userNo")%>" onsubmit="return modifyCheck(this);" method="post">
         <input type="hidden" id="modifyColor" name="modifyColor" value="" style="width: 100px;">
         <input type="hidden" id="modifyListNo" name="modifyListNo" value="" style="width: 100px;">
 

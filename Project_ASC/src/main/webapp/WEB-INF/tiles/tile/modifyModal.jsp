@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="m" uri="urlDecode"%> 
 
 <style>
@@ -49,7 +50,7 @@ if (message == 'success') {
 
 					<div class="form-group">
 						<div class="col-xs-3 col-sm-3 ">
-							<div class="imgPreview"><div class='wen'><img src='/resources/images/upload/${login.photo}'></div></div>
+							<div class="imgPreview"><div class='wen'><img id="modifyPhoto"></div></div>
 						</div>
 
 						<div class="col-xs-6 col-sm-6">
@@ -64,7 +65,7 @@ if (message == 'success') {
 							<label for="id" class="regist_label">아이디</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input type="email" class="form-control onlyAlphabetAndNumber" id="id" name="id" value="${login.id}" readonly>
+							<input type="email" class="form-control onlyAlphabetAndNumber" id="modifyId" name="id" readonly>
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -100,7 +101,7 @@ if (message == 'success') {
 							<label class="regist_label">이름</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input type="text" class="form-control" id="name" name="name" value="${m:urlDecode(cookie.CookieForUser.value)}"placeholder="이름을 입력하세요" />
+							<input type="text" class="form-control" id="modifyName" name="name" value="${m:urlDecode(cookie.CookieForUser.value)}"placeholder="이름을 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -110,7 +111,7 @@ if (message == 'success') {
 							<label class="regist_label">휴대폰 번호</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input type="tel" class="form-control placeholder" id="phone" name="phone" value="${login.phone}"placeholder="휴대폰 번호를 입력하세요" />
+							<input type="tel" class="form-control placeholder" id="modifyPhone" name="phone" placeholder="휴대폰 번호를 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>
@@ -281,7 +282,7 @@ $(function(){
           
           var patternEng = /^[A-za-z]/g;
           var patternKor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
-          var name = $("#name").val();
+          var name = $("#modifyName").val();
           if(name < 1){
               swal({
                    title: '',
@@ -292,7 +293,7 @@ $(function(){
              return false;
            }
           
-          if(!(patternEng).test(registerName) && !(patternKor).test(name)){
+          if(!(patternEng).test(name) && !(patternKor).test(name)){
               swal({
                    title: '',
                    text: '이름은 한글이나 영문자만 가능합니다.',
@@ -302,7 +303,7 @@ $(function(){
              return false;
            }
           
-          var phone = $("#phone").val();
+          var phone = $("#modifyPhone").val();
           if(phone < 1){
               swal({
                    title: '',
@@ -314,7 +315,7 @@ $(function(){
            }
           
           var phonepattern = /^\d{3}-\d{3,4}-\d{4}$/;
-          var phone = $("#phone").val();
+          var phone = $("#modifyPhone").val();
           if(!(phonepattern).test(phone)){
               swal({
                    title: 'EX)010-1234-1234',
@@ -325,6 +326,7 @@ $(function(){
              return false;
            }	
 		return true;
+	
        });
 
 });
@@ -337,8 +339,6 @@ $(function() {
 	    $('#password').val("");
 	    var repassword = $('#repassword').val();
 	    $('#repassword').val("");
-	    console.log("비번"+password);
-	    console.log("비번확인"+repassword);
 	    
         if (password < 1
                 || repassword < 1) {
@@ -399,11 +399,7 @@ $(function() {
                    }
                 });
             	
-            	
-            	
              })
-	    
-
    });
 });
 

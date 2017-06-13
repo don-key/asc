@@ -88,9 +88,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 					
 					
 					/**회원정보수정에 쓰일 쿠키*/
-//					User anotherUser = (User) user;
 					Cookie CookieForUser = new Cookie("CookieForUser", URLEncoder.encode(userInfo.getName(), "utf-8"));
-//					Cookie CookieForUser = new Cookie("CookieForUser", anotherUser.getName());
 					CookieForUser.setPath("/");
 					CookieForUser.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(CookieForUser);

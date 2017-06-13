@@ -15,7 +15,7 @@
                     <div class="row" id="modalWrapper">
                     	<div class="col-xs-2 col-sm-2">
 		                    <div class="profile">
-                                  <img src="/resources/images/upload/${login.photo }">
+                                  <img src="/resources/images/upload/${m:urlDecode(cookie.photoCookie.value)}">
                             </div>
                     	</div>
                       	<div class="col-xs-10 col-sm-10">

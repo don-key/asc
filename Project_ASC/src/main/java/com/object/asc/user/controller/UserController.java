@@ -127,11 +127,13 @@ public class UserController {
 	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		logger.info("회원수정 테스트");
 		
-		user.setPhoto(uuidName);
-		
 		if(photo.getOriginalFilename().equals("")){
-			user.setPhoto("noimage2.png");
-			}
+			user.setPhoto("/asc/noimage2.png");
+			logger.info("들어옴");
+			uuidName="/asc/noimage2.png";
+	    }else{
+	    	user.setPhoto(uuidName);
+	    }
 		
 		service.modify(user);
 		

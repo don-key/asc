@@ -94,7 +94,9 @@ function getUrlParams() {
 
 </head>
 
-
+<div id="indexLoding" style="text-align: center;display:none; width:100%; background-color: rgba(255,255,255,1); position: absolute; z-index: 999999">
+          <img src="/resources/images/loding.gif" style="margin-top: 15%">
+</div>
 <body>
 <input type="hidden" id="successMessage" value="${message}"/>
 <input type="hidden" id="statusMessage" value="${setStatus}"/>

@@ -79,7 +79,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 					response.addCookie(loginCookie);
 					
 				}
-				
+					/*쿠키에 아이디 저장*/
 					User userCookie = (User) user;
 					Cookie userIdCookie = new Cookie("userIdCookie", userCookie.getId());
 					userIdCookie.setPath("/");
@@ -87,11 +87,18 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 					response.addCookie(userIdCookie);
 					
 					
-					/**회원정보수정에 쓰일 쿠키*/
+					/*쿠키에 이름 저장*/
 					Cookie CookieForUser = new Cookie("CookieForUser", URLEncoder.encode(userInfo.getName(), "utf-8"));
 					CookieForUser.setPath("/");
 					CookieForUser.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(CookieForUser);
+
+					/*쿠키에 사진 저장*/
+					Cookie photoCookie = new Cookie("photoCookie", URLEncoder.encode(userInfo.getPhoto(), "utf-8"));
+					logger.info(userInfo.getPhoto()+"포토퐅포토퐅포톺");
+					photoCookie.setPath("/");
+					photoCookie.setMaxAge(60 * 60 * 24 * 7);
+					response.addCookie(photoCookie);
 					
 					response.sendRedirect("/lobby/selectProject");
 				

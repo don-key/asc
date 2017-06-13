@@ -118,6 +118,11 @@ public class UserDAOImpl implements UserDAO{
 		sqlSession.update(namespace + ".setStatus", id);
 	}
 
+	@Override
+	public String userNameFind(String id) {
+		return sqlSession.selectOne(namespace + ".userNameFind",id);
+	}
+
 	
 
 }

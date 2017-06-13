@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="m" uri="urlDecode"%> 
-<div id="loding" style="text-align: center;display:none; width:100%; background-color: rgba(0,0,0,1); position: absolute; z-index: 999999">
+<div id="loding" style="text-align: center;display:none; width:100%; background-color: rgba(255,255,255,1); position: absolute; z-index: 999999">
    <img src="/resources/images/loding.gif" style="margin-top: 15%">
 </div>
 <script>

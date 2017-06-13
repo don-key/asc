@@ -189,20 +189,92 @@ $(document).ready(function(){
     <c:forEach items="${ganttList}" var="gantt" varStatus="status2">
     <c:set var="count2">${status2.index}</c:set>
     var count = ${count2};
+    var listNo = ${gantt.ganttListNo};
     for (var i = 0; i <= todayDays; i++) {
     	var steps = $('#rightTable').children().next()[count].children[i];
 		if ($(steps).hasClass('distance')) {
 			ideal++;
 			if (i != todayDays) {
 				var backColor = $(steps).css("background-color");
-				if (backColor == 'rgba(0, 0, 0, 0)') {
+				var backgroundImage = $(steps).css("background-image");
+				console.log("배경이미지 : " + backgroundImage);
+				if (backColor == 'rgba(0, 0, 0, 0)' && backgroundImage == 'none') {
 					$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
 					$(steps).css("background-repeat", "no-repeat");
+					$(steps).addClass("none");
+					$(steps).css("cursor", "pointer");
+					$(steps).attr("id",listNo+":"+(todayDays-i));
 				}
 			}
 		}
 	}
 	</c:forEach>
+	
+    /** 체크안한 X표 누를때 */
+    $(".none").on("click",function(){
+    	var info = $(this).attr('id').split(':');
+    	var ganttListNo = info[0];
+    	var tOrY = info[1];
+    	
+    	swal({
+    		  title: '실행 여부 체크',
+    		  text: "이날 할당량을 채우셨습니까?",
+    		  type: 'warning',
+    		  showCancelButton: true,
+    		  confirmButtonColor: '#3085d6',
+    		  cancelButtonColor: '#d33',
+    		  confirmButtonText: 'Yes',
+    		  cancelButtonText: 'No',
+    		}).then(function () {
+    			$.ajax({
+  				url : "/gantt/actionRegister",
+  				type : "POST",
+  				data : {
+  					projectListNo : projectListNo,
+  					userNo : userNo,
+  					ganttListNo : ganttListNo,
+  					tOrY : tOrY,
+  					status : 1
+  					
+  				},
+  				success : function(data) {
+  					swal(
+  			    		    'Success!',
+  			    		    '수고하셨습니다.',
+  			    		    'success'
+  			    		  ).then(function(){
+    		    		    	location.href="/gantt/actionChart/"+projectListNo+"/"+userNo;
+    		    		    });
+  				}
+  			});
+    			  
+    		}, function (dismiss) {
+    		  if (dismiss === 'cancel') {
+      			$.ajax({
+      				url : "/gantt/actionRegister",
+      				type : "POST",
+      				data : {
+      	  				projectListNo : projectListNo,
+      	  				userNo : userNo,
+      	  				ganttListNo : ganttListNo,
+      	  				tOrY : tOrY,
+      	  				status : 0
+      				},
+      				success : function(data) {
+      					swal(
+      		    		      'Failure!',
+      		    		      '일해라 일해!',
+      		    		      'error'
+      		    		    ).then(function(){
+      		    		    	location.href="/gantt/actionChart/"+projectListNo+"/"+userNo;
+      		    		    });
+      				}
+      			});
+    		  }
+    		  
+    		});
+      	
+      });
 	
 	/** progress bar 제어하깅 */
 	var idealBar = $("#ideal"); 

@@ -277,8 +277,9 @@ public class GanttController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 	    cal.setTime(new java.util.Date());
-		if (tOrY == "yesterday") {
-			cal.add(Calendar.DATE, -1);
+		if (tOrY != "today") {
+			int minusDay = Integer.parseInt(tOrY);
+			cal.add(Calendar.DATE, -minusDay);
 		}
 		String sdfSql = sdf.format(cal.getTime());
         java.sql.Date date = java.sql.Date.valueOf(sdfSql);

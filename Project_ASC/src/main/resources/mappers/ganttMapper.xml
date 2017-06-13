@@ -98,4 +98,18 @@ UPDATE action_chart
 SET action_percent = #{percent}
 WHERE project_list_no = #{projectListNo}
 </update>
+
+<!-- 프로젝트 번호 가져오기 -->
+<select id="getProjectNoGantt" resultType="int">
+SELECT project_list_no as projectListNo
+FROM gantt_chart
+WHERE gantt_no = #{ganttNo}
+</select>
+
+<!-- 특정한 기능 정보 가져오기 -->
+<select id="getProjectInfoGantt" resultType="GanttChartList">
+SELECT gantt_list_no as ganttListNo,gantt_no as ganttNo, user_no as userNo, title, worker, start_date as startDate, end_date as endDate, color
+FROM gantt_chart_list
+WHERE gantt_list_no = #{ganttListNo}
+</select>
 </mapper>

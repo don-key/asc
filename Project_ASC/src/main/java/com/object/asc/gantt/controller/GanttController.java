@@ -206,6 +206,7 @@ public class GanttController {
 		gcl.setStartDate(modifyStartDate);
 		gcl.setEndDate(modifyEndDate);
 		gcl.setColor(modifyColor);
+		gcl.setUserNo(userNo);
 		
 		ganttService.modify(gcl);
 		

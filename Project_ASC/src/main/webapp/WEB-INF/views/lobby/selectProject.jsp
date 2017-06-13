@@ -86,5 +86,11 @@
 <jsp:include page="include/createProjectModal.jsp" />
 <jsp:include page="include/modifyProjectModal.jsp" />
 
+<script>
+setTimeout(function() {
+	$('#loding').fadeOut();	
+}, 3000);
+</script>
+
 
 

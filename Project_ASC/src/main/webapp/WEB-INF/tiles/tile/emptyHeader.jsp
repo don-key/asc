@@ -1,7 +1,16 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="m" uri="urlDecode"%> 
-
+<div id="loding" style="text-align: center;display:none; width:100%; background-color: rgba(255,255,255,1); position: absolute; z-index: 999999">
+   <img src="/resources/images/loding.gif" style="margin-top: 15%">
+</div>
+<script>
+   var h = $(window).height();
+   $('#loding').height(h);
+   if(location.pathname.split('/')[2] == 'selectProject'){
+      $('#loding').show();
+   }
+</script> 
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
 .profile img {height:70px; width:70px;}

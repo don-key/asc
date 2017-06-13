@@ -7,10 +7,10 @@
 <script>
 	var h = $(window).height();
 	$('#loding').height(h);
-	if(location.pathname.split('/')[2] == 'dashBoard' || location.pathname.split('/')[5] == 'go'){
+	if(location.pathname.split('/')[2] == 'dashBoard' || location.pathname.split('/')[5] == 'go' || location.pathname.split('/')[2] == 'selectProject' || location.pathname.split('/')[2] == 'library'){
 		$('#loding').show();
 	}
-</script>
+</script> 
 
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}

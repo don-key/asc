@@ -128,4 +128,9 @@ public class ProjectDAOImpl implements ProjectDAO {
 		return sqlSession.selectOne(namespace+".getActionPercent", projectListNo);
 	}
 
+	@Override
+	public LibraryList getInfoLibrary (int libraryListNo) {
+		return sqlSession.selectOne(namespace + ".getInfoLibrary",libraryListNo);
+	}
+
 }

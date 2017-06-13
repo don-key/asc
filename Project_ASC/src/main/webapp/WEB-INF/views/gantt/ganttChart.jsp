@@ -729,7 +729,7 @@ function betweenDate(start, end){
           <tr class="ganttEffect">
             <th><a
               onclick="modal('view','${gantt.ganttListNo}','${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "
-              style="cursor: pointer">${gantt.title }</a></th>
+              style="cursor: pointer">${gantt.title } (${gantt.worker })</a></th>
           </tr>
         </c:forEach>
       </table>

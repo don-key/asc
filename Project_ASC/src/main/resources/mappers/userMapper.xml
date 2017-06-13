@@ -109,4 +109,10 @@ select user_no from users where id like #{id}
 
 </select>
 
+<!-- 회원 아이디로 이름 검색 -->
+<select id="userNameFind" resultType="String">
+
+select name from users where id like #{id}
+
+</select>
 </mapper>

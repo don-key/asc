@@ -228,16 +228,15 @@ console.log("총 갯수 : " + totalCount);
 console.log("이상 : " + ideal);
 console.log("현실 : " + real);
 
-	  
   $.ajax({
   		url : "/gantt/percentUpdate",
   		type : "POST",
   		data : {
   			projectListNo : projectListNo,
-  			percent : (realWidth * 1) + '%'
+  			percent : (real * 1) + '%'
   		}
   	});
-  
+
  if('${goDashBoard}' != ''){
 	 location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
  }
@@ -295,7 +294,7 @@ function addDay(month, day){
 <div id="page-wrapper">
   <div class="row">
     <div class="col-lg-12">
-      <br> <img alt="" src="/resources/images/header/gantt.png"
+      <br> <img alt="" src="/resources/images/header/progress.png"
         style="margin-left: auto; margin-right: auto; display: block; width: 20%">
     </div>
   </div>
@@ -326,7 +325,7 @@ function addDay(month, day){
           <tr class="ganttEffect">
             <th><a
               onclick="modal('view','${gantt.ganttListNo}','${gantt.title}', '${gantt.worker}', '${gantt.startDate}','${gantt.endDate}', '${gantt.color}' ) "
-              style="cursor: pointer">${gantt.title }</a></th>
+              style="cursor: pointer">${gantt.title } (${gantt.worker })</a></th>
           </tr>
         </c:forEach>
       </table>

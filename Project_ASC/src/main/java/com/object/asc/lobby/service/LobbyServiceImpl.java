@@ -8,7 +8,6 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -19,6 +18,8 @@ import com.object.asc.lobby.dao.LobbyDAO;
 import com.object.asc.lobby.domain.ProjectJoin;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.log.dao.LogDAO;
+import com.object.asc.log.domain.Log;
 import com.object.asc.project.dao.ProjectDAO;
 import com.object.asc.project.domain.DashBoard;
 import com.object.asc.project.domain.Library;
@@ -26,7 +27,6 @@ import com.object.asc.project.domain.ProjectRelease;
 import com.object.asc.project.domain.Scrum;
 import com.object.asc.project.domain.Sprint;
 import com.object.asc.user.dao.UserDAO;
-import com.object.asc.user.service.UserService;
 import com.object.asc.util.UploadFileUtils;
 
 @Service
@@ -40,6 +40,9 @@ public class LobbyServiceImpl implements LobbyService {
 
 	@Inject
 	private ProjectDAO projectDao;
+	
+	@Inject
+	private LogDAO logDao;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -59,6 +62,7 @@ public class LobbyServiceImpl implements LobbyService {
 		/** 프로젝트 생성 시 */
 		/** 1-1. 참여 생성 */
 		lobbyDao.projectJoinRegister();
+		
 		/** 1-2. 참여 번호 조회 */
 		ProjectJoin projectJoin = lobbyDao.getProjectJoinNo();
 		int projectJoinNo = projectJoin.getProjectJoinNo();
@@ -90,6 +94,16 @@ public class LobbyServiceImpl implements LobbyService {
 				lobbyDao.projectJoinListRegister(projectJoinList);
 			}
 		}
+		
+		/** 로그 생성 */
+		String user = invitationList[0];
+		Log log = new Log();
+		log.setProjectListNo(projectJoinNo);
+		log.setUserNo(userDao.userIdFind(user));
+		String userName = userDao.userNameFind(user);
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 새로운 프로젝트" + projectList.getProjectName() +"을 생성했습니다.";
+		log.setContent(content);
+		logDao.writeLog(log);
 
 		/** 1-5. 대쉬보드 생성(회원 전부) */
 
@@ -127,7 +141,7 @@ public class LobbyServiceImpl implements LobbyService {
 		Library library = new Library();
 		library.setProjectListNo(projectJoinNo);
 		projectDao.libraryRegister(library);
-
+		
 	}
 
 	@Override
@@ -232,6 +246,16 @@ public class LobbyServiceImpl implements LobbyService {
 			lobbyDao.dashBoardDelete(dashBoard);
 		}
 		lobbyDao.projectListUpdate(projectList);
+		
+		/** 로그 생성 */
+		String user = invitationList[0];
+		Log log = new Log();
+		log.setProjectListNo(projectList.getProjectListNo());
+		log.setUserNo(userDao.userIdFind(user));
+		String userName = userDao.userNameFind(user);
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 프로젝트" + projectList.getProjectName() +"을 수정했습니다.";
+		log.setContent(content);
+		logDao.writeLog(log);
 	}
 
 	@Override

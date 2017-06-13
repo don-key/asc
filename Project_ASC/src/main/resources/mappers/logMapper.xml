@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.object.asc.mapper.LogMapper">
+
+<!-- 로그기록 -->
+<insert id="writeLog">
+INSERT INTO log_list (log_list_no, project_list_no, user_no, content)
+values (null,#{projectListNo},#{userNo}, CONCAT(#{content} , '(', DATE_FORMAT(NOW(),'%b %d %Y %h:%i %p') ,')' ) )
+
+</insert>
+
+</mapper>

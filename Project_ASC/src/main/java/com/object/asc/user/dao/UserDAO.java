@@ -49,4 +49,7 @@ public interface UserDAO {
 	/** 회원 아이디로 번호 검색 */
 	public int userIdFind(String id);
 	
+	/** 회원 아이디로 이름 검색 */
+	public String userNameFind(String id);
+	
 }

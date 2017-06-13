@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib  prefix="m" uri="urlDecode"%> 
 
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
@@ -18,7 +19,7 @@
                             </div>
                     	</div>
                       	<div class="col-xs-10 col-sm-10">
-  		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">${login.name}</div>
+  		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">${m:urlDecode(cookie.CookieForUser.value)}</div>
 		                </div>
                     </div>
                         <!-- <form action="/user/logout" id="logout">

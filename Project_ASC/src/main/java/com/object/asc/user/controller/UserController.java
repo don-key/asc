@@ -1,5 +1,8 @@
 package com.object.asc.user.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Date;
 import java.util.Locale;
 import java.util.Properties;
@@ -119,13 +122,45 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, RedirectAttributes rttr) {
+	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response,RedirectAttributes rttr) throws Exception {
 		logger.info("회원수정 테스트");
+		
 		user.setPhoto(uuidName);
+		
 		if(photo.getOriginalFilename().equals("")){
 			user.setPhoto("noimage2.png");
-		}
+			}
+		
 		service.modify(user);
+		
+	      Object obj = session.getAttribute("login");
+	      Cookie userIdCookie = WebUtils.getCookie(request, "userIdCookie");
+	      if (obj != null) {
+	         User user2 = (User) obj;
+	         if (userIdCookie != null) {
+	            userIdCookie.setPath("/");
+	            userIdCookie.setMaxAge(0);
+	            response.addCookie(userIdCookie);
+	            service.keepLogin(user2.getId(), session.getId(), new Date(0));
+	            
+	            }
+	      }
+	      
+	      User userCookie = (User) user;
+          Cookie userIdCookie2 = new Cookie("userIdCookie", userCookie.getId());
+          userIdCookie2.setPath("/");
+          userIdCookie2.setMaxAge(60 * 60 * 24 * 7);
+          response.addCookie(userIdCookie2);
+          
+          
+	        User anotherUser = (User) user;
+			Cookie CookieForUser = new Cookie("CookieForUser", URLEncoder.encode((anotherUser.getName()), "utf-8"));
+			CookieForUser.setPath("/");
+			CookieForUser.setMaxAge(60 * 60 * 24 * 7);
+			response.addCookie(CookieForUser);
+	      
+		
+		
 		
 		rttr.addFlashAttribute("message", "success");
 		

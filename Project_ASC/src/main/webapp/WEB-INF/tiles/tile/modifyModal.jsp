@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib  prefix="m" uri="urlDecode"%> 
+
 <style>
 .regist_label {
 	font-size: 14px;
@@ -98,7 +100,7 @@ if (message == 'success') {
 							<label class="regist_label">이름</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input type="text" class="form-control" id="name" name="name" value="${login.name }"placeholder="이름을 입력하세요" />
+							<input type="text" class="form-control" id="name" name="name" value="${m:urlDecode(cookie.CookieForUser.value)}"placeholder="이름을 입력하세요" />
 						</div>
 						<div class="clearfix"></div>
 					</div>

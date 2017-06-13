@@ -99,7 +99,7 @@ SET action_percent = #{percent}
 WHERE project_list_no = #{projectListNo}
 </update>
 
-<!-- 프로젝트 번호 가져오기 -->
+<!-- 간트차트에서 프로젝트 번호 가져오기 -->
 <select id="getProjectNoGantt" resultType="int">
 SELECT project_list_no as projectListNo
 FROM gantt_chart

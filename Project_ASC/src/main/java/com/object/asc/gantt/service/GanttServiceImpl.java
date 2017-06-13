@@ -107,6 +107,27 @@ public class GanttServiceImpl implements GanttService {
 	@Override
 	public void actionRegister(int projectListNo, ActionChartList actionChartList) {
 		dao.actionRegister(projectListNo, actionChartList);
+		System.out.println("왜 안되냐" + actionChartList);
+		/** 로그 생성 */
+		ProjectList projectList = lobbyDao.getProjectList(projectListNo);
+		User user = userDao.get(actionChartList.getUserNo());
+		String userName = user.getName();
+		GanttChartList ganttChartList = dao.getProjectInfoGantt(actionChartList.getGanttListNo());
+		
+		Log log = new Log();
+		log.setProjectListNo(projectListNo);
+		log.setUserNo(actionChartList.getUserNo());
+		int status = actionChartList.getStatus();
+		String content = "";
+		
+		if(status != 1) {
+			content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을 수행하지못했습니다.";
+		} else {
+			content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을 수행했습니다.";
+		}
+		
+		log.setContent(content);
+		logDao.writeLog(log);
 	}
 
 	@Override

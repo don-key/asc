@@ -163,7 +163,7 @@ $(document).ready(function(){
     	    		console.log("today" + (count+1));
     	    	$(steps).addClass("today");
 				}
-				$(steps).attr("id",listNo+":"+todayDays);
+				$(steps).attr("id",listNo+":"+0);
 			}
     	   </c:forEach> 
 	}
@@ -174,6 +174,7 @@ $(document).ready(function(){
     $(".today").on("click",function(){
     	var info = $(this).attr('id').split(':');
     	var ganttListNo = info[0];
+    	var tOrY = info[1];
     	
     	swal({
     		  title: '실행 여부 체크',
@@ -192,7 +193,7 @@ $(document).ready(function(){
   					projectListNo : projectListNo,
   					userNo : userNo,
   					ganttListNo : ganttListNo,
-  					tOrY : 'today',
+  					tOrY : tOrY,
   					status : 1
   					
   				},
@@ -216,7 +217,7 @@ $(document).ready(function(){
       	  				projectListNo : projectListNo,
       	  				userNo : userNo,
       	  				ganttListNo : ganttListNo,
-      	  				tOrY : 'today',
+      	  				tOrY : tOrY,
       	  				status : 0
       				},
       				success : function(data) {

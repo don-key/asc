@@ -94,7 +94,7 @@ public class GanttController {
 		
 		System.out.println(66);
 		/** Today 표현을 위한 오늘 날짜 받아오기 */
-		Date today = date("today");
+		Date today = date(0);
 		
         String[] todaySplit = today.toString().split("-");
         int todayDays=0;
@@ -224,7 +224,7 @@ public class GanttController {
 	/** Action Chart */
 	
 	@RequestMapping(value="/actionRegister", method=RequestMethod.POST)
-	public String actionRegister(int projectListNo, int userNo, int ganttListNo, int status, String tOrY){
+	public String actionRegister(int projectListNo, int userNo, int ganttListNo, int status, int tOrY){
 		Date actionDate = date(tOrY);
 		
 		ActionChartList actionChartList = new ActionChartList();
@@ -272,16 +272,13 @@ public class GanttController {
 	}
 	
 	/** 오늘 날짜 받아오는 메소드 (오늘인지 어제인지 구별, X표시위해) */
-	public Date date (String tOrY){
+	public Date date (int tOrY){
 		System.out.println("오늘인가 어제인가 : " + tOrY);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
 	    cal.setTime(new java.util.Date());
-		if (tOrY != "today") {
-			int minusDay = Integer.parseInt(tOrY);
-			cal.add(Calendar.DATE, -minusDay);
-		}
+		cal.add(Calendar.DATE, -tOrY);
 		String sdfSql = sdf.format(cal.getTime());
         java.sql.Date date = java.sql.Date.valueOf(sdfSql);
         System.out.println(date.toString());

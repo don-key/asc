@@ -228,16 +228,15 @@ console.log("총 갯수 : " + totalCount);
 console.log("이상 : " + ideal);
 console.log("현실 : " + real);
 
-	  
   $.ajax({
   		url : "/gantt/percentUpdate",
   		type : "POST",
   		data : {
   			projectListNo : projectListNo,
-  			percent : (realWidth * 1) + '%'
+  			percent : (real * 1) + '%'
   		}
   	});
-  
+
  if('${goDashBoard}' != ''){
 	 location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
  }

@@ -138,9 +138,9 @@ color: black;
 			var front = data.substring(0, 5);	// /asc 경로 추출
 			var end = data.substring(7); 	// s_ 제거
 			
-			location.href = "/project/displayFile?fileName="+front+end; 
+			location.href = "/project/library/1/displayFile?fileName="+front+end; 
 		} else {
-			location.href = "/project/displayFile?fileName="+data; 
+			location.href = "/project/library/1/displayFile?fileName="+data; 
 		} 
 	}
 

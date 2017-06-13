@@ -108,14 +108,6 @@ WHERE gantt_no = #{ganttNo}
 
 <!-- 특정한 기능 정보 가져오기 -->
 <select id="getProjectInfoGantt" resultType="GanttChartList">
-private int ganttListNo;
-	private int ganttNo;
-	private int userNo;
-	private String title;
-	private String worker;
-	private Date startDate;
-	private Date endDate;
-	private String color;
 SELECT gantt_list_no as ganttListNo,gantt_no as ganttNo, user_no as userNo, title, worker, start_date as startDate, end_date as endDate, color
 FROM gantt_chart_list
 WHERE gantt_list_no = #{ganttListNo}

@@ -51,7 +51,7 @@ public class GanttServiceImpl implements GanttService {
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트에 기능 " + title +" 을 추가했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트에 기능 " + title +"(작업자 : "+worker+") 을 추가했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 	}
@@ -71,7 +71,7 @@ public class GanttServiceImpl implements GanttService {
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트에 기능 " + gcl.getTitle() +" 을 수정했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + gcl.getTitle() +"(작업자 : "+gcl.getWorker()+") 을 수정했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 
@@ -91,7 +91,7 @@ public class GanttServiceImpl implements GanttService {
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트에 기능 " + ganttChartList.getTitle() +" 을 삭제했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을 삭제했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 		

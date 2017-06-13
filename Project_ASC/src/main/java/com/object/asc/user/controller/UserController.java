@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.inject.Inject;
@@ -122,7 +124,7 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response,RedirectAttributes rttr) throws Exception {
+	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		logger.info("회원수정 테스트");
 		
 		user.setPhoto(uuidName);
@@ -158,15 +160,33 @@ public class UserController {
 			CookieForUser.setPath("/");
 			CookieForUser.setMaxAge(60 * 60 * 24 * 7);
 			response.addCookie(CookieForUser);
-	      
-		
-		
 		
 		rttr.addFlashAttribute("message", "success");
 		
 		return "redirect:/lobby/selectProject";
 	}
 	
+	@RequestMapping(value = "/modifyView")
+	@ResponseBody
+	public ResponseEntity<User> modifyView(int userNo) throws Exception {
+		ResponseEntity<User> entity = null;
+		User user = null;
+		
+		logger.info("회원수정 정보 모달 테스트");
+
+		try {
+			
+			user = service.get(userNo);
+			
+			entity = new ResponseEntity<User>(user, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		return entity;
+	}
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(User user, HttpSession session, Model model) {

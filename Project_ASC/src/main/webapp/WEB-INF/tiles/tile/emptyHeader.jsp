@@ -67,13 +67,32 @@
   
   <script>
 
-/** 회원수정 모달 띄우기*/
+  /** 회원수정 모달 띄우기*/
   $(function() {
-	$('#modalWrapper').on('click', function() {
-		$('#modifyModal').modal();
-	});
-});
-
+   $('#modalWrapper').on('click', function() {
+		var userNo =${login.userNo};
+		console.log("유저넘버" + userNo);
+		$.ajax({
+            type : 'post',
+            url : "/user/modifyView",
+            data:
+            {
+            	userNo: userNo
+            },
+            success:function(request){
+               console.log(request);
+               $('#modifyId').val(request.id);
+               $('#modifyName').val(request.name);
+               $('#modifyPhone').val(request.phone);
+               $('#modifyPhoto').attr('src', '/resources/images/upload'+request.photo);
+               $('#modifyModal').modal();
+            }
+            
+        });
+	   
+     
+   });
+  });
 </script>
   
   

@@ -22,6 +22,9 @@ public interface ProjectDAO {
 	/** 자료 내역 목록 뿌려주기 */
 	public List<LibraryList> libraryListListAll(int libraryNo);
 	
+	/** 자료실 번호로 자료정보 */
+	public LibraryList getInfoLibrary (int libraryListNo);
+	
 	/** 1-4. 대쉬보드 생성(회원 전부) */
 	public void dashBoardRegister(DashBoard dashBoard);
 	/** 1-5. 릴리즈 생성 */

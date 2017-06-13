@@ -16,20 +16,10 @@ public class LogDAOImpl implements LogDAO {
 	private static String namespace = "com.object.asc.mapper.LogMapper";
 
 	@Override
-	public void logProjectListRegisterr(Log log) {
+	public void writeLog(Log log) {
 		sqlSession.insert(namespace + ".writeLog",log);
 		
 	}
 
-	@Override
-	public void logProjectUpdate(Log log) {
-		sqlSession.insert(namespace + ".writeLog",log);
-	}
-
-	@Override
-	public void projectListDelete(Log log) {
-		sqlSession.insert(namespace + ".writeLog",log);
-	}
-	
 	
 }

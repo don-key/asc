@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.object.asc.gantt.domain.ActionChart;
 import com.object.asc.gantt.domain.GanttChart;
+import com.object.asc.lobby.dao.LobbyDAO;
 import com.object.asc.lobby.domain.ProjectList;
+import com.object.asc.log.dao.LogDAO;
+import com.object.asc.log.domain.Log;
 import com.object.asc.project.dao.ProjectDAO;
 import com.object.asc.project.domain.DashBoard;
 import com.object.asc.project.domain.Library;
@@ -16,21 +19,59 @@ import com.object.asc.project.domain.LibraryList;
 import com.object.asc.project.domain.ProjectRelease;
 import com.object.asc.project.domain.Scrum;
 import com.object.asc.project.domain.Sprint;
+import com.object.asc.user.dao.UserDAO;
+import com.object.asc.user.domain.User;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 	
 	@Inject
 	private ProjectDAO dao;
+	
+	@Inject
+	private LogDAO logDao;
+	
+	@Inject
+	private UserDAO userDao;
+	
+	@Inject
+	private LobbyDAO lobbyDao;
 
 	@Override
 	public void libraryListRegister(LibraryList libraryList) {
 		dao.libraryListRegister(libraryList);
+		
+		/** 로그 생성 */
+		int userNo = libraryList.getUserNo();
+		User user = userDao.get(userNo);
+		String userName = user.getName();
+		ProjectList projectList = lobbyDao.getProjectList(libraryList.getLibraryNo());
+		
+		Log log = new Log();
+		log.setProjectListNo(libraryList.getLibraryNo());
+		log.setUserNo(userNo);
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 자료실에 " + libraryList.getFileName() +"을 등록했습니다.";
+		log.setContent(content);
+		logDao.writeLog(log);
 	}
 
 	@Override
 	public void libraryListDelete(int libraryListNo, int libraryNo) {
+		/** 로그 생성 */
+		ProjectList projectList = lobbyDao.getProjectList(libraryNo);
+		LibraryList libraryList = dao.getInfoLibrary(libraryListNo);
+		User user = userDao.get(libraryList.getUserNo());
+		String userName = user.getName();
+		
+		Log log = new Log();
+		log.setProjectListNo(libraryNo);
+		log.setUserNo(libraryList.getUserNo());
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 자료실에 " + libraryList.getFileName() +"을 삭제했습니다.";
+		log.setContent(content);
+		logDao.writeLog(log);
+		
 		dao.libraryListDelete(libraryListNo, libraryNo);
+		
 	}
 
 	@Override

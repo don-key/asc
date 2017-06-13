@@ -103,7 +103,7 @@ public class LobbyServiceImpl implements LobbyService {
 		String userName = userDao.userNameFind(user);
 		String content = "["+projectList.getProjectName()+"] "+ userName +" : 새로운 프로젝트" + projectList.getProjectName() +"을 생성했습니다.";
 		log.setContent(content);
-		logDao.logProjectListRegisterr(log);
+		logDao.writeLog(log);
 
 		/** 1-5. 대쉬보드 생성(회원 전부) */
 
@@ -255,7 +255,7 @@ public class LobbyServiceImpl implements LobbyService {
 		String userName = userDao.userNameFind(user);
 		String content = "["+projectList.getProjectName()+"] "+ userName +" : 프로젝트" + projectList.getProjectName() +"을 수정했습니다.";
 		log.setContent(content);
-		logDao.logProjectListRegisterr(log);
+		logDao.writeLog(log);
 	}
 
 	@Override

@@ -26,6 +26,15 @@
 		WHERE library_no = #{libraryNo}
 		ORDER BY library_list_no desc, regdate desc
 	</select>
+	
+	<!-- 자료 번호로 자료정보 조회 -->
+	<select id="getInfoLibrary" resultType="LibraryList">
+		SELECT library_list_no as libraryListNo, library_no as libraryNo, user_no as
+		userNo, title, file_name as fileName, uuid_name as uuidName,
+		display_name as displayName, regdate
+		FROM library_list
+		WHERE library_list_no = #{libraryListNo}
+	</select>
 
 	<!-- 대쉬보드 생성(회원 전부) -->
 	<insert id="dashBoardRegister">

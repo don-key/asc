@@ -199,7 +199,7 @@ $(document).ready(function(){
 				var backgroundImage = $(steps).css("background-image");
 				console.log("배경이미지 : " + backgroundImage);
 				if (backColor == 'rgba(0, 0, 0, 0)' && backgroundImage == 'none') {
-					$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
+					$(steps).css("background-image", "url(/resources/images/gantt/dot.png)");
 					$(steps).css("background-repeat", "no-repeat");
 					$(steps).addClass("none");
 					$(steps).css("cursor", "pointer");

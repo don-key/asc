@@ -21,7 +21,7 @@ public interface ProjectService {
 	public void libraryListDelete (int libraryListNo, int libraryNo);
 	
 	/** 자료 내역 목록 뿌려주기 */
-	public List<LibraryList> libraryListListAll();
+	public List<LibraryList> libraryListListAll(int libraryNo);
 	
 	/** 1-4. 대쉬보드 생성(회원 전부) */
 	public void dashBoardRegister(DashBoard dashBoard);

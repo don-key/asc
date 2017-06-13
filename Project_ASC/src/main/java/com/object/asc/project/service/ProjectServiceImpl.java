@@ -34,8 +34,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public List<LibraryList> libraryListListAll() {
-		return dao.libraryListListAll();
+	public List<LibraryList> libraryListListAll(int libraryNo) {
+		return dao.libraryListListAll(libraryNo);
 	}
 	
 	@Override

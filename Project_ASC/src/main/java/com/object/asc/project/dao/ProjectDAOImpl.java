@@ -42,8 +42,8 @@ public class ProjectDAOImpl implements ProjectDAO {
 	}
 
 	@Override
-	public List<LibraryList> libraryListListAll() {
-		return sqlSession.selectList(namespace+".libraryListListAll");
+	public List<LibraryList> libraryListListAll(int libraryNo) {
+		return sqlSession.selectList(namespace+".libraryListListAll", libraryNo);
 	}
 	
 	@Override

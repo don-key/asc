@@ -38,5 +38,11 @@ public interface GanttDao {
 	
 	/** 달성률 업데이트 */
 	public void percentUpdate (int projectListNo, String percent);
+	
+	/** 프로젝트번호 가져오기 */
+	public int getProjectNoGantt (int ganttNo);
+	
+	/** 특정 간트차트 정보 가져오기 */
+	public GanttChartList getProjectInfoGantt (int ganttListNo);
 
 }

@@ -94,4 +94,14 @@ public class GanttDaoImpl implements GanttDao {
 		sqlSession.update(namespace+".percentUpdate", map);
 	}
 
+	@Override
+	public int getProjectNoGantt(int ganttNo) {
+		return sqlSession.selectOne(namespace+".getProjectNoGantt", ganttNo);
+	}
+
+	@Override
+	public GanttChartList getProjectInfoGantt(int ganttListNo) {
+		return sqlSession.selectOne(namespace+".getProjectInfoGantt", ganttListNo);
+	}
+
 }

@@ -154,12 +154,17 @@ public class UserController {
           userIdCookie2.setMaxAge(60 * 60 * 24 * 7);
           response.addCookie(userIdCookie2);
           
-          
-	        User anotherUser = (User) user;
-			Cookie CookieForUser = new Cookie("CookieForUser", URLEncoder.encode((anotherUser.getName()), "utf-8"));
+			Cookie CookieForUser = new Cookie("CookieForUser", URLEncoder.encode((userCookie.getName()), "utf-8"));
 			CookieForUser.setPath("/");
 			CookieForUser.setMaxAge(60 * 60 * 24 * 7);
 			response.addCookie(CookieForUser);
+			
+			
+			/*쿠키에 사진 저장*/
+			Cookie photoCookie = new Cookie("photoCookie", URLEncoder.encode(uuidName, "utf-8"));
+			photoCookie.setPath("/");
+			photoCookie.setMaxAge(60 * 60 * 24 * 7);
+			response.addCookie(photoCookie);
 		
 		rttr.addFlashAttribute("message", "success");
 		

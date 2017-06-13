@@ -24,7 +24,7 @@
                     
                     <div class="row" id="modalWrapper">
                        <div class="col-xs-2 col-sm-2">
-                          <div class="profile"><img src='/resources/images/upload/${login.photo }'></div>
+                          <div class="profile"><img src='/resources/images/upload/${m:urlDecode(cookie.photoCookie.value) }'></div>
                             <input type="hidden"  id="mUuidName"  name="uuidName">
                             <input type="hidden"  id="mDisplayName"  name="displayName">
                        </div>
@@ -93,32 +93,7 @@
        })
      
    });
-/** 회원수정 모달 띄우기*/
-  $(function() {
-   $('#modalWrapper').on('click', function() {
-		var userNo =${login.userNo};
-		console.log("유저넘버" + userNo);
-		$.ajax({
-            type : 'post',
-            url : "/user/modifyView",
-            data:
-            {
-            	userNo: userNo
-            },
-            success:function(request){
-               console.log(request);
-               $('#modifyId').val(request.id);
-               $('#modifyName').val(request.name);
-               $('#modifyPhone').val(request.phone);
-               $('#modifyPhoto').attr('src', '/resources/images/upload'+request.photo);
-		      
-               $('#modifyModal').modal();
-            }
-        });
-      
-   });
-   
-  });
+
 /** 메뉴 링크 */
 $(function() {
 	var userNo = ${login.userNo};

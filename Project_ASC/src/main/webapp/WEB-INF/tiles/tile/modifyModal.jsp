@@ -176,17 +176,11 @@ $.ajax({
      var str ="";
 
      if (checkImageType(data)) {
-        str ="<div class='wen'><img src='/project/displayFile?fileName="+data+"'/></div>"
-      } else {
-        str ="<div>"
-           + "<img src='/resources/images/file.png'/>"
-           + getOriginalName(data) 
-           + "<small data-src=" + data +" class='delbtn'> <i class='fa fa-fw fa-remove'></i> </small>"
-           +"</div>";
-     }
+        str ="<div class='wen'><img src='/project/library/1/displayFile?fileName="+data+"'/></div>"
+      } 
      
      $('#mUuidName').val(data);
-     $('#mDisplayName').val("/project/displayFile?fileName="+data);
+     $('#mDisplayName').val("/project/library/1/displayFile?fileName="+data);
      $(".imgPreview").html(str);
   }
 });

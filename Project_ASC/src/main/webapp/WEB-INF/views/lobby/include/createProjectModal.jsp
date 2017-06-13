@@ -200,14 +200,6 @@ $(function() {
 			return false;
 		}
 		
-		if(current_date > createForm.startDate.value){
-			swal({
-                title : '프로젝트 기간을 확인해주세요!',
-                type : 'warning',
-                confirmButtonText : '닫기'
-                 });
-			return false;
-		}
 		
 		if(createForm.startDate.value > createForm.endDate.value){
 			swal({

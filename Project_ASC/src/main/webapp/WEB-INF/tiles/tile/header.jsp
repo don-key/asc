@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="m" uri="urlDecode"%> 
-<div id="loding" style="text-align: center;display:none; width:100%; background-color: rgba(0,0,0,1); position: absolute; z-index: 999999">
+<div id="loding" style="text-align: center;display:none; width:100%; background-color: rgba(255,255,255,1); position: absolute; z-index: 999999">
    <img src="/resources/images/loding.gif" style="margin-top: 15%">
 </div>
 <script>
@@ -96,7 +96,26 @@
 /** 회원수정 모달 띄우기*/
   $(function() {
    $('#modalWrapper').on('click', function() {
-      $('#modifyModal').modal();
+		var userNo =${login.userNo};
+		console.log("유저넘버" + userNo);
+		$.ajax({
+            type : 'post',
+            url : "/user/modifyView",
+            data:
+            {
+            	userNo: userNo
+            },
+            success:function(request){
+               console.log(request);
+               $('#modifyId').val(request.id);
+               $('#modifyName').val(request.name);
+               $('#modifyPhone').val(request.phone);
+               $('#modifyPhoto').attr('src', '/resources/images/upload'+request.photo);
+		      
+               $('#modifyModal').modal();
+            }
+        });
+      
    });
    
   });

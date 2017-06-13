@@ -22,41 +22,6 @@
   		                    <div style="color: white; font-size: 30px; text-align: center; margin-top: 10px">${m:urlDecode(cookie.CookieForUser.value)}</div>
 		                </div>
                     </div>
-                        <!-- <form action="/user/logout" id="logout">
-                    <ul class="nav" id="side-menu" style="margin-top: 15px">
-                        <li>
-                            <a href="/project/dashBoard"><img src="/resources/images/menu/dashboard.png" style="width: 50%"></a>
-                        </li>
-                        <li>
-                            <a href="/scrum/taskBoard"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="http://localhost:4567/taskBoard/1/0"><img src="/resources/images/menu/task.png" style="width: 60%"></a>
-                                </li>
-                                <li>
-                                   	<a href="http://localhost:4567/releasePlanning/1"><img src="/resources/images/menu/release.png" style="width: 70%"></a>
-                                </li>
-                            </ul>
-                            /.nav-second-level
-                        </li>
-                        <li>
-                            <a href="/gantt/ganttChart"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
-                        </li>
-                        <li>
-                            <a href="/project/library"><img src="/resources/images/menu/library.png" style="width: 50%"></a>
-                        </li>
-                         <li>
-                            <a href="/project/member"><img src="/resources/images/menu/member.png" style="width: 50%"></a>
-                        </li>
-                         <li>
-                            <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
-                        </li>
-                         <li>
-                            <a href="#" onclick="document.getElementById('logout').submit();"><img src="/resources/images/menu/logout.png"  id="logoutBtn" class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
-                        </li>
-                        
-                    </ul>
-                    </form> -->
                     
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -69,9 +34,8 @@
 
   /** 회원수정 모달 띄우기*/
   $(function() {
-   $('#modalWrapper').on('click', function() {
+   $('#modalWrapper').on('click', function(){
 		var userNo =${login.userNo};
-		console.log("유저넘버" + userNo);
 		$.ajax({
             type : 'post',
             url : "/user/modifyView",

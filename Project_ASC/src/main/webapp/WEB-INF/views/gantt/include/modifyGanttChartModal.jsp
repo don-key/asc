@@ -7,10 +7,11 @@
 
     <!-- Modal content-->
     <div class="modal-content">
-      <form action="/gantt/modify?projectListNo=<%=request.getParameter("projectListNo")%>&userNo=<%=request.getParameter("userNo")%>" onsubmit="return modifyCheck(this);" method="post">
+      <form action="/gantt/modify" onsubmit="return modifyCheck(this);" method="post">
         <input type="hidden" id="modifyColor" name="modifyColor" value="" style="width: 100px;">
         <input type="hidden" id="modifyListNo" name="modifyListNo" value="" style="width: 100px;">
-
+        <input type="hidden" name="projectListNo" value="${projectListNo}">
+        <input type="hidden" name="userNo" value="${userNo}">
         <div class="modal-header" style="background: #354555; color: #ffffff;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 수정</h4>

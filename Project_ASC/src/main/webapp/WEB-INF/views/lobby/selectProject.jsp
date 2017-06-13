@@ -49,7 +49,7 @@
          <c:forEach items="${list}" var="projectList" varStatus="status">
          <div class="project-wrapper">
             <div class="col-lg-3 col-md-3 col-xs-4">
-            <a href="/project/dashBoard?projectListNo=${projectList.projectListNo }&userNo=${login.userNo}" class="thumbnail"> 
+            <a href="/gantt/actionChart/${projectList.projectListNo}/${login.userNo}/go" class="thumbnail"> 
             <img src="/resources/images/upload${projectList.projectPhoto}" onerror='this.src="/resources/images/file.png"'>
                </a>
                <div class="panel">
@@ -71,7 +71,7 @@
                      <a href="/lobby/deleteProject?projectListNo=${projectList.projectListNo}" id="deleteIcon" class="fa fa-trash-o">삭제</a>
                   </div>
                   </c:if>
-               </div>
+               </div> 
             </div>
           </div>
          </c:forEach>

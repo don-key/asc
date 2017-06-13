@@ -69,7 +69,7 @@
 									<button type="button" class='btn btn-success btn-circle btn-lg' id="delBtn">
 										<i class="fa fa-trash"></i>
 									</button>
-								</div>
+								</div> 
 								
 								<div class="col-xs-8 text-center">
 									<div class="huge">메모</div>
@@ -88,7 +88,7 @@
 								<div class='col-xs-12'>
 									<textarea id="memo" name="memo" placeholder="자유롭게 작성하세용 :)" >${memo }</textarea>
 									<input type="hidden" id="userNo" name="userNo" value="${login.userNo }"> 
-									<input type="hidden" id="projectListNo" name="projectListNo" value="<%=request.getParameter("projectListNo")%>"> 
+									<input type="hidden" id="projectListNo" name="projectListNo" value="${projectListNo}"> 
 									<input type="hidden" id="msg" name="msg" value="${msg}">
 									<script>
 									if($("#memo").val().trim().length <1){

@@ -165,10 +165,62 @@ $(function() {
 	});
 	
 	$('#createForm').submit(function(form) {
+		  var now = new Date();
+	      var year= now.getFullYear();
+	      var mon = (now.getMonth()+1)>9 ? ''+(now.getMonth()+1) : '0'+(now.getMonth()+1);
+	      var day = now.getDate()>9 ? ''+now.getDate() : '0'+now.getDate();
+	      var current_date = year + '-' + mon + '-' + day;
+	      console.log(current_date);
+
 		var createForm = $(form)[0].target;
+		
 		if(createForm.projectName.value.trim().length == 0){
 			swal({
-                title : '프로젝트',
+                title : '프로젝트 이름을 입력해주세요!',
+                type : 'warning',
+                confirmButtonText : '닫기'
+                 });
+			return false;
+		}
+		
+		if(createForm.startDate.value.trim().length == 0){
+			swal({
+                title : '프로젝트 시작 날짜를 입력해주세요!',
+                type : 'warning',
+                confirmButtonText : '닫기'
+                 });
+			return false;
+		}
+		if(createForm.endDate.value.trim().length == 0){
+			swal({
+                title : '프로젝트 종료 날짜를 입력해주세요!',
+                type : 'warning',
+                confirmButtonText : '닫기'
+                 });
+			return false;
+		}
+		
+		if(current_date > createForm.startDate.value){
+			swal({
+                title : '프로젝트 기간을 확인해주세요!',
+                type : 'warning',
+                confirmButtonText : '닫기'
+                 });
+			return false;
+		}
+		
+		if(createForm.startDate.value > createForm.endDate.value){
+			swal({
+                title : '프로젝트 기간을 확인해주세요!',
+                type : 'warning',
+                confirmButtonText : '닫기'
+                 });
+			return false;
+		}
+		
+		if(createForm.startDate.value == createForm.endDate.value){
+			swal({
+                title : '프로젝트 기간을 확인해주세요!',
                 type : 'warning',
                 confirmButtonText : '닫기'
                  });

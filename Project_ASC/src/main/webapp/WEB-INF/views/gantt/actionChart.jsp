@@ -62,11 +62,11 @@ td, th {
 
 <script>
 $(document).ready(function(){
-	var projectListNo = <%=request.getParameter("projectListNo")%>;
-	var userNo = <%=request.getParameter("userNo")%>;
+	var userNo = ${login.userNo};
+	var projectListNo = location.pathname.split('/')[3];
 	
 	$('#ganttChartBtn').on('click', function() {
-		location.href = "/gantt/ganttChart?projectListNo="+projectListNo+"&userNo="+userNo;
+		location.href = "/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	});
 	
 	/** 이상/현실 표현을 위한 변수 */
@@ -237,7 +237,10 @@ console.log("현실 : " + real);
   			percent : (realWidth * 1) + '%'
   		}
   	});
-	  
+  
+ if('${goDashBoard}' != ''){
+	 location.href="/project/dashBoard/"+projectListNo+"/"+userNo;
+ }
 	  
 });
 
@@ -284,7 +287,6 @@ function addDay(month, day){
   
 
 
-  
 </script>
 
 
@@ -341,7 +343,6 @@ function addDay(month, day){
 
 
 </div>
-
 
 
 

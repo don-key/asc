@@ -53,8 +53,8 @@
 
 	<!-- 계획 실행 차트 생성 -->
 	<insert id="actionChartRegister">
-		INSERT INTO action_chart(action_no, project_list_no)
-		VALUES (null, #{projectListNo})
+		INSERT INTO action_chart(action_no, project_list_no, action_percent)
+		VALUES (null, #{projectListNo}, null)
 	</insert>
 
 	<!-- 스크럼 생성 -->

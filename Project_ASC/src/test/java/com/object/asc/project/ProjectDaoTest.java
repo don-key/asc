@@ -56,7 +56,7 @@ public class ProjectDaoTest {
 
 		List<LibraryList> list = new ArrayList<LibraryList>();
 
-		list = dao.libraryListListAll();
+		list = dao.libraryListListAll(2);
 
 		for (LibraryList libraryList : list) {
 			logger.info("리스트 올ㅋ : " + libraryList);

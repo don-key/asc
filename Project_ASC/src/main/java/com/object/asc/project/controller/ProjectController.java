@@ -111,12 +111,12 @@ public class ProjectController {
 		logger.info("자료실 입장~");
 		
 		logger.info("자료 내역 리스트 올~~~~~~~~~");
-		List<LibraryList>  libraryLists= projectService.libraryListListAll();
+		List<LibraryList>  libraryLists= projectService.libraryListListAll(projectListNo);
 		List<User> name = new ArrayList<User>();
 		for (LibraryList libraryList : libraryLists) {
 			name.add(userService.get(libraryList.getUserNo()));
 		}
-		model.addAttribute("list", projectService.libraryListListAll());		// 자료 내역 리스트 목록 뿌려주기
+		model.addAttribute("list", libraryLists);		// 자료 내역 리스트 목록 뿌려주기
 		model.addAttribute("name", name);
 		model.addAttribute("projectListNo", projectListNo);
 		model.addAttribute("userNo", userNo);

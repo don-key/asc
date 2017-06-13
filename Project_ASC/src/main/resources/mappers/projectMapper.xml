@@ -23,6 +23,7 @@
 		userNo, title, file_name as fileName, uuid_name as uuidName,
 		display_name as displayName, regdate
 		FROM library_list
+		WHERE library_no = #{libraryNo}
 		ORDER BY library_list_no desc, regdate desc
 	</select>
 

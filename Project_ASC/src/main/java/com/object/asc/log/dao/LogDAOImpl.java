@@ -1,6 +1,8 @@
 package com.object.asc.log.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -24,8 +26,11 @@ public class LogDAOImpl implements LogDAO {
 	}
 
 	@Override
-	public List<String> logListAll(Log log) {
-		return sqlSession.selectList(namespace + ".listAll", log);
+	public List<String> logListAll(int projectListNo, int userNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("projectListNo", projectListNo);
+		map.put("userNo", userNo);
+		return sqlSession.selectList(namespace + ".listAll", map);
 	}
 
 	

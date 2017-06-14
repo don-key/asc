@@ -11,22 +11,23 @@
       <div class="col-xs-12">
          <div class="panel panel-default">
             <div class="panel-heading">
-               <i class="fa fa-bell fa-fw"></i> 수정한거 보내려면 버튼 누르든지
+               <i class="fa fa-bell fa-fw"></i> History
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                <div class="list-group">
                <c:choose>
-            <c:when test="${empty list }">
+            <c:when test="${empty front }">
                <div style="margin-top: 10%">
                   <p style="text-align: center; font-size: 20px"> <mark>로그 내역이 존재하지 않습니당</mark></p>
                </div>
             </c:when>
             
             <c:otherwise>
-            <c:forEach items="${list }" var="logList" varStatus="status">
+            <c:forEach items="${front }" var="front" varStatus="status">
                 <a href="#" class="list-group-item"> 
-                  <i class="fa fa-comment fa-fw"></i> ${logList.content} 
+                  <i class="fa fa-comment fa-fw"></i> ${front}
+                  <span class="pull-right text-muted small"><em>${end[status.index]}</em> </span>
                 </a>
             </c:forEach>
          </c:otherwise>
@@ -35,9 +36,29 @@
                  
                </div>
                <!-- /.list-group -->
-               <a href="#" class="btn btn-default btn-block">팀원에게 알리기</a>
+               <a href="#" class="btn btn-default btn-block" id="sendMail">팀원에게 알리기</a>
             </div>
             <!-- /.panel-body -->
          </div>
       </div>
 </div>
+
+<script> 
+$(function() {
+	var id = '${login.id}';
+	var userNo = ${login.userNo};
+	var projectListNo = location.pathname.split('/')[3];
+	$('#sendMail').on('click', function() {
+		event.preventDefault();
+		location.href = "/project/sendMail/"+projectListNo+"/"+id+"/"+userNo;
+	});
+	
+	if('${msg}' == 'SUCCESS'){
+	  swal({
+           title : '메일 전송이 완료되었습니다.',
+           type : 'success',
+           confirmButtonText : '닫기'
+        });
+	}
+});
+</script>

@@ -8,13 +8,13 @@
 <!-- 로그기록 -->
 <insert id="writeLog">
 INSERT INTO log_list (log_list_no, project_list_no, user_no, content)
-values (null,#{projectListNo},#{userNo}, CONCAT(#{content} , '(','##', DATE_FORMAT(NOW(),'%b %d %Y %h:%i %p') ,')' ) )
+values (null,#{projectListNo},#{userNo}, CONCAT(#{content} , '##', '(', DATE_FORMAT(NOW(),'%b %d %Y %h:%i %p') ,')' ) )
 
 </insert>
 
 <!-- 로그내역 -->
 
-<select id="listAll" resultType="Log">
-select content from log_list where project_list_no = #{projectListNo} and user_no =#{userNo};
+<select id="listAll" resultType="String">
+select content from log_list where project_list_no = #{projectListNo} and user_no =#{userNo} order by log_list_no desc;
 </select>
 </mapper>

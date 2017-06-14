@@ -61,8 +61,8 @@
                          <li id="log">
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
-                         <li>
-                            <a href="#"><img src="/resources/images/menu/logout.png" id="logoutBtn" class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
+                         <li id="logoutBtn">
+                            <a href="#"><img src="/resources/images/menu/logout.png" class="logoutBtn"  style="width: 50%; cursor: pointer;"></a>
                         </li>
                         
                     </ul>

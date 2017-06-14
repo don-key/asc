@@ -53,7 +53,8 @@
             <img src="/resources/images/upload${projectList.projectPhoto}" onerror='this.src="/resources/images/file.png"'>
                </a>
                <div class="panel">
-                  <div style="font-size: 17px; font-weight: bold;">스크럼 마스터 : ${name[status.index]}</div>
+                  <div style="font-size: 17px; font-weight: bold; text-align: center">팀장 : ${name[status.index]}</div>
+                  <br>
                   <div class="text-right">${projectList.startDate}~${projectList.endDate}</div>
                   <br>
                   <div class="text-right" style="font-size: 15px;">

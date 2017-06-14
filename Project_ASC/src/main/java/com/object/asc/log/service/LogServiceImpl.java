@@ -18,8 +18,8 @@ public class LogServiceImpl implements LogService {
 	
 	
 	@Override
-	public List<String> logListAll(Log log) {
-		return logDao.logListAll(log);
+	public List<String> logListAll(int projectListNo, int userNo) {
+		return logDao.logListAll(projectListNo, userNo);
 	}
 
 }

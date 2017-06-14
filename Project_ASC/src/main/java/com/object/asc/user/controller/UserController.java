@@ -129,7 +129,6 @@ public class UserController {
 		
 		if(photo.getOriginalFilename().equals("")){
 			user.setPhoto("/asc/noimage2.png");
-			logger.info("들어옴");
 			uuidName="/asc/noimage2.png";
 	    }else{
 	    	user.setPhoto(uuidName);

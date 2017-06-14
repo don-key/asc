@@ -10,7 +10,7 @@ public interface LogDAO {
 	public void writeLog(Log log);
 	
 	/** 로그 리스트 조회 */
-	public List<String> logListAll(Log log);
+	public List<String> logListAll(int projectListNo, int userNo);
 	
 	
 }

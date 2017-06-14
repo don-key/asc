@@ -344,7 +344,15 @@ public class UserController {
 	      int port=465; 
 	      String recipient = id; 
 	      String subject = "회원가입 인증메일입니다."; 
-	      String content = "<a href='http://192.168.0.4/user/setStatus?user="+id+"'>회원 가입 인증</a>"; 
+	      String content = "<html>"+
+	    	        "<head><title></title></head>"+
+	    	        "<body>"+
+	    	        "<div style='text-align:center;'>"+
+	    	        "<IMG src='http://localhost/resources/images/mail.png' width=50%><br>"+
+	    	        "<a href='http://localhost/user/setStatus?user="+id+"'><img src='http://localhost/resources/images/mail2.png' width=40%></a><br>"+
+	    	        "</div>"+
+	    	        "</body>"+
+	    	        "</html>";
 	      Properties props = System.getProperties(); 
 	      // 정보를 담기 위한 객체 생성 
 	      // SMTP 서버 정보 설정 

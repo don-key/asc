@@ -51,7 +51,7 @@ public class GanttServiceImpl implements GanttService {
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트에 기능 " + title +"(작업자 : "+worker+") 을 추가했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트에 기능 " + title +" (작업자 : "+worker+") 을(를) 추가했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 	}
@@ -71,7 +71,7 @@ public class GanttServiceImpl implements GanttService {
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + gcl.getTitle() +"(작업자 : "+gcl.getWorker()+") 을 수정했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + gcl.getTitle() +"(작업자 : "+gcl.getWorker()+") 을(를) 수정했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 
@@ -91,7 +91,7 @@ public class GanttServiceImpl implements GanttService {
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을 삭제했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을(를) 삭제했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 		
@@ -107,7 +107,6 @@ public class GanttServiceImpl implements GanttService {
 	@Override
 	public void actionRegister(int projectListNo, ActionChartList actionChartList) {
 		dao.actionRegister(projectListNo, actionChartList);
-		System.out.println("왜 안되냐" + actionChartList);
 		/** 로그 생성 */
 		ProjectList projectList = lobbyDao.getProjectList(projectListNo);
 		User user = userDao.get(actionChartList.getUserNo());
@@ -121,9 +120,9 @@ public class GanttServiceImpl implements GanttService {
 		String content = "";
 		
 		if(status != 1) {
-			content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을 수행하지못했습니다.";
+			content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을(를) 수행하지 못했습니다.";
 		} else {
-			content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을 수행했습니다.";
+			content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + ganttChartList.getTitle() +"(작업자 : "+ganttChartList.getWorker()+") 을(를) 수행했습니다.";
 		}
 		
 		log.setContent(content);

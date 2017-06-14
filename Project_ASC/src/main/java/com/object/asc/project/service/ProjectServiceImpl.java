@@ -50,7 +50,7 @@ public class ProjectServiceImpl implements ProjectService {
 		Log log = new Log();
 		log.setProjectListNo(libraryList.getLibraryNo());
 		log.setUserNo(userNo);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 자료실에 " + libraryList.getFileName() +"을 등록했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 자료실에 " + libraryList.getFileName() +" 을(를) 등록했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 	}
@@ -66,7 +66,7 @@ public class ProjectServiceImpl implements ProjectService {
 		Log log = new Log();
 		log.setProjectListNo(libraryNo);
 		log.setUserNo(libraryList.getUserNo());
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 자료실에 " + libraryList.getFileName() +"을 삭제했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 자료실에 " + libraryList.getFileName() +" 을(를) 삭제했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 		

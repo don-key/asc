@@ -101,7 +101,7 @@ public class LobbyServiceImpl implements LobbyService {
 		log.setProjectListNo(projectJoinNo);
 		log.setUserNo(userDao.userIdFind(user));
 		String userName = userDao.userNameFind(user);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 새로운 프로젝트" + projectList.getProjectName() +"을 생성했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 새로운 프로젝트 " + projectList.getProjectName() +" 을(를) 생성했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 
@@ -253,7 +253,7 @@ public class LobbyServiceImpl implements LobbyService {
 		log.setProjectListNo(projectList.getProjectListNo());
 		log.setUserNo(userDao.userIdFind(user));
 		String userName = userDao.userNameFind(user);
-		String content = "["+projectList.getProjectName()+"] "+ userName +" : 프로젝트" + projectList.getProjectName() +"을 수정했습니다.";
+		String content = "["+projectList.getProjectName()+"] "+ userName +" : 프로젝트 " + projectList.getProjectName() +" 을(를) 수정했습니다.";
 		log.setContent(content);
 		logDao.writeLog(log);
 	}

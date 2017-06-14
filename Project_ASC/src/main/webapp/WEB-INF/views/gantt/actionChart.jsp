@@ -288,7 +288,12 @@ $(document).ready(function(){
 	idealBar.html('이상 >> ' + idealWidth * 1 + '%');
 	
 	var realBar = $("#real"); 
-    var realWidth = ((real/totalCount)*100).toFixed(1);
+    var realWidth = 0;
+    if (real == 0) {
+		realWidth = 0;
+	} else{
+		realWidth = ((real/totalCount)*100).toFixed(1);
+	}
     if (realWidth.length==5) {
     	realWidth = realWidth.toFixed(0);
 	}
@@ -305,7 +310,7 @@ console.log("현실 : " + real);
   		type : "POST",
   		data : {
   			projectListNo : projectListNo,
-  			percent : (real * 1) + '%'
+  			percent : (realWidth * 1) + '%'
   		}
   	});
 

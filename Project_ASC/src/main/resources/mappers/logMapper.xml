@@ -12,4 +12,9 @@ values (null,#{projectListNo},#{userNo}, CONCAT(#{content} , '(', DATE_FORMAT(NO
 
 </insert>
 
+<!-- 로그내역 -->
+
+<select id="listAll" resultType="Log">
+select content from log_list where project_list_no = #{projectListNo} and user_no =#{userNo};
+</select>
 </mapper>

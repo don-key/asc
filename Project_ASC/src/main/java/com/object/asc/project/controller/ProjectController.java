@@ -1,7 +1,5 @@
 package com.object.asc.project.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,6 +37,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.lobby.service.LobbyService;
+import com.object.asc.log.domain.Log;
+import com.object.asc.log.service.LogService;
 import com.object.asc.project.domain.LibraryList;
 import com.object.asc.project.service.ProjectService;
 import com.object.asc.user.domain.User;
@@ -63,6 +63,9 @@ public class ProjectController {
 	
 	@Inject
 	private LobbyService lobbyService;
+	
+	@Inject
+	private LogService logService;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -398,5 +401,17 @@ public class ProjectController {
 		}
 		return entity; 
 	}
+	
+	@RequestMapping(value = "/log/{projectListNo}/{userNo}", method = RequestMethod.GET)
+	public String log(@PathVariable int projectListNo, @PathVariable int userNo, Model model) {
+		
+		Log log = new Log();
+		log.setProjectListNo(projectListNo);
+		log.setUserNo(userNo);
+		List<String> list = logService.logListAll(log);
+		model.addAttribute("list", list);
+		return "/project/log";
+	}
+	
 	
 }

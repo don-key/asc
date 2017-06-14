@@ -1,11 +1,16 @@
 package com.object.asc.log.dao;
 
+import java.util.List;
+
 import com.object.asc.log.domain.Log;
 
 public interface LogDAO {
 	
 	/** 로그기록 */
 	public void writeLog(Log log);
+	
+	/** 로그 리스트 조회 */
+	public List<String> logListAll(Log log);
 	
 	
 }

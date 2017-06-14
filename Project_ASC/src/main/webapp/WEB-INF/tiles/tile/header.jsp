@@ -58,7 +58,7 @@
                          <li id="member">
                             <a href="#"><img src="/resources/images/menu/member.png" style="width: 50%"></a>
                         </li>
-                         <li>
+                         <li id="log">
                             <a href="#"><img src="/resources/images/menu/log.png" style="width: 50%"></a>
                         </li>
                          <li>
@@ -116,6 +116,11 @@ $(function() {
 	$('#member').on('click', function() {
 		event.preventDefault();
 		location.href="/project/member/"+projectListNo;
+	});
+	
+	$('#log').on('click', function() {
+		event.preventDefault();
+		location.href="/project/log/"+projectListNo+"/"+userNo;
 	});
 	
 	$('#taskBoard').on('click', function() {

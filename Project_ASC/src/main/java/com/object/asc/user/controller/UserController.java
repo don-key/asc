@@ -68,7 +68,7 @@ public class UserController {
 		user.setPhoto(uuidName);
 		logger.info(photo.getOriginalFilename());
 		if(photo.getOriginalFilename().equals("")){
-			user.setPhoto("/noimage2.png");
+			user.setPhoto("/asc/noimage2.png");
 		}
 		service.register(user);
 		rttr.addFlashAttribute("message", "success");

@@ -8,7 +8,7 @@
 <!-- 로그기록 -->
 <insert id="writeLog">
 INSERT INTO log_list (log_list_no, project_list_no, user_no, content)
-values (null,#{projectListNo},#{userNo}, CONCAT(#{content} , '(', DATE_FORMAT(NOW(),'%b %d %Y %h:%i %p') ,')' ) )
+values (null,#{projectListNo},#{userNo}, CONCAT(#{content} , '(','##', DATE_FORMAT(NOW(),'%b %d %Y %h:%i %p') ,')' ) )
 
 </insert>
 

@@ -335,9 +335,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/mailSender") 
 	   public String mailSender(@RequestParam("user") String id, HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException { 
-		  logger.info("계정 활성화 테스트");
-		  
-		  String host = "smtp.gmail.com"; 
+		String host = "smtp.gmail.com"; 
 	      final String username = "kosta146146@gmail.com"; 
 	      final String password = "kosta146"; 
 	      int port=465; 
@@ -347,8 +345,8 @@ public class UserController {
 	    	        "<head><title></title></head>"+
 	    	        "<body>"+
 	    	        "<div style='text-align:center;'>"+
-	    	        "<IMG src='http://localhost/resources/images/mail.png' width=50%><br>"+
-	    	        "<a href='http://localhost/user/setStatus?user="+id+"'><img src='http://localhost/resources/images/mail2.png' width=40%></a><br>"+
+	    	        "<IMG src='http://postfiles13.naver.net/MjAxNzA2MTVfMjQg/MDAxNDk3NTA2MTAzMTY5.CzFDfnyPG7dutsdYF8KabA9_ALStZikgPLjxG7kEFvwg.vhxFSJd_gIShKMD9F6mpQRdl_Kk6ZHC1a3NFFOXRAvEg.PNG.a_spree/mail.png?type=w2' width=50%><br>"+
+	    	        "<a href='http://localhost/user/setStatus?user="+id+"'><img src='http://postfiles13.naver.net/MjAxNzA2MTVfMTkx/MDAxNDk3NTA2MTAzNDMx.Q8n_o_gkvkeMhLV_ptC85tDVg_HPYlS2Ajq6Mt-IHTYg.vjN_BmQc7BoVoE2xwUxiSYaR8siXdcnvAhwukHgfwxwg.PNG.a_spree/mail2.png?type=w2' width=40%></a><br>"+
 	    	        "</div>"+
 	    	        "</body>"+
 	    	        "</html>";
@@ -377,8 +375,7 @@ public class UserController {
 	      
 		  rttr.addFlashAttribute("message", "success");
 	      return "redirect:/";
-	     	}
 	
-	
+	}
 }
 

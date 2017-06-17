@@ -98,7 +98,6 @@ public class GanttController {
 			todayDays = -1;
 		}
         
-        System.out.println(77);
         
         
         
@@ -106,6 +105,7 @@ public class GanttController {
         int count3=0;
         /** action chart */
         List<HashMap<String, Object>> actionList = ganttService.actionList(projectListNo);
+        
 		/** 실행일 (몇번째인지) */
 		int[] theDay = new int[actionList.size()];
 		for (HashMap<String, Object> hashMap : actionList) {
@@ -120,7 +120,6 @@ public class GanttController {
 
 
 		
-		/** 나중에 여기 정리하기, 불필요한 addAttribute정리하기!!!! 자바스크립트로 구현해보고 결정 */
 		// 기간
 		model.addAttribute("days", days);
 		// 프젝 시작일
@@ -140,7 +139,7 @@ public class GanttController {
 		model.addAttribute("member", member);
 		
 		
-//		 오늘 동적으로 받아오기
+		//오늘 동적으로 받아오기
 		model.addAttribute("todayDays", todayDays);
 		
 		// 리스트 넘버
@@ -162,6 +161,7 @@ public class GanttController {
 		}
 		
 		
+		/** 간트차트인지 진행차트인지 구분해서 페이지 리턴 */
 		if (type.equals("ganttChart")) {
 			return "/gantt/ganttChart";
 		} else if(type.equals("actionChart")) {
@@ -254,7 +254,7 @@ public class GanttController {
 		return days;
 	}
 	
-	/** 오늘 날짜 받아오는 메소드 (오늘인지 어제인지 구별, X표시위해) */
+	/** 날짜 받아오는 메소드 (오늘인지 며칠전인지 구분해서 날짜 반환) */
 	public Date date (int tOrY){
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

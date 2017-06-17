@@ -160,17 +160,14 @@ $(document).ready(function(){
     	   var count =  ${count};
     	   var listNo = ${gantt.ganttListNo};
     	   var todayCheck = ${todayCheck};
-    	   console.log(todayCheck);
     	   var steps = $('#rightTable').children().next()[count].children[todayDays];
     	       $(steps).css("background-image", "url(/resources/images/gantt/today.png)");
     	       var check = $(steps).css("background-color");
     	       if (check != 'rgba(0, 0, 0, 0)') {
     	    	$(steps).css("cursor", "pointer");
     	    	if ($.inArray((count+1), todayCheck) != -1) {
-    	    		console.log("done" + (count+1));
 				$(steps).addClass("done");					
 				} else {
-    	    		console.log("today" + (count+1));
     	    	$(steps).addClass("today");
 				}
 				$(steps).attr("id",listNo+":"+0);
@@ -315,14 +312,13 @@ function modal(status, listNo, title, worker, startDate, endDate, color){
     	
     	$('#modifyListNo').val(listNo);
     	$('#modifyTitle').val(title);
-    	/** 여기 해결해야함 */
-    	  $('#modifyWorker').each(function(){
-    
-    		    if($(this).val() == worker){
-    		      $(this).attr("selected","selected");
-    		    }
-    
-    		  });
+    	
+    	if (worker == '공통') {
+    	$("#modifyWorker").val('all').prop("selected", true);
+		} else{
+    	$("#modifyWorker").val(worker).prop("selected", true);
+		}
+    	
     	$('#modifyStartDate').val(startDate);
     	$('#modifyEndDate').val(endDate);
     	$('#modifyColor').val(color);
@@ -373,8 +369,6 @@ function registerCheck(){
 	var endDate = $('#endDate').val();
 	var endDateSplit = endDate.split('-');
 	var colorView = $('#color').val();
-	
-	
 	
 	if (title== '' || title.length<1) {
 		swal(
@@ -488,8 +482,6 @@ function modifyCheck(){
 	var endDate = $('#modifyEndDate').val();
 	var endDateSplit = endDate.split('-');
 	var colorView = $('#modifyColor').val();
-	
-	
 	
 	if (title== '' || title.length<1) {
 		swal(
@@ -665,7 +657,6 @@ function considerDate(type, date){
 		
 	return true;
 	
-	
 }
 
 /** 유효성/ 시작날짜 마감날짜 비교 */
@@ -705,7 +696,6 @@ function betweenDate(start, end){
 		
 		
 	return true;
-	
 	
 }
 

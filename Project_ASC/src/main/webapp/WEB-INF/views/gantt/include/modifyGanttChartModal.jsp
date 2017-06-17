@@ -34,9 +34,9 @@
             </div>
             <div class="col-xs-8">
               <select id="modifyWorker" name="modifyWorker" style="width: 100%;">
-                <option>공통</option>
+                <option value="all">공통</option>
                 <c:forEach items="${member}" var="member">
-                  <option>${member }</option>
+                  <option value="${member }">${member }</option>
                 </c:forEach>
               </select>
             </div>

@@ -119,7 +119,7 @@ $(document).ready(function(){
 	   
 	   innerCode += "</tr>";
 	   
-		/** 원래부분 class주기 (x표 표시를 위해서) */
+		/** 일정 기간 부분 class주기 (class로 커서 활성화 비활성화 구분 및 퍼센트 계산을위해) */
 	    <c:forEach items="${ganttList}" var="gantt" varStatus="status">
 	    	innerCode += "<tr>";
 	    	<c:set var="count">${status.index}</c:set>
@@ -148,23 +148,18 @@ $(document).ready(function(){
 	
     $('#rightTable').html(innerCode);
     
-    /** 실행된거 색입히기 */
+    /** 실행된거 색 및 X표시 입히기 */
     <c:forEach items="${actionList}" var="action" varStatus="status">
     <c:set var="count">${status.index}</c:set>
-    console.log("들어는오지?");
 	var theDay = ${theDay[count]};
 	var funcCount = ${action.count}-1;
-	console.log("기능 순서 : " + funcCount);
 	var color = '${action.color}';
     var steps = $('#rightTable').children().next()[funcCount].children[theDay];
     var status = ${action.status};
     if (status == 0) {
-    	console.log("0일때" + funcCount);
     	$(steps).css("background-image", "url(/resources/images/gantt/X.png)");
 		$(steps).css("background-repeat", "no-repeat");
 	} else {
-		console.log("1일때" + funcCount);
-		console.log("1일때" + color);
    		$(steps).css("background-color", color);
    		real++;
 	}
@@ -195,7 +190,7 @@ $(document).ready(function(){
 
 
     
-	/** 안한거 X표 치기 */
+	/** 안한거 -표시 */
     <c:forEach items="${ganttList}" var="gantt" varStatus="status2">
     <c:set var="count2">${status2.index}</c:set>
     var count = ${count2};
@@ -207,7 +202,6 @@ $(document).ready(function(){
 			if (i != todayDays) {
 				var backColor = $(steps).css("background-color");
 				var backgroundImage = $(steps).css("background-image");
-				console.log("배경이미지 : " + backgroundImage);
 				if (backColor == 'rgba(0, 0, 0, 0)' && backgroundImage == 'none') {
 					$(steps).css("background-image", "url(/resources/images/gantt/dash.png)");
 					$(steps).css("background-repeat", "no-repeat");
@@ -286,14 +280,9 @@ $(document).ready(function(){
       	
       });
 	
-	/** progress bar 제어하깅 */
+	/** progress bar 제어하기 */
 	var idealBar = $("#ideal"); 
 	var idealWidth = ((ideal/totalCount)*100).toFixed(1);
-	console.log("몇이냐 : " + idealWidth.length);
-	/** 100%일때는 소수점 안나오게 하기 */
-	if (idealWidth.length==5) {
-		idealWidth = idealWidth.toFixed(0);
-	}
 	idealBar.css("width", idealWidth+'%');
 	idealBar.html('이상 >> ' + idealWidth * 1 + '%');
 	
@@ -303,9 +292,6 @@ $(document).ready(function(){
 		realWidth = 0;
 	} else{
 		realWidth = ((real/totalCount)*100).toFixed(1);
-	}
-    if (realWidth.length==5) {
-    	realWidth = realWidth.toFixed(0);
 	}
     realBar.css("width", realWidth+'%');
     realBar.html('현실 >> ' + realWidth * 1 + '%');

@@ -275,6 +275,18 @@ $(function(){
               $('#registerId').focus();
               return false;
            }	
+
+          var emailpattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+          if(!(emailpattern).test(registerId)){
+      		swal({
+                  title: 'email 형식으로 입력하세요.',
+                  text: 'EX) asc@gmail.com',
+                  type: 'warning',
+                  confirmButtonText: '닫기'
+                })
+            return false;
+      	};
+          
           
           if ($('#display').text() == "이미 사용중인 아이디입니다.") {
               swal({

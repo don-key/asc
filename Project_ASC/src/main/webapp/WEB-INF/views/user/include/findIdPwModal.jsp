@@ -318,12 +318,40 @@ $(function (){
     $(function (){
        $('#newPwBtn').click(function(e){ 
    		var id = $('#newId').val();
-//      	$('#newId').val('');
      	var password = $('#newSetPassword').val();
      		$('#newSetPassword').val('');
    		var rePassword = $('#newRePassword').val();
 	   		$('#newRePassword').val('');
+	   		
        	e.preventDefault();
+       	
+        if (password.length < 1
+                || rePassword.length < 1) {
+             swal({
+                title : '',
+                text : '비밀번호를 입력해주세요.',
+                type : 'warning',
+                confirmButtonText : '닫기'
+             })
+             $('#newSetPassword').focus();
+             return false;
+
+          }
+
+
+          if (password != rePassword) {
+             swal({
+                title : '비밀번호 불일치',
+                text : '비밀번호를 확인해주세요.',
+                type : 'warning',
+                confirmButtonText : '닫기'
+             })
+             $('#newSetPassword').focus();
+             return false;
+          }
+          
+       	
+       	
            $.ajax({
                type : 'GET',
                url : "/user/createNewPw",

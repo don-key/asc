@@ -60,11 +60,9 @@ public class GanttServiceImpl implements GanttService {
 	public void modify(GanttChartList gcl) {
 		
 		dao.modify(gcl);
-		System.out.println("여기라규" + gcl.toString());
 		
 		/** 로그 생성 */
 		int projectListNo = dao.getProjectNoGantt(gcl.getGanttListNo());
-		System.out.println("야야 : " + projectListNo);
 		ProjectList projectList = lobbyDao.getProjectList(projectListNo);
 		int userNo = gcl.getUserNo();
 		User user = userDao.get(userNo);
@@ -72,12 +70,9 @@ public class GanttServiceImpl implements GanttService {
 		
 		Log log = new Log();
 		log.setProjectListNo(projectListNo);
-		System.out.println("여기1 : " + projectListNo);
 		log.setUserNo(userNo);
-		System.out.println("userNo : " + userNo);
 		String content = "["+projectList.getProjectName()+"] "+ userName +" : 간트차트의 기능 " + gcl.getTitle() +"(작업자 : "+gcl.getWorker()+") 을(를) 수정했습니다.";
 		log.setContent(content);
-		System.out.println("content : " + content);
 		logDao.writeLog(log);
 
 	}

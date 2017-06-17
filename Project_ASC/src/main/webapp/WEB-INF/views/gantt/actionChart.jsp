@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style>
-/** CSS는 나중에 뺄거임 */
 a {
 	color: black;
 }
@@ -92,8 +91,7 @@ $(document).ready(function(){
 	
 
 	/** 날짜 출력 */
-	var innerCode = "";
-		innerCode += "<tr>";
+	var innerCode = "<tr>";
 	   for(var i=0; i<days; i++){
 		   if (pStartYear == pEndYear) {
 			   innerCode += "<th>"+pStartMonth+'/'+pStartDay+"</th>";
@@ -102,7 +100,19 @@ $(document).ready(function(){
 			pStartDay = result[1];
 			
 		} else{
-			/** 여기 나중에 꼭 채워넣자!!!!!!!!! */
+			if (pStartMonth == 13) {
+				pStartMonth = 1;
+				pStartYear = pStartYear +1;
+			   innerCode += "<th>"+pStartYear + '/' + pStartMonth+'/'+pStartDay+"</th>";
+				var result = addDay(pStartMonth, pStartDay);
+				pStartMonth = result[0];
+				pStartDay = result[1];
+			} else {
+				   innerCode += "<th>"+pStartMonth+'/'+pStartDay+"</th>";
+					var result = addDay(pStartMonth, pStartDay);
+					pStartMonth = result[0];
+					pStartDay = result[1];
+			}
 			
 		}
 	   }

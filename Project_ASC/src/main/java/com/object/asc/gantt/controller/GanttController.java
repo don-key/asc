@@ -44,8 +44,6 @@ public class GanttController {
 	public String ganttChart(@PathVariable String type, @PathVariable int projectListNo, @PathVariable int userNo, @PathVariable(required=false) String go, Model model) {
 		logger.info("간트 페이지 테스트");
 		
-		/** test 나중에 1 이거 고정으로 넣은거 잊지말고 동적으로 변경하기!!!!!!!!!! 간트리스트랑 프로젝트리스트!!!!!!!!!!!!!!!!!!!!!!*/
-		System.out.println(11);
 		ProjectList projList = lobbyService.projectDate(projectListNo);
 		String[] pStartDate = projList.getStartDate().toString().split("-");
 		String[] pEndDate = projList.getEndDate().toString().split("-");
@@ -55,7 +53,6 @@ public class GanttController {
 		
 		int count = 0;
 		
-		System.out.println(22);
 		/** 기능들 시작일 몇번째인지 */
 		int[] startCount = new int[funcList.size()];
 		for (HashMap<String, Object> func : funcList) {
@@ -64,7 +61,6 @@ public class GanttController {
 				count++;
 		}
 		
-		System.out.println(33);
 		int count2 = 0;
 		
 		
@@ -77,7 +73,6 @@ public class GanttController {
 			count2++;
 		}
 		
-		System.out.println(44);
 		
 		int days = 0;
 		
@@ -89,10 +84,9 @@ public class GanttController {
 		}
 		System.out.println(55);
 		
-		/** 간트 기능 추가 모달에 들어갈 참여 멤버 이름 조회 (동적으로 나중에 바꾸기) */
+		/** 간트 기능 추가 모달에 들어갈 참여 멤버 이름 조회 */
 		List<String> member = lobbyService.memberName(projectListNo);
 		
-		System.out.println(66);
 		/** Today 표현을 위한 오늘 날짜 받아오기 */
 		Date today = date(0);
 		
@@ -107,8 +101,6 @@ public class GanttController {
         System.out.println(77);
         
         
-        /** 동적으로 나중에 */
-//        List<String> todayList = ganttService.todayList(1);
         
         /** action */
         int count3=0;
@@ -121,11 +113,9 @@ public class GanttController {
 			theDay[count3] = calDays(fDate) - calDays(pStartDate) + 365*year;
 			count3++;
 		}
-		System.out.println(88);
         
 		/** 오늘 기능 체크상태 확인 */
 		List<String> todayCheck = ganttService.todayCheck(projectListNo);
-		System.out.println(99);
 		
 
 
@@ -149,8 +139,6 @@ public class GanttController {
 		// 멤버 조회
 		model.addAttribute("member", member);
 		
-		// 간트용 오늘 기능
-//		model.addAttribute("todayList", todayList);
 		
 //		 오늘 동적으로 받아오기
 		model.addAttribute("todayDays", todayDays);
@@ -171,7 +159,6 @@ public class GanttController {
 		
 		if(go != null){
 			model.addAttribute("goDashBoard", go);
-			System.out.println("여기들어와야해");
 		}
 		
 		
@@ -185,18 +172,14 @@ public class GanttController {
 	}
 
 	
-	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 ganttListNo받아오기 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color, Model model){
-		System.out.println("유저넘" + userNo);
-		System.out.println("유저넘" + projectListNo);
 		
 		ganttService.register(projectListNo, userNo, title, worker, startDate, endDate, color);
 		
 		return "redirect:/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	}
 	
-	/** 나중에 @PathVariable로 ganttNo이랑 userNo이랑 받아오기 */
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modify(int projectListNo, int userNo, int modifyListNo, String modifyTitle, String modifyWorker, Date modifyStartDate, Date modifyEndDate, String modifyColor, Model model){
 		GanttChartList gcl = new GanttChartList();
@@ -273,7 +256,6 @@ public class GanttController {
 	
 	/** 오늘 날짜 받아오는 메소드 (오늘인지 어제인지 구별, X표시위해) */
 	public Date date (int tOrY){
-		System.out.println("오늘인가 어제인가 : " + tOrY);
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
@@ -281,7 +263,6 @@ public class GanttController {
 		cal.add(Calendar.DATE, -tOrY);
 		String sdfSql = sdf.format(cal.getTime());
         java.sql.Date date = java.sql.Date.valueOf(sdfSql);
-        System.out.println(date.toString());
         return date;
 	}
 	

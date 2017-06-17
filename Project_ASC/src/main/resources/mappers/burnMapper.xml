@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 네임스페이스(사용영역) 설정 -->
+<mapper namespace="com.object.asc.mapper.BurnMapper">
+
+
+<!-- 스프린트넘버 조회 -->
+<select id="getSprintNo" resultType="hashmap">
+<![CDATA[
+SELECT @num:=@num+1 as count, sprint_no as sprintNo, scrum_no as scrumNo, start_date as startDate, end_date as endDate
+FROM sprint as a, (select @num := 0) as b
+where scrum_no = (select scrum_no
+				  from scrum
+                  where project_list_no = #{projectListNo})
+order by sprint_no asc
+				]]>
+</select>
+
+<!-- 스프린트백로그 조회 -->
+<select id="getSprintBackLog" resultType="hashmap">
+<![CDATA[
+SELECT sprint_back_log_no as sprintBackLogNo, sprint_no as sprintNo, user_story_no as userStoryNo, user_no as userNo, content, status, done_date as doneDate 
+FROM sprint_back_log
+where sprint_no in (SELECT sprint_no
+					FROM sprint
+					where scrum_no = (select scrum_no
+									  from scrum
+									  where project_list_no = #{projectListNo})
+					order by sprint_no asc)
+				]]>
+</select>
+
+
+</mapper>

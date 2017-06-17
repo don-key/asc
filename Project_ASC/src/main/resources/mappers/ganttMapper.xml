@@ -103,7 +103,9 @@ WHERE project_list_no = #{projectListNo}
 <select id="getProjectNoGantt" resultType="int">
 SELECT project_list_no as projectListNo
 FROM gantt_chart
-WHERE gantt_no = #{ganttNo}
+WHERE gantt_no = (select gantt_no
+				  from gantt_chart_list
+				  where gantt_list_no = #{ganttListNo})
 </select>
 
 <!-- 특정한 기능 정보 가져오기 -->

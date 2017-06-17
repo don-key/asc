@@ -52,6 +52,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li id="burnDown">
+                            <a href="#">번다운테스트</a>
+                        </li>
                         <li id="library">
                             <a href="#"><img src="/resources/images/menu/library.png" style="width: 50%"></a>
                         </li>
@@ -118,6 +121,11 @@ $(function() {
 		location.href="/project/member/"+projectListNo;
 	});
 	
+	$('#burnDown').on('click', function() {
+		event.preventDefault();
+		location.href="/burnDown/"+projectListNo+"/"+userNo;
+	});
+	
 	$('#log').on('click', function() {
 		event.preventDefault();
 		location.href="/project/log/"+projectListNo+"/"+userNo;
@@ -125,7 +133,6 @@ $(function() {
 	
 	$('#taskBoard').on('click', function() {
 		event.preventDefault();
-		   var projectListNo = 1;
 		   
 		   
 		   $.ajax({

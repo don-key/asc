@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,7 +38,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +49,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.lobby.service.LobbyService;
-import com.object.asc.log.domain.Log;
 import com.object.asc.log.service.LogService;
 import com.object.asc.project.domain.LibraryList;
 import com.object.asc.project.service.ProjectService;
@@ -430,56 +430,57 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/sendMail/{projectListNo}/{id}/{userNo}") 
-    public String mailSender(@PathVariable int projectListNo, @PathVariable String id, @PathVariable int userNo,HttpServletRequest request, RedirectAttributes rttr, Model model) throws AddressException, MessagingException { 
+    public String mailSender(@PathVariable int projectListNo, @PathVariable String id, @PathVariable int userNo,HttpServletRequest request, RedirectAttributes rttr, Model model) throws AddressException, MessagingException, UnsupportedEncodingException { 
 	  
-	  String host = "smtp.gmail.com"; 
-      final String username = "kosta146146@gmail.com"; 
-      final String password = "kosta146"; 
-      int port=465;
-      String str = "";
-      List<String> list = logService.logListAll(projectListNo, userNo);
-      for (String logContent : list) {
-			StringTokenizer st = new StringTokenizer(logContent, "##");
-			str += st.nextToken() + "　";
-			str += st.nextToken() + "<br>";
-	  }
-      String subject = "수정사항 메일입니다."; 
-      String content = "<html>"+
-    	        "<head><title></title></head>"+
-    	        "<body>"+ str +
-    	        "</body>"+
-    	        "</html>";
-      Properties props = System.getProperties(); 
-      // 정보를 담기 위한 객체 생성 
-      // SMTP 서버 정보 설정 
-      props.put("mail.smtp.host", host); 
-      props.put("mail.smtp.port", port); props.put("mail.smtp.auth", "true"); 
-      props.put("mail.smtp.ssl.enable", "true"); props.put("mail.smtp.ssl.trust", host); 
-      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-         String un=username; 
-         String pw=password; 
-         protected javax.mail.PasswordAuthentication getPasswordAuthentication() { 
-            return new javax.mail.PasswordAuthentication(un, pw); 
-            } 
-         }); 
+		  String host = "smtp.gmail.com"; 
+	      final String username = "kosta146146@gmail.com"; 
+	      final String password = "kosta146"; 
+	      int port=465;
+	      String str = "";
+	      List<String> list = logService.logListAll(projectListNo, userNo);
+	      for (String logContent : list) {
+				StringTokenizer st = new StringTokenizer(logContent, "##");
+				str += st.nextToken() + "　";
+				str += st.nextToken() + "<br>";
+		  }
+	      String subject = "수정사항 메일입니다."; 
+	      String content = "<html>"+
+	    	        "<head><title></title></head>"+
+	    	        "<body>"+ str +
+	    	        "</body>"+
+	    	        "</html>";
+	      Properties props = System.getProperties(); 
+	      // 정보를 담기 위한 객체 생성 
+	      // SMTP 서버 정보 설정 
+	      props.put("mail.smtp.host", host); 
+	      props.put("mail.smtp.port", port); props.put("mail.smtp.auth", "true"); 
+	      props.put("mail.smtp.ssl.enable", "true"); props.put("mail.smtp.ssl.trust", host); 
+	      Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	         String un=username; 
+	         String pw=password; 
+	         protected javax.mail.PasswordAuthentication getPasswordAuthentication() { 
+	            return new javax.mail.PasswordAuthentication(un, pw); 
+	            } 
+	         }); 
 
-      session.setDebug(true); 
-      //for debug 
-      
-      /** 참여 멤버 받아오고 메일 다 보내줌 */
-      List<Map<String, Object>> joinListMap = lobbyService.memberId(projectListNo);
-		for (Map<String, Object> row : joinListMap) {
-			String recipient = (String) row.get("id");
-			Message mimeMessage = new MimeMessage(session); 
-	        mimeMessage.setFrom(new InternetAddress("kosta146146@gmail.com")); 
-	        mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); 
-	        mimeMessage.setSubject(subject); 
-	        mimeMessage.setContent(content, "text/html; charset=utf-8");
-	        Transport.send(mimeMessage); 
-	  } 
-      
-	  rttr.addFlashAttribute("msg", "SUCCESS");
-      return "redirect:/project/log/"+projectListNo+"/"+userNo;
+	      session.setDebug(true); 
+	      //for debug 
+	      
+	      /** 참여 멤버 받아오고 메일 다 보내줌 */
+	      List<Map<String, Object>> joinListMap = lobbyService.memberId(projectListNo);
+			for (Map<String, Object> row : joinListMap) {
+				String recipient = (String) row.get("id");
+				Message mimeMessage = new MimeMessage(session); 
+		        mimeMessage.setFrom(new InternetAddress("kosta146146@gmail.com")); 
+		        mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); 
+		        mimeMessage.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B")); 
+		        mimeMessage.setContent(content, "text/html; charset=utf-8");
+		        Transport.send(mimeMessage); 
+		  } 
+	      
+		  rttr.addFlashAttribute("msg", "SUCCESS");
+	      return "redirect:/project/log/"+projectListNo+"/"+userNo;
+
    }
 	
 	

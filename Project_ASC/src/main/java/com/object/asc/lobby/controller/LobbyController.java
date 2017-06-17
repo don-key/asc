@@ -136,4 +136,10 @@ public class LobbyController {
 		/** 변수명은 나중에 url 정리하기 */
 		return "redirect:/project/dashBoard?projectListNo="+listNo;
 	}
+	
+	@RequestMapping(value="/help", method=RequestMethod.GET)
+	public String help(Model model){
+		
+		return "/lobby/help";
+	}
 }

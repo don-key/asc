@@ -13,6 +13,9 @@
 	<definition name="/lobby/selectProject" extends="Empty">
         <put-attribute name="content" value="/WEB-INF/views/lobby/selectProject.jsp"/>  
     </definition>
+    <definition name="/lobby/help" extends="Empty">
+        <put-attribute name="content" value="/WEB-INF/views/lobby/help.jsp"/>  
+    </definition>
     
 	<definition name="*/*" extends="Layout">
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>

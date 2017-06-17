@@ -1,12 +1,9 @@
 package com.object.asc.user.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.inject.Inject;
@@ -17,6 +14,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -334,8 +332,8 @@ public class UserController {
 	
 	
 	@RequestMapping(value = "/mailSender") 
-	   public String mailSender(@RequestParam("user") String id, HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException { 
-		String host = "smtp.gmail.com"; 
+	   public String mailSender(@RequestParam("user") String id, HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException, UnsupportedEncodingException { 
+		  String host = "smtp.gmail.com"; 
 	      final String username = "kosta146146@gmail.com"; 
 	      final String password = "kosta146"; 
 	      int port=465; 
@@ -346,7 +344,7 @@ public class UserController {
 	    	        "<body>"+
 	    	        "<div style='text-align:center;'>"+
 	    	        "<IMG src='http://postfiles13.naver.net/MjAxNzA2MTVfMjQg/MDAxNDk3NTA2MTAzMTY5.CzFDfnyPG7dutsdYF8KabA9_ALStZikgPLjxG7kEFvwg.vhxFSJd_gIShKMD9F6mpQRdl_Kk6ZHC1a3NFFOXRAvEg.PNG.a_spree/mail.png?type=w2' width=50%><br>"+
-	    	        "<a href='http://localhost/user/setStatus?user="+id+"'><img src='http://postfiles13.naver.net/MjAxNzA2MTVfMTkx/MDAxNDk3NTA2MTAzNDMx.Q8n_o_gkvkeMhLV_ptC85tDVg_HPYlS2Ajq6Mt-IHTYg.vjN_BmQc7BoVoE2xwUxiSYaR8siXdcnvAhwukHgfwxwg.PNG.a_spree/mail2.png?type=w2' width=40%></a><br>"+
+	    	        "<a href='http://52.78.100.100/user/setStatus?user="+id+"'><img src='http://postfiles13.naver.net/MjAxNzA2MTVfMTkx/MDAxNDk3NTA2MTAzNDMx.Q8n_o_gkvkeMhLV_ptC85tDVg_HPYlS2Ajq6Mt-IHTYg.vjN_BmQc7BoVoE2xwUxiSYaR8siXdcnvAhwukHgfwxwg.PNG.a_spree/mail2.png?type=w2' width=40%></a><br>"+
 	    	        "</div>"+
 	    	        "</body>"+
 	    	        "</html>";
@@ -369,7 +367,7 @@ public class UserController {
 	      Message mimeMessage = new MimeMessage(session); 
 	      mimeMessage.setFrom(new InternetAddress("kosta146146@gmail.com")); 
 	      mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient)); 
-	      mimeMessage.setSubject(subject); 
+	      mimeMessage.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B"));
 	      mimeMessage.setContent(content, "text/html; charset=utf-8");
 	      Transport.send(mimeMessage); 
 	      

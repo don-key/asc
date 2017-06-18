@@ -69,7 +69,7 @@
                   <div class="text-right">
                      <input type="hidden" id="projectListNo" value="${projectList.projectListNo}">
                      <a href="#" class="fa fa-pencil modifyIcon">수정</a> 
-                     <a href="/lobby/deleteProject?projectListNo=${projectList.projectListNo}" id="deleteIcon" class="fa fa-trash-o">삭제</a>
+                     <a href="#" id="deleteIcon" class="fa fa-trash-o deleteIcon">삭제</a>
                   </div>
                   </c:if>
                </div> 
@@ -88,9 +88,32 @@
 <jsp:include page="include/modifyProjectModal.jsp" />
 
 <script>
+
+$('.deleteIcon').on('click', function() {
+	var projectListNo = $(this).prev().prev().val();
+	swal({
+		  title: '프로젝트를 삭제하시겠습니까?',
+		  text: "한번 삭제된 프로젝트는 돌이킬 수 없습니다.",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: "Delete!",
+		}).then(function () {
+		  swal(
+		    'Deleted!',
+		    '프로젝트 삭제 완료!',
+		    'success'
+		  ).then(function () {
+				location.href="/lobby/deleteProject?projectListNo="+ projectListNo;
+			});
+		});
+});
+
 setTimeout(function() {
 	$('#loding').fadeOut();	
-}, 3000);
+}, 1500);
+
 </script>
 
 

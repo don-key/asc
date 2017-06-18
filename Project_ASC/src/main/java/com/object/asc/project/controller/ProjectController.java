@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -236,7 +238,8 @@ public class ProjectController {
 	@RequestMapping(value = "/member/{projectListNo}", method = RequestMethod.GET)
 	public String member(@PathVariable int projectListNo, Model model) {
 		logger.info("참여 인원 테스트");
-		
+		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		Calendar cal = Calendar.getInstance();
 		String status = null;
 		int index = 0;
 		Map<Integer, List<String>> map = new HashMap<Integer, List<String>>();
@@ -249,7 +252,11 @@ public class ProjectController {
 			String name = (String) row.get("name");
 			String phone = (String) row.get("phone");
 			String photo = (String) row.get("photo");
-			Date recentLogin = (Date) row.get("recentLogin");
+			row.get("recentLogin");
+			cal.setTime((Date) row.get("recentLogin"));
+			cal.add(Calendar.HOUR, -9);
+			String recentLogin = sdformat.format(cal.getTime());
+			
 			int stautsInt = (int) row.get("status");
 			if(stautsInt == 1) status = "스크럼";
 			else status = "팀원";
@@ -261,6 +268,8 @@ public class ProjectController {
 			joinList.add(status);
 			map.put(index, joinList);
 			index++;
+			System.out.println(row.get("recentLogin"));
+			System.out.println(recentLogin);
 		}
 		model.addAttribute("map", map);
 		return "/project/member";

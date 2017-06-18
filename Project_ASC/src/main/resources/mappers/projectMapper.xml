@@ -110,7 +110,7 @@
 	<![CDATA[
 		select title
 		from gantt_chart_list
-		where start_date <= now() and end_date >= now() and gantt_no= #{projectListNo}  and (worker=#{worker} or worker='공통');
+		where start_date <= date(now()) and end_date >= date(now()) and gantt_no= #{projectListNo}  and (worker=#{worker} or worker='공통');
 	]]>
 	</select>
 	

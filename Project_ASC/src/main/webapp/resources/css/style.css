@@ -52,13 +52,9 @@ input, button {
 }
 
 .demo {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  margin-left: 37rem;
-  margin-top: -27.5rem;
+  float: right;
   width: 37rem;
-  height: 103%;
+  height: 100%;
   overflow: hidden;
 }
 

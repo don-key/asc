@@ -12,4 +12,10 @@ public interface BurnDownService {
 	/** 스프린트백로그 조회 */
 	public List<HashMap<String, Object>> getSprintBackLog(int projectListNo);
 	
+	/** 스프린트백로그 개수 조회 */
+	public int backLogCount (int sprintNo);
+	
+	/** 스프린트백로그 끝난날 조회 */
+	public List<String> doneDate (int sprintNo);
+	
 }

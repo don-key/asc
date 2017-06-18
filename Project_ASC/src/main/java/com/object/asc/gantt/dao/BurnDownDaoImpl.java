@@ -26,4 +26,14 @@ public class BurnDownDaoImpl implements BurnDownDao {
 		return sqlSession.selectList(namespace+".getSprintBackLog", projectListNo);
 	}
 
+	@Override
+	public int backLogCount(int sprintNo) {
+		return sqlSession.selectOne(namespace + ".backLogCount", sprintNo);
+	}
+
+	@Override
+	public List<String> doneDate(int sprintNo) {
+		return sqlSession.selectList(namespace+".doneDate", sprintNo);
+	}
+
 }

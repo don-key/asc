@@ -25,4 +25,14 @@ public class BurnDownServiceImpl implements BurnDownService {
 		return dao.getSprintBackLog(projectListNo);
 	}
 
+	@Override
+	public int backLogCount(int sprintNo) {
+		return dao.backLogCount(sprintNo);
+	}
+
+	@Override
+	public List<String> doneDate(int sprintNo) {
+		return dao.doneDate(sprintNo);
+	}
+
 }

@@ -331,6 +331,13 @@ public class UserController {
 	}
 	
 	
+	/** 회원가입시 입력한 아이디(메일주소)로 인증확인을 위한 메일을 보낸다. */
+	/** 기능 : 회원가입 등록 모달(뷰 페이지)에서 submit을 하면, 컨트롤러를 통해서 메일전송을 하는 메소드를 실행한다. */
+	/** 기능을 위해 필요한 것 : 1. pom.xml에서 메일을 보내기위한 dependency를 등록한다. 
+								2. 정보(발신자의 메일주소, 비밀번호, 메일 포트번호)를 담기 위한 객체를 생성하고, 
+								실제 메일을 보내는 역할을 하는 SMTP 서버 정보를 설정한다. */
+	  
+
 	@RequestMapping(value = "/mailSender") 
 	   public String mailSender(@RequestParam("user") String id, HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException, UnsupportedEncodingException { 
 		  String host = "smtp.gmail.com"; 

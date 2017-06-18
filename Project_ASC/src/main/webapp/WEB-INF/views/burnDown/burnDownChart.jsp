@@ -103,6 +103,24 @@
     </script>
     
  <script>
+    /** 백로그 기울기처리 (y=-x(날짜)+개수) */
+    function slope(duration, backLog){
+    	/** double 형으로 변환하기(나누면 정수만 나오는거 막고, 기울기 분수처리위해) */
+    	var DBackLog = parseFloat(backLog);
+    	var slope = DBackLog/(duration-1);
+    	var array = new Array(duration);
+    	array[0] = backLog;
+    	for (var i = 1; i < array.length; i++) {
+    		/** 나름대로 정확성을 위해 소수점 7자리까지계산 (출력은 1자리까지) */
+			array[i] = (DBackLog - slope).toFixed(7);
+			DBackLog = array[i];
+		}
+    	
+        return array;
+      }
+</script>
+
+ <script>
     /** 날짜 올려주는 함수 */
     function addDay(month, day){
         switch (month) {
@@ -138,24 +156,6 @@
           break;
         }
         return [month, day];
-      }
-</script>
-
- <script>
-    /** 백로그 기울기처리 (y=-x(날짜)+개수) */
-    function slope(duration, backLog){
-    	/** double 형으로 변환하기(나누면 정수만 나오는거 막고, 기울기 분수처리위해) */
-    	var DBackLog = parseFloat(backLog);
-    	var slope = DBackLog/(duration-1);
-    	var array = new Array(duration);
-    	array[0] = backLog;
-    	for (var i = 1; i < array.length; i++) {
-    		/** 나름대로 정확성을 위해 소수점 7자리까지계산 (출력은 1자리까지) */
-			array[i] = (DBackLog - slope).toFixed(7);
-			DBackLog = array[i];
-		}
-    	
-        return array;
       }
 </script>
 

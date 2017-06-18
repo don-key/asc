@@ -162,6 +162,11 @@
     
     
 <div id="page-wrapper">
+  <div class="row">
+    <div class="col-lg-12">
+      <br> <img alt="" src="/resources/images/header/burnDown.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
+    </div>
+  </div>
   <c:forEach items="${duration}" var="duration" varStatus="status">
     <div id="curve_chart${status.index}" style="height: 600px" ></div>
 </c:forEach>

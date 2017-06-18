@@ -40,6 +40,9 @@
                         <li id="ganttChart">
                             <a href="#"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
+                        <li id="burnDown">
+                            <a href="#"><img src="/resources/images/menu/burnDown.png" style="width: 50%"></a>
+                        </li>
                         <li id="scrum">
                             <a href="#"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -51,9 +54,6 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
-                        </li>
-                        <li id="burnDown">
-                            <a href="#">번다운테스트</a>
                         </li>
                         <li id="library">
                             <a href="#"><img src="/resources/images/menu/library.png" style="width: 50%"></a>

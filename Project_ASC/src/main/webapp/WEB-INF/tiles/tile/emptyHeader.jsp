@@ -14,11 +14,22 @@
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
 .profile img {height:70px; width:70px;}
+.sidebar .sidebar-nav.navbar-collapse{
+  overflow: hidden;
+  border: 1px solid #354555;  
+}
 </style>
 
  <!-- Navigation -->
-            <nav class="navbar-default sidebar" role="navigation" style="background-color: #354555">
-                <div class="sidebar-nav navbar-collapse">
+            <nav class="navbar-default sidebar"  style="background-color: #354555">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar2">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+            </div>
+                <div class="sidebar-nav navbar-collapse" id="myNavbar2">
                     <a href="/lobby/selectProject"><img src="/resources/images/logo.png" style="width:250px"></a>
                     
                     <div class="row" id="modalWrapper">
@@ -32,7 +43,7 @@
 		                </div>
                     </div>
                     
-                </div>
+                
                 <form action="/user/logout" id="logout">
                 <ul class="nav" id="side-menu" style="margin-top: 15px">
                         <li id="help">
@@ -43,7 +54,7 @@
                         </li>
                 </ul>
                 </form>
-                
+                </div>
                 <!-- /.sidebar-collapse -->
             </nav>
             <!-- /.navbar-static-side -->

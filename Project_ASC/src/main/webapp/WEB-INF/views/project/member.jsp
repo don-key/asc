@@ -23,7 +23,7 @@
 				<img alt="" src="/resources/images/header/member.png" style="margin-left: auto; margin-right: auto; display: block; width: 20%">
 			</div> 
          <c:forEach items="${map}" var="projectList" varStatus="status">
-				<div class="col-xs-6 col-sm-6 " style="padding:0px 0px;">
+				<div class="col-xs-6 col-sm-6 " style="padding:0px 0px; margin-left:20%">
 					<div class="col-offset-xs-3 col-xs-2 col-sm-2">
 						<div class="profile" style="margin-left: 0px"><img src="/resources/images/upload/${map[status.index].get(3)}"></div>
 					</div> 

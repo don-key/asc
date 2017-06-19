@@ -15,11 +15,23 @@
 <style>
 .profile {width:70px; height:70px; border-radius:70px; overflow:hidden; margin-left: 70%; float: left;}
 .profile img {height:70px; width:70px;}
+.sidebar .sidebar-nav.navbar-collapse{
+  overflow: hidden;
+  border: 1px solid #354555;  
+}
 </style>
 
  <!-- Navigation -->
-            <nav class="navbar-default sidebar" role="navigation" style="background-color: #354555">
-                <div class="sidebar-nav navbar-collapse">
+            <nav class="navbar-default sidebar" style="background-color: #354555">
+            
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar2">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                </button>
+            </div>
+                <div class="sidebar-nav navbar-collapse" id="myNavbar2">
                     <a href="/lobby/selectProject"><img src="/resources/images/logo.png" style="width:250px"></a>
                     
                     <div class="row" id="modalWrapper">
@@ -41,7 +53,7 @@
                             <a href="#"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
                         <li id="burnDown">
-                            <a href="#"><img src="/resources/images/menu/burnDown.png" style="width: 50%"></a>
+                            <a href="#"><img src="/resources/images/menu/burnDown.png" style="width: 63%"></a>
                         </li>
                         <li id="scrum">
                             <a href="#"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
@@ -123,7 +135,7 @@ $(function() {
 	
 	$('#burnDown').on('click', function() {
 		event.preventDefault();
-		location.href="/burnDown/"+projectListNo+"/"+userNo;
+		location.href="/burnDown/chart/"+projectListNo+"/"+userNo;
 	});
 	
 	$('#log').on('click', function() {
@@ -144,7 +156,7 @@ $(function() {
 	           },
 	           success:function(request){
 	              console.log(request.value);
-	        	   location.href="http://localhost:4567/taskBoard/"+projectListNo+"/"+request+"/"+userNo;
+	        	   location.href="http://52.78.100.100:4567/taskBoard/"+projectListNo+"/"+request+"/"+userNo;
 	           }
 	           
 	       });
@@ -152,7 +164,7 @@ $(function() {
 	   
    $('#releasePlanning').on('click', function() {
 	   event.preventDefault();
-       location.href="http://localhost:4567/releasePlanning/"+projectListNo+"/"+userNo;
+       location.href="http://52.78.100.100:4567/releasePlanning/"+projectListNo+"/"+userNo;
     });
 });
 </script>

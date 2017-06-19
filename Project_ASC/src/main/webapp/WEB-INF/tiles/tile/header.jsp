@@ -53,7 +53,7 @@
                             <a href="#"><img src="/resources/images/menu/gantt.png" style="width: 50%"></a>
                         </li>
                         <li id="burnDown">
-                            <a href="#"><img src="/resources/images/menu/burnDown.png" style="width: 50%"></a>
+                            <a href="#"><img src="/resources/images/menu/burnDown.png" style="width: 63%"></a>
                         </li>
                         <li id="scrum">
                             <a href="#"><img src="/resources/images/menu/scrum.png" style="width: 50%"><span class="fa arrow"></span></a>
@@ -135,7 +135,7 @@ $(function() {
 	
 	$('#burnDown').on('click', function() {
 		event.preventDefault();
-		location.href="/burnDown/"+projectListNo+"/"+userNo;
+		location.href="/burnDown/chart/"+projectListNo+"/"+userNo;
 	});
 	
 	$('#log').on('click', function() {

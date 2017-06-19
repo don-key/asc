@@ -38,7 +38,7 @@ public class BurnDownController {
 	private LobbyService lobbyService;
 	
 
-	@RequestMapping(value = {"/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"/chart/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
 	public String ganttChart(@PathVariable int projectListNo, @PathVariable int userNo, Model model) {
 		logger.info("번다운차트 페이지 테스트");
 		

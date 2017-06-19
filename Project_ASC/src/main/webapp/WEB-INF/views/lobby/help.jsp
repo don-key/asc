@@ -14,11 +14,13 @@
                         <div class="panel-body">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#lobby" data-toggle="tab" style="color:black">로비</a>
+                                <li class="active"><a href="#users" data-toggle="tab" style="color:black">회원</a>
                                 </li>
-                                <li><a href="#dashBoard" data-toggle="tab" style="color:black">대쉬보드</a>
+                                <li><a href="#lobby" data-toggle="tab" style="color:black">로비</a>
                                 </li>
                                 <li><a href="#ganttChart" data-toggle="tab" style="color:black">간트차트</a>
+                                </li>
+                                <li><a href="#burnDown" data-toggle="tab" style="color:black">번다운차트</a>
                                 </li>
                                 <li><a href="#scrum" data-toggle="tab" style="color:black">스크럼</a>
                                 </li>
@@ -30,19 +32,34 @@
 
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div class="tab-pane fade in active" id="lobby">
+                                <div class="tab-pane fade in active" id="users">
                                 <br>
-                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/VQtonf1fv_s?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=VQtonf1fv_s" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/fEDmYTlNGtI?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=fEDmYTlNGtI" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
                                 </div>
-                                <div class="tab-pane fade" id="dashBoard">
+                                <div class="tab-pane fade" id="lobby">
+                                <br>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/cpddktuTK2E?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=cpddktuTK2E" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
                                 </div>
                                 <div class="tab-pane fade" id="ganttChart">
+                                <br>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/U-RdT5RLiks?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=U-RdT5RLiks" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
                                 </div>
+                                <div class="tab-pane fade" id="burnDown">
+                                <br>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/zPhVBc4aqNM?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=zPhVBc4aqNM" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
+                                </div>
+
                                 <div class="tab-pane fade" id="scrum">
+                                <br>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/_pDXm3T9ReE?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=_pDXm3T9ReE" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
                                 </div>
                                 <div class="tab-pane fade" id="community">
+                                <br>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/mrSs6BjzV-M?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=mrSs6BjzV-M" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
                                 </div>
                                 <div class="tab-pane fade" id="log">
+                                <br>
+                                    <p style="TEXT-ALIGN: center"><iframe height="480" src="https://www.youtube.com/embed/0IPo2iSezjg?amp;rel=0&amp;autoplay=0&amp;loop=0;playlist=0IPo2iSezjg" frameborder="0&quot;" width="853" allowfullscreen=""></iframe></p>
                                 </div>
                             </div>
                         </div>

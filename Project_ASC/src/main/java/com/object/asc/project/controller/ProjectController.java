@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
+import org.eclipse.core.internal.resources.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -447,12 +448,13 @@ public class ProjectController {
 	      int port=465;
 	      String str = "";
 	      List<String> list = logService.logListAll(projectListNo, userNo);
+	      ProjectList projectList = lobbyService.getProjectList(projectListNo);
 	      for (String logContent : list) {
 				StringTokenizer st = new StringTokenizer(logContent, "##");
 				str += st.nextToken() + "　";
 				str += st.nextToken() + "<br>";
 		  }
-	      String subject = "수정사항 메일입니다."; 
+	      String subject = "["+projectList.getProjectName()+"]프로젝트의 수정사항 메일입니다."; 
 	      String content = "<html>"+
 	    	        "<head><title></title></head>"+
 	    	        "<body>"+ str +

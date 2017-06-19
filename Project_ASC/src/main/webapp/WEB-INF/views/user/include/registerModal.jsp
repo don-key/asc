@@ -105,7 +105,8 @@
 							</div>
 
 							<div class="col-xs-4 col-sm-4">
-								<input id="imgSelect" type="file" class="form-control placeholder" name="fileupload" accept=".jpg,.jpeg,.png,.gif" />
+                                <button id="fileBtn" class="btn btn-primary" style="background-color:#354555; border:#354555; margin:7px 7px;">파일선택</button>
+								<input id="imgSelect" type="file" style="display:none;" class="form-control placeholder" name="fileupload" accept=".jpg,.jpeg,.png,.gif" />
                                 <input type="hidden"  id="uuidName"  name="uuidName">
                                 <input type="hidden"  id="displayName"  name="displayName">
 							</div>
@@ -134,11 +135,15 @@
 
 <script>
 
-
+	/* 파일버튼 CSS*/
+	$("#fileBtn").on('click', function(){
+		event.preventDefault();
+	   $("#imgSelect").trigger('click');
+	});
+	
 	/** 파일 썸네일 띄우기*/
-	   $("#imgSelect").on("change", function(e) {
+	  $("#imgSelect").on("change", function(e) {
       e.preventDefault();
-      
       var upload = $('#imgSelect');
       console.log(upload);
       // 전달된 파일 데이터를 가져오는 부분

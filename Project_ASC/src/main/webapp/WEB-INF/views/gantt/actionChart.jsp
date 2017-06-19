@@ -25,7 +25,7 @@ td, th {
 	overflow-x: auto;
 }
 
-/** 기능 목록 css */
+/** 일정 목록 css */
 .ganttEffect th::before, .ganttEffect th::after {
 	display: inline-block;
 	opacity: 0;

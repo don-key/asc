@@ -25,7 +25,7 @@ td, th {
 	overflow-x: auto;
 }
 
-/** 기능 목록 css */
+/** 일정 목록 css */
 .ganttEffect th::before, .ganttEffect th::after {
 	display: inline-block;
 	opacity: 0;
@@ -122,7 +122,7 @@ $(document).ready(function(){
 	   innerCode += "</tr>";
 	   
 	   
-	/** 기능(색) 출력 */
+	/** 일정(색) 출력 */
     <c:forEach items="${ganttList}" var="gantt" varStatus="status">
     	innerCode += "<tr>";
     	<c:set var="count">${status.index}</c:set>
@@ -247,7 +247,7 @@ $(document).ready(function(){
     $(".done").on("click",function(){
     	swal(
     			  '실행 여부 체크',
-    			  '이미 체크된 기능입니다.',
+    			  '이미 체크된 일정입니다.',
     			  'success'
     			);
       });
@@ -301,7 +301,7 @@ function addDay(month, day){
 		return [month, day];
 	}
 	
-/** 기능 모달에 값 넣어주기 */
+/** 일정 모달에 값 넣어주기 */
 function modal(status, listNo, title, worker, startDate, endDate, color){
 	if (status == 'view') {
     	$('#viewTitle').html(title);
@@ -336,14 +336,14 @@ function modal(status, listNo, title, worker, startDate, endDate, color){
 }
 
 
-/** 기능 삭제 버튼 누를때 */
+/** 일정 삭제 버튼 누를때 */
 function deleteFunction(){
 	var listNo = $('#modifyListNo').val();
 	var userNo = ${login.userNo};
 	var projectListNo = location.pathname.split('/')[3];
 	swal({
 		  title: 'Are you sure?',
-		  text: "한번 삭제된 기능은 돌이킬 수 없습니다.",
+		  text: "한번 삭제된 일정은 돌이킬 수 없습니다.",
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
@@ -352,7 +352,7 @@ function deleteFunction(){
 		}).then(function () {
 		  swal(
 		    'Deleted!',
-		    '기능삭제 완료!',
+		    '일정삭제 완료!',
 		    'success'
 		  ).then(function () {
 				location.href="/gantt/delete/"+listNo+"/"+projectListNo+"/"+userNo;

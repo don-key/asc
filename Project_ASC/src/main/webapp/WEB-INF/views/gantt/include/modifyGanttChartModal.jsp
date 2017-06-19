@@ -14,7 +14,7 @@
         <input type="hidden" name="userNo" value="${userNo}">
         <div class="modal-header" style="background: #354555; color: #ffffff;">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title" style="font-weight: bolder;">간트차트 기능 수정</h4>
+          <h4 class="modal-title" style="font-weight: bolder;">간트차트 일정 수정</h4>
         </div>
 
         <div class="modal-body">

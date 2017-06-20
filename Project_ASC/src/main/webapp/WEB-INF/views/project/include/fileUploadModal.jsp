@@ -44,10 +44,11 @@
 
 					<div class="row">
 						<div class="col-xs-2 col-xs-offset-1">
-							<label style="font-size: 15px;">파일 선택</label>
+							<label style="font-size: 15px;" >파일 선택</label>
 						</div>
 						<div class="col-xs-8">
-							<input type="file" class="fileSelect" id="fileSelect" name="file" style="width: 100%">
+                            <button id="fileBtn" class="btn btn-primary" style="background-color:#354555; margin:-4px 2px; border:#354555;">파일선택</button>
+							<input type="file" class="fileSelect" style="display:none;" id="fileSelect" name="file" style="width: 100%">
 							<input type="hidden"  id="uuidName"  name="uuidName">
 							<input type="hidden"  id="displayName"  name="displayName">
 							<input type="hidden"  id="userNo"  name="userNo" value="${login.userNo }">
@@ -73,6 +74,13 @@
 </div>
 
 <script>
+/** 파일선택 CSS*/
+$("#fileBtn").on('click', function(){
+	event.preventDefault();
+   $("#fileSelect").trigger('click');
+});
+
+
 $(function() {
 	var userNo = ${login.userNo};
 	var projectListNo = location.pathname.split('/')[3];

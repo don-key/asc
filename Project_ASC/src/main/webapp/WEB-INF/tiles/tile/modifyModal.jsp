@@ -121,7 +121,8 @@ if (message == 'success') {
 							<label class="regist_label">사진</label>
 						</div>
 						<div class="col-xs-6 col-sm-6">
-							<input id="mImgSelect" type="file" class="form-control placeholder" id="photo" name="fileupload" accept=".jpg,.jpeg,.png,.gif"/>
+                            <button id="fileBtn" class="btn btn-primary" style="background-color:#354555; border:#354555; margin:1px 1px;">파일선택</button>
+							<input id="mImgSelect" type="file" style="display:none;" class="form-control placeholder" id="photo" name="fileupload" accept=".jpg,.jpeg,.png,.gif"/>
                             <input type="hidden"  id="mUuidName"  name="uuidName">
                             <input type="hidden"  id="mDisplayName"  name="displayName">						
                         </div>
@@ -150,6 +151,12 @@ if (message == 'success') {
 </form>
 
 <script>
+
+/* 파일버튼 CSS*/
+$("#fileBtn").on('click', function(){
+	event.preventDefault();
+   $("#mImgSelect").trigger('click');
+});
 
 /** 파일 썸네일 띄우기*/
 $("#mImgSelect").on("change", function(e) {

@@ -20,14 +20,12 @@ public class ScrumController {
 
 	@RequestMapping(value = "/taskBoard", method = RequestMethod.GET)
 	public String taskBoard(Locale locale, Model model) {
-		logger.info("태스크보드 테스트");
 		
 		return "/scrum/taskBoard";
 	}
 	
 	@RequestMapping(value = "/releasePlanning", method = RequestMethod.GET)
 	public String release(Locale locale, Model model) {
-		logger.info("릴리즈카테고리 테스트");
 		
 		return "/scrum/releasePlanning";
 	}

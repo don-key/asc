@@ -25,8 +25,6 @@ if (message == 'success') {
 });
 
 
-
-
 </script> 
 
 <!-- Modal -->
@@ -403,6 +401,5 @@ $(function() {
              })
    });
 });
-
 
 </script>

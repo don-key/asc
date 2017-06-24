@@ -1,6 +1,5 @@
 package com.object.asc.gantt.controller;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -40,7 +39,6 @@ public class BurnDownController {
 
 	@RequestMapping(value = {"/chart/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
 	public String ganttChart(@PathVariable int projectListNo, @PathVariable int userNo, Model model) {
-		logger.info("번다운차트 페이지 테스트");
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		Calendar cal = Calendar.getInstance();
@@ -84,7 +82,6 @@ public class BurnDownController {
 			
 			// 배열 초기화
 			int[] amount = new int[duration[count]];
-			System.out.println("배열길이 : " + duration[count]);
 			for (int i = 0; i < amount.length; i++) {
 				amount[i] = 0;
 			}
@@ -94,10 +91,8 @@ public class BurnDownController {
 			
 			for (String string : doneDateDB) {
 				String[] doneDate = string.split("-");
-				System.out.println("스프린트 시작일이겠지? : "+ startDate[0]+"/"+startDate[1]+"/"+startDate[2]);
 				int year2 = Integer.parseInt(doneDate[0]) - Integer.parseInt(startDate[0]);
 				int where = calDays(doneDate) - calDays(startDate) + 365*year2 +1;
-				System.out.println("며칠간거냐.." + where);
 				amount[where-1]++;
 			}
 			
@@ -112,24 +107,11 @@ public class BurnDownController {
 			
 			
 			doneDateList.add(amount);
-			
-			for (int i = 0; i < amount.length; i++) {
-				System.out.println("날짜별 수량 : " + amount[i]);
-			}
-			
-			
-			
 
 			count++;
-			System.out.println("스프린트리스트 : " + hashMap.toString());
 		}
 		
 		List<HashMap<String, Object>> sprintBLogList = burnDownService.getSprintBackLog(projectListNo);
-		for (HashMap<String, Object> hashMap : sprintBLogList) {
-			System.out.println("스프린트백로그리스트 : " + hashMap.toString());
-		}
-		
-
 		
 		// 스프린트넘버
 		model.addAttribute("sprint", sprintNoList);
@@ -148,7 +130,6 @@ public class BurnDownController {
 		
 		// 날짜별 수량 체크
 		model.addAttribute("doneDateList", doneDateList);
-		
 		
 		
 		return "/burnDown/burnDownChart";
@@ -173,8 +154,5 @@ public class BurnDownController {
 		}
 		return days;
 	}
-	
-	
-
 
 }

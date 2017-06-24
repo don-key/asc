@@ -113,7 +113,6 @@ $(document).ready(function(){
 	    		var color = "${gantt.color }";
 	    		if (i == startCount) {
 	    			var duration = ${duration[count]};
-	    			console.log("duration : " + duration);
 	    			for (var j = 0; j < duration; j++) {
 	    			innerCode += "<td class='distance'>&nbsp;</td>";
 					}
@@ -127,16 +126,9 @@ $(document).ready(function(){
 			}
 	    	innerCode += "</tr>";
 	    </c:forEach>
-	   
-	   
-
 	
     $('#rightTable').html(innerCode);
 
-    	
-
-    
-	  
 });
 
 
@@ -180,13 +172,7 @@ function addDay(month, day){
     return [month, day];
   }
   
-
-
-  
 </script>
-
-
-	
 
 <div id="page-wrapper">
   <div class="row">
@@ -201,8 +187,6 @@ function addDay(month, day){
   </div>
 
   <br>
-
-
 
   <div id="total_div">
     <div style="display: flex; overflow-x: auto; white-space: nowrap;">
@@ -241,14 +225,4 @@ function addDay(month, day){
             ${action.color }</div>
         </c:forEach>
   </div>
-
-
 </div>
-
-
-
-
-
-
-
-

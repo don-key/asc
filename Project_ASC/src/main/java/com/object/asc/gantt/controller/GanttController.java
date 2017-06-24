@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
@@ -42,7 +41,6 @@ public class GanttController {
 
 	@RequestMapping(value = {"/{type}/{projectListNo}/{userNo}","/{type}/{projectListNo}/{userNo}/{go}"}, method = RequestMethod.GET)
 	public String ganttChart(@PathVariable String type, @PathVariable int projectListNo, @PathVariable int userNo, @PathVariable(required=false) String go, Model model) {
-		logger.info("간트 페이지 테스트");
 		
 		ProjectList projList = lobbyService.projectDate(projectListNo);
 		String[] pStartDate = projList.getStartDate().toString().split("-");
@@ -73,7 +71,6 @@ public class GanttController {
 			count2++;
 		}
 		
-		
 		int days = 0;
 		
 		
@@ -99,8 +96,6 @@ public class GanttController {
 		}
         
         
-        
-        
         /** action */
         int count3=0;
         /** action chart */
@@ -116,8 +111,6 @@ public class GanttController {
         
 		/** 오늘 기능 체크상태 확인 */
 		List<String> todayCheck = ganttService.todayCheck(projectListNo);
-		
-
 
 		
 		// 기간
@@ -230,8 +223,6 @@ public class GanttController {
 		return "/gantt/actionChart";
 		
 	}
-	
-	
 
 	
 	/** 일수 계산해주는 메소드 */
@@ -265,6 +256,5 @@ public class GanttController {
         java.sql.Date date = java.sql.Date.valueOf(sdfSql);
         return date;
 	}
-	
 
 }

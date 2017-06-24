@@ -54,14 +54,12 @@ public class UserController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String release(Locale locale, Model model) {
-		logger.info("모야모야 테스트");
 		
 		return "/index";
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, RedirectAttributes rttr) {
-		logger.info("회원가입 테스트");
 		
 		user.setPhoto(uuidName);
 		logger.info(photo.getOriginalFilename());
@@ -83,7 +81,6 @@ public class UserController {
 		String result = "";
 		
 	      try {
-	    	  logger.info("아이디 중복체크 테스트");
 	    	  
 	    	  boolean name = service.idCheck(registerId);
 	    	  
@@ -104,7 +101,6 @@ public class UserController {
 	
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public void get(User user){
-		logger.info("가입정보 불러오기 테스트");
 		
 		service.get(user.getUserNo());
 		
@@ -112,7 +108,6 @@ public class UserController {
 	
 	@RequestMapping(value="/setStatus")
 	public String setStatus(@RequestParam("user")String id, RedirectAttributes rttr){
-		logger.info("계정 활성화 테스트");
 		
 		service.setStatus(id);
 		
@@ -123,7 +118,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
-		logger.info("회원수정 테스트");
 		
 		if(photo.getOriginalFilename().equals("")){
 			user.setPhoto("/asc/noimage2.png");
@@ -176,10 +170,7 @@ public class UserController {
 		ResponseEntity<User> entity = null;
 		User user = null;
 		
-		logger.info("회원수정 정보 모달 테스트");
-
 		try {
-			
 			user = service.get(userNo);
 			
 			entity = new ResponseEntity<User>(user, HttpStatus.OK);
@@ -213,7 +204,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session ) {
-		logger.info("로그아웃하자~~");
 		
 		Object obj = session.getAttribute("login");
 		
@@ -255,8 +245,6 @@ public class UserController {
 		String userPw = loginUser.getPassword();
 		  try {
 	    	  
-	    	  logger.info("탈퇴합니다~~");
-	    		  
 	    	/**회원 비번이랑 입력한 비번이랑 다르면*/  
 	    	  if(!password.equals(userPw)){
 	    		  result="fail";
@@ -281,8 +269,6 @@ public class UserController {
 		ResponseEntity<String> entity = null;
 	      
 	      try {
-	    	  logger.info("아이디 찾아준다");
-	    	  
 	    	  String returnId = service.findId(name, phone);
 	    	  entity = new ResponseEntity<String>(returnId, HttpStatus.OK);
 	    	  
@@ -299,8 +285,6 @@ public class UserController {
 		ResponseEntity<String> entity = null;
 	      
 	      try {
-	    	  logger.info("비밀번호 찾아준다");
-	    	  
 	    	  String returnPw = service.findPw(id, name, phone);
 	    	  entity = new ResponseEntity<String>(returnPw, HttpStatus.OK);
 	    	  
@@ -317,7 +301,6 @@ public class UserController {
 		ResponseEntity<String> entity = null;
 	      
 	      try {
-	    	  logger.info("새로운 비밀번호 만들자");
 	    	  service.createNewPw(id, password);
 	    	  
 	    	  String success ="success";
@@ -336,7 +319,6 @@ public class UserController {
 	/** 기능을 위해 필요한 것 : 1. pom.xml에서 메일을 보내기위한 dependency를 등록한다. 
 								2. 정보(발신자의 메일주소, 비밀번호, 메일 포트번호)를 담기 위한 객체를 생성하고, 
 								실제 메일을 보내는 역할을 하는 SMTP 서버 정보를 설정한다. */
-	  
 
 	@RequestMapping(value = "/mailSender") 
 	   public String mailSender(@RequestParam("user") String id, HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException, UnsupportedEncodingException { 
@@ -380,7 +362,6 @@ public class UserController {
 	      
 		  rttr.addFlashAttribute("message", "success");
 	      return "redirect:/";
-	
 	}
 }
 

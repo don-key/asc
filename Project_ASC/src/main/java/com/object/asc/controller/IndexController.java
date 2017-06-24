@@ -20,18 +20,12 @@ public class IndexController {
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Model model) {
-		logger.info("메인 페이지 테스트");
 		return "index";
 	}
 	
 	@RequestMapping(value = "/chatting", method = RequestMethod.GET)
 	public String chatting(Model model) {
-		logger.info("메인 페이지 테스트");
 		return "chatting";
 	}
-
-
-	
-
 	
 }

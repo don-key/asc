@@ -31,7 +31,7 @@
     </beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\kosta146\\upload"/>
+		<beans:constructor-arg value="C:/Users/YI JONG YOON/git/asc/Project_ASC/src/main/webapp/resources/images/upload"/>
 	</beans:bean>
 	
 	<!-- 로그인을 위한 인터셉터 설정 -->

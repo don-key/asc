@@ -43,7 +43,7 @@
   	      /** 기간만큼 반복 */
   	      <c:forEach var="i" begin="0" end="${durationCount}" varStatus="status">
   	     <c:set var="count2">${status.index}</c:set>
-  	      /** 날짜 표현 */
+  	      /** 날짜 표현 (함수사용) */
   	    	if (month == 13) {
   				month = 1;
   				year = year + 1;
@@ -105,7 +105,7 @@
  <script>
     /** 백로그 기울기처리 (y=-x(날짜)+개수) */
     function slope(duration, backLog){
-    	/** double 형으로 변환하기(나누면 정수만 나오는거 막고, 기울기 분수처리위해) */
+    	/** float 형으로 변환하기(나누면 정수만 나오는거 막고, 기울기 분수처리위해) */
     	var DBackLog = parseFloat(backLog);
     	var slope = DBackLog/(duration-1);
     	var array = new Array(duration);
@@ -171,9 +171,3 @@
     <div id="curve_chart${status.index}" style="height: 600px" ></div>
 </c:forEach>
 </div>
-
-
-
-
-
-

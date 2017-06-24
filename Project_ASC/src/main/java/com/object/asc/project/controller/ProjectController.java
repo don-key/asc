@@ -32,7 +32,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
-import org.eclipse.core.internal.resources.Project;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -87,9 +86,6 @@ public class ProjectController {
 	@RequestMapping(value = {"/dashBoard/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
 	public String dashBoard(@PathVariable int projectListNo, Locale locale, Model model, @PathVariable int userNo) {
 		
-		System.out.println(projectListNo + "테스트!!!!!!!!!!!!!!!!!!!");
-		System.out.println(userNo + "테스트!!!!!!!!!!!!!!!!!!!");
-  		
   		String memo = projectService.getMemo(projectService.findDashBoard(projectListNo, userNo));
   		ProjectList projectList = new ProjectList();
   		projectList = lobbyService.projectDate(projectListNo);
@@ -113,8 +109,6 @@ public class ProjectController {
 	
 	@RequestMapping(value = "/memoUpdate", method = RequestMethod.POST)
 	public String memoUpdate (String memo, int projectListNo, int userNo, RedirectAttributes rttr) {
-		logger.info("메모 업데이트 테스트");
-		
 		int dashBoardNo = projectService.findDashBoard(projectListNo, userNo);
 		projectService.memoUpdate(dashBoardNo, memo);
 		
@@ -125,9 +119,6 @@ public class ProjectController {
 
 	@RequestMapping(value = "/library/{projectListNo}/{userNo}", method = RequestMethod.GET)
 	public String library(Locale locale, Model model, @PathVariable int projectListNo, @PathVariable int userNo) {
-		logger.info("자료실 입장~");
-		
-		logger.info("자료 내역 리스트 올~~~~~~~~~");
 		List<LibraryList>  libraryLists= projectService.libraryListListAll(projectListNo);
 		List<User> name = new ArrayList<User>();
 		for (LibraryList libraryList : libraryLists) {
@@ -150,8 +141,6 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
 	public String libraryListRegist (int projectListNo, @RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr, int userNo) {
-		logger.info("자료실 등록등록");
-		logger.info("자료실 내역 : "+ libraryList.toString());
 		 
 		libraryList.setFileName(file.getOriginalFilename());
 		libraryList.setUuidName(uuidName);
@@ -175,9 +164,6 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public void upload(MultipartFile file, Model model) throws Exception {
-		logger.info("원본 파일 : " + file.getOriginalFilename());
-		logger.info("사이즈 : " + file.getSize());
-		logger.info("파일의 MIME 타입" + file.getContentType());
 
 		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 
@@ -186,9 +172,6 @@ public class ProjectController {
 	
 	@RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
 	public String uploadForm(MultipartFile file, Model model) throws Exception {
-		logger.info("원본 파일 : " + file.getOriginalFilename());
-		logger.info("사이즈 : " + file.getSize());
-		logger.info("파일의 MIME 타입" + file.getContentType());
 
 		String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
 
@@ -230,7 +213,6 @@ public class ProjectController {
 	@ResponseBody
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
-		logger.info("원본 파일 : " + file.getOriginalFilename());
 		return new ResponseEntity<>(UploadFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes()), HttpStatus.CREATED);
 	}
 	
@@ -238,7 +220,6 @@ public class ProjectController {
 
 	@RequestMapping(value = "/member/{projectListNo}", method = RequestMethod.GET)
 	public String member(@PathVariable int projectListNo, Model model) {
-		logger.info("참여 인원 테스트");
 		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
 		Calendar cal = Calendar.getInstance();
 		String status = null;
@@ -289,8 +270,6 @@ public class ProjectController {
 		InputStream in = null;
 		ResponseEntity<byte[]> entity = null;
 
-		logger.info("파일 이름 : " + fileName);
-
 		try {
 			String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);	// 파일 확장자 이름
 
@@ -334,7 +313,6 @@ public class ProjectController {
 	@ResponseBody
 	@RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(String fileName) {
-		logger.info("삭제할 파일 : " + fileName);
 		
 		String formatName = fileName.substring(fileName.lastIndexOf(".") + 1);
 		
@@ -355,7 +333,6 @@ public class ProjectController {
 	@ResponseBody
 	@RequestMapping(value = "/deleteAllFiles", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files) {
-		logger.info("삭제할 모든 파일 : " + files);
 		
 		if (files == null || files.length == 0) {
 			return new ResponseEntity<String>("deleted", HttpStatus.OK);
@@ -387,7 +364,6 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/remove/{projectListNo}/{userNo}", method = RequestMethod.POST)
 	public String remove(@RequestParam int libraryListNo, RedirectAttributes rttr, @PathVariable int projectListNo,@PathVariable int userNo) {
-		logger.info("자료 내역 "+libraryListNo+"번 글 삭제 처리 요청");
 		
 		projectService.libraryListDelete(libraryListNo, projectListNo);
 		
@@ -454,7 +430,7 @@ public class ProjectController {
 				str += st.nextToken() + "　";
 				str += st.nextToken() + "<br>";
 		  }
-	      String subject = "["+projectList.getProjectName()+"]프로젝트의 수정사항 메일입니다."; 
+	      String subject = "["+projectList.getProjectName()+"] 프로젝트의 수정사항 메일입니다."; 
 	      String content = "<html>"+
 	    	        "<head><title></title></head>"+
 	    	        "<body>"+ str +
@@ -493,6 +469,5 @@ public class ProjectController {
 	      return "redirect:/project/log/"+projectListNo+"/"+userNo;
 
    }
-	
 	
 }

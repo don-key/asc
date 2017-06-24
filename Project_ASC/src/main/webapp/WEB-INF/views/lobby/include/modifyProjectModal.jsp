@@ -116,7 +116,6 @@ $(function() {
 	              success: function(data) {
 	               response(
 	                      $.map(data, function(item) {
-	                              console.log(item);
 	                          return {
 	                              value: item
 	                          }
@@ -169,7 +168,6 @@ $(function() {
             	projectListNo: projectListNo
             },
             success:function(request){
-               console.log(request);
                $('#projectName').val(request.projectList.projectName);
                $('#startDate').val(request.projectList.startDate);
                $('#endDate').val(request.projectList.endDate);

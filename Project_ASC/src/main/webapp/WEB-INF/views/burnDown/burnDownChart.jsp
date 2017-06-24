@@ -171,9 +171,3 @@
     <div id="curve_chart${status.index}" style="height: 600px" ></div>
 </c:forEach>
 </div>
-
-
-
-
-
-

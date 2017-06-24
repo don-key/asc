@@ -114,7 +114,6 @@ color: black;
 				var arr = [];
 				$(".thumbnailList img").each(function(index) {
 					arr.push($(this).attr("src"));
-					console.log(arr);
 				});
 
 				$.post("/project/deleteAllFiles", {files : arr}, function() {

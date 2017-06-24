@@ -97,15 +97,12 @@ $(function() {
 		e.preventDefault();
 		
 		var upload = $('.fileSelect');
-		console.log(upload);
 		// 전달된 파일 데이터를 가져오는 부분
 		var file = upload[0].files[0];
-		console.log(file);
 		
 		var formData = new FormData();
 		
 		formData.append("file", file);
-		
 		
 		$.ajax({
 			url: '/project/uploadAjax',

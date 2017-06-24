@@ -34,7 +34,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		
 		if (session.getAttribute(LOGIN) != null) {
-			logger.info("이전 로그인 데이터 지우기");
 			session.removeAttribute(LOGIN);
 		}
 		Object obj = session.getAttribute("login");
@@ -67,11 +66,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 			if(userInfo.getStatus() == 1){
 				
-				logger.info("로그인 성공");
 				session.setAttribute(LOGIN, userInfo);
 	
 				if (request.getParameter("useCookie") != null) {
-					logger.info("remember me~~~~~~~~~");
 					
 					Cookie loginCookie = new Cookie("loginCookie", session.getId());
 					loginCookie.setPath("/");
@@ -95,7 +92,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 					/*쿠키에 사진 저장*/
 					Cookie photoCookie = new Cookie("photoCookie", URLEncoder.encode(userInfo.getPhoto(), "utf-8"));
-					logger.info(userInfo.getPhoto()+"포토퐅포토퐅포톺");
 					photoCookie.setPath("/");
 					photoCookie.setMaxAge(60 * 60 * 24 * 7);
 					response.addCookie(photoCookie);
@@ -104,15 +100,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				
 			
 			 }else if(userInfo.getStatus() == 0){
-					logger.info("메일 미인증 회원");
 					response.sendRedirect("/?result=notAuth");
 				}else {
-					logger.info("탈퇴회원");
 					response.sendRedirect("/?result=delete");
 				}
 				
 		}else{
-					logger.info("아이디 비번 불일치");
 					response.sendRedirect("/?result=error");
 				}
 		}

@@ -156,7 +156,7 @@ $(function() {
 	           },
 	           success:function(request){
 	              console.log(request.value);
-	        	   location.href="http://52.78.100.100:4567/taskBoard/"+projectListNo+"/"+request+"/"+userNo;
+	        	   location.href="http://localhost:4567/taskBoard/"+projectListNo+"/"+request+"/"+userNo;
 	           }
 	           
 	       });
@@ -164,7 +164,7 @@ $(function() {
 	   
    $('#releasePlanning').on('click', function() {
 	   event.preventDefault();
-       location.href="http://52.78.100.100:4567/releasePlanning/"+projectListNo+"/"+userNo;
+       location.href="http://localhost:4567/releasePlanning/"+projectListNo+"/"+userNo;
     });
 });
 </script>

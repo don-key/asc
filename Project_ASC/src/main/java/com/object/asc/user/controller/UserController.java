@@ -333,7 +333,7 @@ public class UserController {
 	    	        "<body>"+
 	    	        "<div style='text-align:center;'>"+
 	    	        "<IMG src='http://postfiles13.naver.net/MjAxNzA2MTVfMjQg/MDAxNDk3NTA2MTAzMTY5.CzFDfnyPG7dutsdYF8KabA9_ALStZikgPLjxG7kEFvwg.vhxFSJd_gIShKMD9F6mpQRdl_Kk6ZHC1a3NFFOXRAvEg.PNG.a_spree/mail.png?type=w2' width=50%><br>"+
-	    	        "<a href='http://52.78.100.100/user/setStatus?user="+id+"'><img src='http://postfiles13.naver.net/MjAxNzA2MTVfMTkx/MDAxNDk3NTA2MTAzNDMx.Q8n_o_gkvkeMhLV_ptC85tDVg_HPYlS2Ajq6Mt-IHTYg.vjN_BmQc7BoVoE2xwUxiSYaR8siXdcnvAhwukHgfwxwg.PNG.a_spree/mail2.png?type=w2' width=40%></a><br>"+
+	    	        "<a href='http://localhost/user/setStatus?user="+id+"'><img src='http://postfiles13.naver.net/MjAxNzA2MTVfMTkx/MDAxNDk3NTA2MTAzNDMx.Q8n_o_gkvkeMhLV_ptC85tDVg_HPYlS2Ajq6Mt-IHTYg.vjN_BmQc7BoVoE2xwUxiSYaR8siXdcnvAhwukHgfwxwg.PNG.a_spree/mail2.png?type=w2' width=40%></a><br>"+
 	    	        "</div>"+
 	    	        "</body>"+
 	    	        "</html>";

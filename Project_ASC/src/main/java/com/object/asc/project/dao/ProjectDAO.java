@@ -10,7 +10,16 @@ import com.object.asc.project.domain.LibraryList;
 import com.object.asc.project.domain.ProjectRelease;
 import com.object.asc.project.domain.Scrum;
 import com.object.asc.project.domain.Sprint;
-
+/**
+ * 
+ * 프로젝트 관련 DB에서 데이터를 가져와 모델 생성
+ * 
+ * @패키지 : com.object.asc.project.dao
+ * @파일명 : ProjectDAO.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public interface ProjectDAO {
 	
 	/** 자료 내역 신규 등록 */

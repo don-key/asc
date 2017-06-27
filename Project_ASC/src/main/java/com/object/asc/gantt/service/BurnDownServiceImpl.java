@@ -9,6 +9,16 @@ import org.springframework.stereotype.Service;
 
 import com.object.asc.gantt.dao.BurnDownDao;
 
+/**
+ * 
+ * 번다운 인터페이스 구현 클래스
+ * 
+ * @패키지 : com.object.asc.gantt.service
+ * @파일명 : BurnDownServiceImpl.java
+ * @작성자 : 이지수 
+ * @작성일 : 2017. 6. 01. 
+ *
+ */
 @Service
 public class BurnDownServiceImpl implements BurnDownService {
 	

@@ -1,3 +1,11 @@
+<!--
+ *  
+ * 도움말 페이지
+ *
+ * @파일명 : lobby/help.jsp
+ * @작성자 : 김동현
+ * @작성일 : 2017. 5. 29.
+-->
 <%@ page contentType="text/html; charset=utf-8" %>
 <div id="page-wrapper">
    <div class="row">

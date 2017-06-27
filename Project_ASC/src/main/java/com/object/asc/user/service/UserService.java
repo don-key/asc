@@ -5,6 +5,16 @@ import java.util.List;
 
 import com.object.asc.user.domain.User;
 
+/**
+ *
+ * 유저 관련 인터페이스 정의
+ * 
+ * @패키지 : com.object.asc.user.service
+ * @파일명 : UserService.java
+ * @작성자 : 이현명 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public interface UserService {
 	
 	/** 회원 가입 */

@@ -10,6 +10,16 @@ import com.object.asc.lobby.domain.ProjectJoin;
 import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
 
+/**
+ * 
+ * 로비 관련 인터페이스 정의
+ * 
+ * @패키지 : com.object.asc.lobby.service
+ * @파일명 : LobbyService.java
+ * @작성자 : 김동현
+ * @작성일 : 2017. 6. 01. 
+ *
+ */
 public interface LobbyService {
 	
 	/** 프로젝트 생성 */

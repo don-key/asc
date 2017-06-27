@@ -8,6 +8,16 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+/**
+ * 
+ * BurnDownDao 인터페이스를 구현하는 클래스
+ * 
+ * @패키지 : com.object.asc.gantt.dao
+ * @파일명 : BurnDownDaoImpl.java
+ * @작성자 : 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Repository
 public class BurnDownDaoImpl implements BurnDownDao {
 

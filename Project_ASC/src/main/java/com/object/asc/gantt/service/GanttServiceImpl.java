@@ -19,6 +19,16 @@ import com.object.asc.log.domain.Log;
 import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.domain.User;
 
+/**
+ * 
+ * 간트차트 인터페이스 구현 클래스
+ * 
+ * @패키지 : com.object.asc.gantt.service
+ * @파일명 : GanttServiceImpl.java
+ * @작성자 : 이지수 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Service
 public class GanttServiceImpl implements GanttService {
 	

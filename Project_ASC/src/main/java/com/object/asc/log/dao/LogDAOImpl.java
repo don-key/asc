@@ -11,6 +11,16 @@ import org.springframework.stereotype.Repository;
 
 import com.object.asc.log.domain.Log;
 
+/**
+ * 
+ * LogDao 인터페이스를 구현하는 클래스
+ * 
+ * @패키지 : com.object.asc.log.dao
+ * @파일명 : LogDAOImpl.java
+ * @작성자 : 최신영
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Repository
 public class LogDAOImpl implements LogDAO {
 

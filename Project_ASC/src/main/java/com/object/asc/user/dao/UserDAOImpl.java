@@ -13,6 +13,16 @@ import org.springframework.stereotype.Repository;
 
 import com.object.asc.user.domain.User;
 
+/**
+ * 
+ * UserDao 인터페이스를 구현하는 클래스
+ * 
+ * @패키지 : com.object.asc.user.dao
+ * @파일명 : UserDAOImpl.java
+ * @작성자 : 이현명
+ * @작성일 : 2017. 6. 01. 
+ *
+ */
 @Repository
 public class UserDAOImpl implements UserDAO{
 	

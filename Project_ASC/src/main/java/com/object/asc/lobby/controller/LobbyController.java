@@ -27,7 +27,15 @@ import com.object.asc.user.service.UserService;
 
 
 /**
- * Lobby Controller
+ *
+ * 로비 컨트롤러 
+ * @RequestMapping("/lobby") URI 매칭
+ * 
+ * @패키지 : com.object.asc.lobby.controller
+ * @파일명 : LobbyController.java
+ * @작성자 : 김동현
+ * @작성일 : 2017. 6. 01.
+ *
  */
 @Controller
 @RequestMapping("/lobby")
@@ -40,7 +48,16 @@ public class LobbyController {
 	
 	@Inject
 	private UserService userService;
-	 
+	
+	/**
+	 * 
+	 * 로비 페이지 이동 메소드
+	 * 
+	 * @Method Name : selectProject
+	 * @param userIdCookie
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/selectProject", method = RequestMethod.GET)
 	public String selectProject(@CookieValue(value="userIdCookie") String userIdCookie,Model model) {
 		int userNo = userService.userIdFind(userIdCookie);
@@ -65,12 +82,35 @@ public class LobbyController {
 		return "/lobby/selectProject";
 	}
 	
+	/**
+	 * 
+	 * 프로젝트 등록 메소드
+	 * 
+	 * @Method Name : registerProject
+	 * @param file
+	 * @param invitationList
+	 * @param projectList
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/selectProject", method = RequestMethod.POST)
 	public String registerProject(@RequestParam("fileUpload")MultipartFile file, String[] invitationList, ProjectList projectList, Model model) {
 		lobbyService.projectRegister(projectList, file, invitationList);
 		return "redirect:/lobby/selectProject";
 	}
 	
+	/**
+	 * 
+	 * 프로젝트 수정 메소드
+	 * 
+	 * @Method Name : updateProject
+	 * @param file
+	 * @param invitationList
+	 * @param projectList
+	 * @param listNo
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/updateProject", method = RequestMethod.POST)
 	public String updateProject(@RequestParam("fileUpload")MultipartFile file, String[] invitationList, ProjectList projectList, int listNo,Model model){
 		projectList.setProjectListNo(listNo);
@@ -78,12 +118,28 @@ public class LobbyController {
 		return "redirect:/lobby/selectProject";
 	}
 	
+	/**
+	 * 
+	 * 프로젝트 삭제 메소드
+	 * 
+	 * @Method Name : deleteProject
+	 * @param projectListNo
+	 * @return
+	 */
 	@RequestMapping(value= "/deleteProject", method = RequestMethod.GET)
 	public String deleteProject(int projectListNo){
 		lobbyService.projectListDelete(projectListNo);
 		return "redirect:/lobby/selectProject";
 	}
 	
+	/**
+	 * 
+	 * 프로젝트 참여 멤버 조회 메소드
+	 * 
+	 * @Method Name : memberList
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping("/memberList")
 	@ResponseBody
 	public ResponseEntity<List<String>> memberList(String id){
@@ -99,6 +155,14 @@ public class LobbyController {
 		return entity;
 	}
 	
+	/**
+	 * 
+	 * 프로젝트 수정 메소드
+	 * 
+	 * @Method Name : modifyProject
+	 * @param projectListNo
+	 * @return
+	 */
 	@RequestMapping("/modifyProject")
 	@ResponseBody
 	public ResponseEntity<Map<String, Object>> modifyProject(int projectListNo){
@@ -130,12 +194,29 @@ public class LobbyController {
 		return entity; 
 	}
 	
+	/**
+	 * 
+	 * 프로젝트 입장 메소드
+	 * 
+	 * @Method Name : enterProject
+	 * @param listNo
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/project", method=RequestMethod.GET)
 	public String enterProject(@RequestParam("listNo") int listNo, Model model){
 		
 		return "redirect:/project/dashBoard?projectListNo="+listNo;
 	}
 	
+	/**
+	 * 
+	 * 도움말 페이지 이동 메소드
+	 * 
+	 * @Method Name : help
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/help", method=RequestMethod.GET)
 	public String help(Model model){
 		

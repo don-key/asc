@@ -13,7 +13,16 @@ import org.springframework.web.util.WebUtils;
 import com.object.asc.user.domain.User;
 import com.object.asc.user.service.UserService;
 
-/** 로그인 유지를 위한 필터역할을 해주는 인터셉터 */
+/**
+ *
+ * 로그인 유지를 위한 필터역할을 해주는 인터셉터
+ * 
+ * @패키지 : com.object.asc.interceptor
+ * @파일명 : AuthInterceptor.java
+ * @작성자 : 이현명
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public class AuthInterceptor extends HandlerInterceptorAdapter{
 	
 	private static final Logger logger = LoggerFactory.getLogger(AuthInterceptor.class);

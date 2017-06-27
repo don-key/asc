@@ -7,6 +7,16 @@ import java.util.List;
 import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 
+/**
+ *
+ * 간트차트 관련 인터페이스 정의
+ * 
+ * @패키지 : com.object.asc.gantt.service
+ * @파일명 : GanttService.java
+ * @작성자 : 이지수
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public interface GanttService {
 	
 	/** 간트 차트 기능 조회 */

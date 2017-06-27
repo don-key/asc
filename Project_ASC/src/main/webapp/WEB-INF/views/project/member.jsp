@@ -1,3 +1,9 @@
+<!--  
+ * @개요   : 참여멤버 페이지
+ * @파일명 : project/member.jsp
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 5. 29. 
+-->
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>

@@ -1,3 +1,11 @@
+<!--
+ *  
+ * 프로젝트 수정 모달페이지
+ *
+ * @파일명 : lobby/include/modifyProjectModal.jsp
+ * @작성자 : 김동현
+ * @작성일 : 2017. 5. 29. 
+-->
 <%@ page contentType="text/html; charset=UTF-8"%>
 <style>
 .ui-front {

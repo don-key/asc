@@ -39,7 +39,15 @@ import com.object.asc.user.domain.User;
 import com.object.asc.user.service.UserService;
 
 /**
- * User Controller
+ * 
+ * 회원 관련 프로젝트 Controller
+ * @RequestMapping("/user") URI 매칭
+ * 
+ * @패키지 : com.object.asc.user.controller
+ * @파일명 : UserController.java
+ * @작성자 : 이현명
+ * @작성일 : 2017. 6. 01. 
+ *
  */
 @Controller
 @RequestMapping("/user")
@@ -50,14 +58,20 @@ public class UserController {
 	 
 	@Inject
 	private UserService service;
+	
 	User user;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String release(Locale locale, Model model) {
-		
-		return "/index";
-	}
-	
+   /**
+    * 
+    * 회원가입 모달에 입력한 정보 저장
+    * 
+    * @Method Name : register
+    * @param photo
+    * @param uuidName
+    * @param user
+    * @param rttr
+    * @return
+    */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, RedirectAttributes rttr) {
 		
@@ -72,7 +86,14 @@ public class UserController {
 		return "redirect:/user/mailSender?user="+user.getId();
 	}
 	
-	
+   /**
+    * 
+    * 회원가입 모달에서 아이디 중복 검사
+    * 
+    * @Method Name : idCheck
+    * @param registerId
+    * @return
+    */
 	@RequestMapping(value = "/idCheck")
 	@ResponseBody
 	public ResponseEntity<String> idCheck(@RequestParam("registerId") String registerId) {
@@ -99,6 +120,13 @@ public class UserController {
 	      return entity;
 	}
 	
+   /**
+    * 
+    * 가입한 회원의 모든 정보 받아오기
+    * 
+    * @Method Name : get
+    * @param user
+    */
 	@RequestMapping(value="/get", method = RequestMethod.GET)
 	public void get(User user){
 		
@@ -106,6 +134,15 @@ public class UserController {
 		
 	}
 	
+   /**
+    * 
+    * 가입회원과 탈퇴한 회원을 구별하기 위해서 상태를 부여
+    * 
+    * @Method Name : setStatus
+    * @param id
+    * @param rttr
+    * @return
+    */
 	@RequestMapping(value="/setStatus")
 	public String setStatus(@RequestParam("user")String id, RedirectAttributes rttr){
 		
@@ -115,7 +152,21 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
+   /**
+    * 
+    * 회원의 수정 정보를 입력받아 저장
+    * 
+    * @Method Name : modify
+    * @param photo
+    * @param uuidName
+    * @param user
+    * @param session
+    * @param request
+    * @param response
+    * @param rttr
+    * @return
+    * @throws Exception
+    */	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@RequestParam("fileupload")MultipartFile photo, String uuidName, User user, HttpSession session, HttpServletRequest request, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
 		
@@ -164,6 +215,15 @@ public class UserController {
 		return "redirect:/lobby/selectProject";
 	}
 	
+   /**
+    * 
+    * 수정된 회원정보 조회
+    * 
+    * @Method Name : modifyView
+    * @param userNo
+    * @return
+    * @throws Exception
+    */
 	@RequestMapping(value = "/modifyView")
 	@ResponseBody
 	public ResponseEntity<User> modifyView(int userNo) throws Exception {
@@ -182,7 +242,15 @@ public class UserController {
 		
 		return entity;
 	}
-	
+   /**
+    * 
+    * 로그인 실행
+    * 
+    * @Method Name : loginPOST
+    * @param user
+    * @param session
+    * @param model
+    */	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(User user, HttpSession session, Model model) {
 		
@@ -202,6 +270,16 @@ public class UserController {
 		model.addAttribute("user", loginCheck);
 	}
 	
+   /**
+    * 
+    * 로그아웃 실행
+    * 
+    * @Method Name : logout
+    * @param request
+    * @param response
+    * @param session
+    * @return
+    */	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session ) {
 		
@@ -233,7 +311,16 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
+   /**
+    * 
+    * 회원의 상태를 탈퇴회원으로 변경
+    * 
+    * @Method Name : delete
+    * @param userNo
+    * @param password
+    * @param repassword
+    * @return
+    */	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<String> delete(@RequestParam("userNo") int userNo, String password, String repassword) {
@@ -263,6 +350,15 @@ public class UserController {
 	      return entity;
 	}
 	
+   /**
+    * 
+    * 회원가입시 입력한 정보로 아이디를 조회
+    * 
+    * @Method Name : findId
+    * @param name
+    * @param phone
+    * @return
+    */	
 	@RequestMapping(value = "/findId")
 	@ResponseBody
 	public ResponseEntity<String> findId(String name, String phone) {
@@ -279,6 +375,16 @@ public class UserController {
 	      return entity;
 	}
 	
+   /**
+    * 
+    * 회원가입시 입력한 정보로 비밀번호를 조회
+    * 
+    * @Method Name : findPw
+    * @param id
+    * @param name
+    * @param phone
+    * @return
+    */	
 	@RequestMapping(value = "/findPw")
 	@ResponseBody
 	public ResponseEntity<String> findPw(String id, String name, String phone) {
@@ -294,7 +400,16 @@ public class UserController {
 	      }
 	      return entity;
 	}
-	
+
+   /**
+    * 
+    * 새로운 비밀번호를 생성
+    * 
+    * @Method Name : createNewPw
+    * @param password
+    * @param id
+    * @return
+    */
 	@RequestMapping(value = "/createNewPw")
 	@ResponseBody
 	public ResponseEntity<String> createNewPw(@RequestParam("password")String password, @RequestParam("id")String id) {
@@ -313,13 +428,23 @@ public class UserController {
 	      return entity;
 	}
 	
-	
-	/** 회원가입시 입력한 아이디(메일주소)로 인증확인을 위한 메일을 보낸다. */
-	/** 기능 : 회원가입 등록 모달(뷰 페이지)에서 submit을 하면, 컨트롤러를 통해서 메일전송을 하는 메소드를 실행한다. */
-	/** 기능을 위해 필요한 것 : 1. pom.xml에서 메일을 보내기위한 dependency를 등록한다. 
-								2. 정보(발신자의 메일주소, 비밀번호, 메일 포트번호)를 담기 위한 객체를 생성하고, 
-								실제 메일을 보내는 역할을 하는 SMTP 서버 정보를 설정한다. */
-
+   /**
+    * 
+    * 회원가입시 입력한 아이디(메일주소)로 인증확인을 위한 메일을 보낸다.
+    * 회원가입 등록 모달(뷰 페이지)에서 submit을 하면, 컨트롤러를 통해서 메일전송을 하는 메소드를 실행한다. 
+    * 1. pom.xml에서 메일을 보내기위한 dependency를 등록한다. 
+    * 2. 정보(발신자의 메일주소, 비밀번호, 메일 포트번호)를 담기 위한 객체를 생성하고, 실제 메일을 보내는 역할을 하는 SMTP 서버 정보를 설정한다.
+    * 
+    * @Method Name : mailSender
+    * @param id
+    * @param request
+    * @param mo
+    * @param rttr
+    * @return
+    * @throws AddressException
+    * @throws MessagingException
+    * @throws UnsupportedEncodingException
+    */
 	@RequestMapping(value = "/mailSender") 
 	   public String mailSender(@RequestParam("user") String id, HttpServletRequest request, ModelMap mo, RedirectAttributes rttr) throws AddressException, MessagingException, UnsupportedEncodingException { 
 		  String host = "smtp.gmail.com"; 

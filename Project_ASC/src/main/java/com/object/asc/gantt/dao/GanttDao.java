@@ -7,6 +7,16 @@ import java.util.List;
 import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 
+/**
+ * 
+ * 간트차트 관련 DB에서 데이터를 가져와 모델 생성
+ * 
+ * @패키지 : com.object.asc.gantt.dao
+ * @파일명 : GanttDao.java
+ * @작성자 : 이지수 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public interface GanttDao {
 	
 	/** 간트 차트 기능 조회 */

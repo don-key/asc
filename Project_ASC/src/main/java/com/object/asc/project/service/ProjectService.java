@@ -12,6 +12,16 @@ import com.object.asc.project.domain.ProjectRelease;
 import com.object.asc.project.domain.Scrum;
 import com.object.asc.project.domain.Sprint;
 
+/**
+ *
+ * 프로젝트 관련 인터페이스 정의
+ * 
+ * @패키지 : com.object.asc.project.service
+ * @파일명 : ProjectService.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01. 
+ *
+ */
 public interface ProjectService {
 	
 	/** 자료 내역 신규 등록 */

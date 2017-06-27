@@ -1,3 +1,12 @@
+<!--  
+ *
+ * 회원정보수정 모달페이지
+ *
+ * @파일명 : title/modifyModal.jsp
+ * @작성자 : 이현명
+ * @작성일 : 2017. 6. 27. 
+-->
+
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib  prefix="m" uri="urlDecode"%> 

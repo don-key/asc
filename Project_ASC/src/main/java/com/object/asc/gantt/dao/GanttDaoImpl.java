@@ -14,6 +14,16 @@ import org.springframework.stereotype.Repository;
 import com.object.asc.gantt.domain.ActionChartList;
 import com.object.asc.gantt.domain.GanttChartList;
 
+/**
+ * 
+ * GanttDao 인터페이스를 구현하는 클래스
+ * 
+ * @패키지 : com.object.asc.gantt.dao
+ * @파일명 : GanttDaoImpl.java
+ * @작성자 : 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Repository
 public class GanttDaoImpl implements GanttDao {
 	

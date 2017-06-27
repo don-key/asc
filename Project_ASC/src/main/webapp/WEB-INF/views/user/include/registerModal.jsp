@@ -1,3 +1,12 @@
+<!--
+ *  
+ * 회원가입 모달페이지
+ *
+ * @파일명 : user/include/regiterModal.jsp
+ * @작성자 : 이현명
+ * @작성일 : 2017. 5. 29. 
+-->
+
 <%@ page contentType="text/html; charset=UTF-8"%>
 
 <style>

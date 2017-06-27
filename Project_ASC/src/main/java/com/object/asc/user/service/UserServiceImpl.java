@@ -10,6 +10,16 @@ import org.springframework.stereotype.Service;
 import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.domain.User;
 
+/**
+ *
+ * 유저 인터페이스 구현 클래스
+ * 
+ * @패키지 : com.object.asc.user.service
+ * @파일명 : UserServiceImpl.java
+ * @작성자 : 이현명
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService {
    

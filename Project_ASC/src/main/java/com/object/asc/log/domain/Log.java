@@ -1,5 +1,15 @@
 package com.object.asc.log.domain;
 
+/**
+ *
+ * 로그 관련 객체 선언 및 getter(), setter() 메소드 정의
+ * 
+ * @패키지 : com.object.asc.log.domain
+ * @파일명 : Log.java
+ * @작성자 : 최신영
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public class Log {
 	private int logListNo;
 	private int projectListNo;

@@ -60,7 +60,15 @@ import com.object.asc.util.MediaUtils;
 import com.object.asc.util.UploadFileUtils;
 
 /**
- * Project Controller
+ * 
+ * 대시보드, 자료실 관련 프로젝트 Controller
+ * @RequestMapping("/project") URI 매칭
+ * 
+ * @패키지 : com.object.asc.project.controller
+ * @파일명 : ProjectController.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01.
+ *
  */
 @Controller
 @RequestMapping("/project")
@@ -82,7 +90,18 @@ public class ProjectController {
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
-
+	
+   /**
+    * 
+    * 프로젝트 번호와 회원 번호를 가지고 대시보드 페이지로 이동
+    * 
+    * @Method Name : dashBoard
+    * @param projectListNo     프로젝트 번호
+    * @param locale
+    * @param model 
+    * @param userNo            회원 번호
+    * @return 
+    */	
 	@RequestMapping(value = {"/dashBoard/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
 	public String dashBoard(@PathVariable int projectListNo, Locale locale, Model model, @PathVariable int userNo) {
 		
@@ -107,6 +126,17 @@ public class ProjectController {
 		return "/project/dashboard";
 	}
 	
+   /**
+    * 
+    * 메모 작성
+    * 
+    * @Method Name : memoUpdate
+    * @param memo               작성한 메모 객체
+    * @param projectListNo      프로젝트 번호
+    * @param userNo             회원 번호
+    * @param rttr
+    * @return
+    */
 	@RequestMapping(value = "/memoUpdate", method = RequestMethod.POST)
 	public String memoUpdate (String memo, int projectListNo, int userNo, RedirectAttributes rttr) {
 		int dashBoardNo = projectService.findDashBoard(projectListNo, userNo);
@@ -116,7 +146,17 @@ public class ProjectController {
 		
 		return "redirect:/project/dashBoard/"+projectListNo+"/"+userNo;
 	}
-
+	
+   /**
+    * 프로젝트 번호와 회원 번호를 가지고 자료실 페이지로 이동
+    *
+    * @Method Name : library
+    * @param locale
+    * @param model
+    * @param projectListNo     프로젝트 번호
+    * @param userNo            회원 번호
+    * @return
+    */
 	@RequestMapping(value = "/library/{projectListNo}/{userNo}", method = RequestMethod.GET)
 	public String library(Locale locale, Model model, @PathVariable int projectListNo, @PathVariable int userNo) {
 		List<LibraryList>  libraryLists= projectService.libraryListListAll(projectListNo);
@@ -131,14 +171,16 @@ public class ProjectController {
 		return "/project/library";
 	}
 	
-	/**
-	 * 데이터베이스에 게시글 등록
-	 * @param file
-	 * @param uuidName
-	 * @param libraryList
-	 * @param rttr
-	 * @return
-	 */
+   /**
+    * 
+    * 데이터베이스에 게시글 등록
+    * 
+    * @param file
+    * @param uuidName
+    * @param libraryList
+    * @param rttr
+    * @return
+    */
 	@RequestMapping(value = "/registLibraryList", method = RequestMethod.POST)
 	public String libraryListRegist (int projectListNo, @RequestParam("file") MultipartFile file,String uuidName, LibraryList libraryList, RedirectAttributes rttr, int userNo) {
 		 
@@ -154,12 +196,11 @@ public class ProjectController {
 	}
 
 	/**
+	 * 
 	 * 파일 업로드 처리
 	 * 
-	 * @param file
-	 *            POST 방식으로 들어온 파일 데이터
-	 * @param model
-	 *            스프링 MVC에서 제공하는 데이터 전달용 객체
+	 * @param file      POST 방식으로 들어온 파일 데이터
+	 * @param model     스프링 MVC에서 제공하는 데이터 전달용 객체
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
@@ -181,12 +222,11 @@ public class ProjectController {
 	}
 
 	/**
+	 * 
 	 * 실제 파일 업로드
 	 * 
-	 * @param originalName
-	 *            원본 파일 이름
-	 * @param fileData
-	 *            파일 데이터를 byte[]로 변환한 정보
+	 * @param originalName  원본 파일 이름
+	 * @param fileData      파일 데이터를 byte[]로 변환한 정보
 	 * @return
 	 * @throws Exception
 	 */
@@ -209,7 +249,6 @@ public class ProjectController {
 	 * @return
 	 * @throws Exception
 	 */
-	
 	@ResponseBody
 	@RequestMapping(value = "/uploadAjax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
@@ -217,7 +256,15 @@ public class ProjectController {
 	}
 	
 	
-
+   /**
+    * 
+    * 참여멤버 조회 메소드
+    *
+    * @Method Name : member
+    * @param projectListNo
+    * @param model
+    * @return
+    */
 	@RequestMapping(value = "/member/{projectListNo}", method = RequestMethod.GET)
 	public String member(@PathVariable int projectListNo, Model model) {
 		SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
@@ -259,7 +306,9 @@ public class ProjectController {
 
 	
 	/**
+	 * 
 	 * 특정 URI를 호출했을 때 업로드 된 파일이 제대로 보이게 처리
+	 * 
 	 * @param fileName		브라우저에서 전송받기를 원하는 파일 이름
 	 * @return
 	 * @throws Exception
@@ -306,7 +355,9 @@ public class ProjectController {
 	}
 	
 	/**
+	 * 
 	 * 파일 등록 모달에서 삭제 처리 (폴더의 사진)
+	 * 
 	 * @param fileName		삭제할 파일 이름
 	 * @return
 	 */
@@ -329,7 +380,14 @@ public class ProjectController {
 		
 		return new ResponseEntity<String> ("deleted", HttpStatus.OK);
 	}
-	
+   /**
+    * 
+    * 업로드한 파일 삭제
+    *
+    * @Method Name : deleteFile
+    * @param files      삭제할 파일
+    * @return
+    */
 	@ResponseBody
 	@RequestMapping(value = "/deleteAllFiles", method = RequestMethod.POST)
 	public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files) {
@@ -357,7 +415,9 @@ public class ProjectController {
 	}
 	
 	/**
+	 * 
 	 * 자료 내역 삭제
+	 * 
 	 * @param libraryListNo 삭제할 자료 내역 번호
 	 * @param rttr
 	 * @return
@@ -372,6 +432,14 @@ public class ProjectController {
 		return "redirect:/project/library/"+projectListNo+"/"+userNo;
 	}
 	
+	/**
+	 * 
+	 * 채팅방 이름 리턴 메소드
+	 * 
+	 * @Method Name : getChatName
+	 * @param projectListNo
+	 * @param response
+	 */
 	@RequestMapping(value="/getChatName", method=RequestMethod.POST)
 	 	public void getChatName(int projectListNo, HttpServletResponse response){
 	 		String chatName = projectService.chatName(projectListNo);
@@ -383,7 +451,14 @@ public class ProjectController {
 	 		}
 	 		
 	 	}
-	
+	/**
+	 * 
+	 * 현재 스프린트 넘버 리턴 메소드
+	 * 
+	 * @Method Name : getSprintNo
+	 * @param scrumNo
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/getSprintNo")
 	public ResponseEntity<Integer> getSprintNo(int scrumNo) {
@@ -399,6 +474,16 @@ public class ProjectController {
 		return entity; 
 	}
 	
+	/**
+	 * 
+	 * 각 유저의 수정 사항 리턴하여 수정 사항 페이지에 출력
+	 * 
+	 * @Method Name : log
+	 * @param projectListNo
+	 * @param userNo
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/log/{projectListNo}/{userNo}", method = RequestMethod.GET)
 	public String log(@PathVariable int projectListNo, @PathVariable int userNo, Model model) {
 		List<String> front = new ArrayList<String>();
@@ -415,6 +500,22 @@ public class ProjectController {
 		return "/project/log";
 	}
 	
+	/**
+	 * 
+	 * 로그 메일 센더 메소드 (프로젝트 참여 회원 모두에게 전송)
+	 * 
+	 * @Method Name : mailSender
+	 * @param projectListNo
+	 * @param id
+	 * @param userNo
+	 * @param request
+	 * @param rttr
+	 * @param model
+	 * @return
+	 * @throws AddressException
+	 * @throws MessagingException
+	 * @throws UnsupportedEncodingException
+	 */
 	@RequestMapping(value = "/sendMail/{projectListNo}/{id}/{userNo}") 
     public String mailSender(@PathVariable int projectListNo, @PathVariable String id, @PathVariable int userNo,HttpServletRequest request, RedirectAttributes rttr, Model model) throws AddressException, MessagingException, UnsupportedEncodingException { 
 	  

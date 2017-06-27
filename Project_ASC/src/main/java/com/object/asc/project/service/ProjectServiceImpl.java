@@ -22,6 +22,16 @@ import com.object.asc.project.domain.Sprint;
 import com.object.asc.user.dao.UserDAO;
 import com.object.asc.user.domain.User;
 
+/**
+ * 
+ * 프로젝트 인터페이스 구현 클래스
+ * 
+ * @패키지 : com.object.asc.project.service
+ * @파일명 : ProjectServiceImpl.java
+ * @작성자 : 이종윤 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Service
 public class ProjectServiceImpl implements ProjectService {
 	

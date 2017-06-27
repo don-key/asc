@@ -9,6 +9,16 @@ import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.project.domain.DashBoard;
 
+/**
+ *
+ * 로비 관련 DB에서 데이터를 가져와 모델 생성
+ * 
+ * @패키지 : com.object.asc.lobby.dao
+ * @파일명 : LobbyDAO.java
+ * @작성자 : 
+ * @작성일 : 2017. 6. 01. 
+ *
+ */
 public interface LobbyDAO {
 	
 	/** 프로젝트 생성 시 */

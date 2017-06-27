@@ -1,7 +1,13 @@
+<!--  
+ *
+ * 번다운차트 페이지 
+ *
+ * @파일명 : burnDown/burnDownChart.jsp
+ * @작성자 : 이지수
+ * @작성일 : 2017. 5. 29. 
+-->
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 

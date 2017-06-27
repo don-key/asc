@@ -6,8 +6,14 @@ import java.util.Map;
 import org.springframework.http.MediaType;
 
 /**
- * 확장자를 통해 이미지 타입인지 판별
- * 작성자 : 이종윤
+ * 
+ * 파일 확장자를 통해 이미지 타입인지 판별
+ * 
+ * @패키지 : com.object.asc.util
+ * @파일명 : MediaUtils.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01. 
+ *
  */
 public class MediaUtils {
 

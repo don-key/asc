@@ -29,6 +29,16 @@ import com.object.asc.project.domain.Sprint;
 import com.object.asc.user.dao.UserDAO;
 import com.object.asc.util.UploadFileUtils;
 
+/**
+ * 
+ * 로비 인터페이스 구현 클래스
+ * 
+ * @패키지 : com.object.asc.lobby.service
+ * @파일명 : LobbyServiceImpl.java
+ * @작성자 : 김동현 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Service
 public class LobbyServiceImpl implements LobbyService {
 

@@ -5,6 +5,16 @@ import java.util.List;
 
 import com.object.asc.user.domain.User;
 
+/**
+ * 
+ * 유저 관련 DB에서 데이터를 가져와 모델 생성
+ * 
+ * @패키지 : com.object.asc.user.dao
+ * @파일명 : UserDAO.java
+ * @작성자 : 이현명
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public interface UserDAO {
 	
 	/** 회원 가입 */

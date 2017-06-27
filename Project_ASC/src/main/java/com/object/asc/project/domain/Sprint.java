@@ -1,7 +1,16 @@
 package com.object.asc.project.domain;
 
 import java.util.Date;
-
+/**
+ * 
+ * 스프린트 관련 객체 선언 및 getter(), setter() 메소드 정의
+ * 
+ * @패키지 : com.object.asc.project.domain
+ * @파일명 : Sprint.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public class Sprint {
 	private int sprintNo;
 	private int scrumNo;

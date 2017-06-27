@@ -23,7 +23,15 @@ import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.lobby.service.LobbyService;
 
 /**
- * GanttChart Controller
+ * 
+ * 간트차트/진행차트 컨트롤러 
+ * @RequestMapping("/gantt") URI 매칭
+ * 
+ * @패키지 : com.object.asc.gantt.controller
+ * @파일명 : GanttController.java
+ * @작성자 : 이지수
+ * @작성일 : 2017. 06. 01. 
+ * 
  */
 @Controller
 @RequestMapping("/gantt")
@@ -37,8 +45,18 @@ public class GanttController {
 	@Inject
 	private LobbyService lobbyService;
 	
-	/** Gantt Chart */
-
+	/**
+	 * 
+	 * 차트 페이지 @PathVariable type 변수를 활용하여 페이지 매칭
+	 * 
+	 * @Method Name : ganttChart
+	 * @param type
+	 * @param projectListNo
+	 * @param userNo
+	 * @param go
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = {"/{type}/{projectListNo}/{userNo}","/{type}/{projectListNo}/{userNo}/{go}"}, method = RequestMethod.GET)
 	public String ganttChart(@PathVariable String type, @PathVariable int projectListNo, @PathVariable int userNo, @PathVariable(required=false) String go, Model model) {
 		
@@ -164,7 +182,21 @@ public class GanttController {
 		return "redirect:/index";
 	}
 
-	
+	/**
+	 * 
+	 * 간트차트 등록 메소드
+	 * 
+	 * @Method Name : register
+	 * @param projectListNo
+	 * @param userNo
+	 * @param title
+	 * @param worker
+	 * @param startDate
+	 * @param endDate
+	 * @param color
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String register(int projectListNo, int userNo, String title, String worker, Date startDate, Date endDate, String color, Model model){
 		
@@ -173,6 +205,22 @@ public class GanttController {
 		return "redirect:/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	}
 	
+	/**
+	 * 
+	 * 간트차트 수정 메소드
+	 * 
+	 * @Method Name : modify
+	 * @param projectListNo
+	 * @param userNo
+	 * @param modifyListNo
+	 * @param modifyTitle
+	 * @param modifyWorker
+	 * @param modifyStartDate
+	 * @param modifyEndDate
+	 * @param modifyColor
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String modify(int projectListNo, int userNo, int modifyListNo, String modifyTitle, String modifyWorker, Date modifyStartDate, Date modifyEndDate, String modifyColor, Model model){
 		GanttChartList gcl = new GanttChartList();
@@ -189,6 +237,17 @@ public class GanttController {
 		return "redirect:/gantt/ganttChart/"+projectListNo+"/"+userNo;
 	}
 	
+	/**
+	 * 
+	 * 간트차트 삭제 메소드
+	 * 
+	 * @Method Name : delete
+	 * @param projectListNo
+	 * @param userNo
+	 * @param ganttListNo
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/delete/{ganttListNo}/{projectListNo}/{userNo}", method=RequestMethod.GET)
 	public String delete(@PathVariable int projectListNo, @PathVariable int userNo, @PathVariable int ganttListNo, Model model){
 		ganttService.delete(ganttListNo);
@@ -197,8 +256,18 @@ public class GanttController {
 	}
 	
 	
-	/** Action Chart */
-	
+	/**
+	 * 
+	 * 진행차트 등록 메소드
+	 * 
+	 * @Method Name : actionRegister
+	 * @param projectListNo
+	 * @param userNo
+	 * @param ganttListNo
+	 * @param status
+	 * @param tOrY
+	 * @return
+	 */
 	@RequestMapping(value="/actionRegister", method=RequestMethod.POST)
 	public String actionRegister(int projectListNo, int userNo, int ganttListNo, int status, int tOrY){
 		Date actionDate = date(tOrY);
@@ -215,6 +284,15 @@ public class GanttController {
 		
 	}
 	
+	/**
+	 * 
+	 * 진행차트 현실퍼센트 업데이트 메소드
+	 * 
+	 * @Method Name : actionRegister
+	 * @param projectListNo
+	 * @param percent
+	 * @return
+	 */
 	@RequestMapping(value="/percentUpdate", method=RequestMethod.POST)
 	public String actionRegister(int projectListNo, String percent){
 		
@@ -225,7 +303,14 @@ public class GanttController {
 	}
 
 	
-	/** 일수 계산해주는 메소드 */
+	/**
+	 * 
+	 * 날짜 계산 메소드
+	 * 
+	 * @Method Name : calDays
+	 * @param date
+	 * @return
+	 */
 	public int calDays (String[] date){
 		int days = Integer.parseInt(date[2]);
 		switch (Integer.parseInt(date[1])) {
@@ -245,7 +330,14 @@ public class GanttController {
 		return days;
 	}
 	
-	/** 날짜 받아오는 메소드 (오늘인지 며칠전인지 구분해서 날짜 반환) */
+	/**
+	 * 
+	 * 날짜 받아오는 메소드 (오늘인지 며칠전인지 구분해서 날짜 반환)
+	 * 
+	 * @Method Name : date
+	 * @param tOrY
+	 * @return
+	 */
 	public Date date (int tOrY){
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

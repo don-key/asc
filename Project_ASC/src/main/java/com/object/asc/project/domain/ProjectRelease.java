@@ -1,5 +1,14 @@
 package com.object.asc.project.domain;
-
+/**
+ * 
+ * 릴리즈 관련 객체 선언 및 getter(), setter() 메소드 정의
+ * 
+ * @패키지 : com.object.asc.project.domain
+ * @파일명 : ProjectRelease.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 public class ProjectRelease {
 	private int projectReleaseNo;
 	private int projectListNo;

@@ -13,6 +13,16 @@ import com.object.asc.lobby.domain.ProjectJoinList;
 import com.object.asc.lobby.domain.ProjectList;
 import com.object.asc.project.domain.DashBoard;
 
+/**
+ *
+ * LobbyDao 인터페이스를 구현하는 클래스
+ * 
+ * @패키지 : com.object.asc.lobby.dao
+ * @파일명 : LobbyDAOImpl.java
+ * @작성자 : 
+ * @작성일 : 2017. 6. 01.
+ *
+ */
 @Repository
 public class LobbyDAOImpl implements LobbyDAO {
 

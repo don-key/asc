@@ -22,7 +22,15 @@ import com.object.asc.lobby.service.LobbyService;
 
 
 /**
- * GanttChart Controller
+ * 
+ * 번다운차트 컨트롤러 
+ * @RequestMapping("/burnDown") URI 매칭
+ * 
+ * @패키지 : com.object.asc.gantt.controller
+ * @파일명 : BurnDownController.java
+ * @작성자 : 이지수
+ * @작성일 : 2017. 06. 01. 
+ * 
  */
 @Controller
 @RequestMapping("/burnDown")
@@ -37,6 +45,16 @@ public class BurnDownController {
 	private LobbyService lobbyService;
 	
 
+	/**
+	 * 
+	 * 번다운차트에 필요한 정보들을 가지고 페이지로 이동한다.
+	 * 
+	 * @Method Name : ganttChart
+	 * @param projectListNo
+	 * @param userNo
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = {"/chart/{projectListNo}/{userNo}"}, method = RequestMethod.GET)
 	public String ganttChart(@PathVariable int projectListNo, @PathVariable int userNo, Model model) {
 		

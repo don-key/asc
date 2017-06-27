@@ -1,5 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8"%>
-
+<!--  
+ * @개요   : 메인 페이지 
+ * @파일명 : index.jsp
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 5. 29. 
+-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,7 +151,7 @@ function getUrlParams() {
 
 
 <script>
-
+ 
 $("#loginBtn").on("click", function() {
 	var emailpattern = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 	var id = $(".login__input").val();
@@ -180,7 +185,7 @@ $("#loginBtn").on("click", function() {
             type : 'warning',
             confirmButtonText : '닫기'
          })
-		return false;
+		return false;	
 	};
 });
 

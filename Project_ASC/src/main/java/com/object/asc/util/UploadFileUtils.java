@@ -19,14 +19,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 파일 업로드용 클래스
- * 작성자 : 이종윤
+ * 
+ * @패키지 : com.object.asc.util
+ * @파일명 : UploadFileUtils.java
+ * @작성자 : 이종윤
+ * @작성일 : 2017. 6. 01.
+ *
  */
 public class UploadFileUtils {
 
 	private static final Logger logger = LoggerFactory.getLogger(UploadFileUtils.class);
 	
 	/**
+	 * 
 	 * 업로드한 파일을 생성한 폴더에 저장
+	 * 
 	 * @param uploadPath 	파일의 저장 경로
 	 * @param originalName 	원본 파일의 이름
 	 * @param fileData			파일 데이터
@@ -55,6 +62,9 @@ public class UploadFileUtils {
 	}
 	
 	/**
+	 * 
+	 * 파일이 저장 될 경로 계산
+	 * 
 	 * @param uploadPath		파일 저장 경로
 	 * @return path           파일 path 리턴
 	 */
@@ -66,7 +76,9 @@ public class UploadFileUtils {
 	}
 	
 	/**
+	 * 
 	 * 파일 경로 생성
+	 * 
 	 * @param uploadPath	파일 저장 경로
 	 * @param paths			생성할 파일 경로 (프로젝트 내역 번호, 사용자 번호)
 	 */
@@ -84,7 +96,9 @@ public class UploadFileUtils {
 	}
 	
 	/**
+	 * 
 	 * 썸네일 이미지 생성
+	 * 
 	 * @param uploadPath		메소드의 파라미터에 사용된 기본 경로
 	 * @param path				프로젝트 내역 번호/사용자 번호 폴더
 	 * @param fileName			현재 업로드 된 파일 이름
@@ -102,7 +116,9 @@ public class UploadFileUtils {
 	}
 	
 	/**
+	 * 
 	 * 아이콘 생성 (파일 확장자가 이미지가 아닐 경우)
+	 * 
 	 * @param uploadPath		메소드의 파라미터에 사용된 기본 경로
 	 * @param path				프로젝트 내역 번호/사용자 번호 폴더
 	 * @param fileName			현재 업로드 된 파일 이름
